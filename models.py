@@ -1,0 +1,72 @@
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, func
+from sqlalchemy.dialects.postgresql import UUID, DOUBLE_PRECISION, ARRAY
+import uuid
+from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy import create_engine, Column, Integer, String, DateTime
+
+# # SQLAlchemy Setup
+DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@/dispatcher-bot-db?host=/var/run/postgresql"
+engine = create_engine(DATABASE_URL)
+
+Base = declarative_base()
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+# Dependency to get DB session
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+# # Define your model (adjust fields as needed)
+class LoadModel(Base):
+    __tablename__ = "loads"
+    
+    load_id = Column(Integer, primary_key=True, server_default="nextval('loads_load_id_seq'::regclass)")
+    external_load_id = Column(String(50))
+    brokerage = Column(String(100))
+    pickup_location = Column(String)
+    delivery_location = Column(String)
+    price = Column(String)
+    milage = Column(DOUBLE_PRECISION)
+    is_operational = Column(Boolean)
+    contact_phone = Column(String(25))
+    notes = Column(String)
+    loadboard_source = Column(String(50))
+    created_at = Column(DateTime)
+
+class Dispatcher(Base):
+    __tablename__ = "dispatchers"
+    
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = Column(String(100))
+    drivers = Column(ARRAY(Integer))
+    commission = Column(Float)
+    created_at = Column(DateTime)
+    company = Column(String(100))
+    
+class DriverModel(Base):
+   __tablename__ = "drivers"
+
+   driver_id = Column(Integer, primary_key=True)
+   trailer_size = Column(Integer)
+   desired_gross = Column(DOUBLE_PRECISION)
+   desired_rpm = Column(DOUBLE_PRECISION) 
+   active = Column(Boolean)
+   full_name = Column(String(50))
+   phone = Column(String(15))
+   states = Column(ARRAY(String(2)))
+   location = Column(String(100))
+
+class RouteModel(Base):
+    __tablename__ = "routes"
+    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    driver_id = Column(Integer, nullable=False)
+    loads = Column(JSON, nullable=False)
+    milage = Column(Float, nullable=False)
+    total_rpm = Column(Float, nullable=False)
+    total_price = Column(Float, nullable=False)
+    created_at = Column(DateTime, server_default=func.now())
