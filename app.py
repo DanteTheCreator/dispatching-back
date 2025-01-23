@@ -156,7 +156,7 @@ def get_loads_and_glink_for_route(loads: List[str] = Query(None), db: Session = 
     return {"loads": db_loads}
 
 
-@app.put("/update_driver/{driver_id}", dependencies=[Depends(get_api_key)])
+@app.patch("/update_driver/{driver_id}", dependencies=[Depends(get_api_key)])
 def update_driver(driver_id: str, driver_data: dict, db: Session = Depends(get_db)):
     driver = db.query(DriverModel).filter(DriverModel.driver_id == driver_id).first()
     if driver is None:
@@ -169,6 +169,43 @@ def update_driver(driver_id: str, driver_data: dict, db: Session = Depends(get_d
     db.commit()
     db.refresh(driver)
     return driver
+
+@app.post("/approve_route/{route_id}", dependencies=[Depends(get_api_key)])
+def approve_route(route_id: str, db: Session = Depends(get_db)):
+    route = db.query(RouteModel).filter(RouteModel.route_id == route_id).first()
+    if route is None:
+        raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="Route not found")
+    
+    driver_id = route.driver_id
+
+    # Move the route to confirmed routes
+    confirmed_route = RouteModel(
+        route_id=route.route_id,
+        driver_id=route.driver_id,
+        loads=route.loads,
+        milage=route.milage,
+        total_rpm=route.total_rpm,
+        total_price=route.total_price,
+        created_at=route.created_at
+    )
+    db.add(confirmed_route)
+
+    # Delete all other routes associated with the driver
+    db.query(RouteModel).filter(RouteModel.driver_id == driver_id, RouteModel.route_id != route_id).delete()
+
+    db.commit()
+    return {"message": "Route approved and other routes deleted"}
+
+@app.delete("/reject_route/{route_id}", dependencies=[Depends(get_api_key)])
+def reject_route(route_id: str, db: Session = Depends(get_db)):
+    route = db.query(RouteModel).filter(RouteModel.route_id == route_id).first()
+    if route is None:
+        raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="Route not found")
+    
+    db.delete(route)
+    db.commit()
+    return {"message": "Route rejected and deleted"}
+
 # Endpoint to fetch all loads
 @app.get("/health")
 def activate_driver(db: Session = Depends()):

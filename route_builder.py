@@ -14,10 +14,12 @@ def build_routes_for_active_drivers():
             routes = []
             # Create a RouteBuilder instance for the driver
             builder = RouteBuilder(driver_id, db)
-            trailer_size = builder.driver.trailer_size.scalar()
-            if trailer_size == '1':   # Generate and save routes for the driver
+            trailer_size = builder.driver.trailer_size
+
+            if trailer_size == 1:   # type: ignore
+                print('generating')
                 routes = builder.generate_one_car_trailer_routes()
-            if trailer_size == '2':
+            if trailer_size == 2:   # type: ignore
                 routes = builder.generate_two_car_trailer_routes()
                 
             for route in routes:
