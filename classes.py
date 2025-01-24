@@ -29,19 +29,16 @@ class Driver:
         self.location = driver.location
         self.trailer_size = driver.trailer_size
         try:
-            # Get the scalar value from Column objects if needed
-            gross_value = getattr(driver.desired_gross, 'scalar_value', driver.desired_gross)
-            rpm_value = getattr(driver.desired_rpm, 'scalar_value', driver.desired_rpm)
-            
-            self.desired_gross = float(gross_value)  # type: ignore
-            self.desired_rpm = float(rpm_value) # type: ignore
+            self.desired_gross = float(getattr(driver, 'desired_gross', 0.0))  
+            self.desired_rpm = float(getattr(driver, 'desired_rpm', 0.0)) 
+            self.active = driver.active
+            self.phone = driver.phone
+            self.states = driver.states if driver.states is not None else []
         except (ValueError, TypeError, AttributeError) as e:
             logger.info(f"Error converting values: {e}")
             self.desired_gross = 0.0
             self.desired_rpm = 0.0
-        self.active = driver.active
-        self.phone = driver.phone
-        self.states = driver.states if driver.states is not None else []
+        
         # logger.info(f"Driver attributes: driver_id={self.driver_id}, full_name={self.full_name}, location={self.location}, "
         #       f"trailer_size={self.trailer_size}, desired_gross={self.desired_gross}, desired_rpm={self.desired_rpm}, "
         #       f"active={self.active}, phone={self.phone}, states={self.states}")

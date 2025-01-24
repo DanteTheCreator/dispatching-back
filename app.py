@@ -131,9 +131,9 @@ def get_routes(driver_id: str, db: Session = Depends(get_db)):
         )
 
     for route in routes:
-        if route.loads: #type: ignore
-            first_load = db.query(LoadModel).filter(LoadModel.load_id == route.loads[0]).first()
-            last_load = db.query(LoadModel).filter(LoadModel.load_id == route.loads[-1]).first()
+            loads = getattr(route, 'loads', [])
+            first_load = db.query(LoadModel).filter(LoadModel.load_id == loads[0]).first()
+            last_load = db.query(LoadModel).filter(LoadModel.load_id == loads[-1]).first()
             if first_load and last_load:
                 route.pick = first_load.pickup_location.split(" ")[-2]
                 route.dest = last_load.delivery_location.split(" ")[-2]

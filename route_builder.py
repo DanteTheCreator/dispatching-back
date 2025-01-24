@@ -12,14 +12,14 @@ def build_routes_for_active_drivers():
         for driver_id, in active_driver_ids:  # Note the comma to unpack the tuple
 
             routes = []
+            
             # Create a RouteBuilder instance for the driver
             builder = RouteBuilder(driver_id, db)
-            trailer_size = builder.driver.trailer_size
+            trailer_size = int(getattr(builder.driver, 'trailer_size', 0))
 
-            if trailer_size == 1:   # type: ignore
-                print('generating')
+            if trailer_size == 1:  
                 routes = builder.generate_one_car_trailer_routes()
-            if trailer_size == 2:   # type: ignore
+            if trailer_size == 2: 
                 routes = builder.generate_two_car_trailer_routes()
                 
             for route in routes:
