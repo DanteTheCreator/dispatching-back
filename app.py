@@ -4,7 +4,7 @@ from fastapi.security import APIKeyHeader
 from http import HTTPStatus
 import os
 from typing import List
-from models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db
+from models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel
 from fastapi.middleware.cors import CORSMiddleware
 from faker import Faker
 
@@ -136,8 +136,8 @@ def get_routes(driver_id: str, db: Session = Depends(get_db)):
             first_load = db.query(LoadModel).filter(LoadModel.load_id == route.loads[0]).first()
             last_load = db.query(LoadModel).filter(LoadModel.load_id == route.loads[-1]).first()
             if first_load and last_load:
-                route.pick = first_load.pickup_location
-                route.dest = last_load.delivery_location
+                route.pick = first_load.pickup_location.split(" ")[-2]
+                route.dest = last_load.delivery_location.split(" ")[-2]
     return routes
 
 @app.get("/get_loads_and_glink_for_route", dependencies=[Depends(get_api_key)])
@@ -176,15 +176,15 @@ def update_driver(driver_id: str, driver_data: dict, db: Session = Depends(get_d
 
 @app.post("/approve_route/{route_id}", dependencies=[Depends(get_api_key)])
 def approve_route(route_id: str, db: Session = Depends(get_db)):
-    route = db.query(RouteModel).filter(RouteModel.route_id == route_id).first()
+    route = db.query(RouteModel).filter(RouteModel.id == route_id).first()
     if route is None:
         raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="Route not found")
     
     driver_id = route.driver_id
 
     # Move the route to confirmed routes
-    confirmed_route = RouteModel(
-        route_id=route.route_id,
+    confirmed_route = ConfirmedRouteModel(
+        id=route.id,
         driver_id=route.driver_id,
         loads=route.loads,
         milage=route.milage,
@@ -195,14 +195,14 @@ def approve_route(route_id: str, db: Session = Depends(get_db)):
     db.add(confirmed_route)
 
     # Delete all other routes associated with the driver
-    db.query(RouteModel).filter(RouteModel.driver_id == driver_id, RouteModel.route_id != route_id).delete()
+    db.query(RouteModel).filter(RouteModel.driver_id == driver_id, RouteModel.id != route_id).delete()
 
     db.commit()
     return {"message": "Route approved and other routes deleted"}
 
 @app.delete("/reject_route/{route_id}", dependencies=[Depends(get_api_key)])
 def reject_route(route_id: str, db: Session = Depends(get_db)):
-    route = db.query(RouteModel).filter(RouteModel.route_id == route_id).first()
+    route = db.query(RouteModel).filter(RouteModel.id == route_id).first()
     if route is None:
         raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="Route not found")
     

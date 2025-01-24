@@ -70,3 +70,15 @@ class RouteModel(Base):
     total_rpm = Column(Float, nullable=False)
     total_price = Column(Float, nullable=False)
     created_at = Column(DateTime, server_default=func.now())
+    
+
+class ConfirmedRouteModel(Base):
+   __tablename__ = "confirmed_routes"
+   
+   id = Column(Integer, primary_key=True, autoincrement=True)
+   driver_id = Column(Integer, nullable=False)
+   loads = Column(JSON, nullable=False)
+   milage = Column(Float, nullable=False)
+   total_rpm = Column(Float, nullable=False)
+   total_price = Column(Float, nullable=False)
+   created_at = Column(DateTime, server_default=func.now())
