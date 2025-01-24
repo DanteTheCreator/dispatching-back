@@ -132,8 +132,12 @@ def get_routes(driver_id: str, db: Session = Depends(get_db)):
         )
 
     for route in routes:
-        route.pick = fake.state_abbr()
-        route.dest = fake.state_abbr()
+        if route.loads: #type: ignore
+            first_load = db.query(LoadModel).filter(LoadModel.load_id == route.loads[0]).first()
+            last_load = db.query(LoadModel).filter(LoadModel.load_id == route.loads[-1]).first()
+            if first_load and last_load:
+                route.pick = first_load.pickup_location
+                route.dest = last_load.delivery_location
     return routes
 
 @app.get("/get_loads_and_glink_for_route", dependencies=[Depends(get_api_key)])
