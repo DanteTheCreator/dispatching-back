@@ -1,0 +1,119 @@
+/root/dispatching-api/dispatching-api/bin/python3: No module named logging.__main__; 'logging' is a package and cannot be directly executed
+/root/dispatching-api/dispatching-api/bin/python3: No module named logging.__main__; 'logging' is a package and cannot be directly executed
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-24 08:35:02,000 - dispatching_api - INFO - Top loads found: 999
+generating
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-24 08:36:01,722 - dispatching_api - INFO - Top loads found: 999
+2025-01-24 08:36:01,747 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:36:01,748 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:36:01,749 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:36:01,750 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:36:01,751 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:36:01,752 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:36:01,753 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:36:01,754 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:36:01,754 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:36:01,755 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+generating
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-24 08:37:02,337 - dispatching_api - INFO - Top loads found: 999
+2025-01-24 08:37:02,360 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:37:02,362 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:37:02,363 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:37:02,364 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:37:02,365 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:37:02,366 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:37:02,367 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:37:02,368 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:37:02,369 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:37:02,370 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+generating
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-24 08:40:02,121 - dispatching_api - INFO - Top loads found: 999
+2025-01-24 08:40:02,159 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:40:02,162 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:40:02,163 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:40:02,164 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:40:02,165 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:40:02,166 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:40:02,167 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:40:02,168 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:40:02,169 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:40:02,169 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+generating
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-24 08:50:02,077 - dispatching_api - INFO - Top loads found: 999
+2025-01-24 08:50:02,114 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:50:02,116 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:50:02,117 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:50:02,119 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:50:02,120 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:50:02,121 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:50:02,122 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:50:02,123 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:50:02,124 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 08:50:02,125 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+generating
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-24 09:00:01,993 - dispatching_api - INFO - Top loads found: 999
+2025-01-24 09:00:02,030 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:00:02,032 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:00:02,033 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:00:02,034 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:00:02,035 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:00:02,036 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:00:02,037 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:00:02,038 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:00:02,039 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:00:02,040 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+generating
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-24 09:10:02,011 - dispatching_api - INFO - Top loads found: 999
+2025-01-24 09:10:02,065 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,067 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,069 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,071 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,072 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,074 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,075 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,076 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,078 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,079 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-24 09:10:02,144 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,145 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,147 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,148 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,150 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,151 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,152 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,153 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,154 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:10:02,156 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+generating
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-24 09:20:02,193 - dispatching_api - INFO - Top loads found: 999
+2025-01-24 09:20:02,229 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:20:02,231 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:20:02,232 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:20:02,234 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:20:02,235 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:20:02,236 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:20:02,238 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:20:02,240 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:20:02,241 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-24 09:20:02,243 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+generating
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded

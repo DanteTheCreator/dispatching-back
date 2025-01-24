@@ -121,7 +121,6 @@ def toggle_activity(driver_id: str, db: Session = Depends(get_db)):
     db.refresh(driver)
     return {"driver":driver}
 
-
 @app.get("/get_routes/{driver_id}", dependencies=[Depends(get_api_key)])
 def get_routes(driver_id: str, db: Session = Depends(get_db)):
     routes = db.query(RouteModel).filter(RouteModel.driver_id == driver_id).all()
@@ -157,7 +156,17 @@ def get_loads_and_glink_for_route(loads: List[str] = Query(None), db: Session = 
             detail="No loads found with the provided IDs"
         )
     
-    return {"loads": db_loads}
+    # Construct the Google Maps route link
+    base_url = "https://www.google.com/maps/dir/"
+    locations = []
+
+    for load in db_loads:
+        locations.append(load.pickup_location)
+        locations.append(load.delivery_location)
+
+    google_maps_link = base_url + "/".join(locations)
+    
+    return {"loads": db_loads, "google_maps_link": google_maps_link}
 
 
 @app.patch("/update_driver/{driver_id}", dependencies=[Depends(get_api_key)])
@@ -195,8 +204,8 @@ def approve_route(route_id: str, db: Session = Depends(get_db)):
     db.add(confirmed_route)
 
     # Delete all other routes associated with the driver
-    db.query(RouteModel).filter(RouteModel.driver_id == driver_id, RouteModel.id != route_id).delete()
-
+    db.query(RouteModel).filter(RouteModel.driver_id == driver_id).delete()
+    db.query(DriverModel).filter(DriverModel.driver_id == driver_id).update({"active": False})
     db.commit()
     return {"message": "Route approved and other routes deleted"}
 
@@ -210,11 +219,7 @@ def reject_route(route_id: str, db: Session = Depends(get_db)):
     db.commit()
     return {"message": "Route rejected and deleted"}
 
-# Endpoint to fetch all loads
 @app.get("/health")
 def activate_driver(db: Session = Depends()):
     return 'Hello World'
 
-
-# Create tables if not exists (optional)
-# Base.metadata.create_all(bind=engine)
