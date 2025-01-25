@@ -87,12 +87,12 @@ class RouteBuilder:
             logger.info(f"Top loads found: {len(top_loads)}")
 
             routes = []
-            for top_load in top_loads:
+            for top_load in top_loads[:3]:
                 if len(routes) >= limit:
                     break
                 try:
                     second_pickup_loads = self.get_top_loads(top_load.delivery_location.split()[-1])
-                    for secondary_load in second_pickup_loads:
+                    for secondary_load in second_pickup_loads[:3]:
                         if len(routes) >= limit:
                             break
                         route = Route(self.driver)
@@ -115,12 +115,12 @@ class RouteBuilder:
         try:
             top_loads = self.get_top_loads(self.driver.location)
             routes = []
-            for top_load in top_loads:
+            for top_load in top_loads[:3]:
                 if len(routes) >= limit:
                     break
                 try:
                     second_pickup_loads = self.get_top_loads(top_load.pickup_location.split()[-1])
-                    for secondary_load in second_pickup_loads:
+                    for secondary_load in second_pickup_loads[:3]:
                         if len(routes) >= limit:
                             break
                         route = Route(self.driver)

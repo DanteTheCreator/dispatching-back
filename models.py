@@ -40,12 +40,13 @@ class LoadModel(Base):
 class Dispatcher(Base):
     __tablename__ = "dispatchers"
     
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    name = Column(String(100))
-    drivers = Column(ARRAY(Integer))
-    commission = Column(Float)
-    created_at = Column(DateTime)
-    company = Column(String(100))
+    id = Column(String(100), primary_key=True, server_default="nextval('dispatchers_id_seq'::regclass)")
+    name = Column(String(100), nullable=False)
+    email = Column(String(100), nullable=False)
+    phone = Column(String(25), nullable=False)
+    role = Column(String(50), nullable=False)
+    drivers = Column(ARRAY(Integer), nullable=True)
+    profile_picture = Column(String, nullable=True)
     
 class DriverModel(Base):
    __tablename__ = "drivers"
@@ -82,3 +83,15 @@ class ConfirmedRouteModel(Base):
    total_rpm = Column(Float, nullable=False)
    total_price = Column(Float, nullable=False)
    created_at = Column(DateTime, server_default=func.now())
+   
+class CompanyModel(Base):
+    __tablename__ = "companies"
+    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(100), nullable=False)
+    email = Column(String(100), nullable=False)
+    phone = Column(String(25), nullable=False)
+    address = Column(String, nullable=False)
+    mc_number = Column(String(50), nullable=False)
+    dot_number = Column(String(50), nullable=False)
+    company_logo = Column(String, nullable=False)

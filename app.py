@@ -1,15 +1,14 @@
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import Session
 from fastapi import FastAPI, Query, Security, HTTPException, Depends
 from fastapi.security import APIKeyHeader
 from http import HTTPStatus
 import os
 from typing import List
-from models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel
+from models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
 from fastapi.middleware.cors import CORSMiddleware
-from faker import Faker
 
 
-fake = Faker()
+
 
 # FastAPI App
 app = FastAPI(title="Dispatching API",
@@ -218,6 +217,13 @@ def reject_route(route_id: str, db: Session = Depends(get_db)):
     db.delete(route)
     db.commit()
     return {"message": "Route rejected and deleted"}
+
+@app.get("/get_company/{company_id}", dependencies=[Depends(get_api_key)])
+def get_company_info(company_id: str, db: Session = Depends(get_db)):
+    company = db.query(CompanyModel).filter(CompanyModel.id == company_id).first()
+    if company is None:
+        raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail="Company not found")
+    return company
 
 @app.get("/health")
 def activate_driver(db: Session = Depends()):
