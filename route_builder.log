@@ -2651,3 +2651,328 @@ WARNING:  database "dispatcher-bot-db" has no actual collation version, but a ve
 2025-01-25 07:50:01,722 - dispatching_api - INFO - A similar route already exists in the database.
 2025-01-25 07:50:01,724 - dispatching_api - INFO - A similar route already exists in the database.
 2025-01-25 07:50:01,726 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:00:02,400 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 08:00:02,468 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:00:02,469 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:00:02,470 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:00:02,471 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:00:02,472 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:00:02,473 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:00:02,548 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:00:02,550 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:00:02,551 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:00:02,553 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:00:02,554 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:00:02,556 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:00:02,557 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:00:02,558 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:00:02,560 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:10:02,357 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 08:10:02,439 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:10:02,441 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:10:02,442 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:10:02,443 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:10:02,444 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:10:02,446 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:10:02,533 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:10:02,535 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:10:02,536 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:10:02,538 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:10:02,541 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:10:02,543 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:10:02,544 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:10:02,546 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:10:02,548 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:20:02,555 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 08:20:02,620 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:20:02,621 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:20:02,621 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:20:02,622 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:20:02,623 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:20:02,624 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:20:02,709 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:20:02,711 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:20:02,712 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:20:02,714 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:20:02,716 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:20:02,718 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:20:02,720 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:20:02,722 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:20:02,724 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:30:02,507 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 08:30:02,600 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:30:02,601 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:30:02,602 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:30:02,603 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:30:02,605 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:30:02,606 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:30:02,711 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:30:02,715 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:30:02,717 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:30:02,720 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:30:02,723 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:30:02,727 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:30:02,729 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:30:02,732 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:30:02,734 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:40:02,445 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 08:40:02,512 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:40:02,514 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:40:02,514 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:40:02,515 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:40:02,516 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:40:02,517 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:40:02,601 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:40:02,603 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:40:02,605 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:40:02,607 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:40:02,608 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:40:02,610 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:40:02,612 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:40:02,613 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:40:02,616 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:50:02,328 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 08:50:02,392 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:50:02,393 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:50:02,394 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:50:02,395 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:50:02,396 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 08:50:02,397 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 08:50:02,470 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:50:02,472 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:50:02,473 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:50:02,474 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:50:02,476 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:50:02,477 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:50:02,478 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:50:02,479 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 08:50:02,481 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:00:02,098 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 09:00:02,162 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:00:02,163 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:00:02,165 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:00:02,166 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:00:02,167 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:00:02,168 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:00:02,248 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:00:02,250 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:00:02,251 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:00:02,252 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:00:02,254 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:00:02,255 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:00:02,256 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:00:02,258 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:00:02,259 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:10:01,919 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 09:10:01,989 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:10:01,991 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:10:01,994 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:10:01,995 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:10:01,996 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:10:01,996 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:10:02,076 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:10:02,079 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:10:02,082 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:10:02,084 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:10:02,086 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:10:02,087 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:10:02,089 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:10:02,091 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:10:02,093 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:20:01,808 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 09:20:01,882 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:20:01,883 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:20:01,884 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:20:01,885 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:20:01,886 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:20:01,886 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:20:01,974 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:20:01,976 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:20:01,978 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:20:01,980 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:20:01,982 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:20:01,984 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:20:01,986 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:20:01,988 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:20:01,990 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:30:01,621 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 09:30:01,703 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:30:01,705 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:30:01,708 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:30:01,709 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:30:01,711 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:30:01,712 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:30:01,800 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:30:01,803 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:30:01,805 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:30:01,807 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:30:01,810 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:30:01,812 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:30:01,814 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:30:01,816 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:30:01,818 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:40:02,047 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 09:40:02,127 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:40:02,129 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:40:02,131 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:40:02,133 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:40:02,134 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:40:02,136 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:40:02,231 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:40:02,234 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:40:02,236 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:40:02,238 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:40:02,240 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:40:02,242 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:40:02,243 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:40:02,245 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:40:02,247 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:50:02,014 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 09:50:02,108 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:50:02,110 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:50:02,111 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:50:02,112 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:50:02,113 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 09:50:02,115 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 09:50:02,202 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:50:02,205 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:50:02,206 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:50:02,208 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:50:02,209 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:50:02,211 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:50:02,212 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:50:02,214 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 09:50:02,216 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:00:01,988 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 10:00:02,083 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:00:02,084 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:00:02,086 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:00:02,087 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:00:02,088 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:00:02,089 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:00:02,186 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:00:02,188 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:00:02,190 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:00:02,191 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:00:02,193 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:00:02,195 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:00:02,197 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:00:02,199 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:00:02,201 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:10:01,882 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 10:10:01,958 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:10:01,960 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:10:01,962 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:10:01,963 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:10:01,965 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:10:01,967 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:10:02,051 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:10:02,053 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:10:02,054 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:10:02,055 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:10:02,057 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:10:02,060 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:10:02,062 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:10:02,064 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:10:02,066 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:20:02,017 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 10:20:02,095 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:20:02,096 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:20:02,098 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:20:02,099 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:20:02,100 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:20:02,101 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:20:02,196 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:20:02,199 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:20:02,202 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:20:02,204 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:20:02,206 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:20:02,209 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:20:02,212 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:20:02,215 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:20:02,217 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:30:02,038 - dispatching_api - INFO - Top loads found: 999
+2025-01-25 10:30:02,118 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:30:02,120 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:30:02,121 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:30:02,122 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:30:02,123 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+2025-01-25 10:30:02,124 - dispatching_api - INFO - Driver already has over 10 routes. Not adding any more.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:30:02,232 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:30:02,235 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:30:02,238 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:30:02,241 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:30:02,244 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:30:02,247 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:30:02,250 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:30:02,252 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:30:02,254 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:40:02,300 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:40:02,303 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:40:02,307 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:40:02,309 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:40:02,311 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:40:02,314 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:40:02,316 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:40:02,319 - dispatching_api - INFO - A similar route already exists in the database.
+2025-01-25 10:40:02,321 - dispatching_api - INFO - A similar route already exists in the database.
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:40:02,363 - dispatching_api - INFO - Top loads found: 999
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 10:50:02,217 - dispatching_api - INFO - Top loads found: 999
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+WARNING:  database "dispatcher-bot-db" has no actual collation version, but a version was recorded
+2025-01-25 11:00:02,185 - dispatching_api - INFO - Top loads found: 999

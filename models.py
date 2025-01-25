@@ -3,7 +3,7 @@ from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, 
 from sqlalchemy.dialects.postgresql import UUID, DOUBLE_PRECISION, ARRAY
 import uuid
 from sqlalchemy.orm import sessionmaker, Session
-from sqlalchemy import create_engine, Column, Integer, String, DateTime
+from sqlalchemy import create_engine, Column, Integer, String, DateTime, VARCHAR
 
 # # SQLAlchemy Setup
 DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@/dispatcher-bot-db?host=/var/run/postgresql"
@@ -47,6 +47,7 @@ class Dispatcher(Base):
     role = Column(String(50), nullable=False)
     drivers = Column(ARRAY(Integer), nullable=True)
     profile_picture = Column(String, nullable=True)
+    password = Column(VARCHAR(255), nullable=False)
     
 class DriverModel(Base):
    __tablename__ = "drivers"
