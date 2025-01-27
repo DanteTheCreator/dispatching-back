@@ -2,16 +2,21 @@ import imaplib
 import email
 from email.header import decode_header
 import re
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Your Gmail credentials
-EMAIL = "test@gmail.com"
-PASSWORD = "fdfdfdf"
+EMAIL = os.getenv("EMAIL")
+PASSWORD = os.getenv("PASSWORD")
 
 def get_otp_from_gmail():
     try:
         # Connect to Gmail's IMAP server
         mail = imaplib.IMAP4_SSL("imap.gmail.com")
-        mail.login(EMAIL, PASSWORD)
+        if EMAIL is not None and PASSWORD is not None:
+            mail.login(EMAIL, PASSWORD)
         
         # Select the mailbox to search in
         mail.select("inbox")
@@ -43,7 +48,7 @@ def get_otp_from_gmail():
                 if msg.is_multipart():
                     for part in msg.walk():
                         if part.get_content_type() == "text/plain":
-                            body = part.get_payload(decode=True).decode()
+                            body = part.get_payload(decode=True).decode() #type: ignore
                             # Search for OTP in the email body using regex
                             otp_match = re.search(r"\b\d{4,6}\b", body)
                             if otp_match:
@@ -52,7 +57,7 @@ def get_otp_from_gmail():
                                 return otp
                 else:
                     # Process plain text emails
-                    body = msg.get_payload(decode=True).decode()
+                    body = msg.get_payload(decode=True).decode() #type: ignore
                     otp_match = re.search(r"\b\d{4,6}\b", body)
                     if otp_match:
                         otp = otp_match.group(0)
@@ -67,5 +72,4 @@ def get_otp_from_gmail():
     finally:
         mail.logout()
 
-# Call the function
-get_otp_from_gmail()
+
