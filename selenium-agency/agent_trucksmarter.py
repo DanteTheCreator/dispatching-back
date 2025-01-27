@@ -12,16 +12,19 @@ if trucksmarter.driver is not None:
     email_input = trucksmarter.driver.find_element(By.NAME, "emailOrPhoneNumber")
     email_input.send_keys("laduka998877987@gmail.com")
     email_input.send_keys(Keys.RETURN)
-    time.sleep(2)
+    time.sleep(15)
     otp = get_otp_from_gmail()
+    if otp is not None:
+        otp_input = trucksmarter.driver.switch_to.active_element
+        for char in otp:
+            otp_input.send_keys(char)
     print(otp)
-    otp_inputs = trucksmarter.driver.find_elements(By.CLASS_NAME, "DallasOneTimePasswordField_item__jNGy8")
-    if type(otp) == str and otp_inputs:
-        for i, digit in enumerate(otp):
-            otp_inputs[i].send_keys(digit)
-        otp_inputs[-1].send_keys(Keys.RETURN)
-    else:
-        print("OTP inputs not found or OTP is not a string")
+    # otp_inputs = trucksmarter.driver.find_elements(By.CLASS_NAME, "DallasOneTimePasswordField_item__jNGy8")
+    # if type(otp) == str and otp_inputs:
+    #     for i, digit in enumerate(otp):
+    #         otp_inputs[i].send_keys(digit)
+    #     otp_inputs[-1].send_keys(Keys.RETURN)
+    
     try:
         search_button = trucksmarter.driver.find_element(By.XPATH, "//button[@type='submit' and contains(@class, 'DallasButton_rootCW77R')]")
         print(True)
