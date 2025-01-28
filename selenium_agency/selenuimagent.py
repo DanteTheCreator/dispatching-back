@@ -10,10 +10,10 @@ class SeleniumDriver:
 
     def initialize_driver(self):
         options = Options()
-        options.binary_location = "/usr/bin/google-chrome"  # Path to Chromium
+        options.binary_location = "C:/Program Files/Google/Chrome/Application/chrome.exe"  # Path to Chromium
 
         # Set ChromeDriver path
-        service = Service("/usr/local/bin/chromedriver")
+        service = Service("C:/Users/workingkakha/Desktop/chromedriver-mac-arm64/chromedriver.exe")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--remote-debugging-port=9222")

@@ -1,4 +1,4 @@
-from gmail_verifier import GmailVerifier
+from .gmail_verifier import GmailVerifier
 
 class TruckSmarterVerifier(GmailVerifier):
     def __init__(self, email, password):

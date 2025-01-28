@@ -1,4 +1,6 @@
-
+import imaplib
+import email
+import re
 
 class GmailVerifier:
     def __init__(self, email, password, imap_server="imap.gmail.com"):
@@ -67,7 +69,7 @@ class GmailVerifier:
                 for part in msg.walk():
                     if part.get_content_type() == "text/plain":
                         body = part.get_payload(decode=True).decode()
-                        otp = self.extract_otp(body)
+                        otp = self.__extract_otp(body)
                         if otp:
                             print(f"OTP found: {otp}")
                             return otp
