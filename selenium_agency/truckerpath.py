@@ -1,16 +1,10 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 import time
-import sys 
 import os
 import json
-from datetime import datetime
-
-from gmail_verify import get_otp_from_gmail
 from seleniumagent import SeleniumDriver
 from dotenv import load_dotenv
 import os
-from threading import Thread
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 

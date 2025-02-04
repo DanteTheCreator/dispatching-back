@@ -1,128 +1,156 @@
+import sys
+
+sys.path.append('/root/dispatching_api')
+
+
+from httpcore import TimeoutException
 from seleniumagent import SeleniumDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+import time
+import os
+import json
+from random import random
 from gmail_verify import get_otp_from_gmail
+from dotenv import load_dotenv
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
-import time
-import random
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-import json
+from resources.models import LoadModel
 
-# Enable performance logging
-caps = DesiredCapabilities.CHROME
-caps['goog:loggingPrefs'] = {'performance': 'ALL'} #type: ignore
-def get_network_response_body(response_keyword):
-    try:
-        logs = trucksmarter.driver.get_log('performance') #type: ignore
-        for log in logs:
-            # Parse the message string as JSON
-            log_entry = json.loads(log['message'])
-            
-            # Navigate through the JSON structure
-            if ('message' in log_entry and 
-                'params' in log_entry['message'] and
-                'response' in log_entry['message']['params'] and
-                'url' in log_entry['message']['params']['response']):
+class TruckSmarterAgent():
+
+    def __init__(self):
+        load_dotenv()
+        CHROMEDRIVER = os.getenv("CHROMEDRIVER")
+        self.__trucksmarter = SeleniumDriver(driver_path=CHROMEDRIVER, headless=False)
+        self.__driver = self.__trucksmarter.get_driver()
+
+    def __login(self):
+        if self.__driver is not None:
+            self.__driver.get("https://app.trucksmarter.com/login")
+            email_input = self.__driver.find_element(By.NAME, "emailOrPhoneNumber")
+            for char in "kaxamiqeladze@gmail.com":
+                email_input.send_keys(char)
+                time.sleep(0.1 + 0.2 * random())
+            time.sleep(2)
+            email_input.send_keys(Keys.RETURN)
+            time.sleep(3)
+
+            try:
+                wait = WebDriverWait(self.__driver, 10)
+                otp_container = wait.until(
+                    EC.presence_of_element_located((By.CLASS_NAME, "DallasForm_root__C7BnP"))
+                )
+
+                otp_inputs = self.__driver.find_elements(By.XPATH, "//input[contains(@class, 'DallasOneTimePasswordField_item__jNGy8')]")
+                if not otp_inputs:
+                    raise Exception("OTP input fields not found")
                 
-                url = log_entry['message']['params']['response']['url']
-                if response_keyword == url:
-                    print('WE are IN')
-                    request_id = log_entry['message']['params']['requestId']
-                    try:
-                        response = trucksmarter.driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': request_id}) #type: ignore
-                        if response and 'body' in response:
-                            return json.loads(response['body'])
-                    except Exception as e:
-                        print(f"Failed to get response body: {e}")
-    except Exception as e:
-        print(f"Error while processing logs: {e}")
-    
-    return None
+                time.sleep(12)
+                otp = get_otp_from_gmail()
+                print("OTP received:", otp)
+                time.sleep(2)
+                
+                otp_inputs[0].click()
+                
+                if isinstance(otp, str):
+                    for digit in otp:
+                        time.sleep(1)
+                        active_element = self.__driver.switch_to.active_element
+                        active_element.send_keys(digit)
+                        time.sleep(1)
 
-trucksmarter = SeleniumDriver(driver_path="C:/Users/tatog/OneDrive/სამუშაო დაფა/dispatching-back/chromedriver.exe", headless=False)
-
-
-trucksmarter.get_driver()
-if trucksmarter.driver is not None:
-    trucksmarter.driver.get("https://app.trucksmarter.com/login")
-    email_input = trucksmarter.driver.find_element(By.NAME, "emailOrPhoneNumber")
-    for char in "kaxamiqeladze@gmail.com":
-        email_input.send_keys(char)
-        time.sleep(0.1 + 0.2 * random.random())
-    time.sleep(2)
-    email_input.send_keys(Keys.RETURN)
-    time.sleep(3)
-
-try:
-        # Wait for OTP input field container
-        wait = WebDriverWait(trucksmarter.driver, 10) #type: ignore
-        otp_container = wait.until(
-            EC.presence_of_element_located((By.CLASS_NAME, "DallasForm_root__C7BnP"))
-        )
-
-        # Find and click first OTP input
-        otp_inputs = trucksmarter.driver.find_elements(By.XPATH, "//input[contains(@class, 'DallasOneTimePasswordField_item__jNGy8')]") #type: ignore
-        if not otp_inputs:
-            raise Exception("OTP input fields not found")
+                print("Logged In!")
+                time.sleep(3)
+                
+            except TimeoutException:
+                print("Timeout waiting for elements to load")
+            except Exception as e:
+                print(f"Authentication error: {str(e)}")
+                
+    def search_for_loads(self):
+        if self.__driver is None:
+            print("Driver not initialized")
+            return
         
-        time.sleep(16)
-        otp = get_otp_from_gmail()
-        print("OTP received:", otp)
-        time.sleep(2)
-        
-        otp_inputs[0].click()
-        
-        # Input OTP digits - focus moves automatically
-        if isinstance(otp, str):
-            for digit in otp:
-                time.sleep(1)  # Small delay between digits
-                active_element = trucksmarter.driver.switch_to.active_element #type: ignore
-                active_element.send_keys(digit)
-                time.sleep(1)  # Small delay between digits
-
-        print("after submit click")
-        time.sleep(3)
-        # Locate the element using the provided XPath
-        na_input = WebDriverWait(trucksmarter.driver, 30).until(
+        try:
+            na_input = WebDriverWait(self.__driver, 30).until(
             EC.presence_of_element_located((By.XPATH, "//label[contains(@class, 'LoadBoardSearchForm_pickup__iipjF') and contains(@class, 'DallasFormField_root__L5LSI')]"))
-        ) #type: ignore
+            )
 
-        # Click the element
-        na_input.click()
+            na_input.click()
+            na_input.send_keys("N")
+            time.sleep(0.5)
+            na_input.send_keys("Y")
+            time.sleep(2)
+            na_input.send_keys(Keys.RETURN)
+            time.sleep(0.5)
+            trailer_types_button = self.__driver.find_element(By.XPATH, "//button[@data-name='trailerTypes']")
 
-        # Write 'NA' into the element
-        na_input.send_keys("N")
-        time.sleep(0.5)
-        na_input.send_keys("Y")
-        time.sleep(2)
-        # Press enter
-        na_input.send_keys(Keys.RETURN)
-        time.sleep(0.5)
-        # Locate the trailer types dropdown button
-        trailer_types_button = trucksmarter.driver.find_element(By.XPATH, "//button[@data-name='trailerTypes']") #type: ignore
+            trailer_types_button.click()
+            time.sleep(0.5)
 
-        # Click the dropdown button to expand options
-        trailer_types_button.click()
-        time.sleep(0.5)
+            hot_shot_option = self.__driver.find_element(By.XPATH, "//span[contains(text(), 'Hot Shot')]")
+            hot_shot_option.click()
+            time.sleep(0.5)
+            search_button = self.__driver.find_element(By.XPATH, "//button[@type='submit']")
 
-        # Locate and click the 'Hot Shot' option
-        hot_shot_option = trucksmarter.driver.find_element(By.XPATH, "//span[contains(text(), 'Hot Shot')]") #type: ignore
-        hot_shot_option.click()
-        time.sleep(0.5)
-        # Locate the search button using its class name
-        search_button = trucksmarter.driver.find_element(By.XPATH, "//button[@type='submit']") #type: ignore
+            search_button.click()
+            time.sleep(5)
+        except TimeoutException:
+            print("Timeout waiting for elements to load")
+        except Exception as e:
+            print(f"Error during search for loads: {str(e)}") 
 
-        # Click the search button
-        search_button.click()
-        time.sleep(5)
-        print(get_network_response_body('https://api.trucksmarter.com/loads/searchV2Ungrouped'))
+    def fetchLoads(self):
+        self.__login()
+        self.search_for_loads()
         
-        
-        time.sleep(100)
-except TimeoutException:
-    print("Timeout waiting for elements to load")
+        try:    
+            if self.__driver is not None:
+                logs = self.__driver.get_log('performance') 
+                for log in logs:
+                    log_entry = json.loads(log['message'])
+                    
+                    if ('message' in log_entry and 
+                        'params' in log_entry['message'] and
+                        'response' in log_entry['message']['params'] and
+                        'url' in log_entry['message']['params']['response']):
+                        
+                        url = log_entry['message']['params']['response']['url']
+                        if url == 'https://api.trucksmarter.com/loads/searchV2Ungrouped':
+                            request_id = log_entry['message']['params']['requestId']
+                            try:
+                                response = self.__driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': request_id})
+                                if response and 'body' in response:
+                                    response_data = json.loads(response['body'])
+                                    return response_data
+                            except Exception as e:
+                                print(f"Failed to get response body: {e}")
 
-except Exception as e:
-    print(f"Authentication error: {str(e)}")
+        except KeyboardInterrupt:
+            print("Monitoring stopped by user")
+        except Exception as e:
+            print(f"Main loop error: {e}")
+        
+           
+    def format_and_fill_db(self):
+        clean_data = self.fetchLoads()
+        if clean_data is not None:
+            for load in clean_data:
+                load_model_instance = LoadModel(
+                    load_id=load.get('id'),
+                    origin=load.get('pickup', {}).get('address', {}).get('city'),
+                    destination=load.get('delivery', {}).get('address', {}).get('city'),
+                    pickup_date=load.get('pickup', {}).get('appointmentStartTime'),
+                    delivery_date=load.get('delivery', {}).get('appointmentStartTime'),
+                    trailer_type=", ".join(load.get('equipment', {}).get('trailerTypes', [])),
+                    weight=load.get('weight'),
+                    rate=load.get('maxBidPriceCents'),
+                    distance=load.get('distance')
+                )
+                load_model_instance.save()
+
+
+trucksmarter = TruckSmarterAgent()
+trucksmarter.format_and_fill_db()

@@ -4,7 +4,7 @@ from fastapi.security import APIKeyHeader
 from http import HTTPStatus
 import os
 from typing import List
-from models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
+from dispatching_api.resources.models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
