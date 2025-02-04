@@ -1,30 +1,128 @@
-from selenuimagent import SeleniumDriver
+from seleniumagent import SeleniumDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from gmail_verify import get_otp_from_gmail
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 import time
+import random
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+import json
 
-trucksmarter = SeleniumDriver(driver_path="/usr/local/bin/chromedriver", headless=True)
+# Enable performance logging
+caps = DesiredCapabilities.CHROME
+caps['goog:loggingPrefs'] = {'performance': 'ALL'} #type: ignore
+def get_network_response_body(response_keyword):
+    try:
+        logs = trucksmarter.driver.get_log('performance') #type: ignore
+        for log in logs:
+            # Parse the message string as JSON
+            log_entry = json.loads(log['message'])
+            
+            # Navigate through the JSON structure
+            if ('message' in log_entry and 
+                'params' in log_entry['message'] and
+                'response' in log_entry['message']['params'] and
+                'url' in log_entry['message']['params']['response']):
+                
+                url = log_entry['message']['params']['response']['url']
+                if response_keyword == url:
+                    print('WE are IN')
+                    request_id = log_entry['message']['params']['requestId']
+                    try:
+                        response = trucksmarter.driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': request_id}) #type: ignore
+                        if response and 'body' in response:
+                            return json.loads(response['body'])
+                    except Exception as e:
+                        print(f"Failed to get response body: {e}")
+    except Exception as e:
+        print(f"Error while processing logs: {e}")
+    
+    return None
+
+trucksmarter = SeleniumDriver(driver_path="C:/Users/tatog/OneDrive/სამუშაო დაფა/dispatching-back/chromedriver.exe", headless=False)
+
 
 trucksmarter.get_driver()
 if trucksmarter.driver is not None:
     trucksmarter.driver.get("https://app.trucksmarter.com/login")
     email_input = trucksmarter.driver.find_element(By.NAME, "emailOrPhoneNumber")
-    email_input.send_keys("laduka998877987@gmail.com")
-    email_input.send_keys(Keys.RETURN)
+    for char in "kaxamiqeladze@gmail.com":
+        email_input.send_keys(char)
+        time.sleep(0.1 + 0.2 * random.random())
     time.sleep(2)
-    otp = get_otp_from_gmail()
-    print(otp)
-    otp_inputs = trucksmarter.driver.find_elements(By.CLASS_NAME, "DallasOneTimePasswordField_item__jNGy8")
-    if type(otp) == str and otp_inputs:
-        for i, digit in enumerate(otp):
-            otp_inputs[i].send_keys(digit)
-        otp_inputs[-1].send_keys(Keys.RETURN)
-    else:
-        print("OTP inputs not found or OTP is not a string")
-    try:
-        search_button = trucksmarter.driver.find_element(By.XPATH, "//button[@type='submit' and contains(@class, 'DallasButton_rootCW77R')]")
-        print(True)
-    except:
-        print(False)
-    
+    email_input.send_keys(Keys.RETURN)
+    time.sleep(3)
+
+try:
+        # Wait for OTP input field container
+        wait = WebDriverWait(trucksmarter.driver, 10) #type: ignore
+        otp_container = wait.until(
+            EC.presence_of_element_located((By.CLASS_NAME, "DallasForm_root__C7BnP"))
+        )
+
+        # Find and click first OTP input
+        otp_inputs = trucksmarter.driver.find_elements(By.XPATH, "//input[contains(@class, 'DallasOneTimePasswordField_item__jNGy8')]") #type: ignore
+        if not otp_inputs:
+            raise Exception("OTP input fields not found")
+        
+        time.sleep(16)
+        otp = get_otp_from_gmail()
+        print("OTP received:", otp)
+        time.sleep(2)
+        
+        otp_inputs[0].click()
+        
+        # Input OTP digits - focus moves automatically
+        if isinstance(otp, str):
+            for digit in otp:
+                time.sleep(1)  # Small delay between digits
+                active_element = trucksmarter.driver.switch_to.active_element #type: ignore
+                active_element.send_keys(digit)
+                time.sleep(1)  # Small delay between digits
+
+        print("after submit click")
+        time.sleep(3)
+        # Locate the element using the provided XPath
+        na_input = WebDriverWait(trucksmarter.driver, 30).until(
+            EC.presence_of_element_located((By.XPATH, "//label[contains(@class, 'LoadBoardSearchForm_pickup__iipjF') and contains(@class, 'DallasFormField_root__L5LSI')]"))
+        ) #type: ignore
+
+        # Click the element
+        na_input.click()
+
+        # Write 'NA' into the element
+        na_input.send_keys("N")
+        time.sleep(0.5)
+        na_input.send_keys("Y")
+        time.sleep(2)
+        # Press enter
+        na_input.send_keys(Keys.RETURN)
+        time.sleep(0.5)
+        # Locate the trailer types dropdown button
+        trailer_types_button = trucksmarter.driver.find_element(By.XPATH, "//button[@data-name='trailerTypes']") #type: ignore
+
+        # Click the dropdown button to expand options
+        trailer_types_button.click()
+        time.sleep(0.5)
+
+        # Locate and click the 'Hot Shot' option
+        hot_shot_option = trucksmarter.driver.find_element(By.XPATH, "//span[contains(text(), 'Hot Shot')]") #type: ignore
+        hot_shot_option.click()
+        time.sleep(0.5)
+        # Locate the search button using its class name
+        search_button = trucksmarter.driver.find_element(By.XPATH, "//button[@type='submit']") #type: ignore
+
+        # Click the search button
+        search_button.click()
+        time.sleep(5)
+        print(get_network_response_body('https://api.trucksmarter.com/loads/searchV2Ungrouped'))
+        
+        
+        time.sleep(100)
+except TimeoutException:
+    print("Timeout waiting for elements to load")
+
+except Exception as e:
+    print(f"Authentication error: {str(e)}")
