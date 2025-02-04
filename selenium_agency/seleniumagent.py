@@ -1,12 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-import os
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
-driver_path = os.getenv("CHROMEDRIVER")
-chrome_path=os.getenv("CHROME")
+
+# Your Gmail credentials
+CHROMEDRIVER = os.getenv("CHROMEDRIVER")
+CHROME = os.getenv("CHROME")
 
 class SeleniumDriver:
     def __init__(self, driver_path, headless=True):
@@ -16,15 +18,18 @@ class SeleniumDriver:
 
     def initialize_driver(self):
         options = Options()
-        options.binary_location = chrome_path  # Path to Chromium
+        options.binary_location = CHROME  # Path to Chromium
 
         # Set ChromeDriver path
-        service = Service(driver_path)
+        service = Service(CHROMEDRIVER)
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--remote-debugging-port=9222")
-        if self.headless:
-            options.add_argument("--headless")
+        # Enable performance logging
+        options.set_capability('goog:loggingPrefs', {
+            'browser': 'ALL',
+            'performance': 'ALL'
+        })
+        options.add_argument("--headless")
         self.driver = webdriver.Chrome(service=service, options=options)
 
     def get_driver(self):

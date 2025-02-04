@@ -7,12 +7,42 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import time
 import random
-from dotenv import load_dotenv
-import os
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+import json
 
-load_dotenv()
-driver_path = os.getenv("CHROMEDRIVER")
-trucksmarter = SeleniumDriver(driver_path=driver_path, headless=False)
+# Enable performance logging
+caps = DesiredCapabilities.CHROME
+caps['goog:loggingPrefs'] = {'performance': 'ALL'} #type: ignore
+def get_network_response_body(response_keyword):
+    try:
+        logs = trucksmarter.driver.get_log('performance') #type: ignore
+        for log in logs:
+            # Parse the message string as JSON
+            log_entry = json.loads(log['message'])
+            
+            # Navigate through the JSON structure
+            if ('message' in log_entry and 
+                'params' in log_entry['message'] and
+                'response' in log_entry['message']['params'] and
+                'url' in log_entry['message']['params']['response']):
+                
+                url = log_entry['message']['params']['response']['url']
+                if response_keyword == url:
+                    print('WE are IN')
+                    request_id = log_entry['message']['params']['requestId']
+                    try:
+                        response = trucksmarter.driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': request_id}) #type: ignore
+                        if response and 'body' in response:
+                            return json.loads(response['body'])
+                    except Exception as e:
+                        print(f"Failed to get response body: {e}")
+    except Exception as e:
+        print(f"Error while processing logs: {e}")
+    
+    return None
+
+trucksmarter = SeleniumDriver(driver_path="C:/Users/tatog/OneDrive/სამუშაო დაფა/dispatching-back/chromedriver.exe", headless=False)
+
 
 trucksmarter.get_driver()
 if trucksmarter.driver is not None:
@@ -86,8 +116,10 @@ try:
 
         # Click the search button
         search_button.click()
+        time.sleep(5)
+        print(get_network_response_body('https://api.trucksmarter.com/loads/searchV2Ungrouped'))
         
-        print('Searched')
+        
         time.sleep(100)
 except TimeoutException:
     print("Timeout waiting for elements to load")
