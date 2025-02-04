@@ -1,6 +1,7 @@
 import sys
 
 sys.path.append('/root/dispatching_api')
+sys.path.append('C:/Users/tatog/OneDrive/სამუშაო დაფა/dispatching-back')
 
 
 from httpcore import TimeoutException
@@ -68,10 +69,14 @@ class TruckSmarterAgent():
             except Exception as e:
                 print(f"Authentication error: {str(e)}")
                 
-    def search_for_loads(self):
+    def search_for_loads(self, state):
         if self.__driver is None:
             print("Driver not initialized")
             return
+        
+        if len(state) != 2:
+            print("invalid state")
+            return 
         
         try:
             na_input = WebDriverWait(self.__driver, 30).until(
@@ -79,9 +84,8 @@ class TruckSmarterAgent():
             )
 
             na_input.click()
-            na_input.send_keys("N")
-            time.sleep(0.5)
-            na_input.send_keys("Y")
+            time.sleep(2)
+            na_input.send_keys(state)
             time.sleep(2)
             na_input.send_keys(Keys.RETURN)
             time.sleep(0.5)
@@ -103,8 +107,6 @@ class TruckSmarterAgent():
             print(f"Error during search for loads: {str(e)}") 
 
     def fetchLoads(self):
-        self.__login()
-        self.search_for_loads()
         
         try:    
             if self.__driver is not None:
@@ -133,12 +135,8 @@ class TruckSmarterAgent():
         except Exception as e:
             print(f"Main loop error: {e}")
         
-           
-    def format_and_fill_db(self):
-        clean_data = self.fetchLoads()
-        if clean_data is not None:
-            for load in clean_data:
-                load_model_instance = LoadModel(
+    def format_and_get_load_model(self, load):
+        load_model_instance = LoadModel(
                     load_id=load.get('id'),
                     origin=load.get('pickup', {}).get('address', {}).get('city'),
                     destination=load.get('delivery', {}).get('address', {}).get('city'),
@@ -149,8 +147,48 @@ class TruckSmarterAgent():
                     rate=load.get('maxBidPriceCents'),
                     distance=load.get('distance')
                 )
-                load_model_instance.save()
+        return load_model_instance
+           
+    # def format_and_fill_db(self, loads):
+    #     clean_data = loads
+    #     if clean_data is not None:
+    #         for load in clean_data:
+    #             load_model_instance = LoadModel(
+    #                 load_id=load.get('id'),
+    #                 origin=load.get('pickup', {}).get('address', {}).get('city'),
+    #                 destination=load.get('delivery', {}).get('address', {}).get('city'),
+    #                 pickup_date=load.get('pickup', {}).get('appointmentStartTime'),
+    #                 delivery_date=load.get('delivery', {}).get('appointmentStartTime'),
+    #                 trailer_type=", ".join(load.get('equipment', {}).get('trailerTypes', [])),
+    #                 weight=load.get('weight'),
+    #                 rate=load.get('maxBidPriceCents'),
+    #                 distance=load.get('distance')
+    #             )
+    #             load_model_instance.save()
+
+    def run(self):
+        is_logged_in = False
+        states = ["NY", "PA", "TX"]
+        while True:
+            self.__login()
+            is_logged_in = True
+            while is_logged_in:
+                try:
+                    for state in states:
+                        self.search_for_loads(state)
+                        loads = self.fetchLoads()
+                        for load in loads:
+                            print(load)
+                            print("#################")
+                            time.sleep(5)
+                            # if load
+                            # model_instance = self.format_and_get_load_model(load)
+                except:
+                    is_logged_in = False
+
+
+
 
 
 trucksmarter = TruckSmarterAgent()
-trucksmarter.format_and_fill_db()
+trucksmarter.run()
