@@ -1,6 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+driver_path = os.getenv("CHROMEDRIVER")
+chrome_path=os.getenv("CHROME")
 
 class SeleniumDriver:
     def __init__(self, driver_path, headless=True):
@@ -10,10 +16,10 @@ class SeleniumDriver:
 
     def initialize_driver(self):
         options = Options()
-        options.binary_location = "/usr/bin/google-chrome"  # Path to Chromium
+        options.binary_location = chrome_path  # Path to Chromium
 
         # Set ChromeDriver path
-        service = Service("/usr/local/bin/chromedriver")
+        service = Service(driver_path)
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--remote-debugging-port=9222")

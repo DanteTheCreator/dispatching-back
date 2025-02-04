@@ -7,8 +7,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import time
 import random
+from dotenv import load_dotenv
+import os
 
-trucksmarter = SeleniumDriver(driver_path="C:/Users/tatog/OneDrive/სამუშაო დაფა/dispatching-back/chromedriver.exe", headless=False)
+load_dotenv()
+driver_path = os.getenv("CHROMEDRIVER")
+trucksmarter = SeleniumDriver(driver_path=driver_path, headless=False)
 
 trucksmarter.get_driver()
 if trucksmarter.driver is not None:
