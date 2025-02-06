@@ -148,47 +148,29 @@ class TruckSmarterAgent():
                     distance=load.get('distance')
                 )
         return load_model_instance
-           
-    # def format_and_fill_db(self, loads):
-    #     clean_data = loads
-    #     if clean_data is not None:
-    #         for load in clean_data:
-    #             load_model_instance = LoadModel(
-    #                 load_id=load.get('id'),
-    #                 origin=load.get('pickup', {}).get('address', {}).get('city'),
-    #                 destination=load.get('delivery', {}).get('address', {}).get('city'),
-    #                 pickup_date=load.get('pickup', {}).get('appointmentStartTime'),
-    #                 delivery_date=load.get('delivery', {}).get('appointmentStartTime'),
-    #                 trailer_type=", ".join(load.get('equipment', {}).get('trailerTypes', [])),
-    #                 weight=load.get('weight'),
-    #                 rate=load.get('maxBidPriceCents'),
-    #                 distance=load.get('distance')
-    #             )
-    #             load_model_instance.save()
 
     def run(self):
         is_logged_in = False
-        states = ["NY", "PA", "TX"]
+        states = ["CT", "DE", "GA", "ME", "MD", "MA", "NH", "NJ", "NY", "NC", "PA", "RI", "SC", "VT", "VA", "WV"]
         while True:
             self.__login()
             is_logged_in = True
             while is_logged_in:
                 try:
                     for state in states:
-                        self.search_for_loads(state)
-                        loads = self.fetchLoads()
-                        for load in loads:
+                        self.search_for_loads(state) #search for loads in browser
+                        loads = self.fetchLoads() #gets loads from response
+                        for load in loads: #type: ignore
                             print(load)
                             print("#################")
                             time.sleep(5)
-                            # if load
-                            # model_instance = self.format_and_get_load_model(load)
+                            if load:
+                                model_instance = self.format_and_get_load_model(load)
+                                model_instance.save()
                 except:
                     is_logged_in = False
 
 
-
-
-
-trucksmarter = TruckSmarterAgent()
-trucksmarter.run()
+if __name__ == "__main__":
+    trucksmarter = TruckSmarterAgent()
+    trucksmarter.run()
