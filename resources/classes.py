@@ -1,4 +1,4 @@
-from dispatching_api.resources.models import DriverModel, RouteModel, get_db, LoadModel
+from resources.models import DriverModel, RouteModel, get_db, LoadModel
 from sqlalchemy.orm import Session
 from typing import List
 import logging

@@ -1,7 +1,7 @@
 
-from dispatching_api.resources.models import DriverModel, get_db
+from resources.models import DriverModel, get_db
 from sqlalchemy.orm import Session
-from dispatching_api.resources.classes import RouteBuilder  # Assuming RouteBuilder is defined in another file
+from resources.classes import RouteBuilder  # Assuming RouteBuilder is defined in another file
 
 def build_routes_for_active_drivers():
     db: Session = next(get_db())

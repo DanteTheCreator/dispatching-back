@@ -43,7 +43,6 @@ async def get_api_key(api_key: str = Security(api_key_header)):
         )
     return api_key
 
-
 class LoginRequest(BaseModel):
     email: str
     password: str
