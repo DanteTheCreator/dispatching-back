@@ -8,11 +8,12 @@ from sqlalchemy import cast
 # Set up logging
 logger = logging.getLogger('dispatching_api')
 logger.setLevel(logging.INFO)
-handler = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 
+# File handler for saving logs to file
+file_handler = logging.FileHandler('classes.log')  # Specify your log file path here
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 class Driver:
     def __init__(self, driver_id):
