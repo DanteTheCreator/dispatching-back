@@ -13,7 +13,7 @@ logger.setLevel(logging.INFO)
 file_handler = logging.FileHandler('classes.log')  # Specify your log file path here
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+# logger.addHandler(file_handler)
 
 class Driver:
     def __init__(self, driver_id):
@@ -99,6 +99,8 @@ class RouteBuilder:
                         route = Route(self.driver)
                         route.add_load(top_load)
                         route.add_load(secondary_load)
+                        if top_load == secondary_load:
+                            continue
                         if (
                             route.total_price > float(self.driver.desired_gross)
                             and route.total_rpm > float(self.driver.desired_rpm)
@@ -127,6 +129,8 @@ class RouteBuilder:
                         route = Route(self.driver)
                         route.add_load(top_load)
                         route.add_load(secondary_load)
+                        if top_load == secondary_load:
+                            continue
                         if (
                             route.total_price > float(self.driver.desired_gross)
                             and route.total_rpm > float(self.driver.desired_rpm)
