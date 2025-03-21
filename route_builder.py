@@ -22,6 +22,8 @@ def build_routes_for_active_drivers():
                 routes = builder.generate_one_car_trailer_routes()
             if trailer_size == 2: 
                 routes = builder.generate_two_car_trailer_routes()
+            if trailer_size == 3:
+                routes = builder.generate_three_car_trailer_routes()
                 
             for route in routes:
                 builder.save_route_to_db(route)

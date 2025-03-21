@@ -143,6 +143,62 @@ class RouteBuilder:
         except Exception as e:
             logger.info(f"Error generating routes: {e}")
             return []
+        
+    def generate_three_car_trailer_routes(self, limit: int = 10):
+        try:
+            top_loads = self.get_top_loads(self.driver.location)
+            logger.info(f"Top loads found: {len(top_loads)}")
+            
+            routes = []
+            # Consider more initial loads to increase chances of finding full trailer routes
+            for top_load in top_loads[:5]:
+                if len(routes) >= limit:
+                    break
+                try:
+                    second_pickup_loads = self.get_top_loads(top_load.delivery_location.split()[-1])
+                    for secondary_load in second_pickup_loads[:5]:
+                        if len(routes) >= limit:
+                            break
+                        try:
+                            third_pickup_loads = self.get_top_loads(secondary_load.delivery_location.split()[-1])
+                            for tertiary_load in third_pickup_loads[:5]:
+                                if len(routes) >= limit:
+                                    break
+                                route = Route(self.driver)
+                                route.add_load(top_load)
+                                route.add_load(secondary_load)
+                                route.add_load(tertiary_load)
+                                
+                                # Avoid duplicate loads
+                                if top_load == secondary_load or secondary_load == tertiary_load or top_load == tertiary_load:
+                                    continue
+                                    
+                                # Prioritize full trailer routes (3 cars)
+                                car_count = len([load for load in [top_load, secondary_load, tertiary_load] if load is not None])
+                                
+                                # Only consider routes with exactly 3 cars and meeting financial criteria
+                                if (car_count == 3 and
+                                    route.total_price > float(self.driver.desired_gross) and 
+                                    route.total_rpm > float(self.driver.desired_rpm)):
+                                    
+                                    # Sort routes by profitability metrics
+                                    route.efficiency_score = (route.total_price / route.total_distance) * car_count
+                                    routes.append(route)
+                                    
+                                    # Sort by efficiency score to keep the best routes
+                                    routes.sort(key=lambda r: r.efficiency_score, reverse=True)
+                        except Exception as e:
+                            logger.info(f"Error processing tertiary loads: {e}")
+                            continue
+                except Exception as e:
+                    logger.info(f"Error processing secondary loads: {e}")
+                    continue
+                    
+            logger.info(f"Generated {len(routes)} three-car routes that meet criteria")
+            return routes[:limit]  # Return the best routes up to the limit
+        except Exception as e:
+            logger.info(f"Error generating routes: {e}")
+            return []
 
     def save_route_to_db(self, route: Route):
         try:
