@@ -11,10 +11,12 @@ CHROMEDRIVER = os.getenv("CHROMEDRIVER")
 CHROME = os.getenv("CHROME")
 
 class SeleniumDriver:
-    def __init__(self, driver_path, headless=True):
-        self.driver_path = driver_path
+    def __init__(self, headless=False):
+        self.driver_path = CHROMEDRIVER
         self.headless = headless
         self.driver = None
+        print(CHROMEDRIVER)
+        print(CHROME)
 
     def initialize_driver(self):
         options = Options()
@@ -29,7 +31,7 @@ class SeleniumDriver:
             'browser': 'ALL',
             'performance': 'ALL'
         })
-        options.add_argument("--headless")
+        # options.add_argument("--headless")
         self.driver = webdriver.Chrome(service=service, options=options)
 
     def get_driver(self):

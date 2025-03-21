@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 import time
 import os
 import json
-from seleniumagent import SeleniumDriver
+from selenium_agency.selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
 import os
 from selenium.webdriver.support.ui import WebDriverWait

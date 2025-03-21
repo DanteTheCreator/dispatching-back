@@ -3,3 +3,4 @@ agency/
 __pycache__/
 route_builder.log
 .env
+*.exe

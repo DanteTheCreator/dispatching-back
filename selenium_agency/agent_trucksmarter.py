@@ -5,7 +5,7 @@ sys.path.append('C:/Users/tatog/OneDrive/სამუშაო დაფა/disp
 
 
 from httpcore import TimeoutException
-from seleniumagent import SeleniumDriver
+from selenium_agency.selenium_driver import SeleniumDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
