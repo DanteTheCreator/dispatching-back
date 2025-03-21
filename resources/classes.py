@@ -13,7 +13,7 @@ logger.setLevel(logging.INFO)
 file_handler = logging.FileHandler('classes.log')  # Specify your log file path here
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(formatter)
-# logger.addHandler(file_handler)
+logger.addHandler(file_handler)
 
 class Driver:
     def __init__(self, driver_id):
@@ -52,6 +52,7 @@ class Route:
         self.milage = 50
         self.total_rpm = 0.0
         self.total_price = 0.0
+        self.efficiency_score = 0.0
 
     def add_load(self, load):
         # Add a load to the route
@@ -145,6 +146,7 @@ class RouteBuilder:
             return []
         
     def generate_three_car_trailer_routes(self, limit: int = 10):
+        logger.info('Three')
         try:
             top_loads = self.get_top_loads(self.driver.location)
             logger.info(f"Top loads found: {len(top_loads)}")
@@ -182,7 +184,7 @@ class RouteBuilder:
                                     route.total_rpm > float(self.driver.desired_rpm)):
                                     
                                     # Sort routes by profitability metrics
-                                    route.efficiency_score = (route.total_price / route.total_distance) * car_count
+                                    route.efficiency_score = (route.total_price / route.milage) * car_count
                                     routes.append(route)
                                     
                                     # Sort by efficiency score to keep the best routes
