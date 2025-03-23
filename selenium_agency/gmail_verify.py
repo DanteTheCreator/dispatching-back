@@ -9,11 +9,13 @@ load_dotenv()
 
 # Your Gmail credentials
 EMAIL = os.getenv("EMAIL")
-PASSWORD = os.getenv("PASSWORD")
+PASSWORD = os.getenv("GMAIL_PASSWORD")
 
 def get_otp_from_gmail():
     try:
         # Connect to Gmail's IMAP server
+        print(EMAIL)
+        print(PASSWORD)
         mail = imaplib.IMAP4_SSL("imap.gmail.com")
         if EMAIL is not None and PASSWORD is not None:
             mail.login(EMAIL, PASSWORD)
