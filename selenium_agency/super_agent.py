@@ -45,20 +45,20 @@ class SuperAgent:
             self.__needs_authorizaton = True
             return None
             
-    def __start_login_cycle(self, timer_count=1):
+    def __start_login_cycle(self, in_between_delay=1):
         if self.__driver is not None:
             self.__driver.get("https://carrier.superdispatch.com/tms/login/")
              # Wait for page to load
             wait = WebDriverWait(self.__driver, 10)
-            time.sleep(timer_count)
+            time.sleep(in_between_delay)
             email_field = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@class, 'MuiInputBase-input MuiOutlinedInput-input')]")))
             password_field = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@class, 'MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd')]")))
             login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'Button__ButtonRoot-SD__sc-1pwdpe3-0 bjrslb')]")))
-            time.sleep(timer_count)
+            time.sleep(in_between_delay)
             email_field.send_keys(self._email)
-            time.sleep(timer_count)
+            time.sleep(in_between_delay)
             password_field.send_keys(self._password)
-            time.sleep(timer_count)
+            time.sleep(in_between_delay)
             login_button.click()
 
             #waiting for the page to load and verification code to arrive
@@ -66,25 +66,25 @@ class SuperAgent:
 
             otp = get_otp_from_gmail('Super Dispatch Verification Code')
 
-            time.sleep(timer_count)
+            time.sleep(in_between_delay)
 
             otp_field = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@name, code)]")))
-            time.sleep(timer_count)
+            time.sleep(in_between_delay)
             otp_field.send_keys(otp)
-            time.sleep(timer_count * 2)
+            time.sleep(in_between_delay * 2)
             button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'Button__ButtonRoot-SD__sc-1pwdpe3-0 bjrslb')]")))
-            time.sleep(timer_count)
+            time.sleep(in_between_delay)
             button.click()
             time.sleep(5)
 
             loadboard_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, '/loadboard')]")))
-            time.sleep(timer_count)
+            time.sleep(in_between_delay)
             loadboard_button.click()
             time.sleep(5)
 
             self.__get_token()
 
-    def __start_filling_db_cycle(self, timer_count):
+    def __start_filling_db_cycle(self, in_between_delay=1):
         token = self.__cache_service.get_token()
         loads_response = self.__api_client.post("/internal/v3/loads/search", 
                             token=token, 
@@ -101,8 +101,8 @@ class SuperAgent:
             load_count += 1
             print(f"saving load {load_count}")
             print(load)
-            time.sleep(timer_count)
-        time.sleep(timer_count)
+            time.sleep(in_between_delay)
+        time.sleep(in_between_delay)
         self.__page += 1
 
     def run(self):
