@@ -16,8 +16,6 @@ class SeleniumDriver:
         self.driver_path = CHROMEDRIVER
         self.headless = headless
         self.driver = None
-        print(CHROMEDRIVER)
-        print(CHROME)
 
     def initialize_driver(self):
         options = Options()

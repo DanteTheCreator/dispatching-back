@@ -27,6 +27,8 @@ class SuperAgent:
         self.__api_client = APIClient(base_url="https://api.loadboard.superdispatch.com", origin=self.__origin)
         self.__cache_service = SuperCacheService()
 
+        self.__page = 0
+
     def __get_token(self):
         cookies = self.__driver.get_cookies()
         user_token = None
@@ -63,7 +65,6 @@ class SuperAgent:
             time.sleep(10)
 
             otp = get_otp_from_gmail('Super Dispatch Verification Code')
-            print(otp)
 
             time.sleep(timer_count)
 
@@ -75,13 +76,24 @@ class SuperAgent:
             time.sleep(timer_count)
             button.click()
             time.sleep(5)
+
+            loadboard_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, '/loadboard')]")))
+            time.sleep(timer_count)
+            loadboard_button.click()
+            time.sleep(5)
+
             self.__get_token()
 
     def __start_filling_db_cycle(self, timer_count):
-        loads_response = self.__api_client.get("/internal/v3/loads/search", token=token)
+        token = self.__cache_service.get_token()
+        loads_response = self.__api_client.post("/internal/v3/loads/search", 
+                            token=token, 
+                            payload={},
+                            params={"page": self.__page, "size": 100})
         if loads_response.status_code == 401:
             self.__cache_service.clear_all()
             return
+        
         loads = loads_response.json()['data']
         print("loads count:", len(loads))
         load_count = 0
@@ -91,6 +103,7 @@ class SuperAgent:
             print(load)
             time.sleep(timer_count)
         time.sleep(timer_count)
+        self.__page += 1
 
     def run(self):
         while True:

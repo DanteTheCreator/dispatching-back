@@ -32,11 +32,35 @@ class APIClient:
     def get(self, url, token=None, params=None):
         headers = self._get_headers(token)
         full_url = self._get_full_url(url)
-        response = requests.get(full_url, headers=headers, params=params)
+        print("request headers ", headers)
+        print("\n\n\n")
+        print("full url: ", full_url)
+        print("\n\n\n")
+        print("params: ", params)
+        print("\n\n\n")
+        response = requests.get(full_url, params=params, headers=headers)
+        print("response headers: ", response.headers)
+        print("\n\n\n")
+        print("status code: ", response.status_code)
+        print("\n\n\n")
+        print("response content: ", response.content)
+        print("\n\n\n")
         return response
 
-    def post(self, url, token=None, data=None):
+    def post(self, url, token=None, payload=None, params=None):
         headers = self._get_headers(token)
         full_url = self._get_full_url(url)
-        response = requests.post(full_url, headers=headers, json=data)
+        print("headers ", headers)
+        print("\n\n\n")
+        print("full url: ", full_url)
+        print("\n\n\n")
+        print("payload: ", payload)
+        print("\n\n\n")
+        response = requests.post(full_url, headers=headers, json=payload, params=params)
+        print("response headers: ", response.headers)
+        print("\n\n\n")
+        print("status code: ", response.status_code)
+        print("\n\n\n")
+        print("response content: ", response.content)
+        print("\n\n\n")
         return response

@@ -4,7 +4,11 @@ import os
 class CacheService:
     def __init__(self, cache_key):
         self.cache_key = cache_key
-        self.cache_file = f"/tmp/{cache_key}.json"
+        # Create tmp directory in the same folder as this script
+        self.tmp_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
+        if not os.path.exists(self.tmp_dir):
+            os.makedirs(self.tmp_dir)
+        self.cache_file = os.path.join(self.tmp_dir, f"{cache_key}.json")
         self.cache = self._load_cache()
 
     def _load_cache(self):

@@ -14,8 +14,6 @@ PASSWORD = os.getenv("GMAILAPPPASSWORD")
 def get_otp_from_gmail(subject):
     try:
         # Connect to Gmail's IMAP server
-        print(EMAIL)
-        print(PASSWORD)
         mail = imaplib.IMAP4_SSL("imap.gmail.com")
         if EMAIL is not None and PASSWORD is not None:
             mail.login(EMAIL, PASSWORD)
@@ -25,7 +23,6 @@ def get_otp_from_gmail(subject):
 
         # Search for emails with specific subject
         _, messages = mail.search(None, f'(SUBJECT "{subject}")')
-        print(messages)
 
         # If no messages found, return
         if not messages[0]:
@@ -49,14 +46,11 @@ def get_otp_from_gmail(subject):
                 if isinstance(subject, bytes):
                     # Decode byte subject to string
                     subject = subject.decode(encoding if encoding else "utf-8")
-                    print("Subject:", subject)
                 
                 # If the email has multiple parts
                 if msg.is_multipart():
-                    print("Email has multiple parts")
                     for part in msg.walk():
                         if part.get_content_type() == "text/plain":
-                            print("Email has plain text")
                             body = part.get_payload(decode=True).decode() #type: ignore
 
                             # Look for a 6-digit number within a p tag with class "security-code"
@@ -77,7 +71,6 @@ def get_otp_from_gmail(subject):
                             
                 else:
                     # Process plain text emails
-                    print("Email does not have multiple parts")
                     body = msg.get_payload(decode=True).decode() #type: ignore
                     otp_match = re.search(r'\b[0-9]{6}\b', body)
                     if otp_match:
@@ -94,4 +87,4 @@ def get_otp_from_gmail(subject):
         mail.logout()
 
 
-get_otp_from_gmail("Super Dispatch Verification Code")
+#get_otp_from_gmail("Super Dispatch Verification Code")
