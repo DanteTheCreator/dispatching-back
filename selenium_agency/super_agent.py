@@ -35,19 +35,21 @@ class SuperAgent:
     def __format_and_get_load_model(self, load):
         # If the load comes wrapped in a container object, get the main load object
         load_data = load.get('load') if 'load' in load else load
-        
+        if not load_data:
+            return None
+            
         load_model_instance = LoadModel(
-            external_load_id=load_data.get('guid'),
+            external_load_id=load_data.get('guid', ''),
             brokerage="Super Dispatch",
-            pickup_location=f"{load_data.get('pickup', {}).get('venue', {}).get('city')}, {load_data.get('pickup', {}).get('venue', {}).get('state')} {load_data.get('pickup', {}).get('venue', {}).get('zip')}",
-            delivery_location=f"{load_data.get('delivery', {}).get('venue', {}).get('city')}, {load_data.get('delivery', {}).get('venue', {}).get('state')} {load_data.get('delivery', {}).get('venue', {}).get('zip')}",
-            price=str(load_data.get('price')),
+            pickup_location=f"{load_data.get('pickup', {}).get('venue', {}).get('city', '')}, {load_data.get('pickup', {}).get('venue', {}).get('state', '')} {load_data.get('pickup', {}).get('venue', {}).get('zip', '')}",
+            delivery_location=f"{load_data.get('delivery', {}).get('venue', {}).get('city', '')}, {load_data.get('delivery', {}).get('venue', {}).get('state', '')} {load_data.get('delivery', {}).get('venue', {}).get('zip', '')}",
+            price=str(load_data.get('price', '')),
             milage=float(load_data.get('distance_meters', 0)) / 1609.34,  # Convert meters to miles
             is_operational=not any(vehicle.get('is_inoperable', False) for vehicle in load_data.get('vehicles', [])),
-            contact_phone=load_data.get('shipper', {}).get('contact_phone'),
-            notes=load_data.get('instructions'),
+            contact_phone=(load_data.get('shipper') or {}).get('contact_phone', ''),
+            notes=load_data.get('instructions', ''),
             loadboard_source="super_dispatch",
-            created_at=load_data.get('created_at')
+            created_at=load_data.get('created_at', '')
         )
 
         print(f"""
@@ -62,7 +64,6 @@ class SuperAgent:
             Operational: {load_model_instance.is_operational}
             Contact: {load_model_instance.contact_phone}
             Created: {load_model_instance.created_at}
-            Notes: {load_model_instance.notes[:100]}...
             """)
         return load_model_instance
 
