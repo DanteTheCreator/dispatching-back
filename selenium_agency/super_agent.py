@@ -148,9 +148,9 @@ class SuperAgent:
     def run(self):
         while True:
             if self.__cache_service.token_exists() == False:
-                self.__start_login_cycle(1)
+                self.__start_login_cycle(in_between_delay=1)
             else:
-                self.__start_filling_db_cycle(2)
+                self.__start_filling_db_cycle(in_between_delay=2)
 
 
 agent = SuperAgent()
