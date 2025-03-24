@@ -10,6 +10,9 @@ import requests
 import json
 from api_client import APIClient
 from super_cache import SuperCacheService
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from resources.models import LoadModel
 
 load_dotenv()
 
@@ -28,6 +31,40 @@ class SuperAgent:
         self.__cache_service = SuperCacheService()
 
         self.__page = 0
+
+    def __format_and_get_load_model(self, load):
+        # If the load comes wrapped in a container object, get the main load object
+        load_data = load.get('load') if 'load' in load else load
+        
+        load_model_instance = LoadModel(
+            external_load_id=load_data.get('guid'),
+            brokerage="Super Dispatch",
+            pickup_location=f"{load_data.get('pickup', {}).get('venue', {}).get('city')}, {load_data.get('pickup', {}).get('venue', {}).get('state')} {load_data.get('pickup', {}).get('venue', {}).get('zip')}",
+            delivery_location=f"{load_data.get('delivery', {}).get('venue', {}).get('city')}, {load_data.get('delivery', {}).get('venue', {}).get('state')} {load_data.get('delivery', {}).get('venue', {}).get('zip')}",
+            price=str(load_data.get('price')),
+            milage=float(load_data.get('distance_meters', 0)) / 1609.34,  # Convert meters to miles
+            is_operational=not any(vehicle.get('is_inoperable', False) for vehicle in load_data.get('vehicles', [])),
+            contact_phone=load_data.get('shipper', {}).get('contact_phone'),
+            notes=load_data.get('instructions'),
+            loadboard_source="super_dispatch",
+            created_at=load_data.get('created_at')
+        )
+
+        print(f"""
+            Load Details:
+            ------------
+            External ID: {load_model_instance.external_load_id}
+            Brokerage: {load_model_instance.brokerage}
+            Pickup: {load_model_instance.pickup_location}
+            Delivery: {load_model_instance.delivery_location}
+            Price: ${load_model_instance.price}
+            Milage: {round(load_model_instance.milage, 2)} miles
+            Operational: {load_model_instance.is_operational}
+            Contact: {load_model_instance.contact_phone}
+            Created: {load_model_instance.created_at}
+            Notes: {load_model_instance.notes[:100]}...
+            """)
+        return load_model_instance
 
     def __get_token(self):
         cookies = self.__driver.get_cookies()
@@ -99,9 +136,12 @@ class SuperAgent:
         load_count = 0
         for load in loads:
             load_count += 1
-            print(f"saving load {load_count}")
-            print(load)
+            print(f"saving load #{load_count}...")
+            load_model_instance = self.__format_and_get_load_model(load)
+            # load_model_instance.save()
+            time.sleep(100)
             time.sleep(in_between_delay)
+            print(f"load #{load_count} saved")
         time.sleep(in_between_delay)
         self.__page += 1
 
