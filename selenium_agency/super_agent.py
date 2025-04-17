@@ -51,21 +51,67 @@ class SuperAgent:
         load_data = load.get('load') if 'load' in load else load
         if not load_data:
             return None
+
+        pickup_location = self.__format_pickup_location(load_data.get('pickup', {}))
+        delivery_location = self.__format_delivery_location(load_data.get('delivery', {}))
+        
+        # Get coordinates but store them in the notes field for now
+        pickup_coordinates = self.__get_location_coordinates(pickup_location)
+        delivery_coordinates = self.__get_location_coordinates(delivery_location)
+        
+        coordinates_note = f"Pickup coordinates: {pickup_coordinates}, Delivery coordinates: {delivery_coordinates}"
+        instructions = load_data.get('instructions', '')
+        combined_notes = f"{instructions}\n{coordinates_note}"
             
         load_model_instance = LoadModel(
             external_load_id=load_data.get('guid', ''),
             brokerage="Super Dispatch",
-            pickup_location=f"{load_data.get('pickup', {}).get('venue', {}).get('city', '')}, {load_data.get('pickup', {}).get('venue', {}).get('state', '')} {load_data.get('pickup', {}).get('venue', {}).get('zip', '')}",
-            delivery_location=f"{load_data.get('delivery', {}).get('venue', {}).get('city', '')}, {load_data.get('delivery', {}).get('venue', {}).get('state', '')} {load_data.get('delivery', {}).get('venue', {}).get('zip', '')}",
+            pickup_location=pickup_location,
+            delivery_location=delivery_location,
             price=str(load_data.get('price', '')),
             milage=float(load_data.get('distance_meters', 0)) / 1609.34,  # Convert meters to miles
             is_operational=not any(vehicle.get('is_inoperable', False) for vehicle in load_data.get('vehicles', [])),
             contact_phone=(load_data.get('shipper') or {}).get('contact_phone', ''),
-            notes=load_data.get('instructions', ''),
+            notes=combined_notes,
             loadboard_source="super_dispatch",
             created_at=load_data.get('created_at', '')
         )
+
+        print(f"""
+            Load Details:
+            ------------
+            External ID: {load_model_instance.external_load_id}
+            Brokerage: {load_model_instance.brokerage}
+            Pickup: {load_model_instance.pickup_location}
+            Delivery: {load_model_instance.delivery_location}
+            Price: ${load_model_instance.price}
+            Milage: {round(load_model_instance.milage, 2)} miles
+            Operational: {load_model_instance.is_operational}
+            Contact: {load_model_instance.contact_phone}
+            Created: {load_model_instance.created_at}
+            """)
         return load_model_instance
+
+    def __get_location_coordinates(self, location_str):
+        response = self.__pelias_handler.get(url="/search", params={"text": location_str})
+        if response.status_code == 200:
+            data = response.json()
+            if data.get('features') and len(data['features']) > 0:
+                coordinates = data['features'][0]['geometry']['coordinates']
+                return coordinates
+        return None
+    
+    def __format_pickup_location(self, pickup_data):
+        if not pickup_data or not pickup_data.get('venue'):
+            return ''
+        venue = pickup_data['venue']
+        return f"{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
+
+    def __format_delivery_location(self, delivery_data):
+        if not delivery_data or not delivery_data.get('venue'):
+            return ''
+        venue = delivery_data['venue']
+        return f"{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
 
     def __get_token(self):
         if not self.__driver:
