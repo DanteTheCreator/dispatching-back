@@ -70,6 +70,8 @@ class SuperAgent:
             brokerage="Super Dispatch",
             pickup_location=pickup_location,
             delivery_location=delivery_location,
+            pickup_points=pickup_coordinates,
+            delivery_points=delivery_coordinates,
             price=str(load_data.get('price', '')),
             milage=float(load_data.get('distance_meters', 0)) / 1609.34,  # Convert meters to miles
             is_operational=not any(vehicle.get('is_inoperable', False) for vehicle in load_data.get('vehicles', [])),
@@ -86,6 +88,8 @@ class SuperAgent:
             Brokerage: {load_model_instance.brokerage}
             Pickup: {load_model_instance.pickup_location}
             Delivery: {load_model_instance.delivery_location}
+            Pickup Coordinates: {load_model_instance.pickup_points}
+            Delivery Coordinates: {load_model_instance.delivery_points}
             Price: ${load_model_instance.price}
             Milage: {round(load_model_instance.milage, 2)} miles
             Operational: {load_model_instance.is_operational}
@@ -95,6 +99,7 @@ class SuperAgent:
         return load_model_instance
 
     def __get_location_coordinates(self, location_str):
+        time.sleep(0.5)
         response = self.__pelias_handler.get(url="/search", params={"text": location_str})
         if response.status_code == 200:
             data = response.json()
@@ -177,7 +182,7 @@ class SuperAgent:
         loads_response = self.__api_client.post("/internal/v3/loads/search", 
                             token=token, 
                             payload={},
-                            params={"page": self.__page, "size": 100})
+                            params={"page": self.__page, "size": 50})
         if loads_response.status_code == 401:
             self.__cache_service.clear_all()
             return

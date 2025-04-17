@@ -4,3 +4,30 @@
 2025-04-17 14:45:57,295 - INFO - New loads to process: 100
 2025-04-17 14:47:28,181 - INFO - Loads count: 100
 2025-04-17 14:47:31,656 - INFO - New loads to process: 100
+2025-04-17 14:53:41,779 - INFO - Loads count: 100
+2025-04-17 14:53:45,309 - INFO - New loads to process: 99
+2025-04-17 14:59:03,963 - INFO - Loads count: 50
+2025-04-17 14:59:07,301 - INFO - New loads to process: 49
+2025-04-17 15:00:44,133 - INFO - Loads inserted into DB
+2025-04-17 15:00:44,984 - INFO - Loads count: 50
+2025-04-17 15:00:46,042 - INFO - New loads to process: 44
+2025-04-17 15:02:12,754 - INFO - Loads inserted into DB
+2025-04-17 15:02:13,603 - INFO - Loads count: 50
+2025-04-17 15:02:14,836 - INFO - New loads to process: 0
+2025-04-17 15:02:15,646 - INFO - Loads count: 50
+2025-04-17 15:02:16,725 - INFO - New loads to process: 0
+2025-04-17 15:02:17,548 - INFO - Loads count: 50
+2025-04-17 15:02:18,603 - INFO - New loads to process: 44
+2025-04-17 15:03:46,892 - INFO - Loads inserted into DB
+2025-04-17 15:03:47,776 - INFO - Loads count: 50
+2025-04-17 15:03:48,982 - INFO - New loads to process: 46
+2025-04-17 15:05:19,931 - INFO - Loads inserted into DB
+2025-04-17 15:05:20,758 - INFO - Loads count: 50
+2025-04-17 15:05:21,985 - INFO - New loads to process: 49
+2025-04-17 15:06:59,914 - INFO - Loads inserted into DB
+2025-04-17 15:07:00,772 - INFO - Loads count: 50
+2025-04-17 15:07:01,982 - INFO - New loads to process: 50
+2025-04-17 15:08:41,075 - INFO - Loads inserted into DB
+2025-04-17 15:08:41,939 - INFO - Loads count: 50
+2025-04-17 15:08:43,148 - INFO - New loads to process: 45
+2025-04-17 15:10:20,150 - INFO - Loads count: 50
