@@ -4,6 +4,7 @@ from sqlalchemy.dialects.postgresql import UUID, DOUBLE_PRECISION, ARRAY
 import uuid
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, VARCHAR
+from geoalchemy2 import Geometry
 
 # # SQLAlchemy Setup
 DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@/dispatcher-bot-db?host=/var/run/postgresql"
@@ -29,6 +30,8 @@ class LoadModel(Base):
     brokerage = Column(String(100))
     pickup_location = Column(String)
     delivery_location = Column(String)
+    pickup_points = Column(Geometry('POINT'))
+    delivery_points = Column(Geometry('POINT'))
     price = Column(String)
     milage = Column(DOUBLE_PRECISION)
     is_operational = Column(Boolean)
