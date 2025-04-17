@@ -13,6 +13,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from resources.models import LoadModel, get_db
 import logging
 import os
+from handlers import PeliasHandler
 
 load_dotenv()
 
@@ -45,6 +46,7 @@ class SuperAgent:
         self.__cache_service = SuperCacheService()
         self.__db_Session =  next(get_db())
         self.__page = 0
+        self.__pelias_handler = PeliasHandler()
 
     def __format_and_get_load_model(self, load):
         # If the load comes wrapped in a container object, get the main load object
