@@ -100,7 +100,7 @@ class SuperAgent:
 
     def __get_location_coordinates(self, location_str):
         time.sleep(0.5)
-        response = self.__pelias_handler.get(url="/search", params={"text": location_str})
+        response = self.__pelias_handler.get(url="/v1/search", params={"text": location_str})
         if response.status_code == 200:
             data = response.json()
             if data.get('features') and len(data['features']) > 0:
