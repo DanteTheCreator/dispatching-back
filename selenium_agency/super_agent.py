@@ -6,15 +6,29 @@ from selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
 import os
 from gmail_verify import get_otp_from_gmail
-import requests
-import json
 from api_client import APIClient
 from super_cache import SuperCacheService
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from resources.models import LoadModel
+from resources.models import LoadModel, get_db
+import logging
+import os
 
 load_dotenv()
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Create the full path to the log file
+log_file_path = os.path.join(script_dir, 'logs', 'super_agent.log')
+
+# Configure logging
+logging.basicConfig(
+   filename=log_file_path,
+   level=logging.INFO,
+   format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+logger = logging.getLogger(__name__)
 
 class SuperAgent:
 
@@ -29,7 +43,7 @@ class SuperAgent:
         self._password = os.getenv("PASSWORD_SUPER")
         self.__api_client = APIClient(base_url="https://api.loadboard.superdispatch.com", origin=self.__origin)
         self.__cache_service = SuperCacheService()
-
+        self.__db_Session =  next(get_db())
         self.__page = 0
 
     def __format_and_get_load_model(self, load):
@@ -51,23 +65,11 @@ class SuperAgent:
             loadboard_source="super_dispatch",
             created_at=load_data.get('created_at', '')
         )
-
-        print(f"""
-            Load Details:
-            ------------
-            External ID: {load_model_instance.external_load_id}
-            Brokerage: {load_model_instance.brokerage}
-            Pickup: {load_model_instance.pickup_location}
-            Delivery: {load_model_instance.delivery_location}
-            Price: ${load_model_instance.price}
-            Milage: {round(load_model_instance.milage, 2)} miles
-            Operational: {load_model_instance.is_operational}
-            Contact: {load_model_instance.contact_phone}
-            Created: {load_model_instance.created_at}
-            """)
         return load_model_instance
 
     def __get_token(self):
+        if not self.__driver:
+            return None
         cookies = self.__driver.get_cookies()
         user_token = None
         for cookie in cookies:
@@ -75,11 +77,11 @@ class SuperAgent:
                 user_token = cookie['value']
                 break
         if user_token:
-            print(f"User token found: {user_token}")
+            logger.info(f"User token found: {user_token}")
             self.__cache_service.set_token(user_token)
             return user_token
         else:
-            print("User token not found in cookies")
+            logger.info("User token not found in cookies")
             self.__needs_authorizaton = True
             return None
             
@@ -93,9 +95,9 @@ class SuperAgent:
             password_field = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@class, 'MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd')]")))
             login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'Button__ButtonRoot-SD__sc-1pwdpe3-0 bjrslb')]")))
             time.sleep(in_between_delay)
-            email_field.send_keys(self._email)
+            email_field.send_keys(self._email or '')
             time.sleep(in_between_delay)
-            password_field.send_keys(self._password)
+            password_field.send_keys(self._password or '')
             time.sleep(in_between_delay)
             login_button.click()
 
@@ -108,7 +110,7 @@ class SuperAgent:
 
             otp_field = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@name, code)]")))
             time.sleep(in_between_delay)
-            otp_field.send_keys(otp)
+            otp_field.send_keys(otp or '')
             time.sleep(in_between_delay * 2)
             button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'Button__ButtonRoot-SD__sc-1pwdpe3-0 bjrslb')]")))
             time.sleep(in_between_delay)
@@ -133,17 +135,22 @@ class SuperAgent:
             return
         
         loads = loads_response.json()['data']
-        print("loads count:", len(loads))
-        load_count = 0
-        for load in loads:
-            load_count += 1
-            print(f"saving load #{load_count}...")
-            load_model_instance = self.__format_and_get_load_model(load)
-            # load_model_instance.save()
-            time.sleep(100)
+        logger.info(f"Loads count: {len(loads)}")
+        existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(LoadModel.external_load_id).all()}
+        # print(existing_load_ids)
+
+        loads = [load for load in loads if load.get('load').get('guid') not in existing_load_ids]
+        logger.info(f"New loads to process: {len(loads)}")
+        print(loads)
+        if len(loads) > 0:
+            load_model_instances = [
+                self.__format_and_get_load_model(load) for load in loads
+            ]
+        # Bulk insert
+            self.__db_Session.bulk_save_objects(load_model_instances)
+            self.__db_Session.commit()
             time.sleep(in_between_delay)
-            print(f"load #{load_count} saved")
-        time.sleep(in_between_delay)
+            logger.info("Loads inserted into DB")
         self.__page += 1
 
     def run(self):

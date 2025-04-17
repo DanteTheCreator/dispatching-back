@@ -22,15 +22,17 @@ class SeleniumDriver:
         options.binary_location = CHROME  # Path to Chromium
 
         # Set ChromeDriver path
-        service = Service(ChromeDriverManager().install())
+        service = Service(CHROMEDRIVER)
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
+        # options.add_argument("--user-data-dir=/tmp/chrome-data-dir")  # Use a unique directory
+
         # Enable performance logging
         options.set_capability('goog:loggingPrefs', {
             'browser': 'ALL',
             'performance': 'ALL'
         })
-        # options.add_argument("--headless")
+        options.add_argument("--headless")
         self.driver = webdriver.Chrome(service=service, options=options)
 
     def get_driver(self):
