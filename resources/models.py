@@ -7,8 +7,8 @@ from sqlalchemy import create_engine, Column, Integer, String, DateTime, VARCHAR
 from geoalchemy2 import Geometry
 
 # # SQLAlchemy Setup
-#DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@/dispatcher-bot-db?host=/var/run/postgresql"
-DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@rothschildrentals.pro:5432/dispatcher-bot-db"
+DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@/dispatcher-bot-db?host=/var/run/postgresql"
+# DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@rothschildrentals.pro:5432/dispatcher-bot-db"
 engine = create_engine(DATABASE_URL)
 
 Base = declarative_base()
