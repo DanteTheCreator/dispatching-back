@@ -14,6 +14,7 @@ from resources.models import LoadModel, get_db
 import logging
 import os
 from handlers import PeliasHandler
+from geoalchemy2.elements import WKTElement
 
 load_dotenv()
 
@@ -57,9 +58,12 @@ class SuperAgent:
         pickup_location = self.__format_pickup_location(load_data.get('pickup', {}))
         delivery_location = self.__format_delivery_location(load_data.get('delivery', {}))
         
-        # Get coordinates but store them in the notes field for now
         pickup_coordinates = self.__get_location_coordinates(pickup_location)
         delivery_coordinates = self.__get_location_coordinates(delivery_location)
+        
+        # Convert coordinates to WKT format
+        pickup_points = WKTElement(f'POINT({pickup_coordinates[0]} {pickup_coordinates[1]})') if pickup_coordinates else None
+        delivery_points = WKTElement(f'POINT({delivery_coordinates[0]} {delivery_coordinates[1]})') if delivery_coordinates else None
         
         coordinates_note = f"Pickup coordinates: {pickup_coordinates}, Delivery coordinates: {delivery_coordinates}"
         instructions = load_data.get('instructions', '')
@@ -70,8 +74,8 @@ class SuperAgent:
             brokerage="Super Dispatch",
             pickup_location=pickup_location,
             delivery_location=delivery_location,
-            pickup_points=pickup_coordinates,
-            delivery_points=delivery_coordinates,
+            pickup_points=pickup_points,
+            delivery_points=delivery_points,
             price=str(load_data.get('price', '')),
             milage=float(load_data.get('distance_meters', 0)) / 1609.34,  # Convert meters to miles
             is_operational=not any(vehicle.get('is_inoperable', False) for vehicle in load_data.get('vehicles', [])),
@@ -182,7 +186,7 @@ class SuperAgent:
         loads_response = self.__api_client.post("/internal/v3/loads/search", 
                             token=token, 
                             payload={},
-                            params={"page": self.__page, "size": 50})
+                            params={"page": self.__page, "size": 10})
         if loads_response.status_code == 401:
             self.__cache_service.clear_all()
             return
