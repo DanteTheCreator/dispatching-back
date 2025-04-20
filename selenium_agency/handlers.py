@@ -4,7 +4,7 @@ from api_client import APIClient
 class PeliasHandler(APIClient):
 
     def __init__(self):
-        super().__init__(base_url="http://74dd-176-221-230-243.ngrok-free.app", origin="")
+        super().__init__(base_url="https://00ca-176-221-230-243.ngrok-free.app", origin="")
         self.base_headers = []
         
 

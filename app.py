@@ -70,7 +70,6 @@ def get_profile(dispatcher_id: str, db: Session = Depends(get_db)):
                             detail="Dispatcher not found")
     return dispatcher
 
-# Endpoint to fetch all loads
 
 
 @app.get("/all_loads", dependencies=[Depends(get_api_key)])

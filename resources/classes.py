@@ -60,7 +60,6 @@ class Route:
         self.milage = 50
         self.total_rpm = 0.0
         self.total_price = 0.0
-        self.efficiency_score = 0.0
 
     def add_load(self, load):
         # Add a load to the route
@@ -77,13 +76,15 @@ class RouteBuilder:
         self.db = db
 
     def get_top_loads(self, origin) -> List[LoadModel]:
+        origin = pl_handler.get(origin).json()[
+            'features'][0]['geometry']['coordinates']
         try:
             loads = (
                 self.db.query(LoadModel)
                 .filter(
                     # Use PostGIS ST_DWithin to find loads within 50 miles (80467.2 meters)
                     LoadModel.pickup_point.ST_DWithin(
-                        cast(origin, JSONB), 
+                        cast(origin, JSONB),
                         80467.2
                     )
                 )
@@ -126,10 +127,11 @@ class RouteBuilder:
                         route.add_load(secondary_load)
                         if top_load == secondary_load:
                             continue
-                        
+
                         # Calculate accurate route length
                         try:
-                            accurate_milage = self.calculate_full_route_length(route)
+                            accurate_milage = self.calculate_full_route_length(
+                                route)
                             route.milage = accurate_milage / 1000  # Convert meters to kilometers
                             route.total_rpm = route.total_price / route.milage
                         except Exception as e:
@@ -137,7 +139,8 @@ class RouteBuilder:
                             continue
 
                         if (
-                            route.total_price > float(self.driver.desired_gross)
+                            route.total_price > float(
+                                self.driver.desired_gross)
                             and route.total_rpm > float(self.driver.desired_rpm)
                         ):
                             routes.append(route)
@@ -170,7 +173,8 @@ class RouteBuilder:
 
                         # Calculate accurate route length
                         try:
-                            accurate_milage = self.calculate_full_route_length(route)
+                            accurate_milage = self.calculate_full_route_length(
+                                route)
                             route.milage = accurate_milage / 1000  # Convert meters to kilometers
                             route.total_rpm = route.total_price / route.milage
                         except Exception as e:
@@ -178,7 +182,8 @@ class RouteBuilder:
                             continue
 
                         if (
-                            route.total_price > float(self.driver.desired_gross)
+                            route.total_price > float(
+                                self.driver.desired_gross)
                             and route.total_rpm > float(self.driver.desired_rpm)
                         ):
                             routes.append(route)
@@ -223,30 +228,32 @@ class RouteBuilder:
 
                                 # Calculate accurate route length
                                 try:
-                                    accurate_milage = self.calculate_full_route_length(route)
+                                    accurate_milage = self.calculate_full_route_length(
+                                        route)
                                     route.milage = accurate_milage / 1000  # Convert meters to kilometers
                                     route.total_rpm = route.total_price / route.milage
                                 except Exception as e:
-                                    logger.info(f"Error calculating route length: {e}")
+                                    logger.info(
+                                        f"Error calculating route length: {e}")
                                     continue
 
-                                # Only consider routes with exactly 3 cars and meeting financial criteria
-                                car_count = len([load for load in [top_load, secondary_load, tertiary_load] if load is not None])
-                                if (car_count == 3 and
+                                if (
                                     route.total_price > float(self.driver.desired_gross) and
-                                    route.total_rpm > float(self.driver.desired_rpm)):
+                                        route.total_rpm > float(self.driver.desired_rpm)):
 
-                                    route.efficiency_score = (route.total_price / route.milage) * car_count
                                     routes.append(route)
-                                    routes.sort(key=lambda r: r.efficiency_score, reverse=True)
+                                    routes.sort(
+                                        key=lambda r: r.efficiency_score, reverse=True)
                         except Exception as e:
-                            logger.info(f"Error processing tertiary loads: {e}")
+                            logger.info(
+                                f"Error processing tertiary loads: {e}")
                             continue
                 except Exception as e:
                     logger.info(f"Error processing secondary loads: {e}")
                     continue
 
-            logger.info(f"Generated {len(routes)} three-car routes that meet criteria")
+            logger.info(
+                f"Generated {len(routes)} three-car routes that meet criteria")
             return routes[:limit]
         except Exception as e:
             logger.info(f"Error generating routes: {e}")
