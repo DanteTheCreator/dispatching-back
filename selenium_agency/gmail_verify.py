@@ -8,7 +8,7 @@ import os
 load_dotenv()
 
 # Your Gmail credentials
-EMAIL = os.getenv("SUPEREMAIL")
+EMAIL = os.getenv("EMAIL")
 SUPEREMAIL = os.getenv("SUPEREMAIL")
 PASSWORD = os.getenv("GMAILAPPPASSWORD")
 

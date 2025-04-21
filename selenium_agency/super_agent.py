@@ -42,7 +42,7 @@ class SuperAgent:
         self.__selenium_driver.initialize_driver()
         self.__driver = self.__selenium_driver.get_driver()
         # Your Gmail credentials
-        self._email = os.getenv("SUPEREMAIL")
+        self._email = os.getenv("EMAIL")
         self._password = os.getenv("PASSWORD_SUPER")
         self.__api_client = APIClient(base_url="https://api.loadboard.superdispatch.com", origin=self.__origin)
         self.__cache_service = SuperCacheService()
