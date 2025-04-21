@@ -1,0 +1,120 @@
+{
+    "load": {
+      "created_at": "2025-03-22T22:19:25.464+0000",
+      "changed_at": "2025-03-24T10:18:52.256+0000",
+      "status": "new",
+      "number": "89481",
+      "price": 875,
+      "recommended_price": null,
+      "instructions": "Call 8555872902 text 2083288707 or 3158288775 for dispatch",
+      "carrier_order_guid": null,
+      "shipper": {
+        "name": "Star Unite Inc.",
+        "status": null,
+        "usdot_number": "4141539",
+        "address": "100 SE 2nd St. Suite 2000",
+        "city": "Miami",
+        "state": "Florida",
+        "zip": "33131",
+        "contact_name": "Vendor Support",
+        "contact_email": "vendors@24hours-group.com",
+        "contact_phone": "+18885970137",
+        "fax": null,
+        "personal_page_url": null,
+        "bond_agent": null,
+        "agent_phone": null,
+        "terms_and_conditions": null,
+        "guid": "8f776ffc-a120-447d-8167-2b33b9b45ae8",
+        "is_test_account": false,
+        "in_business_since": null,
+        "overall_moved_vehicles_count": 157,
+        "accepted_loads_count": null,
+        "has_cd_integration": false,
+        "posting_to_cd_delay_minutes": 120,
+        "ach_payment_required": false,
+        "carrier_requirements": null,
+        "carrier_insurance_requirements": [],
+        "carrier_certificate_of_insurance": null,
+        "rating_details": {
+          "total_rating_count": 53,
+          "overall_rating": 100
+        },
+        "verification_status": "APPROVED",
+        "external_notes": null,
+        "is_contact_info_available_for_carrier": true
+      },
+      "pickup": {
+        "scheduled_at": "2025-03-27T16:00:00.000+0000",
+        "date_type": "exact",
+        "venue": {
+          "city": "Kernersville",
+          "state": "NC",
+          "zip": "27284",
+          "business_type": "BUSINESS",
+          "metro_area": "Greensboro--Winston-Salem--High Point"
+        }
+      },
+      "delivery": {
+        "scheduled_at": "2025-03-27T16:00:00.000+0000",
+        "date_type": "exact",
+        "venue": {
+          "city": "Webster",
+          "state": "FL",
+          "zip": "33597",
+          "business_type": "BUSINESS",
+          "metro_area": "Orlando-Lakeland-Deltona"
+        }
+      },
+      "posted_to_loadboard_at": "2025-03-24T10:18:52.426+0000",
+      "posted_to_centraldispatch_at": null,
+      "unposted_at": null,
+      "distance_meters": 993331,
+      "price_per_km": 0.88,
+      "payment": {
+        "terms": "2_days",
+        "method": "zelle"
+      },
+      "vehicle_count": 1,
+      "carrier_opened_count": 0,
+      "transport_type": "DRIVEAWAY",
+      "vehicles": [
+        {
+          "guid": "f3995d98-9c70-4602-a5f3-caf3a5b4d8f5",
+          "make": "Kodiak",
+          "model": "Travel Trailer",
+          "year": 2019,
+          "price": 875,
+          "type": "trailer_bumper_pull",
+          "is_inoperable": false,
+          "requires_enclosed_trailer": false,
+          "photos": [
+            {
+              "photo_url": "https://storage.googleapis.com/prod-broker-files/2025/03/22/258c69e2-fd03-4d97-a38e-ea5e1e31c6b8/vehicle/f3995d98-9c70-4602-a5f3-caf3a5b4d8f5/photo/7fc3aa42-da83-462c-a869-90c8cb27281d/WpVJmzfbbg0zIKm2o376.jpeg",
+              "photo_type": "Sample",
+              "guid": "ef9f2695-3c5d-4c93-8dfc-2ae4bef5b7f3"
+            }
+          ]
+        }
+      ],
+      "guid": "258c69e2-fd03-4d97-a38e-ea5e1e31c6b8",
+      "posting_guid": "8ebbd118-59d2-45e9-bd23-8d6ded113674",
+      "carrier_access": {
+        "can_book": false,
+        "can_request": false,
+        "is_approved_by_shipper": false,
+        "is_ach_payment_required": false,
+        "is_certificate_required": false
+      },
+      "load_direction": 194,
+      "can_be_instantly_booked": true,
+      "posted_group_guids": [],
+      "is_exclusive": false,
+      "is_posted_to_centraldispatch": false,
+      "is_search_along_route": false,
+      "is_posted_to_private_loadboard": false
+    },
+    "carrier_load": null,
+    "pickup_distance": null,
+    "delivery_distance": null,
+    "is_saved": false
+  }

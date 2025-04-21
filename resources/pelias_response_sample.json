@@ -1,0 +1,212 @@
+{
+    "geocoding": {
+        "version": "0.2",
+        "attribution": "http://22a3-176-221-230-243.ngrok-free.app/attribution",
+        "query": {
+            "text": "Lady st 29201 columbia",
+            "size": 10,
+            "private": false,
+            "lang": {
+                "name": "English",
+                "iso6391": "en",
+                "iso6393": "eng",
+                "via": "default",
+                "defaulted": true
+            },
+            "querySize": 20,
+            "parser": "libpostal",
+            "parsed_text": {
+                "street": "lady st",
+                "postalcode": "29201",
+                "city": "columbia"
+            }
+        },
+        "engine": {
+            "name": "Pelias",
+            "author": "Mapzen",
+            "version": "1.0"
+        },
+        "timestamp": 1744883481019
+    },
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.01445,
+                    34.008639
+                ]
+            },
+            "properties": {
+                "id": "polyline:5953839",
+                "gid": "openstreetmap:street:polyline:5953839",
+                "layer": "street",
+                "source": "openstreetmap",
+                "source_id": "polyline:5953839",
+                "country_code": "US",
+                "name": "Lady Street",
+                "street": "Lady Street",
+                "confidence": 1,
+                "match_type": "exact",
+                "accuracy": "centroid",
+                "country": "United States",
+                "country_gid": "whosonfirst:country:85633793",
+                "country_a": "USA",
+                "region": "South Carolina",
+                "region_gid": "whosonfirst:region:85688683",
+                "region_a": "SC",
+                "county": "Richland County",
+                "county_gid": "whosonfirst:county:102085405",
+                "county_a": "RI",
+                "locality": "Columbia",
+                "locality_gid": "whosonfirst:locality:101720793",
+                "neighbourhood": "Waverly",
+                "neighbourhood_gid": "whosonfirst:neighbourhood:85854837",
+                "label": "Lady Street, Columbia, SC, USA"
+            },
+            "bbox": [
+                -81.014995,
+                34.008486,
+                -81.013906,
+                34.008793
+            ]
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.026865,
+                    34.004718
+                ]
+            },
+            "properties": {
+                "id": "polyline:5953764",
+                "gid": "openstreetmap:street:polyline:5953764",
+                "layer": "street",
+                "source": "openstreetmap",
+                "source_id": "polyline:5953764",
+                "country_code": "US",
+                "name": "Lady Street",
+                "street": "Lady Street",
+                "confidence": 1,
+                "match_type": "exact",
+                "accuracy": "centroid",
+                "country": "United States",
+                "country_gid": "whosonfirst:country:85633793",
+                "country_a": "USA",
+                "region": "South Carolina",
+                "region_gid": "whosonfirst:region:85688683",
+                "region_a": "SC",
+                "county": "Richland County",
+                "county_gid": "whosonfirst:county:102085405",
+                "county_a": "RI",
+                "locality": "Columbia",
+                "locality_gid": "whosonfirst:locality:101720793",
+                "neighbourhood": "University Hill",
+                "neighbourhood_gid": "whosonfirst:neighbourhood:85876831",
+                "label": "Lady Street, Columbia, SC, USA"
+            },
+            "bbox": [
+                -81.027666,
+                34.004473,
+                -81.026065,
+                34.004964
+            ]
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.039084,
+                    34.001082
+                ]
+            },
+            "properties": {
+                "id": "polyline:9716297",
+                "gid": "openstreetmap:street:polyline:9716297",
+                "layer": "street",
+                "source": "openstreetmap",
+                "source_id": "polyline:9716297",
+                "country_code": "US",
+                "name": "Lady Street",
+                "street": "Lady Street",
+                "confidence": 1,
+                "match_type": "exact",
+                "accuracy": "centroid",
+                "country": "United States",
+                "country_gid": "whosonfirst:country:85633793",
+                "country_a": "USA",
+                "region": "South Carolina",
+                "region_gid": "whosonfirst:region:85688683",
+                "region_a": "SC",
+                "county": "Richland County",
+                "county_gid": "whosonfirst:county:102085405",
+                "county_a": "RI",
+                "locality": "Columbia",
+                "locality_gid": "whosonfirst:locality:101720793",
+                "neighbourhood": "Gervais Street Corridor",
+                "neighbourhood_gid": "whosonfirst:neighbourhood:85876827",
+                "label": "Lady Street, Columbia, SC, USA"
+            },
+            "bbox": [
+                -81.045574,
+                33.999069,
+                -81.034169,
+                34.002606
+            ]
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.031037,
+                    34.003564
+                ]
+            },
+            "properties": {
+                "id": "polyline:9716311",
+                "gid": "openstreetmap:street:polyline:9716311",
+                "layer": "street",
+                "source": "openstreetmap",
+                "source_id": "polyline:9716311",
+                "country_code": "US",
+                "name": "Lady Street",
+                "street": "Lady Street",
+                "confidence": 1,
+                "match_type": "exact",
+                "accuracy": "centroid",
+                "country": "United States",
+                "country_gid": "whosonfirst:country:85633793",
+                "country_a": "USA",
+                "region": "South Carolina",
+                "region_gid": "whosonfirst:region:85688683",
+                "region_a": "SC",
+                "county": "Richland County",
+                "county_gid": "whosonfirst:county:102085405",
+                "county_a": "RI",
+                "locality": "Columbia",
+                "locality_gid": "whosonfirst:locality:101720793",
+                "neighbourhood": "Downtown",
+                "neighbourhood_gid": "whosonfirst:neighbourhood:85876825",
+                "label": "Lady Street, Columbia, SC, USA"
+            },
+            "bbox": [
+                -81.034169,
+                34.002606,
+                -81.029418,
+                34.004063
+            ]
+        }
+    ],
+    "bbox": [
+        -81.045574,
+        33.999069,
+        -81.013906,
+        34.008793
+    ]
+}
