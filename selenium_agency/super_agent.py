@@ -106,38 +106,32 @@ class SuperAgent:
         if not pickup_data or not pickup_data.get('venue'):
             return ''
         venue = pickup_data['venue']
-        return f"{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
+        address_part = f"{venue.get('metro_area', '')}, " if venue.get('metro_area') else ""
+        return f"{address_part}{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
 
     def __format_delivery_location(self, delivery_data):
         if not delivery_data or not delivery_data.get('venue'):
             return ''
         venue = delivery_data['venue']
-        return f"{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
+        address_part = f"{venue.get('metro_area', '')}, " if venue.get('metro_area') else ""
+        return f"{address_part}{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
 
     def __batch_save_loads(self, loads, in_between_delay=1):
         if len(loads) > 0:
             bulk_locations = []
             for load in loads:
-                pickup_location = self.__format_pickup_location(load.get('pickup', {}))
-                delivery_location = self.__format_delivery_location(load.get('delivery', {}))
+                pickup_location = self.__format_pickup_location(load.get('load').get('pickup', {}))
+                delivery_location = self.__format_delivery_location(load.get('load').get('delivery', {}))
                 load['pickup_location'] = pickup_location
                 load['delivery_location'] = delivery_location
                 bulk_locations.append({"pickup_location": pickup_location, "delivery_location": delivery_location})
-            
-            time.sleep(5)
-            print("sending bulk locations: ", bulk_locations)
-            time.sleep(5)
 
-            bulk_coordinates = self.__bulk_request_handler.post("/bulk_geocode", payload=bulk_locations)
+            bulk_coordinates = self.__bulk_request_handler.post("/bulk_geocode", payload=bulk_locations).json()
 
-            time.sleep(5)
             print("received bulk coordinates: ", bulk_coordinates)
-            time.sleep(5)
-
-            time.sleep(0.5)
             for index, bulk_coordinate in enumerate(bulk_coordinates):
-                pickup_location_coordinate = bulk_coordinate.get('pickup_location')
-                delivery_location_coordinate = bulk_coordinate.get('delivery_location')
+                pickup_location_coordinate = bulk_coordinate.get('pickup_coordinates')
+                delivery_location_coordinate = bulk_coordinate.get('delivery_coordinates')
                 pickup_points = WKTElement(f'POINT({pickup_location_coordinate[0]} {pickup_location_coordinate[1]})') if pickup_location_coordinate else None
                 delivery_points = WKTElement(f'POINT({delivery_location_coordinate[0]} {delivery_location_coordinate[1]})') if delivery_location_coordinate else None
                 loads[index]['pickup_points'] = pickup_points
@@ -204,6 +198,7 @@ class SuperAgent:
 
             loadboard_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, '/loadboard')]")))
             time.sleep(in_between_delay)
+            time.sleep(10)
             loadboard_button.click()
             time.sleep(5)
 

@@ -217,3 +217,254 @@
 2025-04-21 13:29:40,748 - INFO - User token not found in cookies
 2025-04-21 13:30:13,375 - INFO - Attempting to locate loadboard navigation element
 2025-04-21 13:30:28,709 - INFO - Couldn't find loadboard button, navigating directly to loadboard URL
+2025-04-21 14:03:38,044 - INFO - User token found: 20b7603efa824ed8b03cd74570626c55
+2025-04-21 14:03:39,025 - INFO - Loads count: 100
+2025-04-21 14:03:41,637 - INFO - New loads to process: 100
+2025-04-21 14:09:54,606 - INFO - Loads count: 100
+2025-04-21 14:09:57,016 - INFO - New loads to process: 100
+2025-04-21 14:09:57,017 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,017 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,018 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,019 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,020 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,021 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,022 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,023 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,024 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,025 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty delivery data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty pickup data: {}
+2025-04-21 14:09:57,026 - WARNING - Empty delivery data: {}
+2025-04-21 14:11:52,972 - INFO - Loads count: 100
+2025-04-21 14:11:55,392 - INFO - New loads to process: 100
+2025-04-21 14:12:39,457 - INFO - Loads count: 100
+2025-04-21 14:12:41,963 - INFO - New loads to process: 100
+2025-04-21 14:13:10,036 - INFO - Loads count: 100
+2025-04-21 14:13:12,484 - INFO - New loads to process: 100
+2025-04-21 14:13:59,005 - INFO - Loads count: 100
+2025-04-21 14:14:01,575 - INFO - New loads to process: 100
+2025-04-21 14:15:01,175 - INFO - Loads count: 100
+2025-04-21 14:15:03,705 - INFO - New loads to process: 100
+2025-04-21 14:15:31,898 - INFO - Loads count: 100
+2025-04-21 14:15:34,312 - INFO - New loads to process: 100
+2025-04-21 14:57:06,327 - INFO - Loads count: 100
+2025-04-21 14:57:08,928 - INFO - New loads to process: 100
+2025-04-21 14:58:06,191 - INFO - Loads count: 100
+2025-04-21 14:58:08,704 - INFO - New loads to process: 100
+2025-04-21 15:04:24,632 - INFO - Loads count: 100
+2025-04-21 15:04:27,115 - INFO - New loads to process: 100
+2025-04-21 15:06:57,885 - INFO - Loads count: 100
+2025-04-21 15:07:00,372 - INFO - New loads to process: 100
+2025-04-21 15:11:03,295 - INFO - Loads count: 100
+2025-04-21 15:11:05,936 - INFO - New loads to process: 100
+2025-04-21 15:13:37,024 - INFO - Loads count: 100
+2025-04-21 15:13:39,532 - INFO - New loads to process: 100
+2025-04-21 15:16:18,926 - INFO - Loads count: 100
+2025-04-21 15:16:21,430 - INFO - New loads to process: 100
+2025-04-21 15:17:29,931 - INFO - Loads count: 100
+2025-04-21 15:17:32,344 - INFO - New loads to process: 100
+2025-04-21 15:18:24,415 - INFO - Loads inserted into DB
+2025-04-21 15:18:25,407 - INFO - Loads count: 100
+2025-04-21 15:18:25,705 - INFO - New loads to process: 95
+2025-04-21 15:19:29,114 - INFO - Loads count: 100
+2025-04-21 15:19:31,668 - INFO - New loads to process: 14
+2025-04-21 15:37:56,702 - INFO - Loads count: 100
+2025-04-21 15:37:59,326 - INFO - New loads to process: 100
+2025-04-21 15:46:05,489 - INFO - Loads count: 100
+2025-04-21 15:46:08,036 - INFO - New loads to process: 100
+2025-04-21 15:46:49,736 - INFO - Loads inserted into DB
+2025-04-21 15:46:50,738 - INFO - Loads count: 100
+2025-04-21 15:46:51,054 - INFO - New loads to process: 87
+2025-04-21 15:47:20,539 - INFO - Loads inserted into DB
+2025-04-21 15:47:21,555 - INFO - Loads count: 100
+2025-04-21 15:47:21,867 - INFO - New loads to process: 58
+2025-04-21 15:47:57,364 - INFO - Loads inserted into DB
+2025-04-21 15:47:58,370 - INFO - Loads count: 100
+2025-04-21 15:47:58,842 - INFO - New loads to process: 9
