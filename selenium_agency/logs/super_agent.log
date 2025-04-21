@@ -378,3 +378,117 @@
 2025-04-21 16:15:00,693 - INFO - Loads count: 100
 2025-04-21 16:16:03,399 - INFO - Loads count: 100
 2025-04-21 16:16:06,340 - INFO - New loads to process: 98
+2025-04-21 16:18:51,072 - WARNING - The chromedriver version (128.0.6613.119) detected in PATH at /usr/local/bin/chromedriver might not be compatible with the detected chrome version (135.0.7049.96); currently, chromedriver 135.0.7049.95 is recommended for chrome 135.*, so it is advised to delete the driver in PATH and retry
+2025-04-21 16:31:12,643 - INFO - User token not found in cookies
+2025-04-21 16:44:06,186 - INFO - User token not found in cookies
+2025-04-21 16:58:54,786 - INFO - User token not found in localStorage
+2025-04-21 17:00:20,539 - INFO - User token not found in localStorage
+2025-04-21 17:02:33,735 - INFO - User token not found in localStorage
+2025-04-21 17:04:19,059 - INFO - User token not found in localStorage
+2025-04-21 17:07:14,449 - INFO - User token found: {'clear': {}, 'getItem': {}, 'key': {}, 'length': 8, 'optimizely_data$$oeu1745240833267r0.2755279485726063$$22031524578$$contextual_mab': '{}', 'optimizely_data$$oeu1745240833267r0.2755279485726063$$22031524578$$layer_map': '{}', 'optimizely_data$$oeu1745240833267r0.2755279485726063$$22031524578$$layer_states': '[]', 'optimizely_data$$oeu1745240833267r0.2755279485726063$$22031524578$$session_state': '{"lastSessionTimestamp":1745240833268,"sessionId":"eaf6c761-1147-42eb-97b8-bd7286af2444"}', 'optimizely_data$$oeu1745240833267r0.2755279485726063$$22031524578$$tracker_optimizely': '{}', 'optimizely_data$$oeu1745240833267r0.2755279485726063$$22031524578$$variation_map': '{}', 'optimizely_data$$oeu1745240833267r0.2755279485726063$$22031524578$$visitor_profile': '{"profile":{"visitorId":"oeu1745240833267r0.2755279485726063","customBehavior":{},"first_session":true,"browserId":"gc","browserVersion":"135.0.0.0","device":"desktop","device_type":"desktop_laptop","referrer":"https://id.centraldispatch.com/","source_type":"referral"},"metadata":{"visitorId":{},"events":{},"customBehavior":{},"first_session":{},"browserId":{},"browserVersion":{},"device":{},"device_type":{},"referrer":{},"source_type":{}}}', 'optimizely_data$$pending_events': '{"2fbb8dc9-7a18-4789-b55d-29f463abebdf":{"id":"2fbb8dc9-7a18-4789-b55d-29f463abebdf","timeStamp":1745240834276,"data":{"url":"https://logx.optimizely.com/v1/events","method":"POST","data":{"account_id":"10829270344","anonymize_ip":true,"client_name":"js","client_version":"0.222.0","enrich_decisions":true,"project_id":"22031524578","revision":"572","visitors":[{"visitor_id":"oeu1745240833267r0.2755279485726063","session_id":"AUTO","attributes":[{"e":null,"k":"","t":"first_session","v":true},{"e":null,"k":"","t":"browserId","v":"gc"},{"e":null,"k":"","t":"device","v":"desktop"},{"e":null,"k":"","t":"device_type","v":"desktop_laptop"},{"e":null,"k":"","t":"referrer","v":"https://id.centraldispatch.com/"},{"e":null,"k":"","t":"source_type","v":"referral"}],"snapshots":[{"activationTimestamp":1745240833266,"decisions":[],"events":[{"e":null,"y":"client_activation","u":"786b3ef7-98a7-41c5-9f13-de8bea9efd2b","t":1745240833271}]}]}]}},"retryCount":1}}', 'removeItem': {}, 'setItem': {}}
+2025-04-21 17:11:17,034 - INFO - User token not found in localStorage
+2025-04-21 17:14:25,815 - INFO - User token not found in localStorage
+2025-04-21 17:16:43,559 - INFO - User token found: {"id_token":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjQ2M0VCNThGOEJBQ0Q5RThFQTVGNDBFRUNFMkZGNzkxIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2lkLmNlbnRyYWxkaXNwYXRjaC5jb20iLCJuYmYiOjE3NDUyNDEzOTgsImlhdCI6MTc0NTI0MTM5OCwiZXhwIjoxNzQ1MjQxNjk4LCJhdWQiOiJzaW5nbGVfc3BhX3Byb2RfY2xpZW50IiwiYW1yIjpbInB3ZCJdLCJhdF9oYXNoIjoiUkZHMzlMMFJBeWJwb2hBTk5ucUI4dyIsInNpZCI6IjQzRTA5N0E3MzU3QzRCQ0Y0NDk1MTc0MzNFQkM2MUQzIiwic3ViIjoiZDBzeGE2YWQiLCJhdXRoX3RpbWUiOjE3NDUyNDEzOTAsImlkcCI6ImxvY2FsIn0.BpCj8DVtEHCseyopOnimL_PVRsapgXXlj4VgaYuK4y1eLh-oRR6C9ELn2WuTCgaluucJrv1mfgt15yx7d4V9C3kXlfRsVmawLXKVAO_8kCjgLlROekA9OT3H2IL3NAIM7E71x2YUyOTFn33h2KB2kCWJ75vA6_NFUU8tRs4RXypi_Hf6zpEqgW3hepvLH7jsUuF9HslBQh03_30XuC3gN5Bx1T9G4BHroyIYr3sjDlx1ryHrmtxv_A-wHzokxrgJgfvR22Mte1VZnSVVOXxUMLd91rAtSoe4MwC1WjwGtpHdRrLMO5pi2J5J2adPClGg10L7koqFcAxPiL8uMyujYw","session_state":"o9I-o2X842WXcl4k1QMkEUF3AObc4q7C_s2YQh1N4Cs.573A8BEA89802CC58D17E8BA83ADF0A4","access_token":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjQ2M0VCNThGOEJBQ0Q5RThFQTVGNDBFRUNFMkZGNzkxIiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkLmNlbnRyYWxkaXNwYXRjaC5jb20iLCJuYmYiOjE3NDUyNDEzOTgsImlhdCI6MTc0NTI0MTM5OCwiZXhwIjoxNzQ1MjQzMTk4LCJhdWQiOlsibGlzdGluZ3Mtc2VhcmNoLWFwaSIsInVzZXJfbWFuYWdlbWVudF9iZmYiXSwic2NvcGUiOlsib3BlbmlkIiwibGlzdGluZ3Nfc2VhcmNoIiwidXNlcl9tYW5hZ2VtZW50X2JmZiJdLCJhbXIiOlsicHdkIl0sImNsaWVudF9pZCI6InNpbmdsZV9zcGFfcHJvZF9jbGllbnQiLCJzdWIiOiJkMHN4YTZhZCIsImF1dGhfdGltZSI6MTc0NTI0MTM5MCwiaWRwIjoibG9jYWwiLCJ1c2VybmFtZSI6ImQwc3hhNmFkIiwidGllckdyb3VwIjoiQ2FycmllciIsImNvbXBhbnlOYW1lIjoiREFORUxBIFRSQU5TUE9SVEFUSU9OIENPUlAiLCJjdXN0b21lcklkIjoiM2M1YjQyYWItZWMxMy00ZTAxLTliNDQtNzVlMTMwNjlhNDNkIiwiYWN0aXZhdGlvbkRhdGUiOiIyMDI1LTA0LTE0IDEzOjEzOjEwIiwiYWNjb3VudFN0YXR1cyI6IkFjdGl2ZSIsImlzQWN0aXZlIjp0cnVlLCJ1c2VySWQiOiJhNWQxYjE3Zi1mMmRjLTQzZjEtYjZkZS0zMDQ0MTRkMTkyNGQiLCJyb2xlcyI6WyJPV05FUiJdLCJtYXJrZXRQbGFjZUlkcyI6WzEwMDAwXSwibWFya2V0cGxhY2VzIjpbeyJNYXJrZXRwbGFjZUlkIjoxMDAwMCwiQWN0aXZlIjp0cnVlLCJSZWFzb25Db2RlIjoiQ29tcGxldGUvQWN0aXZhdGVkIn1dLCJudW1iZXJPZkFjY291bnRzIjoiMSIsImxvZ2luVXNlcm5hbWUiOiJEYW5lbGFUcmFuc3BvcnRhdGlvbkNvcnAiLCJmaXJzdE5hbWUiOiJCRVNBUklPTiIsImxhc3ROYW1lIjoiREFORUxJQSIsImVtYWlsIjoiZGFuZWxhdHJhbnNwb3J0YXRpb25jb3JwQGdtYWlsLmNvbSIsInByb2R1Y3RzIjpbeyJQcm9kdWN0SWQiOiI2MTcyYmVhMC1kOGFhLTRhZWEtODk2OC0wOTg1NzgxZDUyZmUiLCJNYXJrZXRwbGFjZUlkIjoxMDAwMCwiUHJvZHVjdFN0YXR1c0tleSI6ImFjdGl2ZSJ9XSwibWZhRXhwaXJhdGlvbiI6IjE3NDUyNDQ5OTAiLCJwYXJ0bmVySWQiOiIiLCJzaWQiOiI0M0UwOTdBNzM1N0M0QkNGNDQ5NTE3NDMzRUJDNjFEMyJ9.IpCCJwwqYDysz0HL4QM0XiDf08F1TEIerkhBsdSK2T7uK2uYS7UvdfDqMX-nLPbEMj9zKHrFXmfsoyUcGn8vX2QOPHFVsNe9Fx42NUUQ8FDFGDa3D2bUYxXmEcSTTJdoVV_9pdtotzou4KPrx1iOAdxt8YLvgCTmaX91KD0qd9Ipw5pxSAB6xh2mN0X9Uv2txV4PYliMsg-trRS8XSpA1rLpsvId1V768Z4NhEQxyJ2MNXnMudIGy1gykfongPNQqKBL5GLVai-uNc1PaZrMZHfhNX-oi5u2lGrIYhqs-DkuwHvY6bB4xPVKhw3BtbaHAmAuqnIqaXTvHqsbXpGhqQ","token_type":"Bearer","scope":"openid listings_search user_management_bff","profile":{"amr":["pwd"],"sid":"43E097A7357C4BCF449517433EBC61D3","sub":"d0sxa6ad","auth_time":1745241390,"idp":"local","username":"d0sxa6ad","tierGroup":"Carrier","companyName":"DANELA TRANSPORTATION CORP","customerId":"3c5b42ab-ec13-4e01-9b44-75e13069a43d","activationDate":"2025-04-14 13:13:10","accountStatus":"Active","isActive":true,"userId":"a5d1b17f-f2dc-43f1-b6de-304414d1924d","roles":"OWNER","marketPlaceIds":10000,"marketplaces":{"MarketplaceId":10000,"Active":true,"ReasonCode":"Complete/Activated"},"numberOfAccounts":"1","loginUsername":"DanelaTransportationCorp","firstName":"BESARION","lastName":"DANELIA","email":"danelatransportationcorp@gmail.com","products":{"ProductId":"6172bea0-d8aa-4aea-8968-0985781d52fe","MarketplaceId":10000,"ProductStatusKey":"active"},"mfaExpiration":"1745244990","partnerId":""},"expires_at":1745243198}
+2025-04-21 17:22:27,037 - INFO - User token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjQ2M0VCNThGOEJBQ0Q5RThFQTVGNDBFRUNFMkZGNzkxIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2lkLmNlbnRyYWxkaXNwYXRjaC5jb20iLCJuYmYiOjE3NDUyNDE3MzYsImlhdCI6MTc0NTI0MTczNiwiZXhwIjoxNzQ1MjQyMDM2LCJhdWQiOiJzaW5nbGVfc3BhX3Byb2RfY2xpZW50IiwiYW1yIjpbInB3ZCJdLCJhdF9oYXNoIjoicDFlakFORWprN0hkWDMwcVJXdlczQSIsInNpZCI6IjZERDA3RjA1QjIyRjE5MUVBNzgwRUVENTM1Q0JCOTc2Iiwic3ViIjoiZDBzeGE2YWQiLCJhdXRoX3RpbWUiOjE3NDUyNDE3MjgsImlkcCI6ImxvY2FsIn0.g2QzPDyG2bREnqZCTLUA1crDVrb5ZKSkgmetOa7_O4fK2MQvTd2jkl8DdFejpo2IJ7JMqEUN0YbjDUdfn1yK31DRdjBGpLIZH_26HOXZFnFIVyyiPkIZRwHOEK4x3nxrfpB7PTg03PiyT263pWqj6SKtd8ESw6UYPYBCt5gaEvjGPox6g02JYb_N39vmNkb9CADKaJ6aH9APg1etMz1Q-U5VdFCtGmTqde47Y6n4C5VG2Xt7L0pQFTQ-8lYPX4XHpUfIpEiyGMWXHQNX5m03sWr4dturrH1nmycdWI_q7YHMl2ddf79aaFav8SWHEmyjI2C_OcpO2rjz4XGca7j41Q
+2025-04-21 17:24:55,517 - INFO - User token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjQ2M0VCNThGOEJBQ0Q5RThFQTVGNDBFRUNFMkZGNzkxIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2lkLmNlbnRyYWxkaXNwYXRjaC5jb20iLCJuYmYiOjE3NDUyNDE4ODQsImlhdCI6MTc0NTI0MTg4NCwiZXhwIjoxNzQ1MjQyMTg0LCJhdWQiOiJzaW5nbGVfc3BhX3Byb2RfY2xpZW50IiwiYW1yIjpbInB3ZCJdLCJhdF9oYXNoIjoiMWhLSnluc284X3A0YW5YUDAxeGMyQSIsInNpZCI6IjI2RDU1MDYxQjM1RjVDMjcyOTQ3MEIxMEU0OUI1MUJCIiwic3ViIjoiZDBzeGE2YWQiLCJhdXRoX3RpbWUiOjE3NDUyNDE4NzcsImlkcCI6ImxvY2FsIn0.gf-oWCRMwk-NnRuOpfQlvs6r6kdFGBs-z4bpNaWx9bgqm2iVy6xgVClOyrpVOTAYmPNH7jXQkmbnOcIZ_Ka2pQCKRNlO6qYhMvzEvm6BANlbfJb0CiaK_ztOM50nniEB81R5p-JZg4IbpoJz2LrtT5J5Ob_DB1mNex1Y8iDOkSNbTfoVQFprDZRTv9rXZFnVqSBy7fFIY7gSFo52gI8o6RuIDVMSwIH5vzZPEhzCRmalIUU5kc91sdurAg9i0dbCfKlY6hC0q8AJ0Qz6Ph0GyDd_OC9ZaqFJ89LY9X1HD8xh5SGZ9iT0iBZOulkfdZNPGObvUAlhh7IlzMDAph4ynA
+2025-04-21 17:30:09,100 - INFO - User token found: eyJhbGciOiJSUzI1NiIsImtpZCI6IjQ2M0VCNThGOEJBQ0Q5RThFQTVGNDBFRUNFMkZGNzkxIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2lkLmNlbnRyYWxkaXNwYXRjaC5jb20iLCJuYmYiOjE3NDUyNDIxOTgsImlhdCI6MTc0NTI0MjE5OCwiZXhwIjoxNzQ1MjQyNDk4LCJhdWQiOiJzaW5nbGVfc3BhX3Byb2RfY2xpZW50IiwiYW1yIjpbInB3ZCJdLCJhdF9oYXNoIjoialgwUlNMNU50Wm5feUQtendVQmo1QSIsInNpZCI6IjkwQTk1RjhBMUNGOEE5QkE3RDZGQTAxQTM1RTgzRjZBIiwic3ViIjoiZDBzeGE2YWQiLCJhdXRoX3RpbWUiOjE3NDUyNDIxOTAsImlkcCI6ImxvY2FsIn0.kgTaHtuM-_S22ywvb2EINYdCUIo_jQD8ldO9bhe91cGJTlj79dpXDWYNNUA-qx_meHIYbgbLoNV8AYRszXBl1nWxUUGgS9RTrf0lx7Hdubc5v_0P6bbZX8WR19e4ciQTJO4PWzGGay96bdTY7DANHHiHUAqB1F-QZ9V2KwRG_MvMHBXdWRmScIp20cbKBJjjwFzes4mPkCnaEn30UH9WFaSytO4UZA_JLBHmUTOZAJV4BKMoG2T_1QnMvpAJ5HdqMm3nEV1HZClT6j8zKFNNTnu05_-jSmj6g0n9WNMADPHeg22V7oDXiCHsACI8JvotxTpioVnovF-YHU5O99JaVA
+2025-04-21 19:17:41,417 - INFO - Loads count: 100
+2025-04-21 19:21:42,759 - INFO - New loads to process: 100
+2025-04-21 19:21:45,453 - INFO - Loads inserted into DB
+2025-04-21 19:21:46,689 - INFO - New loads to process: 100
+2025-04-21 19:21:49,209 - INFO - Loads inserted into DB
+2025-04-21 19:21:50,359 - INFO - New loads to process: 100
+2025-04-21 19:21:52,886 - INFO - Loads inserted into DB
+2025-04-21 19:21:54,049 - INFO - New loads to process: 100
+2025-04-21 19:21:56,572 - INFO - Loads inserted into DB
+2025-04-21 19:21:57,908 - INFO - New loads to process: 100
+2025-04-21 19:22:00,427 - INFO - Loads inserted into DB
+2025-04-21 19:22:01,751 - INFO - New loads to process: 100
+2025-04-21 19:22:04,318 - INFO - Loads inserted into DB
+2025-04-21 19:22:05,663 - INFO - New loads to process: 100
+2025-04-21 19:22:08,197 - INFO - Loads inserted into DB
+2025-04-21 19:22:09,530 - INFO - New loads to process: 100
+2025-04-21 19:22:12,533 - INFO - Loads inserted into DB
+2025-04-21 19:22:13,839 - INFO - New loads to process: 100
+2025-04-21 19:22:16,373 - INFO - Loads inserted into DB
+2025-04-21 19:22:17,988 - INFO - New loads to process: 100
+2025-04-21 19:22:20,512 - INFO - Loads inserted into DB
+2025-04-21 19:22:22,360 - INFO - New loads to process: 100
+2025-04-21 19:22:24,901 - INFO - Loads inserted into DB
+2025-04-21 19:22:26,234 - INFO - New loads to process: 100
+2025-04-21 19:22:28,757 - INFO - Loads inserted into DB
+2025-04-21 19:22:30,100 - INFO - New loads to process: 100
+2025-04-21 19:22:32,625 - INFO - Loads inserted into DB
+2025-04-21 19:22:34,021 - INFO - New loads to process: 100
+2025-04-21 19:22:37,017 - INFO - Loads inserted into DB
+2025-04-21 19:22:38,607 - INFO - New loads to process: 100
+2025-04-21 19:22:41,123 - INFO - Loads inserted into DB
+2025-04-21 19:22:42,447 - INFO - New loads to process: 100
+2025-04-21 19:22:44,980 - INFO - Loads inserted into DB
+2025-04-21 19:22:46,283 - INFO - New loads to process: 100
+2025-04-21 19:22:48,804 - INFO - Loads inserted into DB
+2025-04-21 19:22:50,156 - INFO - New loads to process: 100
+2025-04-21 19:22:52,677 - INFO - Loads inserted into DB
+2025-04-21 19:22:54,048 - INFO - New loads to process: 100
+2025-04-21 19:22:56,566 - INFO - Loads inserted into DB
+2025-04-21 19:22:58,026 - INFO - New loads to process: 100
+2025-04-21 19:23:00,547 - INFO - Loads inserted into DB
+2025-04-21 19:23:01,875 - INFO - New loads to process: 100
+2025-04-21 19:23:04,406 - INFO - Loads inserted into DB
+2025-04-21 19:23:05,764 - INFO - New loads to process: 100
+2025-04-21 19:23:08,297 - INFO - Loads inserted into DB
+2025-04-21 19:23:09,674 - INFO - New loads to process: 100
+2025-04-21 19:23:12,198 - INFO - Loads inserted into DB
+2025-04-21 19:23:13,794 - INFO - New loads to process: 100
+2025-04-21 19:23:16,345 - INFO - Loads inserted into DB
+2025-04-21 19:37:41,687 - INFO - New loads to process: 250
+2025-04-21 19:37:46,077 - INFO - Loads inserted into DB
+2025-04-21 19:37:47,737 - INFO - New loads to process: 250
+2025-04-21 19:37:50,956 - INFO - Loads inserted into DB
+2025-04-21 19:37:53,020 - INFO - New loads to process: 250
+2025-04-21 19:37:55,827 - INFO - Loads inserted into DB
+2025-04-21 19:37:57,470 - INFO - New loads to process: 250
+2025-04-21 19:38:00,063 - INFO - Loads inserted into DB
+2025-04-21 19:38:01,638 - INFO - New loads to process: 250
+2025-04-21 19:38:05,255 - INFO - Loads inserted into DB
+2025-04-21 19:38:07,141 - INFO - New loads to process: 250
+2025-04-21 19:38:10,560 - INFO - Loads inserted into DB
+2025-04-21 19:38:12,353 - INFO - New loads to process: 250
+2025-04-21 19:38:15,879 - INFO - Loads inserted into DB
+2025-04-21 19:38:17,640 - INFO - New loads to process: 250
+2025-04-21 19:38:20,371 - INFO - Loads inserted into DB
+2025-04-21 19:38:22,401 - INFO - New loads to process: 250
+2025-04-21 19:38:25,137 - INFO - Loads inserted into DB
+2025-04-21 19:38:26,930 - INFO - New loads to process: 250
+2025-04-21 19:38:29,518 - INFO - Loads inserted into DB
+2025-04-21 19:38:31,428 - INFO - New loads to process: 250
+2025-04-21 19:38:34,009 - INFO - Loads inserted into DB
+2025-04-21 19:38:36,461 - INFO - New loads to process: 250
+2025-04-21 19:38:39,100 - INFO - Loads inserted into DB
+2025-04-21 19:38:40,931 - INFO - New loads to process: 250
+2025-04-21 19:38:43,516 - INFO - Loads inserted into DB
+2025-04-21 19:38:45,240 - INFO - New loads to process: 250
+2025-04-21 19:38:47,884 - INFO - Loads inserted into DB
+2025-04-21 19:38:49,727 - INFO - New loads to process: 250
+2025-04-21 19:38:52,308 - INFO - Loads inserted into DB
+2025-04-21 19:38:54,513 - INFO - New loads to process: 250
+2025-04-21 19:38:57,152 - INFO - Loads inserted into DB
+2025-04-21 19:38:58,878 - INFO - New loads to process: 250
+2025-04-21 19:39:01,454 - INFO - Loads inserted into DB
+2025-04-21 19:39:03,266 - INFO - New loads to process: 250
+2025-04-21 19:39:05,863 - INFO - Loads inserted into DB
+2025-04-21 19:39:09,001 - INFO - New loads to process: 250
+2025-04-21 19:39:12,538 - INFO - Loads inserted into DB
+2025-04-21 19:39:14,266 - INFO - New loads to process: 250
+2025-04-21 19:39:17,790 - INFO - Loads inserted into DB
+2025-04-21 19:39:19,586 - INFO - New loads to process: 250
+2025-04-21 19:39:22,317 - INFO - Loads inserted into DB
+2025-04-21 19:39:24,185 - INFO - New loads to process: 250
+2025-04-21 19:39:26,944 - INFO - Loads inserted into DB
+2025-04-21 19:39:29,107 - INFO - New loads to process: 250
+2025-04-21 19:39:31,690 - INFO - Loads inserted into DB
+2025-04-21 19:39:34,062 - INFO - New loads to process: 250
+2025-04-21 19:39:36,636 - INFO - Loads inserted into DB
+2025-04-21 19:39:38,683 - INFO - New loads to process: 250
+2025-04-21 19:39:42,236 - INFO - Loads inserted into DB
+2025-04-21 19:39:44,585 - INFO - New loads to process: 250

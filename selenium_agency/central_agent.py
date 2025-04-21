@@ -2,6 +2,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from geoalchemy2.elements import WKTElement
+from test import make_request
 from handlers import PeliasHandler
 import logging
 from resources.models import LoadModel, get_db
@@ -13,8 +14,8 @@ from selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
 from gmail_verify import get_otp_from_gmail
 from api_client import APIClient
-from super_cache import SuperCacheService
-
+from central_cache import CentralCacheService
+import json
 
 load_dotenv()
 
@@ -36,7 +37,7 @@ logger = logging.getLogger(__name__)
 class CentralAgent:
 
     __selenium_driver = SeleniumDriver()
-    __origin = "https://carrier.superdispatch.com"
+    __origin = ""
 
     def __init__(self):
         self.__selenium_driver.initialize_driver()
@@ -45,7 +46,7 @@ class CentralAgent:
         self._email = os.getenv("CENTRAL_USER")
         self._password = os.getenv("CENTRAL_PASSWORD")
         self.__api_client = APIClient(url='', origin=self.__origin)
-        self.__cache_service = SuperCacheService()
+        self.__cache_service = CentralCacheService()
         self.__db_Session = next(get_db())
         self.__page = 0
         self.__pelias_handler = PeliasHandler()
@@ -105,21 +106,25 @@ class CentralAgent:
             """)
         return load_model_instance
 
-    def __get_token(self):
+    def __set_token(self):
+        print('getting token')
         if not self.__driver:
             return None
-        cookies = self.__driver.get_cookies()
-        user_token = None
-        for cookie in cookies:
-            if cookie['name'] == 'userToken':
-                user_token = cookie['value']
-                break
-        if user_token:
-            logger.info(f"User token found: {user_token}")
+        # Execute JavaScript to get token from localStorage
+        user_token = self.__driver.execute_script(
+                "return window.localStorage.getItem('oidc.user:https://id.centraldispatch.com:single_spa_prod_client');"
+            )
+        try:
+            user_token = json.loads(user_token)['access_token'] if user_token else None
+        except json.JSONDecodeError:
+            user_token = None
+
+        if user_token is not None:
+            print('setting token')
             self.__cache_service.set_token(user_token)
             return user_token
         else:
-            logger.info("User token not found in cookies")
+            logger.info("User token not found in localStorage")
             self.__needs_authorizaton = True
             return None
 
@@ -160,62 +165,63 @@ class CentralAgent:
             button = wait.until(
                 EC.element_to_be_clickable((By.ID, "submitButton")))
             button.click()
-            time.sleep(200)
+            time.sleep(15)
+            self.__set_token()
 
-            self.__get_token()
 
     def __start_filling_db_cycle(self, in_between_delay=1):
+        print('here')
         token = self.__cache_service.get_token()
-        loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",
-                                                token=token,
-                                                payload={
-                                                    'vehicleCount': {
-                                                        'min': 1,
-                                                        'max': None,
-                                                    },
-                                                    'postedWithinHours': None,
-                                                    'tagListingsPostedWithin': 2,
-                                                    'trailerTypes': [],
-                                                    'paymentTypes': [],
-                                                    'vehicleTypes': [],
-                                                    'operability': 'All',
-                                                    'minimumPaymentTotal': None,
-                                                    'readyToShipWithinDays': None,
-                                                    'minimumPricePerMile': None,
-                                                    'offset': 0,
-                                                    'limit': 10,
-                                                    'sortFields': [
-                                                        {
-                                                            'name': 'PICKUP',
-                                                            'direction': 'ASC',
-                                                        },
-                                                        {
-                                                            'name': 'DELIVERYMETROAREA',
-                                                            'direction': 'ASC',
-                                                        },
-                                                    ],
-                                                    'shipperIds': [],
-                                                    'desiredDeliveryDate': None,
-                                                    'displayBlockedShippers': False,
-                                                    'showPreferredShippersOnly': False,
-                                                    'showTaggedOnTop': False,
-                                                    'marketplaceIds': [],
-                                                    'averageRating': 'All',
-                                                    'requestType': 'Open',
-                                                    'locations': [],
-                                                })
+        # loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",
+        #                                         token=f'Bearer {token}',
+        #                                         payload={
+        #                                             'vehicleCount': {
+        #                                                 'min': 1,
+        #                                                 'max': None,
+        #                                             },
+        #                                             'postedWithinHours': None,
+        #                                             'tagListingsPostedWithin': 2,
+        #                                             'trailerTypes': [],
+        #                                             'paymentTypes': [],
+        #                                             'vehicleTypes': [],
+        #                                             'operability': 'All',
+        #                                             'minimumPaymentTotal': None,
+        #                                             'readyToShipWithinDays': None,
+        #                                             'minimumPricePerMile': None,
+        #                                             'offset': 0,
+        #                                             'limit': 100,
+        #                                             'sortFields': [
+        #                                                 {
+        #                                                     'name': 'PICKUP',
+        #                                                     'direction': 'ASC',
+        #                                                 },
+        #                                                 {
+        #                                                     'name': 'DELIVERYMETROAREA',
+        #                                                     'direction': 'ASC',
+        #                                                 },
+        #                                             ],
+        #                                             'shipperIds': [],
+        #                                             'desiredDeliveryDate': None,
+        #                                             'displayBlockedShippers': False,
+        #                                             'showPreferredShippersOnly': False,
+        #                                             'showTaggedOnTop': False,
+        #                                             'marketplaceIds': [],
+        #                                             'averageRating': 'All',
+        #                                             'requestType': 'Open',
+        #                                             'locations': [],
+        #                                         })
+        loads_response = make_request(token)
+        print(loads_response)
         if loads_response.status_code == 401:
             self.__cache_service.clear_all()
             return
 
-        loads = loads_response.json()['data']
-        logger.info(f"Loads count: {len(loads)}")
+        loads = loads_response.json()['items']
         existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(
             LoadModel.external_load_id).all()}
         # print(existing_load_ids)
 
-        loads = [load for load in loads if load.get(
-            'load').get('guid') not in existing_load_ids]
+        loads = [load for load in loads if load.get('id') not in existing_load_ids]
         logger.info(f"New loads to process: {len(loads)}")
         print(loads)
         if len(loads) > 0:

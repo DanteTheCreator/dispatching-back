@@ -84,5 +84,3 @@ def get_otp_from_gmail(subject):
         mail.logout()
 
 
-#get_otp_from_gmail("Super Dispatch Verification Code")
-get_otp_from_gmail('Central Dispatch')
