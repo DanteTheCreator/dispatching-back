@@ -58,7 +58,7 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
 
     # Generate a token (for simplicity, using the API key as a token here)
     token = API_KEY
-    return {"token": token}
+    return {"token": token, "dispatcher_id": user.id}
 
 
 @app.get("/get_profile/{dispatcher_id}", dependencies=[Depends(get_api_key)])
