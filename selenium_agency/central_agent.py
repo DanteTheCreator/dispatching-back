@@ -12,8 +12,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
-from gmail_verify import get_otp_from_gmail
+from gmail_verify import get_otp_from_gmail_central
 from api_client import APIClient
+from central_api_client import CentralAPIClient
 from central_cache import CentralCacheService
 import json
 
@@ -45,11 +46,11 @@ class CentralAgent:
         # Your Gmail credentials
         self._email = os.getenv("CENTRAL_USER")
         self._password = os.getenv("CENTRAL_PASSWORD")
-        self.__api_client = APIClient(url='', origin=self.__origin)
+        #self.__api_client = APIClient(url='', origin=self.__origin)
+        self.__api_client = CentralAPIClient()
         self.__cache_service = CentralCacheService()
         self.__db_Session = next(get_db())
         self.__page = 0
-        self.__pelias_handler = PeliasHandler()
 
     def __format_and_get_load_model(self, load):
         if not load:
@@ -156,7 +157,7 @@ class CentralAgent:
                 EC.element_to_be_clickable((By.ID, "sendCodeButton")))
             send_code_button.click()
             time.sleep(5)
-            otp = get_otp_from_gmail('Central Dispatch')
+            otp = get_otp_from_gmail_central('Central Dispatch')
             otp_field = wait.until(
                 EC.element_to_be_clickable((By.ID, "VerificationCode")))
             time.sleep(in_between_delay)
@@ -172,47 +173,47 @@ class CentralAgent:
     def __start_filling_db_cycle(self, in_between_delay=1):
         print('here')
         token = self.__cache_service.get_token()
-        # loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",
-        #                                         token=f'Bearer {token}',
-        #                                         payload={
-        #                                             'vehicleCount': {
-        #                                                 'min': 1,
-        #                                                 'max': None,
-        #                                             },
-        #                                             'postedWithinHours': None,
-        #                                             'tagListingsPostedWithin': 2,
-        #                                             'trailerTypes': [],
-        #                                             'paymentTypes': [],
-        #                                             'vehicleTypes': [],
-        #                                             'operability': 'All',
-        #                                             'minimumPaymentTotal': None,
-        #                                             'readyToShipWithinDays': None,
-        #                                             'minimumPricePerMile': None,
-        #                                             'offset': 0,
-        #                                             'limit': 100,
-        #                                             'sortFields': [
-        #                                                 {
-        #                                                     'name': 'PICKUP',
-        #                                                     'direction': 'ASC',
-        #                                                 },
-        #                                                 {
-        #                                                     'name': 'DELIVERYMETROAREA',
-        #                                                     'direction': 'ASC',
-        #                                                 },
-        #                                             ],
-        #                                             'shipperIds': [],
-        #                                             'desiredDeliveryDate': None,
-        #                                             'displayBlockedShippers': False,
-        #                                             'showPreferredShippersOnly': False,
-        #                                             'showTaggedOnTop': False,
-        #                                             'marketplaceIds': [],
-        #                                             'averageRating': 'All',
-        #                                             'requestType': 'Open',
-        #                                             'locations': [],
-        #                                         })
-        loads_response = make_request(token)
+        self.__api_client.set_authorization_header(token)
+        loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",
+                                                payload={
+                                                    'vehicleCount': {
+                                                        'min': 1,
+                                                        'max': None,
+                                                    },
+                                                    'postedWithinHours': None,
+                                                    'tagListingsPostedWithin': 2,
+                                                    'trailerTypes': [],
+                                                    'paymentTypes': [],
+                                                    'vehicleTypes': [],
+                                                    'operability': 'All',
+                                                    'minimumPaymentTotal': None,
+                                                    'readyToShipWithinDays': None,
+                                                    'minimumPricePerMile': None,
+                                                    'offset': 0,
+                                                    'limit': 10000,
+                                                    'sortFields': [
+                                                        {
+                                                            'name': 'PICKUP',
+                                                            'direction': 'ASC',
+                                                        },
+                                                        {
+                                                            'name': 'DELIVERYMETROAREA',
+                                                            'direction': 'ASC',
+                                                        },
+                                                    ],
+                                                    'shipperIds': [],
+                                                    'desiredDeliveryDate': None,
+                                                    'displayBlockedShippers': False,
+                                                    'showPreferredShippersOnly': False,
+                                                    'showTaggedOnTop': False,
+                                                    'marketplaceIds': [],
+                                                    'averageRating': 'All',
+                                                    'requestType': 'Open',
+                                                    'locations': [],
+                                                })
+        #loads_response = make_request(token)
         print(loads_response)
-        if loads_response.status_code == 401:
+        if loads_response.status_code == 401 or loads_response.status_code == 403:
             self.__cache_service.clear_all()
             return
 
@@ -221,7 +222,26 @@ class CentralAgent:
             LoadModel.external_load_id).all()}
         # print(existing_load_ids)
 
-        loads = [load for load in loads if load.get('id') not in existing_load_ids]
+        # First filter out loads already in the database
+        loads = [load for load in loads if str(load.get('id')) not in existing_load_ids]
+
+        # Then filter out duplicates based on price, milage, pickup and delivery locations
+        unique_loads = {}
+        for load in loads:
+            # Create a key from the attributes we want to check for duplicates
+            key = (
+                load['price']['total'],
+                load.get('distance', 0),
+                f"{load['origin']['city']}, {load['origin']['state']} {load['origin']['zip']}",
+                f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
+            )
+            
+            # Only add the load if we haven't seen this combination before
+            if key not in unique_loads:
+                unique_loads[key] = load
+
+        # Convert back to a list
+        loads = list(unique_loads.values())
         logger.info(f"New loads to process: {len(loads)}")
         print(loads)
         if len(loads) > 0:
@@ -234,6 +254,7 @@ class CentralAgent:
             time.sleep(in_between_delay)
             logger.info("Loads inserted into DB")
         self.__page += 1
+        time.sleep(10)
 
     def run(self):
         while True:

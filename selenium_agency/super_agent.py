@@ -5,8 +5,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
 import os
-from gmail_verify import get_otp_from_gmail
+from gmail_verify import get_otp_from_gmail_super
 from api_client import APIClient
+from super_api_client import SuperAPIClient
 from super_cache import SuperCacheService
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -36,7 +37,6 @@ logger = logging.getLogger(__name__)
 class SuperAgent:
 
     __selenium_driver = SeleniumDriver()
-    __origin = "https://carrier.superdispatch.com"
 
     def __init__(self):
         self.__selenium_driver.initialize_driver()
@@ -44,11 +44,10 @@ class SuperAgent:
         # Your Gmail credentials
         self._email = os.getenv("EMAIL")
         self._password = os.getenv("PASSWORD_SUPER")
-        self.__api_client = APIClient(url="https://api.loadboard.superdispatch.com", origin=self.__origin)
+        self.__api_client = SuperAPIClient()
         self.__cache_service = SuperCacheService()
         self.__db_Session =  next(get_db())
         self.__page = 0
-        self.__pelias_handler = PeliasHandler()
         self.__bulk_request_handler = BulkRequestHandler()
 
     def __format_and_get_load_model(self, load):
@@ -92,16 +91,6 @@ class SuperAgent:
             """)
         return load_model_instance
 
-    def __get_location_coordinates(self, location_str):
-        time.sleep(0.5)
-        response = self.__pelias_handler.get(url="/v1/search", params={"text": location_str})
-        if response.status_code == 200:
-            data = response.json()
-            if data.get('features') and len(data['features']) > 0:
-                coordinates = data['features'][0]['geometry']['coordinates']
-                return coordinates
-        return None
-    
     def __format_pickup_location(self, pickup_data):
         if not pickup_data or not pickup_data.get('venue'):
             return ''
@@ -183,7 +172,7 @@ class SuperAgent:
             #waiting for the page to load and verification code to arrive
             time.sleep(10)
 
-            otp = get_otp_from_gmail('Super Dispatch Verification Code')
+            otp = get_otp_from_gmail_super('Super Dispatch Verification Code')
 
             time.sleep(in_between_delay)
 
@@ -207,6 +196,7 @@ class SuperAgent:
     def __start_filling_db_cycle(self, in_between_delay=1):
         print("start filling db cycle")
         token = self.__cache_service.get_token()
+        self.__api_client.set_authorization_header(token)
         loads_response = self.__api_client.post("/internal/v3/loads/search", 
                             token=token, 
                             payload={},
@@ -217,11 +207,36 @@ class SuperAgent:
         
         loads = loads_response.json()['data']
         logger.info(f"Loads count: {len(loads)}")
+        
+        # First filter out loads already in the database
         existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(LoadModel.external_load_id).all()}
-        # print(existing_load_ids)
-
         loads = [load for load in loads if load.get('load').get('guid') not in existing_load_ids]
-        logger.info(f"New loads to process: {len(loads)}")
+        
+        # Then filter out duplicates based on price, mileage, pickup and delivery locations
+        unique_loads = {}
+        for load in loads:
+            # Create a key from the attributes we want to check for duplicates
+            pickup_venue = load.get('load', {}).get('pickup', {}).get('venue', {})
+            delivery_venue = load.get('load', {}).get('delivery', {}).get('venue', {})
+            
+            pickup_location = f"{pickup_venue.get('city', '')}, {pickup_venue.get('state', '')} {pickup_venue.get('zip', '')}"
+            delivery_location = f"{delivery_venue.get('city', '')}, {delivery_venue.get('state', '')} {delivery_venue.get('zip', '')}"
+            
+            key = (
+                load.get('load', {}).get('price', 0),
+                load.get('load', {}).get('distance_meters', 0),
+                pickup_location,
+                delivery_location
+            )
+            
+            # Only add the load if we haven't seen this combination before
+            if key not in unique_loads:
+                unique_loads[key] = load
+        
+        # Convert back to a list
+        loads = list(unique_loads.values())
+        
+        logger.info(f"New loads to process after deduplication: {len(loads)}")
         
         self.__batch_save_loads(loads, in_between_delay=in_between_delay)
 

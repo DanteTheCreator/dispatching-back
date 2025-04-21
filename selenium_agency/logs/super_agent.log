@@ -492,3 +492,291 @@
 2025-04-21 19:39:38,683 - INFO - New loads to process: 250
 2025-04-21 19:39:42,236 - INFO - Loads inserted into DB
 2025-04-21 19:39:44,585 - INFO - New loads to process: 250
+2025-04-21 19:47:23,662 - INFO - User token found: 11182352553d44ada5eff66a2eb729c8
+2025-04-21 20:02:47,643 - INFO - Loads count: 100
+2025-04-21 20:02:51,875 - INFO - New loads to process: 76
+2025-04-21 20:03:23,501 - INFO - Loads inserted into DB
+2025-04-21 20:03:24,523 - INFO - Loads count: 100
+2025-04-21 20:03:26,027 - INFO - New loads to process: 76
+2025-04-21 20:09:12,353 - INFO - Loads count: 100
+2025-04-21 20:09:16,521 - INFO - New loads to process: 96
+2025-04-21 20:14:51,875 - INFO - New loads to process: 100
+2025-04-21 20:14:54,606 - INFO - Loads inserted into DB
+2025-04-21 20:14:56,510 - INFO - New loads to process: 100
+2025-04-21 20:14:59,035 - INFO - Loads inserted into DB
+2025-04-21 20:15:00,931 - INFO - New loads to process: 100
+2025-04-21 20:15:03,462 - INFO - Loads inserted into DB
+2025-04-21 20:15:05,326 - INFO - New loads to process: 100
+2025-04-21 20:15:07,845 - INFO - Loads inserted into DB
+2025-04-21 20:15:09,604 - INFO - New loads to process: 100
+2025-04-21 20:15:12,121 - INFO - Loads inserted into DB
+2025-04-21 20:15:13,738 - INFO - New loads to process: 100
+2025-04-21 20:15:16,252 - INFO - Loads inserted into DB
+2025-04-21 20:15:17,885 - INFO - New loads to process: 100
+2025-04-21 20:15:20,402 - INFO - Loads inserted into DB
+2025-04-21 20:15:22,049 - INFO - New loads to process: 100
+2025-04-21 20:15:24,567 - INFO - Loads inserted into DB
+2025-04-21 20:15:26,271 - INFO - New loads to process: 100
+2025-04-21 20:15:28,796 - INFO - Loads inserted into DB
+2025-04-21 20:15:30,744 - INFO - New loads to process: 100
+2025-04-21 20:15:33,267 - INFO - Loads inserted into DB
+2025-04-21 20:15:34,947 - INFO - New loads to process: 100
+2025-04-21 20:15:37,470 - INFO - Loads inserted into DB
+2025-04-21 20:15:39,139 - INFO - New loads to process: 100
+2025-04-21 20:15:41,665 - INFO - Loads inserted into DB
+2025-04-21 20:15:43,244 - INFO - New loads to process: 100
+2025-04-21 20:15:45,767 - INFO - Loads inserted into DB
+2025-04-21 20:15:47,678 - INFO - New loads to process: 100
+2025-04-21 20:15:50,195 - INFO - Loads inserted into DB
+2025-04-21 20:15:51,952 - INFO - New loads to process: 100
+2025-04-21 20:15:54,473 - INFO - Loads inserted into DB
+2025-04-21 20:15:56,194 - INFO - New loads to process: 100
+2025-04-21 20:15:58,716 - INFO - Loads inserted into DB
+2025-04-21 20:16:00,435 - INFO - New loads to process: 100
+2025-04-21 20:16:02,958 - INFO - Loads inserted into DB
+2025-04-21 20:16:04,583 - INFO - New loads to process: 100
+2025-04-21 20:16:07,102 - INFO - Loads inserted into DB
+2025-04-21 20:16:08,693 - INFO - New loads to process: 100
+2025-04-21 20:16:11,210 - INFO - Loads inserted into DB
+2025-04-21 20:16:12,873 - INFO - New loads to process: 100
+2025-04-21 20:16:15,399 - INFO - Loads inserted into DB
+2025-04-21 20:16:17,057 - INFO - New loads to process: 100
+2025-04-21 20:16:19,575 - INFO - Loads inserted into DB
+2025-04-21 20:16:21,509 - INFO - New loads to process: 100
+2025-04-21 20:16:24,032 - INFO - Loads inserted into DB
+2025-04-21 20:16:25,728 - INFO - New loads to process: 100
+2025-04-21 20:16:28,250 - INFO - Loads inserted into DB
+2025-04-21 20:16:29,952 - INFO - New loads to process: 100
+2025-04-21 20:16:32,469 - INFO - Loads inserted into DB
+2025-04-21 20:16:34,111 - INFO - New loads to process: 100
+2025-04-21 20:16:36,634 - INFO - Loads inserted into DB
+2025-04-21 20:16:38,518 - INFO - New loads to process: 100
+2025-04-21 20:16:41,042 - INFO - Loads inserted into DB
+2025-04-21 20:16:42,686 - INFO - New loads to process: 100
+2025-04-21 20:16:45,213 - INFO - Loads inserted into DB
+2025-04-21 20:16:46,902 - INFO - New loads to process: 100
+2025-04-21 20:16:49,435 - INFO - Loads inserted into DB
+2025-04-21 20:16:51,075 - INFO - New loads to process: 100
+2025-04-21 20:16:53,595 - INFO - Loads inserted into DB
+2025-04-21 20:16:55,194 - INFO - New loads to process: 100
+2025-04-21 20:16:57,715 - INFO - Loads inserted into DB
+2025-04-21 20:16:59,389 - INFO - New loads to process: 100
+2025-04-21 20:17:01,907 - INFO - Loads inserted into DB
+2025-04-21 20:17:03,553 - INFO - New loads to process: 100
+2025-04-21 20:17:06,073 - INFO - Loads inserted into DB
+2025-04-21 20:17:07,783 - INFO - New loads to process: 100
+2025-04-21 20:17:10,299 - INFO - Loads inserted into DB
+2025-04-21 20:17:11,987 - INFO - New loads to process: 100
+2025-04-21 20:17:14,506 - INFO - Loads inserted into DB
+2025-04-21 20:17:16,136 - INFO - New loads to process: 100
+2025-04-21 20:17:18,653 - INFO - Loads inserted into DB
+2025-04-21 20:17:20,443 - INFO - New loads to process: 100
+2025-04-21 20:17:22,965 - INFO - Loads inserted into DB
+2025-04-21 20:17:24,591 - INFO - New loads to process: 100
+2025-04-21 20:17:27,122 - INFO - Loads inserted into DB
+2025-04-21 20:17:28,915 - INFO - New loads to process: 100
+2025-04-21 20:17:31,434 - INFO - Loads inserted into DB
+2025-04-21 20:17:33,827 - INFO - New loads to process: 100
+2025-04-21 20:17:36,350 - INFO - Loads inserted into DB
+2025-04-21 20:17:38,596 - INFO - New loads to process: 100
+2025-04-21 20:17:41,116 - INFO - Loads inserted into DB
+2025-04-21 20:17:43,026 - INFO - New loads to process: 100
+2025-04-21 20:17:45,548 - INFO - Loads inserted into DB
+2025-04-21 20:17:47,509 - INFO - New loads to process: 100
+2025-04-21 20:17:50,026 - INFO - Loads inserted into DB
+2025-04-21 20:17:51,966 - INFO - New loads to process: 100
+2025-04-21 20:17:54,488 - INFO - Loads inserted into DB
+2025-04-21 20:17:56,288 - INFO - New loads to process: 100
+2025-04-21 20:17:58,808 - INFO - Loads inserted into DB
+2025-04-21 20:18:00,596 - INFO - New loads to process: 100
+2025-04-21 20:18:03,114 - INFO - Loads inserted into DB
+2025-04-21 20:18:04,728 - INFO - New loads to process: 100
+2025-04-21 20:18:07,248 - INFO - Loads inserted into DB
+2025-04-21 20:18:09,019 - INFO - New loads to process: 100
+2025-04-21 20:18:11,551 - INFO - Loads inserted into DB
+2025-04-21 20:18:13,384 - INFO - New loads to process: 100
+2025-04-21 20:18:15,900 - INFO - Loads inserted into DB
+2025-04-21 20:18:17,648 - INFO - New loads to process: 100
+2025-04-21 20:18:20,165 - INFO - Loads inserted into DB
+2025-04-21 20:18:21,919 - INFO - New loads to process: 100
+2025-04-21 20:18:24,438 - INFO - Loads inserted into DB
+2025-04-21 20:18:26,225 - INFO - New loads to process: 100
+2025-04-21 20:18:28,742 - INFO - Loads inserted into DB
+2025-04-21 20:18:30,591 - INFO - New loads to process: 100
+2025-04-21 20:18:33,139 - INFO - Loads inserted into DB
+2025-04-21 20:18:34,974 - INFO - New loads to process: 100
+2025-04-21 20:18:37,505 - INFO - Loads inserted into DB
+2025-04-21 20:18:39,325 - INFO - New loads to process: 100
+2025-04-21 20:18:41,847 - INFO - Loads inserted into DB
+2025-04-21 20:18:43,690 - INFO - New loads to process: 100
+2025-04-21 20:18:46,215 - INFO - Loads inserted into DB
+2025-04-21 20:18:48,016 - INFO - New loads to process: 100
+2025-04-21 20:18:50,538 - INFO - Loads inserted into DB
+2025-04-21 20:18:52,374 - INFO - New loads to process: 100
+2025-04-21 20:18:54,893 - INFO - Loads inserted into DB
+2025-04-21 20:18:56,760 - INFO - New loads to process: 100
+2025-04-21 20:18:59,282 - INFO - Loads inserted into DB
+2025-04-21 20:19:01,458 - INFO - New loads to process: 100
+2025-04-21 20:19:03,980 - INFO - Loads inserted into DB
+2025-04-21 20:19:05,930 - INFO - New loads to process: 100
+2025-04-21 20:19:08,451 - INFO - Loads inserted into DB
+2025-04-21 20:19:10,447 - INFO - New loads to process: 100
+2025-04-21 20:19:12,968 - INFO - Loads inserted into DB
+2025-04-21 20:19:15,106 - INFO - New loads to process: 100
+2025-04-21 20:19:17,630 - INFO - Loads inserted into DB
+2025-04-21 20:19:19,869 - INFO - New loads to process: 100
+2025-04-21 20:19:22,390 - INFO - Loads inserted into DB
+2025-04-21 20:19:24,486 - INFO - New loads to process: 100
+2025-04-21 20:19:27,005 - INFO - Loads inserted into DB
+2025-04-21 20:19:29,024 - INFO - New loads to process: 100
+2025-04-21 20:19:31,545 - INFO - Loads inserted into DB
+2025-04-21 20:19:33,507 - INFO - New loads to process: 100
+2025-04-21 20:19:36,024 - INFO - Loads inserted into DB
+2025-04-21 20:19:38,064 - INFO - New loads to process: 100
+2025-04-21 20:19:40,586 - INFO - Loads inserted into DB
+2025-04-21 20:19:42,597 - INFO - New loads to process: 100
+2025-04-21 20:19:45,115 - INFO - Loads inserted into DB
+2025-04-21 20:19:47,092 - INFO - New loads to process: 100
+2025-04-21 20:19:49,612 - INFO - Loads inserted into DB
+2025-04-21 20:19:51,437 - INFO - New loads to process: 100
+2025-04-21 20:19:53,971 - INFO - Loads inserted into DB
+2025-04-21 20:19:55,846 - INFO - New loads to process: 100
+2025-04-21 20:19:58,365 - INFO - Loads inserted into DB
+2025-04-21 20:20:00,221 - INFO - New loads to process: 100
+2025-04-21 20:20:02,742 - INFO - Loads inserted into DB
+2025-04-21 20:20:04,531 - INFO - New loads to process: 100
+2025-04-21 20:20:07,055 - INFO - Loads inserted into DB
+2025-04-21 20:20:08,884 - INFO - New loads to process: 100
+2025-04-21 20:20:11,403 - INFO - Loads inserted into DB
+2025-04-21 20:20:13,214 - INFO - New loads to process: 100
+2025-04-21 20:20:15,732 - INFO - Loads inserted into DB
+2025-04-21 20:20:17,605 - INFO - New loads to process: 100
+2025-04-21 20:20:20,124 - INFO - Loads inserted into DB
+2025-04-21 20:20:22,498 - INFO - New loads to process: 100
+2025-04-21 20:20:25,036 - INFO - Loads inserted into DB
+2025-04-21 20:20:26,843 - INFO - New loads to process: 100
+2025-04-21 20:20:29,362 - INFO - Loads inserted into DB
+2025-04-21 20:20:31,430 - INFO - New loads to process: 100
+2025-04-21 20:20:33,950 - INFO - Loads inserted into DB
+2025-04-21 20:20:35,772 - INFO - New loads to process: 100
+2025-04-21 20:20:38,290 - INFO - Loads inserted into DB
+2025-04-21 20:20:40,105 - INFO - New loads to process: 100
+2025-04-21 20:20:42,625 - INFO - Loads inserted into DB
+2025-04-21 20:20:44,414 - INFO - New loads to process: 100
+2025-04-21 20:20:46,930 - INFO - Loads inserted into DB
+2025-04-21 20:20:48,758 - INFO - New loads to process: 100
+2025-04-21 20:20:51,279 - INFO - Loads inserted into DB
+2025-04-21 20:20:53,335 - INFO - New loads to process: 100
+2025-04-21 20:20:55,870 - INFO - Loads inserted into DB
+2025-04-21 20:20:59,499 - INFO - New loads to process: 100
+2025-04-21 20:21:02,022 - INFO - Loads inserted into DB
+2025-04-21 20:21:04,918 - INFO - New loads to process: 100
+2025-04-21 20:21:07,439 - INFO - Loads inserted into DB
+2025-04-21 20:21:09,907 - INFO - New loads to process: 100
+2025-04-21 20:21:12,430 - INFO - Loads inserted into DB
+2025-04-21 20:21:14,469 - INFO - New loads to process: 100
+2025-04-21 20:21:16,987 - INFO - Loads inserted into DB
+2025-04-21 20:21:18,808 - INFO - New loads to process: 100
+2025-04-21 20:21:21,328 - INFO - Loads inserted into DB
+2025-04-21 20:21:23,158 - INFO - New loads to process: 100
+2025-04-21 20:21:25,673 - INFO - Loads inserted into DB
+2025-04-21 20:21:27,784 - INFO - New loads to process: 100
+2025-04-21 20:21:30,305 - INFO - Loads inserted into DB
+2025-04-21 20:21:32,296 - INFO - New loads to process: 100
+2025-04-21 20:21:34,813 - INFO - Loads inserted into DB
+2025-04-21 20:21:37,070 - INFO - New loads to process: 100
+2025-04-21 20:21:39,596 - INFO - Loads inserted into DB
+2025-04-21 20:21:41,698 - INFO - New loads to process: 100
+2025-04-21 20:21:44,216 - INFO - Loads inserted into DB
+2025-04-21 20:21:46,180 - INFO - New loads to process: 100
+2025-04-21 20:21:48,698 - INFO - Loads inserted into DB
+2025-04-21 20:21:50,619 - INFO - New loads to process: 100
+2025-04-21 20:21:53,137 - INFO - Loads inserted into DB
+2025-04-21 20:21:55,048 - INFO - New loads to process: 100
+2025-04-21 20:21:57,566 - INFO - Loads inserted into DB
+2025-04-21 20:21:59,510 - INFO - New loads to process: 100
+2025-04-21 20:22:02,028 - INFO - Loads inserted into DB
+2025-04-21 20:22:04,006 - INFO - New loads to process: 100
+2025-04-21 20:22:06,524 - INFO - Loads inserted into DB
+2025-04-21 20:22:08,530 - INFO - New loads to process: 100
+2025-04-21 20:22:11,048 - INFO - Loads inserted into DB
+2025-04-21 20:22:12,970 - INFO - New loads to process: 100
+2025-04-21 20:22:15,498 - INFO - Loads inserted into DB
+2025-04-21 20:22:17,507 - INFO - New loads to process: 100
+2025-04-21 20:22:20,025 - INFO - Loads inserted into DB
+2025-04-21 20:22:21,849 - INFO - New loads to process: 100
+2025-04-21 20:22:24,374 - INFO - Loads inserted into DB
+2025-04-21 20:22:26,529 - INFO - New loads to process: 100
+2025-04-21 20:22:29,050 - INFO - Loads inserted into DB
+2025-04-21 20:22:30,985 - INFO - New loads to process: 100
+2025-04-21 20:22:33,504 - INFO - Loads inserted into DB
+2025-04-21 20:22:35,420 - INFO - New loads to process: 100
+2025-04-21 20:22:37,956 - INFO - Loads inserted into DB
+2025-04-21 20:22:39,929 - INFO - New loads to process: 100
+2025-04-21 20:22:42,448 - INFO - Loads inserted into DB
+2025-04-21 20:22:44,384 - INFO - New loads to process: 100
+2025-04-21 20:22:46,904 - INFO - Loads inserted into DB
+2025-04-21 20:22:48,933 - INFO - New loads to process: 100
+2025-04-21 20:22:51,455 - INFO - Loads inserted into DB
+2025-04-21 20:22:53,734 - INFO - New loads to process: 100
+2025-04-21 20:22:56,256 - INFO - Loads inserted into DB
+2025-04-21 20:22:58,468 - INFO - New loads to process: 100
+2025-04-21 20:23:00,990 - INFO - Loads inserted into DB
+2025-04-21 20:23:03,051 - INFO - New loads to process: 100
+2025-04-21 20:23:05,569 - INFO - Loads inserted into DB
+2025-04-21 20:23:07,582 - INFO - New loads to process: 100
+2025-04-21 20:23:10,099 - INFO - Loads inserted into DB
+2025-04-21 20:23:12,089 - INFO - New loads to process: 100
+2025-04-21 20:23:14,608 - INFO - Loads inserted into DB
+2025-04-21 20:23:16,646 - INFO - New loads to process: 100
+2025-04-21 20:23:19,167 - INFO - Loads inserted into DB
+2025-04-21 20:23:21,134 - INFO - New loads to process: 100
+2025-04-21 20:23:23,652 - INFO - Loads inserted into DB
+2025-04-21 20:23:25,926 - INFO - New loads to process: 100
+2025-04-21 20:23:28,449 - INFO - Loads inserted into DB
+2025-04-21 20:23:30,424 - INFO - New loads to process: 100
+2025-04-21 20:23:32,945 - INFO - Loads inserted into DB
+2025-04-21 20:23:36,313 - INFO - New loads to process: 100
+2025-04-21 20:23:38,832 - INFO - Loads inserted into DB
+2025-04-21 20:23:41,669 - INFO - New loads to process: 100
+2025-04-21 20:23:44,190 - INFO - Loads inserted into DB
+2025-04-21 20:23:46,899 - INFO - New loads to process: 100
+2025-04-21 20:23:49,417 - INFO - Loads inserted into DB
+2025-04-21 20:23:51,539 - INFO - New loads to process: 100
+2025-04-21 20:23:54,061 - INFO - Loads inserted into DB
+2025-04-21 20:23:56,137 - INFO - New loads to process: 100
+2025-04-21 20:23:58,680 - INFO - Loads inserted into DB
+2025-04-21 20:24:00,725 - INFO - New loads to process: 100
+2025-04-21 20:24:03,247 - INFO - Loads inserted into DB
+2025-04-21 20:24:05,499 - INFO - New loads to process: 100
+2025-04-21 20:24:08,018 - INFO - Loads inserted into DB
+2025-04-21 20:24:10,312 - INFO - New loads to process: 100
+2025-04-21 20:24:12,833 - INFO - Loads inserted into DB
+2025-04-21 20:24:14,925 - INFO - New loads to process: 100
+2025-04-21 20:24:17,442 - INFO - Loads inserted into DB
+2025-04-21 20:24:19,504 - INFO - New loads to process: 100
+2025-04-21 20:24:22,023 - INFO - Loads inserted into DB
+2025-04-21 20:24:24,027 - INFO - New loads to process: 100
+2025-04-21 20:24:26,545 - INFO - Loads inserted into DB
+2025-04-21 20:24:28,490 - INFO - New loads to process: 100
+2025-04-21 20:24:31,014 - INFO - Loads inserted into DB
+2025-04-21 20:24:33,118 - INFO - New loads to process: 100
+2025-04-21 20:24:35,638 - INFO - Loads inserted into DB
+2025-04-21 20:24:37,570 - INFO - New loads to process: 100
+2025-04-21 20:24:40,089 - INFO - Loads inserted into DB
+2025-04-21 20:24:42,007 - INFO - New loads to process: 100
+2025-04-21 20:24:44,528 - INFO - Loads inserted into DB
+2025-04-21 20:24:46,485 - INFO - New loads to process: 100
+2025-04-21 20:24:49,004 - INFO - Loads inserted into DB
+2025-04-21 20:34:28,256 - INFO - New loads to process: 9568
+2025-04-21 20:34:44,969 - INFO - Loads inserted into DB
+2025-04-21 20:35:15,575 - INFO - New loads to process: 173
+2025-04-21 20:35:18,769 - INFO - Loads inserted into DB
+2025-04-21 20:35:48,266 - INFO - New loads to process: 60
+2025-04-21 20:35:50,755 - INFO - Loads inserted into DB
+2025-04-21 20:36:20,617 - INFO - New loads to process: 43
+2025-04-21 20:36:23,093 - INFO - Loads inserted into DB
+2025-04-21 20:36:52,477 - INFO - New loads to process: 27
+2025-04-21 20:36:54,945 - INFO - Loads inserted into DB
+2025-04-21 20:37:22,173 - INFO - New loads to process: 18
+2025-04-21 20:37:24,487 - INFO - Loads inserted into DB

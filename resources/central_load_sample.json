@@ -1,0 +1,134 @@
+{
+    "searchRecordId": "bd908e35-84b7-4735-ab66-b8200c5e5774",
+    "items": [
+        {
+            "id": 301253115,
+            "origin": {
+                "city": "Acheson",
+                "state": "AB",
+                "zip": "T7X 6J3",
+                "geoCode": {
+                    "longitude": -113.7776672,
+                    "latitude": 53.5359594
+                }
+            },
+            "destination": {
+                "city": "Miami",
+                "state": "FL",
+                "zip": "33166",
+                "geoCode": {
+                    "longitude": -80.3101684,
+                    "latitude": 25.8235041
+                }
+            },
+            "hasInOpVehicle": false,
+            "vehicles": [
+                {
+                    "id": "cea0ae83-37da-4d9c-8427-a8af6432b2c6",
+                    "vehicleType": "MOTORCYCLE",
+                    "color": "",
+                    "licensePlate": "BAYER...671075",
+                    "licensePlateState": "",
+                    "lotNumber": "41710544",
+                    "year": 2022,
+                    "make": "HONDA",
+                    "model": "NVA110",
+                    "qty": 1,
+                    "additionalInfo": "",
+                    "wideLoad": false,
+                    "shippingSpecs": {
+                        "height": 0,
+                        "width": 0,
+                        "length": 0,
+                        "weight": 0
+                    }
+                },
+                {
+                    "id": "fe37a067-369d-4881-a373-1cc910fa0f2b",
+                    "vehicleType": "MOTORCYCLE",
+                    "color": "",
+                    "licensePlate": "BAYER...671075",
+                    "licensePlateState": "",
+                    "lotNumber": "41710544",
+                    "year": 2022,
+                    "make": "HONDA",
+                    "model": "NVA110",
+                    "qty": 1,
+                    "additionalInfo": "",
+                    "wideLoad": false,
+                    "shippingSpecs": {
+                        "height": 0,
+                        "width": 0,
+                        "length": 0,
+                        "weight": 0
+                    }
+                }
+            ],
+            "trailerType": "OPEN",
+            "createdDate": "2025-04-21T01:45:28.72966+00:00",
+            "expirationDate": "2025-05-20T23:59:59.999999+00:00",
+            "availableDate": "2025-04-30T00:00:00",
+            "listingStatus": "LISTED",
+            "price": {
+                "total": 125.0,
+                "cod": {
+                    "amount": 125.0,
+                    "paymentMethod": "CASH_CERTIFIED_FUNDS",
+                    "paymentLocation": "DELIVERY"
+                },
+                "balance": {
+                    "amount": 0.0,
+                    "paymentTime": "IMMEDIATELY",
+                    "balancePaymentTermsBeginOn": "PICKUP",
+                    "balancePaymentMethod": "CASH"
+                }
+            },
+            "distance": 3032,
+            "additionalInfo": "",
+            "shipper": {
+                "customerId": "d4900162-6060-49fd-8c11-a05cb7558f6d",
+                "tierGroup": "Broker",
+                "companyName": "PM VIP Transport Inc",
+                "phone": "(561) 628-5168",
+                "email": "dispatchvip100@gmail.com",
+                "hoursOfOperation": "M-F 8-8",
+                "hqTimeZone": "CST",
+                "rating": 0.0,
+                "numberOfRatings": 0,
+                "overallRating": {
+                    "averageRating": 5.0,
+                    "totalAmount": 338
+                },
+                "phoneNumbers": [
+                    {
+                        "phoneNumber": "(561) 628-5168",
+                        "type": "BILLING",
+                        "extension": ""
+                    },
+                    {
+                        "phoneNumber": "5616285168",
+                        "type": "LISTING",
+                        "extension": ""
+                    },
+                    {
+                        "phoneNumber": "5616285168",
+                        "type": "LOCAL",
+                        "extension": ""
+                    }
+                ]
+            },
+            "shipperOrderId": "2666 ",
+            "digitalOffersEnabled": false,
+            "isPreferred": false,
+            "isBlocked": false,
+            "isAutoAcceptEnabled": false,
+            "hasPublicMarketplace": true,
+            "preDispatchNotes": "",
+            "marketPlaceId": [
+                10000
+            ],
+            "canShowMakeOfferButton": false,
+            "canShowAcceptOffer": false
+        }
+    ]
+}

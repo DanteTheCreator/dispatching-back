@@ -19,7 +19,7 @@ class GraphhopperHandler(APIClient):
 class BulkRequestHandler(APIClient):
 
     def __init__(self):
-        super().__init__(url="http://f735-176-221-230-243.ngrok-free.app/", origin="")
+        super().__init__(url="http://f735-176-221-230-243.ngrok-free.app/")
         self.base_headers = []
         
 
