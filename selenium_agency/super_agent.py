@@ -42,7 +42,7 @@ class SuperAgent:
         self.__selenium_driver.initialize_driver()
         self.__driver = self.__selenium_driver.get_driver()
         # Your Gmail credentials
-        self._email = os.getenv("EMAIL")
+        self._email = os.getenv("SUPEREMAIL")
         self._password = os.getenv("PASSWORD_SUPER")
         self.__api_client = APIClient(base_url="https://api.loadboard.superdispatch.com", origin=self.__origin)
         self.__cache_service = SuperCacheService()
@@ -118,13 +118,22 @@ class SuperAgent:
         if len(loads) > 0:
             bulk_locations = []
             for load in loads:
-                pickup_location = self.__format_pickup_location(load_data.get('pickup', {}))
-                delivery_location = self.__format_delivery_location(load_data.get('delivery', {}))
+                pickup_location = self.__format_pickup_location(load.get('pickup', {}))
+                delivery_location = self.__format_delivery_location(load.get('delivery', {}))
                 load['pickup_location'] = pickup_location
                 load['delivery_location'] = delivery_location
                 bulk_locations.append({"pickup_location": pickup_location, "delivery_location": delivery_location})
             
+            time.sleep(5)
+            print("sending bulk locations: ", bulk_locations)
+            time.sleep(5)
+
             bulk_coordinates = self.__bulk_request_handler.post("/bulk_geocode", payload=bulk_locations)
+
+            time.sleep(5)
+            print("received bulk coordinates: ", bulk_coordinates)
+            time.sleep(5)
+
             time.sleep(0.5)
             for index, bulk_coordinate in enumerate(bulk_coordinates):
                 pickup_location_coordinate = bulk_coordinate.get('pickup_location')

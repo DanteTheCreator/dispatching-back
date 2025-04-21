@@ -32,7 +32,7 @@ class SeleniumDriver:
             'browser': 'ALL',
             'performance': 'ALL'
         })
-        options.add_argument("--headless")
+        # options.add_argument("--headless")
         self.driver = webdriver.Chrome(service=service, options=options)
 
     def get_driver(self):

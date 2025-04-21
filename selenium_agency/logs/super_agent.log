@@ -212,3 +212,8 @@
 2025-04-17 15:35:16,928 - INFO - Loads inserted into DB
 2025-04-17 15:35:17,492 - INFO - Loads count: 10
 2025-04-17 15:35:18,696 - INFO - New loads to process: 10
+2025-04-21 13:29:05,715 - INFO - Attempting to locate loadboard navigation element
+2025-04-21 13:29:26,267 - INFO - Couldn't find loadboard button, navigating directly to loadboard URL
+2025-04-21 13:29:40,748 - INFO - User token not found in cookies
+2025-04-21 13:30:13,375 - INFO - Attempting to locate loadboard navigation element
+2025-04-21 13:30:28,709 - INFO - Couldn't find loadboard button, navigating directly to loadboard URL
