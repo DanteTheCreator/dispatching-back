@@ -52,7 +52,11 @@ def get_otp_from_gmail(subject):
                     for part in msg.walk():
                         if part.get_content_type() == "text/plain":
                             body = part.get_payload(decode=True).decode() #type: ignore
-
+                            otp_match = re.search(r'\b[0-9]{6}\b', body)
+                            if otp_match:
+                                otp = otp_match.group(0)
+                                print(f"OTP found: {otp}")
+                                return otp
                             # Look for a 6-digit number within a p tag with class "security-code"
                             pattern = r'<p[^>]*class="security-code"[^>]*>(\d{6})</p>'
                             match = re.search(pattern, body)
@@ -68,16 +72,8 @@ def get_otp_from_gmail(subject):
                             if match:
                                 print(f"OTP found: {match.group(1)}")
                                 return match.group(1)
-                            
-                else:
-                    # Process plain text emails
-                    body = msg.get_payload(decode=True).decode() #type: ignore
-                    otp_match = re.search(r'\b[0-9]{6}\b', body)
-                    if otp_match:
-                        otp = otp_match.group(0)
-                        print(f"OTP found: {otp}")
-                        return otp
-        
+                    
+                
         print("No OTP found in the email.")
         return None
 
@@ -88,3 +84,4 @@ def get_otp_from_gmail(subject):
 
 
 #get_otp_from_gmail("Super Dispatch Verification Code")
+get_otp_from_gmail('Central Dispatch')

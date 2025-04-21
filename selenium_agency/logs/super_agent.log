@@ -370,3 +370,7 @@
 2025-04-17 15:35:16,928 - INFO - Loads inserted into DB
 2025-04-17 15:35:17,492 - INFO - Loads count: 10
 2025-04-17 15:35:18,696 - INFO - New loads to process: 10
+2025-04-21 14:19:06,104 - INFO - User token not found in cookies
+2025-04-21 14:21:42,704 - INFO - User token not found in cookies
+2025-04-21 14:58:36,813 - INFO - User token not found in cookies
+2025-04-21 15:07:06,643 - INFO - User token not found in cookies
