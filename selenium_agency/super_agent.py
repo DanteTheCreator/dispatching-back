@@ -15,6 +15,7 @@ import logging
 import os
 from handlers import PeliasHandler
 from geoalchemy2.elements import WKTElement
+from handlers import GraphhopperHandler, BulkRequestHandler
 
 load_dotenv()
 
@@ -48,6 +49,7 @@ class SuperAgent:
         self.__db_Session =  next(get_db())
         self.__page = 0
         self.__pelias_handler = PeliasHandler()
+        self.__bulk_request_handler = BulkRequestHandler()
 
     def __format_and_get_load_model(self, load):
         # If the load comes wrapped in a container object, get the main load object
@@ -55,32 +57,20 @@ class SuperAgent:
         if not load_data:
             return None
 
-        pickup_location = self.__format_pickup_location(load_data.get('pickup', {}))
-        delivery_location = self.__format_delivery_location(load_data.get('delivery', {}))
-        
-        pickup_coordinates = self.__get_location_coordinates(pickup_location)
-        delivery_coordinates = self.__get_location_coordinates(delivery_location)
-        
-        # Convert coordinates to WKT format
-        pickup_points = WKTElement(f'POINT({pickup_coordinates[0]} {pickup_coordinates[1]})') if pickup_coordinates else None
-        delivery_points = WKTElement(f'POINT({delivery_coordinates[0]} {delivery_coordinates[1]})') if delivery_coordinates else None
-        
-        coordinates_note = f"Pickup coordinates: {pickup_coordinates}, Delivery coordinates: {delivery_coordinates}"
         instructions = load_data.get('instructions', '')
-        combined_notes = f"{instructions}\n{coordinates_note}"
             
         load_model_instance = LoadModel(
             external_load_id=load_data.get('guid', ''),
             brokerage="Super Dispatch",
-            pickup_location=pickup_location,
-            delivery_location=delivery_location,
-            pickup_points=pickup_points,
-            delivery_points=delivery_points,
+            pickup_location=load.get('pickup_location'),
+            delivery_location=load.get('delivery_location'),
+            pickup_points=load.get('pickup_points'),
+            delivery_points=load.get('delivery_points'),
             price=str(load_data.get('price', '')),
             milage=float(load_data.get('distance_meters', 0)) / 1609.34,  # Convert meters to miles
             is_operational=not any(vehicle.get('is_inoperable', False) for vehicle in load_data.get('vehicles', [])),
             contact_phone=(load_data.get('shipper') or {}).get('contact_phone', ''),
-            notes=combined_notes,
+            notes=instructions,
             loadboard_source="super_dispatch",
             created_at=load_data.get('created_at', '')
         )
@@ -116,13 +106,45 @@ class SuperAgent:
         if not pickup_data or not pickup_data.get('venue'):
             return ''
         venue = pickup_data['venue']
-        return f"{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
+        address_part = f"{venue.get('metro_area', '')}, " if venue.get('metro_area') else ""
+        return f"{address_part}{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
 
     def __format_delivery_location(self, delivery_data):
         if not delivery_data or not delivery_data.get('venue'):
             return ''
         venue = delivery_data['venue']
-        return f"{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
+        address_part = f"{venue.get('metro_area', '')}, " if venue.get('metro_area') else ""
+        return f"{address_part}{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
+
+    def __batch_save_loads(self, loads, in_between_delay=1):
+        if len(loads) > 0:
+            bulk_locations = []
+            for load in loads:
+                pickup_location = self.__format_pickup_location(load.get('load').get('pickup', {}))
+                delivery_location = self.__format_delivery_location(load.get('load').get('delivery', {}))
+                load['pickup_location'] = pickup_location
+                load['delivery_location'] = delivery_location
+                bulk_locations.append({"pickup_location": pickup_location, "delivery_location": delivery_location})
+
+            bulk_coordinates = self.__bulk_request_handler.post("/bulk_geocode", payload=bulk_locations).json()
+
+            print("received bulk coordinates: ", bulk_coordinates)
+            for index, bulk_coordinate in enumerate(bulk_coordinates):
+                pickup_location_coordinate = bulk_coordinate.get('pickup_coordinates')
+                delivery_location_coordinate = bulk_coordinate.get('delivery_coordinates')
+                pickup_points = WKTElement(f'POINT({pickup_location_coordinate[0]} {pickup_location_coordinate[1]})') if pickup_location_coordinate else None
+                delivery_points = WKTElement(f'POINT({delivery_location_coordinate[0]} {delivery_location_coordinate[1]})') if delivery_location_coordinate else None
+                loads[index]['pickup_points'] = pickup_points
+                loads[index]['delivery_points'] = delivery_points
+                
+            load_model_instances = [
+                self.__format_and_get_load_model(load) for load in loads
+            ]
+            # Bulk insert
+            self.__db_Session.bulk_save_objects(load_model_instances)
+            self.__db_Session.commit()
+            time.sleep(in_between_delay)
+            logger.info("Loads inserted into DB")
 
     def __get_token(self):
         if not self.__driver:
@@ -176,6 +198,7 @@ class SuperAgent:
 
             loadboard_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, '/loadboard')]")))
             time.sleep(in_between_delay)
+            time.sleep(10)
             loadboard_button.click()
             time.sleep(5)
 
@@ -186,7 +209,7 @@ class SuperAgent:
         loads_response = self.__api_client.post("/internal/v3/loads/search", 
                             token=token, 
                             payload={},
-                            params={"page": self.__page, "size": 10})
+                            params={"page": self.__page, "size": 100})
         if loads_response.status_code == 401:
             self.__cache_service.clear_all()
             return
@@ -198,16 +221,9 @@ class SuperAgent:
 
         loads = [load for load in loads if load.get('load').get('guid') not in existing_load_ids]
         logger.info(f"New loads to process: {len(loads)}")
-        print(loads)
-        if len(loads) > 0:
-            load_model_instances = [
-                self.__format_and_get_load_model(load) for load in loads
-            ]
-        # Bulk insert
-            self.__db_Session.bulk_save_objects(load_model_instances)
-            self.__db_Session.commit()
-            time.sleep(in_between_delay)
-            logger.info("Loads inserted into DB")
+        
+        self.__batch_save_loads(loads, in_between_delay=in_between_delay)
+
         self.__page += 1
 
     def run(self):

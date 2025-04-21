@@ -9,6 +9,7 @@ load_dotenv()
 
 # Your Gmail credentials
 EMAIL = os.getenv("EMAIL")
+SUPEREMAIL = os.getenv("SUPEREMAIL")
 PASSWORD = os.getenv("GMAILAPPPASSWORD")
 
 def get_otp_from_gmail(subject):
