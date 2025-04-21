@@ -4,34 +4,41 @@ from typing import List
 import logging
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import cast
-
+from selenium_agency.handlers import PeliasHandler, GraphhopperHandler
 # Set up logging
 logger = logging.getLogger('dispatching_api')
 logger.setLevel(logging.INFO)
 
 # File handler for saving logs to file
-file_handler = logging.FileHandler('classes.log')  # Specify your log file path here
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# Specify your log file path here
+file_handler = logging.FileHandler('classes.log')
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
+
+gh_handler = GraphhopperHandler()
+pl_handler = PeliasHandler()
+
 
 class Driver:
     def __init__(self, driver_id):
         self.driver_id = driver_id
         self.db = next(get_db())
-        
+
         # Get driver info from database
-        driver = self.db.query(DriverModel).filter(DriverModel.driver_id == self.driver_id).first()
+        driver = self.db.query(DriverModel).filter(
+            DriverModel.driver_id == self.driver_id).first()
         if not driver:
             raise ValueError(f"Driver with id {self.driver_id} not found")
-        
+
         # Set attributes with value conversion
         self.full_name = driver.full_name
         self.location = driver.location
         self.trailer_size = driver.trailer_size
         try:
-            self.desired_gross = float(getattr(driver, 'desired_gross', 0.0))  
-            self.desired_rpm = float(getattr(driver, 'desired_rpm', 0.0)) 
+            self.desired_gross = float(getattr(driver, 'desired_gross', 0.0))
+            self.desired_rpm = float(getattr(driver, 'desired_rpm', 0.0))
             self.active = driver.active
             self.phone = driver.phone
             self.states = driver.states if driver.states is not None else []
@@ -39,10 +46,11 @@ class Driver:
             logger.info(f"Error converting values: {e}")
             self.desired_gross = 0.0
             self.desired_rpm = 0.0
-        
+
         # logger.info(f"Driver attributes: driver_id={self.driver_id}, full_name={self.full_name}, location={self.location}, "
         #       f"trailer_size={self.trailer_size}, desired_gross={self.desired_gross}, desired_rpm={self.desired_rpm}, "
         #       f"active={self.active}, phone={self.phone}, states={self.states}")
+
 
 class Route:
     def __init__(self, driver):
@@ -52,7 +60,6 @@ class Route:
         self.milage = 50
         self.total_rpm = 0.0
         self.total_price = 0.0
-        self.efficiency_score = 0.0
 
     def add_load(self, load):
         # Add a load to the route
@@ -62,26 +69,43 @@ class Route:
         self.total_price += float(load.price)
         self.total_rpm = self.total_price / self.milage
 
+
 class RouteBuilder:
     def __init__(self, driver_id: int, db: Session):
         self.driver = Driver(driver_id)
         self.db = db
 
     def get_top_loads(self, origin) -> List[LoadModel]:
+        origin = pl_handler.get(origin).json()[
+            'features'][0]['geometry']['coordinates']
         try:
             loads = (
                 self.db.query(LoadModel)
                 .filter(
-                    LoadModel.pickup_location.like(f'%{origin}%')  # Wildcard search
+                    # Use PostGIS ST_DWithin to find loads within 50 miles (80467.2 meters)
+                    LoadModel.pickup_point.ST_DWithin(
+                        cast(origin, JSONB),
+                        80467.2
+                    )
                 )
                 .order_by(LoadModel.price.desc())
                 .all()
             )
-            
-            return loads  
+
+            return loads
         except Exception as e:
             logger.info(f"Error fetching loads from database: {e}")
             return []
+
+    def calculate_full_route_length(self, route: Route) -> float:
+        driver_points = pl_handler.get(self.driver.location).json()[
+            'features'][0]['geometry']['coordinates']
+        points = [[driver_points[1], driver_points[0]]]
+
+        for load in route.loads:
+            points.append([load.pickup_location, load.delivery_location])
+
+        return gh_handler.post(url='route', payload={'profile': 'car', 'points': points}).json()['paths'][0]['distance']
 
     def generate_one_car_trailer_routes(self, limit: int = 10):
         try:
@@ -93,7 +117,8 @@ class RouteBuilder:
                 if len(routes) >= limit:
                     break
                 try:
-                    second_pickup_loads = self.get_top_loads(top_load.delivery_location.split()[-1])
+                    second_pickup_loads = self.get_top_loads(
+                        top_load.delivery_location.split()[-1])
                     for secondary_load in second_pickup_loads[:3]:
                         if len(routes) >= limit:
                             break
@@ -102,8 +127,20 @@ class RouteBuilder:
                         route.add_load(secondary_load)
                         if top_load == secondary_load:
                             continue
+
+                        # Calculate accurate route length
+                        try:
+                            accurate_milage = self.calculate_full_route_length(
+                                route)
+                            route.milage = accurate_milage / 1000  # Convert meters to kilometers
+                            route.total_rpm = route.total_price / route.milage
+                        except Exception as e:
+                            logger.info(f"Error calculating route length: {e}")
+                            continue
+
                         if (
-                            route.total_price > float(self.driver.desired_gross)
+                            route.total_price > float(
+                                self.driver.desired_gross)
                             and route.total_rpm > float(self.driver.desired_rpm)
                         ):
                             routes.append(route)
@@ -123,7 +160,8 @@ class RouteBuilder:
                 if len(routes) >= limit:
                     break
                 try:
-                    second_pickup_loads = self.get_top_loads(top_load.pickup_location.split()[-1])
+                    second_pickup_loads = self.get_top_loads(
+                        top_load.pickup_location.split()[-1])
                     for secondary_load in second_pickup_loads[:3]:
                         if len(routes) >= limit:
                             break
@@ -132,8 +170,20 @@ class RouteBuilder:
                         route.add_load(secondary_load)
                         if top_load == secondary_load:
                             continue
+
+                        # Calculate accurate route length
+                        try:
+                            accurate_milage = self.calculate_full_route_length(
+                                route)
+                            route.milage = accurate_milage / 1000  # Convert meters to kilometers
+                            route.total_rpm = route.total_price / route.milage
+                        except Exception as e:
+                            logger.info(f"Error calculating route length: {e}")
+                            continue
+
                         if (
-                            route.total_price > float(self.driver.desired_gross)
+                            route.total_price > float(
+                                self.driver.desired_gross)
                             and route.total_rpm > float(self.driver.desired_rpm)
                         ):
                             routes.append(route)
@@ -144,25 +194,26 @@ class RouteBuilder:
         except Exception as e:
             logger.info(f"Error generating routes: {e}")
             return []
-        
+
     def generate_three_car_trailer_routes(self, limit: int = 10):
         logger.info('Three')
         try:
             top_loads = self.get_top_loads(self.driver.location)
             logger.info(f"Top loads found: {len(top_loads)}")
-            
+
             routes = []
-            # Consider more initial loads to increase chances of finding full trailer routes
             for top_load in top_loads[:5]:
                 if len(routes) >= limit:
                     break
                 try:
-                    second_pickup_loads = self.get_top_loads(top_load.delivery_location.split()[-1])
+                    second_pickup_loads = self.get_top_loads(
+                        top_load.delivery_location.split()[-1])
                     for secondary_load in second_pickup_loads[:5]:
                         if len(routes) >= limit:
                             break
                         try:
-                            third_pickup_loads = self.get_top_loads(secondary_load.delivery_location.split()[-1])
+                            third_pickup_loads = self.get_top_loads(
+                                secondary_load.delivery_location.split()[-1])
                             for tertiary_load in third_pickup_loads[:5]:
                                 if len(routes) >= limit:
                                     break
@@ -170,34 +221,40 @@ class RouteBuilder:
                                 route.add_load(top_load)
                                 route.add_load(secondary_load)
                                 route.add_load(tertiary_load)
-                                
+
                                 # Avoid duplicate loads
                                 if top_load == secondary_load or secondary_load == tertiary_load or top_load == tertiary_load:
                                     continue
-                                    
-                                # Prioritize full trailer routes (3 cars)
-                                car_count = len([load for load in [top_load, secondary_load, tertiary_load] if load is not None])
-                                
-                                # Only consider routes with exactly 3 cars and meeting financial criteria
-                                if (car_count == 3 and
-                                    route.total_price > float(self.driver.desired_gross) and 
-                                    route.total_rpm > float(self.driver.desired_rpm)):
-                                    
-                                    # Sort routes by profitability metrics
-                                    route.efficiency_score = (route.total_price / route.milage) * car_count
+
+                                # Calculate accurate route length
+                                try:
+                                    accurate_milage = self.calculate_full_route_length(
+                                        route)
+                                    route.milage = accurate_milage / 1000  # Convert meters to kilometers
+                                    route.total_rpm = route.total_price / route.milage
+                                except Exception as e:
+                                    logger.info(
+                                        f"Error calculating route length: {e}")
+                                    continue
+
+                                if (
+                                    route.total_price > float(self.driver.desired_gross) and
+                                        route.total_rpm > float(self.driver.desired_rpm)):
+
                                     routes.append(route)
-                                    
-                                    # Sort by efficiency score to keep the best routes
-                                    routes.sort(key=lambda r: r.efficiency_score, reverse=True)
+                                    routes.sort(
+                                        key=lambda r: r.efficiency_score, reverse=True)
                         except Exception as e:
-                            logger.info(f"Error processing tertiary loads: {e}")
+                            logger.info(
+                                f"Error processing tertiary loads: {e}")
                             continue
                 except Exception as e:
                     logger.info(f"Error processing secondary loads: {e}")
                     continue
-                    
-            logger.info(f"Generated {len(routes)} three-car routes that meet criteria")
-            return routes[:limit]  # Return the best routes up to the limit
+
+            logger.info(
+                f"Generated {len(routes)} three-car routes that meet criteria")
+            return routes[:limit]
         except Exception as e:
             logger.info(f"Error generating routes: {e}")
             return []
@@ -211,7 +268,8 @@ class RouteBuilder:
                 .count()
             )
             if route_count >= 10:
-                logger.info("Driver already has over 10 routes. Not adding any more.")
+                logger.info(
+                    "Driver already has over 10 routes. Not adding any more.")
                 return
 
             # Check if a similar route already exists

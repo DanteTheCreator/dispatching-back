@@ -2,8 +2,8 @@ import requests
 import json
 
 class APIClient:
-    def __init__(self, base_url=None, origin=None):
-        self.base_url = base_url
+    def __init__(self, url, origin=None):
+        self.url = url
         self.base_headers = {
             "accept": "*/*",
             "accept-language": "en-US,en;q=0.9",
@@ -25,18 +25,17 @@ class APIClient:
         if token:
             headers["authorization"] = f"Token {token}"
         return headers
-
-    def _get_full_url(self, url):
-        return f"{self.base_url}{url}" if self.base_url else url
-
+ 
     def get(self, url, token=None, params=None):
         headers = self._get_headers(token)
-        full_url = self._get_full_url(url)
-        response = requests.get(full_url, params=params, headers=headers)
+        if self.url != "":
+            url = self.url + url
+        response = requests.get(url, params=params, headers=headers)
         return response
 
     def post(self, url, token=None, payload=None, params=None):
         headers = self._get_headers(token)
-        full_url = self._get_full_url(url)
-        response = requests.post(full_url, headers=headers, json=payload, params=params)
+        
+        url = self.url + url
+        response = requests.post(url, headers=headers, json=payload, params=params)
         return response

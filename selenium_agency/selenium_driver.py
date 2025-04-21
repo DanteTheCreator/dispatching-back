@@ -1,13 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-# Your Gmail credentials
 CHROMEDRIVER = os.getenv("CHROMEDRIVER")
 CHROME = os.getenv("CHROME")
 
@@ -19,7 +17,7 @@ class SeleniumDriver:
 
     def initialize_driver(self):
         options = Options()
-        options.binary_location = CHROME  # Path to Chromium
+
 
         # Set ChromeDriver path
         service = Service(CHROMEDRIVER)
@@ -32,7 +30,7 @@ class SeleniumDriver:
             'browser': 'ALL',
             'performance': 'ALL'
         })
-        options.add_argument("--headless")
+        # options.add_argument("--headless")
         self.driver = webdriver.Chrome(service=service, options=options)
 
     def get_driver(self):
