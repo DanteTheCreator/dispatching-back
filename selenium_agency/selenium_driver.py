@@ -6,8 +6,7 @@ import os
 
 load_dotenv()
 
-# Your Gmail credentials
-CHROMEDRIVER = '/opt/homebrew/bin/chromedriver'
+CHROMEDRIVER = os.getenv("CHROMEDRIVER")
 CHROME = os.getenv("CHROME")
 
 class SeleniumDriver:

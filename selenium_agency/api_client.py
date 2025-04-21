@@ -28,10 +28,14 @@ class APIClient:
  
     def get(self, url, token=None, params=None):
         headers = self._get_headers(token)
+        if self.url != "":
+            url = self.url + url
         response = requests.get(url, params=params, headers=headers)
         return response
 
     def post(self, url, token=None, payload=None, params=None):
         headers = self._get_headers(token)
+        
+        url = self.url + url
         response = requests.post(url, headers=headers, json=payload, params=params)
         return response

@@ -370,3 +370,11 @@
 2025-04-17 15:35:16,928 - INFO - Loads inserted into DB
 2025-04-17 15:35:17,492 - INFO - Loads count: 10
 2025-04-17 15:35:18,696 - INFO - New loads to process: 10
+2025-04-21 16:07:34,986 - INFO - Loads count: 100
+2025-04-21 16:08:24,062 - INFO - Loads count: 100
+2025-04-21 16:09:53,330 - INFO - Loads count: 100
+2025-04-21 16:11:09,420 - INFO - Loads count: 100
+2025-04-21 16:14:07,925 - INFO - Loads count: 100
+2025-04-21 16:15:00,693 - INFO - Loads count: 100
+2025-04-21 16:16:03,399 - INFO - Loads count: 100
+2025-04-21 16:16:06,340 - INFO - New loads to process: 98

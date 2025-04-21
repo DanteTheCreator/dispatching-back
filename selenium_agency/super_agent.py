@@ -44,7 +44,7 @@ class SuperAgent:
         # Your Gmail credentials
         self._email = os.getenv("EMAIL")
         self._password = os.getenv("PASSWORD_SUPER")
-        self.__api_client = APIClient(base_url="https://api.loadboard.superdispatch.com", origin=self.__origin)
+        self.__api_client = APIClient(url="https://api.loadboard.superdispatch.com", origin=self.__origin)
         self.__cache_service = SuperCacheService()
         self.__db_Session =  next(get_db())
         self.__page = 0
@@ -205,6 +205,7 @@ class SuperAgent:
             self.__get_token()
 
     def __start_filling_db_cycle(self, in_between_delay=1):
+        print("start filling db cycle")
         token = self.__cache_service.get_token()
         loads_response = self.__api_client.post("/internal/v3/loads/search", 
                             token=token, 
