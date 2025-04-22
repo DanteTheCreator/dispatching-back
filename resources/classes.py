@@ -1,12 +1,10 @@
-import binascii
+
 from resources.models import DriverModel, RouteModel, get_db, LoadModel
 from sqlalchemy.orm import Session
 from typing import List
 import logging
-from shapely import wkb
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import cast, text
-from geoalchemy2.functions import ST_SetSRID, ST_MakePoint, ST_DWithin
 from selenium_agency.handlers import PeliasHandler, GraphhopperHandler
 from sqlalchemy import func
 
@@ -121,7 +119,6 @@ class RouteBuilder:
 
             # Fetch all results as dictionaries
             loads = result.fetchall()
-
             return loads  # type: ignore
         except Exception as e:
             logger.info(f"Error fetching loads from database: {e}")
@@ -193,13 +190,14 @@ class RouteBuilder:
                 try:
                     second_pickup_loads = self.get_top_loads(
                         top_load.pickup_location.split()[-1])
-                    for secondary_load in second_pickup_loads[:3]:
+                    for secondary_load in second_pickup_loads[1:3]:
                         if len(routes) >= limit:
                             break
                         route = Route(self.driver)
                         route.add_load(top_load)
                         route.add_load(secondary_load)
                         if top_load == secondary_load:
+                            print('Same')
                             continue
 
                         # Calculate accurate route length
@@ -227,7 +225,6 @@ class RouteBuilder:
             return []
 
     def generate_three_car_trailer_routes(self, limit: int = 10):
-        print('Three')
         try:
             top_loads = self.get_top_loads(self.driver.location)
             print(f"Top loads found: {len(top_loads)}")
@@ -239,20 +236,20 @@ class RouteBuilder:
                 try:
                     second_pickup_loads = self.get_top_loads(
                         top_load.delivery_location.split()[-1])
-                    for secondary_load in second_pickup_loads[:5]:
+                    for secondary_load in second_pickup_loads[1:5]:
                         if len(routes) >= limit:
                             break
                         try:
                             third_pickup_loads = self.get_top_loads(
                                 secondary_load.delivery_location.split()[-1])
-                            for tertiary_load in third_pickup_loads[:5]:
+                            for tertiary_load in third_pickup_loads[2:5]:
                                 if len(routes) >= limit:
                                     break
                                 route = Route(self.driver)
                                 route.add_load(top_load)
                                 route.add_load(secondary_load)
                                 route.add_load(tertiary_load)
-                                print(route.total_price)
+                                print('Route Price: ' , route.total_price)
                                 # Avoid duplicate loads
                                 if top_load == secondary_load or secondary_load == tertiary_load or top_load == tertiary_load:
                                     continue
@@ -328,3 +325,5 @@ class RouteBuilder:
             self.db.rollback()
             logger.error(f"Error saving route to database: {e}")
             raise
+
+
