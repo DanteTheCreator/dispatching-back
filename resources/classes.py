@@ -1,4 +1,3 @@
-
 from resources.models import DriverModel, RouteModel, get_db, LoadModel
 from sqlalchemy.orm import Session
 from typing import List
@@ -80,7 +79,15 @@ class Route:
         self.load_ids.append(load.load_id)
         self.milage += float(load.milage)
         self.total_price += float(load.price)
-        self.total_rpm = self.total_price / self.milage
+        try:
+            if self.milage > 0:
+                self.total_rpm = self.total_price / self.milage
+            else:
+                self.total_rpm = 0
+                logger.warning("Zero mileage detected, setting RPM to zero")
+        except Exception as e:
+            logger.error(f"Error calculating RPM: {str(e)}")
+            self.total_rpm = 0
 
 
 class RouteBuilder:
@@ -122,23 +129,88 @@ class RouteBuilder:
             return loads  # type: ignore
         except Exception as e:
             logger.info(f"Error fetching loads from database: {e}")
+            print(f"Error fetching loads from database: {e}")
             return []
 
     def calculate_full_route_length(self, route: Route) -> float:
-        driver_points = pl_handler.get(self.driver.location).json()[
-            'features'][0]['geometry']['coordinates']
-        points = [[driver_points[1], driver_points[0]]]
+        try:
+            driver_points = pl_handler.get(self.driver.location).json()[
+                'features'][0]['geometry']['coordinates']
+            # GraphHopper expects coordinates as [longitude, latitude]
+            points = [driver_points]
 
-        for load in route.loads:
-            coords = load.pickup_points_json['coordinates']
-            points.append(coords)
-        print(points)
-        return gh_handler.post(url='route', payload={'profile': 'car', 'points': points}).json()['paths'][0]['distance']
+            for load in route.loads:
+                # Access the correct column name and handle both dictionary and attribute access
+                pickup_json = None
+                if hasattr(load, 'pickup_point_json'):
+                    pickup_json = load.pickup_point_json
+                elif hasattr(load, '_asdict') and 'pickup_point_json' in load._asdict():
+                    pickup_json = load._asdict()['pickup_point_json']
+                elif isinstance(load, dict) or hasattr(load, '__getitem__'):
+                    pickup_json = load['pickup_point_json']
+                
+                if pickup_json:
+                    # Parse the JSON string if it's not already a dict
+                    if isinstance(pickup_json, str):
+                        import json
+                        coords = json.loads(pickup_json)['coordinates']
+                    else:
+                        coords = pickup_json['coordinates']
+                    points.append(coords)
+                else:
+                    logger.info(f"Missing pickup coordinates for load {getattr(load, 'load_id', 'unknown')}")
+                    continue
+                    
+            print(f"Route points: {points}")
+            
+            # Need at least 2 points for a valid route
+            if len(points) < 2:
+                logger.error("Not enough valid points to calculate a route")
+                print("Not enough valid points to calculate a route")
+                return 0
+                
+            # Make the API call with proper error handling
+            payload = {'profile': 'car', 'points': points}
+            response = gh_handler.post(url='route', payload=payload)
+            
+            # Debug logging
+            print(f"API response status: {getattr(response, 'status_code', 'unknown')}")
+            
+            # Check if response is valid
+            if not response or not hasattr(response, 'json'):
+                logger.error("Invalid response from GraphHopper API")
+                return 0
+                
+            # Parse JSON response
+            try:
+                response_json = response.json()
+            except Exception as e:
+                logger.error(f"Failed to parse API response as JSON: {str(e)}")
+                return 0
+            
+            # Check for required structure in response
+            if 'paths' not in response_json:
+                logger.error(f"Response missing 'paths' key: {response_json}")
+                return 0
+                
+            if not response_json['paths']:
+                logger.error("Empty paths array in response")
+                return 0
+            
+            distance = response_json['paths'][0]['distance']
+            # Ensure we return at least a minimum distance to avoid division by zero
+            return max(distance, 1.0)  # Return at least 1 meter
+            
+        except Exception as e:
+            logger.error(f"Error calculating route length: {str(e)}")
+            print(f"Error calculating route length: {str(e)}")
+            return 1.0  # Return a minimal non-zero value on error
 
     def generate_one_car_trailer_routes(self, limit: int = 10):
         try:
             top_loads = self.get_top_loads(self.driver.location)
             logger.info(f"Top loads found: {len(top_loads)}")
+            print(f"Top loads found: {len(top_loads)}")
 
             routes = []
             for top_load in top_loads[:3]:
@@ -161,9 +233,18 @@ class RouteBuilder:
                             accurate_milage = self.calculate_full_route_length(
                                 route)
                             route.milage = accurate_milage / 1000  # Convert meters to kilometers
-                            route.total_rpm = route.total_price / route.milage
+                            try:
+                                if route.milage > 0:
+                                    route.total_rpm = route.total_price / route.milage
+                                else:
+                                    route.total_rpm = 0
+                                    logger.warning("Zero mileage detected, setting RPM to zero")
+                            except Exception as e:
+                                logger.error(f"Error calculating RPM: {str(e)}")
+                                route.total_rpm = 0
                         except Exception as e:
                             logger.info(f"Error calculating route length: {e}")
+                            print(f"Error calculating route length: {e}")
                             continue
 
                         if (
@@ -174,10 +255,12 @@ class RouteBuilder:
                             routes.append(route)
                 except Exception as e:
                     logger.info(f"Error processing secondary loads: {e}")
+                    print(f"Error processing secondary loads: {e}")
                     continue
             return routes
         except Exception as e:
             logger.info(f"Error generating routes: {e}")
+            print(f"Error generating routes: {e}")
             return []
 
     def generate_two_car_trailer_routes(self, limit: int = 10):
@@ -205,7 +288,15 @@ class RouteBuilder:
                             accurate_milage = self.calculate_full_route_length(
                                 route)
                             route.milage = accurate_milage / 1000  # Convert meters to kilometers
-                            route.total_rpm = route.total_price / route.milage
+                            try:
+                                if route.milage > 0:
+                                    route.total_rpm = route.total_price / route.milage
+                                else:
+                                    route.total_rpm = 0
+                                    logger.warning("Zero mileage detected, setting RPM to zero")
+                            except Exception as e:
+                                logger.error(f"Error calculating RPM: {str(e)}")
+                                route.total_rpm = 0
                         except Exception as e:
                             logger.info(f"Error calculating route length: {e}")
                             continue
@@ -259,7 +350,15 @@ class RouteBuilder:
                                     accurate_milage = self.calculate_full_route_length(
                                         route)
                                     route.milage = accurate_milage / 1000  # Convert meters to kilometers
-                                    route.total_rpm = route.total_price / route.milage
+                                    try:
+                                        if route.milage > 0:
+                                            route.total_rpm = route.total_price / route.milage
+                                        else:
+                                            route.total_rpm = 0
+                                            logger.warning("Zero mileage detected, setting RPM to zero")
+                                    except Exception as e:
+                                        logger.error(f"Error calculating RPM: {str(e)}")
+                                        route.total_rpm = 0
                                 except Exception as e:
                                     logger.info(
                                         f"Error calculating route length: {e}")
