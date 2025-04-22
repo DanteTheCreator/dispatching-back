@@ -2,8 +2,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from geoalchemy2.elements import WKTElement
-from test import make_request
-from handlers import PeliasHandler
+from dispatching_api.selenium_agency.api.handlers import PeliasHandler
 import logging
 from resources.models import LoadModel, get_db
 from selenium.webdriver.common.by import By
@@ -12,10 +11,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
-from gmail_verify import get_otp_from_gmail_central
-from api_client import APIClient
-from central_api_client import CentralAPIClient
-from central_cache import CentralCacheService
+from dispatching_api.selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_central
+from dispatching_api.selenium_agency.api.api_client import APIClient
+from dispatching_api.selenium_agency.api.central_api_client import CentralAPIClient
+from dispatching_api.selenium_agency.cache.central_cache import CentralCacheService
 import json
 
 load_dotenv()

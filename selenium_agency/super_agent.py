@@ -5,18 +5,18 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
 import os
-from gmail_verify import get_otp_from_gmail_super
-from api_client import APIClient
-from super_api_client import SuperAPIClient
-from super_cache import SuperCacheService
+from dispatching_api.selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_super
+from dispatching_api.selenium_agency.api.api_client import APIClient
+from dispatching_api.selenium_agency.api.super_api_client import SuperAPIClient
+from dispatching_api.selenium_agency.cache.super_cache import SuperCacheService
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from resources.models import LoadModel, get_db
 import logging
 import os
-from handlers import PeliasHandler
+from dispatching_api.selenium_agency.api.handlers import PeliasHandler
 from geoalchemy2.elements import WKTElement
-from handlers import GraphhopperHandler, BulkRequestHandler
+from dispatching_api.selenium_agency.api.handlers import GraphhopperHandler, BulkRequestHandler
 
 load_dotenv()
 
