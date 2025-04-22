@@ -195,14 +195,32 @@ def get_loads_and_glink_for_route(loads: List[str] = Query(None), db: Session = 
     # Construct the Google Maps route link
     base_url = "https://www.google.com/maps/dir/"
     locations = []
-
+    
+    # Convert SQLAlchemy models to dictionaries
+    loads_data = []
+    
     for load in db_loads:
         locations.append(load.pickup_location)
         locations.append(load.delivery_location)
+        
+        # Convert SQLAlchemy model to dict with additional fields
+        load_dict = {
+            "load_id": load.load_id,
+            "pickup_location": load.pickup_location,
+            "delivery_location": load.delivery_location,
+            "milage": load.milage,
+            "price": load.price,
+            "notes": load.notes,
+            "contact_phone": load.contact_phone,
+            "brokerage": load.brokerage,
+            "loadboard_source": load.loadboard_source,
+            "is_operational": load.is_operational
+        }
+        loads_data.append(load_dict)
 
     google_maps_link = base_url + "/".join(locations)
 
-    return {"loads": db_loads, "google_maps_link": google_maps_link}
+    return {"loads": loads_data, "google_maps_link": google_maps_link}
 
 
 @app.put("/update_driver", dependencies=[Depends(get_api_key)])

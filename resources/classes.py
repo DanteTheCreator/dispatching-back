@@ -266,14 +266,15 @@ class RouteBuilder:
     def generate_two_car_trailer_routes(self, limit: int = 10):
         try:
             top_loads = self.get_top_loads(self.driver.location)
+            print("driver location", self.driver.location)
             routes = []
-            for top_load in top_loads[:3]:
+            for top_load in top_loads[:10]:
                 if len(routes) >= limit:
                     break
                 try:
                     second_pickup_loads = self.get_top_loads(
                         top_load.pickup_location.split()[-1])
-                    for secondary_load in second_pickup_loads[1:3]:
+                    for secondary_load in second_pickup_loads[:10]:
                         if len(routes) >= limit:
                             break
                         route = Route(self.driver)
