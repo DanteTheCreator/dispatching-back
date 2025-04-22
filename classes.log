@@ -1,0 +1,361 @@
+2025-04-21 12:55:06,679 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app32304', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x79f3e73b35f0>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 12:55:06,696 - dispatching_api - INFO - Three
+2025-04-21 12:55:06,713 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app19116', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x79f3e73e43b0>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app19116' ([Errno -2] Name or service not known)"))
+2025-04-21 12:55:24,947 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app32304', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7ee1f318b5f0>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 12:55:24,962 - dispatching_api - INFO - Three
+2025-04-21 12:55:24,980 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app19116', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7ee1f31bc080>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app19116' ([Errno -2] Name or service not known)"))
+2025-04-21 12:56:23,474 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app32304', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d118734b6b0>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 12:56:23,488 - dispatching_api - INFO - Three
+2025-04-21 12:56:23,507 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app19116', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d11873802c0>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app19116' ([Errno -2] Name or service not known)"))
+2025-04-21 12:56:40,373 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app32304', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7e5852b57710>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 12:56:40,405 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app19116', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7e5852b88380>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app19116' ([Errno -2] Name or service not known)"))
+2025-04-21 12:56:54,377 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app32304', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d51acd7f650>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 12:56:54,411 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app19116', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7d51acdb0320>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app19116' ([Errno -2] Name or service not known)"))
+2025-04-21 12:57:31,558 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app32304', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7427e6c4b650>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 12:59:17,237 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app32304', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7147e1533680>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 13:03:48,783 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app32304', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7660dd3c7410>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 13:05:00,001 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='f735-176-221-230-243.ngrok-free.app32304', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x79629aa0f5f0>: Failed to resolve 'f735-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 13:05:37,627 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app32304', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x71118f3677d0>: Failed to resolve 'c07d-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 13:06:51,869 - dispatching_api - INFO - Error generating routes: HTTPConnectionPool(host='c07d-176-221-230-243.ngrok-free.app32304', port=80): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x745c81a335f0>: Failed to resolve 'c07d-176-221-230-243.ngrok-free.app32304' ([Errno -2] Name or service not known)"))
+2025-04-21 13:08:56,797 - dispatching_api - INFO - Error generating routes: 'features'
+2025-04-21 13:10:30,298 - dispatching_api - INFO - Error generating routes: 'features'
+2025-04-21 13:10:57,649 - dispatching_api - INFO - Error generating routes: 'features'
+2025-04-21 13:13:59,168 - dispatching_api - INFO - Error generating routes: 'features'
+2025-04-21 13:14:49,386 - dispatching_api - INFO - Error generating routes: 'features'
+2025-04-21 13:15:57,645 - dispatching_api - INFO - Error fetching loads from database: type object 'LoadModel' has no attribute 'pickup_point'
+2025-04-21 13:15:58,450 - dispatching_api - INFO - Error fetching loads from database: type object 'LoadModel' has no attribute 'pickup_point'
+2025-04-21 13:15:58,450 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:16:42,265 - dispatching_api - INFO - Error fetching loads from database: type object 'LoadModel' has no attribute 'pickup_point'
+2025-04-21 13:16:42,661 - dispatching_api - INFO - Error fetching loads from database: type object 'LoadModel' has no attribute 'pickup_point'
+2025-04-21 13:16:42,661 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:23:16,335 - dispatching_api - INFO - Error fetching loads from database: type object 'LoadModel' has no attribute 'pickup_point'
+2025-04-21 13:23:16,720 - dispatching_api - INFO - Error fetching loads from database: type object 'LoadModel' has no attribute 'pickup_point'
+2025-04-21 13:23:16,720 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:25:55,420 - dispatching_api - INFO - Error fetching loads from database: type object 'LoadModel' has no attribute 'pickup_point'
+2025-04-21 13:25:55,819 - dispatching_api - INFO - Error fetching loads from database: type object 'LoadModel' has no attribute 'pickup_point'
+2025-04-21 13:25:55,819 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:28:51,504 - dispatching_api - INFO - Error fetching loads from database: (psycopg2.errors.UndefinedColumn) column "pickup_point" does not exist
+LINE 5:                     pickup_point,
+                            ^
+HINT:  Perhaps you meant to reference the column "loads.pickup_points".
+
+[SQL: 
+                SELECT *
+                FROM loads
+                WHERE ST_DWithin(
+                    pickup_point,
+                    ST_SetSRID(ST_MakePoint(%(lon)s, %(lat)s), 4326),
+                    %(distance)s
+                )
+                ORDER BY price DESC
+            ]
+[parameters: {'lon': -84.353057, 'lat': 30.452484, 'distance': 80467.2}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-04-21 13:28:51,894 - dispatching_api - INFO - Error fetching loads from database: (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: 
+                SELECT *
+                FROM loads
+                WHERE ST_DWithin(
+                    pickup_point,
+                    ST_SetSRID(ST_MakePoint(%(lon)s, %(lat)s), 4326),
+                    %(distance)s
+                )
+                ORDER BY price DESC
+            ]
+[parameters: {'lon': -75.013276, 'lat': 40.115569, 'distance': 80467.2}]
+(Background on this error at: https://sqlalche.me/e/20/2j85)
+2025-04-21 13:28:51,895 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:30:10,512 - dispatching_api - INFO - Error fetching loads from database: cannot convert dictionary update sequence element #0 to a sequence
+2025-04-21 13:30:10,956 - dispatching_api - INFO - Error fetching loads from database: cannot convert dictionary update sequence element #0 to a sequence
+2025-04-21 13:30:10,957 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:30:41,274 - dispatching_api - INFO - Error fetching loads from database: cannot convert dictionary update sequence element #0 to a sequence
+2025-04-21 13:30:41,723 - dispatching_api - INFO - Error fetching loads from database: cannot convert dictionary update sequence element #0 to a sequence
+2025-04-21 13:30:41,724 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:31:59,284 - dispatching_api - INFO - Error fetching loads from database: cannot convert dictionary update sequence element #0 to a sequence
+2025-04-21 13:31:59,784 - dispatching_api - INFO - Error fetching loads from database: cannot convert dictionary update sequence element #0 to a sequence
+2025-04-21 13:31:59,785 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:32:36,629 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:32:37,544 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:32:39,171 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:32:40,031 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:32:41,387 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:32:42,267 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:35:52,404 - dispatching_api - INFO - Error calculating route length: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=32304 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:35:52,479 - dispatching_api - INFO - Error calculating route length: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=32304 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:35:52,550 - dispatching_api - INFO - Error processing secondary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=85259 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:35:52,621 - dispatching_api - INFO - Error processing secondary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=72117 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:36:08,479 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=32304 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:36:49,532 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=32304 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:38:11,864 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:12,657 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:13,899 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:14,681 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:16,033 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:16,848 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:19,487 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:20,253 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:21,006 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:22,280 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:23,029 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:23,817 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:25,311 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:26,121 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:26,892 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:28,127 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:28,877 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:29,670 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:31,437 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:38:31,506 - dispatching_api - INFO - Error calculating route length: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=19116 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:38:31,573 - dispatching_api - INFO - Error calculating route length: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=19116 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:38:31,647 - dispatching_api - INFO - Error processing tertiary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=44846 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:38:31,719 - dispatching_api - INFO - Error processing tertiary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=94533 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:38:31,791 - dispatching_api - INFO - Error processing tertiary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=58442 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:38:31,864 - dispatching_api - INFO - Error processing tertiary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=07826 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:38:31,939 - dispatching_api - INFO - Error processing secondary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=94533 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:38:32,008 - dispatching_api - INFO - Error processing secondary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=58442 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:38:32,075 - dispatching_api - INFO - Error processing secondary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=07826 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:38:32,075 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:39:42,621 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=32304 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:40:19,535 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:40:20,764 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:40:22,476 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:40:24,252 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:40:25,489 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:40:26,462 - dispatching_api - INFO - Error calculating route length: 400 Client Error: Bad Request for url: https://b0bf-176-221-230-243.ngrok-free.app/route
+2025-04-21 13:47:17,256 - dispatching_api - INFO - Error fetching loads from database: (psycopg2.errors.SyntaxError) syntax error at or near "ST_X"
+LINE 4:                 ST_X(pickup_points) as longitude,
+                        ^
+
+[SQL: 
+                 SELECT 
+                *               
+                ST_X(pickup_points) as longitude,
+                ST_Y(pickup_points) as latitude
+                FROM loads
+                WHERE ST_DWithin(
+                    pickup_points,
+                    ST_SetSRID(ST_MakePoint(%(lon)s, %(lat)s), 4326),
+                    %(distance)s
+                )
+                ORDER BY price DESC
+                ]
+[parameters: {'lon': -84.353057, 'lat': 30.452484, 'distance': 80467.2}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-04-21 13:47:17,661 - dispatching_api - INFO - Error fetching loads from database: (psycopg2.errors.SyntaxError) syntax error at or near "ST_X"
+LINE 4:                 ST_X(pickup_points) as longitude,
+                        ^
+
+[SQL: 
+                 SELECT 
+                *               
+                ST_X(pickup_points) as longitude,
+                ST_Y(pickup_points) as latitude
+                FROM loads
+                WHERE ST_DWithin(
+                    pickup_points,
+                    ST_SetSRID(ST_MakePoint(%(lon)s, %(lat)s), 4326),
+                    %(distance)s
+                )
+                ORDER BY price DESC
+                ]
+[parameters: {'lon': -75.013276, 'lat': 40.115569, 'distance': 80467.2}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-04-21 13:47:17,662 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:51:33,537 - dispatching_api - INFO - Error fetching loads from database: (psycopg2.errors.SyntaxError) syntax error at or near "ST_X"
+LINE 4:                 ST_X(pickup_points) as longitude,
+                        ^
+
+[SQL: 
+                 SELECT 
+                *               
+                ST_X(pickup_points) as longitude,
+                ST_Y(pickup_points) as latitude
+                FROM loads
+                WHERE ST_DWithin(
+                    pickup_points,
+                    ST_SetSRID(ST_MakePoint(%(lon)s, %(lat)s), 4326),
+                    %(distance)s
+                )
+                ORDER BY price DESC
+                ]
+[parameters: {'lon': -84.353057, 'lat': 30.452484, 'distance': 80467.2}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-04-21 13:51:33,951 - dispatching_api - INFO - Error fetching loads from database: (psycopg2.errors.SyntaxError) syntax error at or near "ST_X"
+LINE 4:                 ST_X(pickup_points) as longitude,
+                        ^
+
+[SQL: 
+                 SELECT 
+                *               
+                ST_X(pickup_points) as longitude,
+                ST_Y(pickup_points) as latitude
+                FROM loads
+                WHERE ST_DWithin(
+                    pickup_points,
+                    ST_SetSRID(ST_MakePoint(%(lon)s, %(lat)s), 4326),
+                    %(distance)s
+                )
+                ORDER BY price DESC
+                ]
+[parameters: {'lon': -75.013276, 'lat': 40.115569, 'distance': 80467.2}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-04-21 13:51:33,951 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:52:05,715 - dispatching_api - INFO - Error fetching loads from database: (psycopg2.errors.SyntaxError) syntax error at or near "ST_AsGeoJSON"
+LINE 4:                 ST_AsGeoJSON(pickup_points) as pickup_point_...
+                        ^
+
+[SQL: 
+                 SELECT 
+                *               
+                ST_AsGeoJSON(pickup_points) as pickup_point_json
+                FROM loads
+                WHERE ST_DWithin(
+                    pickup_points,
+                    ST_SetSRID(ST_MakePoint(%(lon)s, %(lat)s), 4326),
+                    %(distance)s
+                )
+                ORDER BY price DESC
+                ]
+[parameters: {'lon': -84.353057, 'lat': 30.452484, 'distance': 80467.2}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-04-21 13:52:06,107 - dispatching_api - INFO - Error fetching loads from database: (psycopg2.errors.SyntaxError) syntax error at or near "ST_AsGeoJSON"
+LINE 4:                 ST_AsGeoJSON(pickup_points) as pickup_point_...
+                        ^
+
+[SQL: 
+                 SELECT 
+                *               
+                ST_AsGeoJSON(pickup_points) as pickup_point_json
+                FROM loads
+                WHERE ST_DWithin(
+                    pickup_points,
+                    ST_SetSRID(ST_MakePoint(%(lon)s, %(lat)s), 4326),
+                    %(distance)s
+                )
+                ORDER BY price DESC
+                ]
+[parameters: {'lon': -75.013276, 'lat': 40.115569, 'distance': 80467.2}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-04-21 13:52:06,107 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:52:29,673 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:30,056 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:30,926 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:31,302 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:32,169 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:32,547 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:34,861 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:35,406 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:35,780 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:36,646 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:37,031 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:37,403 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:38,239 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:38,627 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:39,029 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:39,884 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:40,270 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:40,645 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:42,373 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:42,752 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:43,129 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:44,461 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:44,848 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:45,325 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:46,204 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:46,604 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:46,989 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:47,849 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:48,220 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:48,597 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:49,902 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:50,277 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:50,647 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:51,506 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:51,884 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:52,265 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:53,591 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:53,980 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:54,353 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:55,248 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:55,626 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:56,002 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:57,371 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:57,749 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:58,137 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:58,998 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:59,401 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:52:59,770 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:00,614 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:00,999 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:01,379 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:02,686 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:03,054 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:03,440 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:04,772 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:05,146 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:05,526 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:06,357 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:06,732 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:07,113 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:08,015 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:08,412 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:08,794 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:09,654 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:10,058 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:10,428 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:53:10,904 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:54:53,246 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:54:53,607 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:54:54,482 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:54:54,871 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:54:55,716 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:54:56,088 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:54:58,394 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:54:58,768 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:54:59,154 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:00,002 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:00,385 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:00,763 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:01,627 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:02,006 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:02,418 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:03,271 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:03,653 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:04,034 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:05,403 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:05,773 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:06,154 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:07,482 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:07,860 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:08,242 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:09,117 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:09,499 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:09,884 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:10,727 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:11,089 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:11,463 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:12,796 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:13,202 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:13,663 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:14,522 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:14,902 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:15,283 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:16,590 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:16,959 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:17,341 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:18,193 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:18,581 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:18,974 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:20,383 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:20,763 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:21,141 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:21,980 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:22,362 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:22,755 - dispatching_api - INFO - Error calculating route length: Could not locate column in row for column 'pickup_points_json'
+2025-04-21 13:55:22,829 - dispatching_api - INFO - Error processing tertiary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=94533 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:55:22,901 - dispatching_api - INFO - Error processing tertiary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=58442 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:55:22,971 - dispatching_api - INFO - Error processing tertiary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=07826 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:55:23,046 - dispatching_api - INFO - Error processing secondary loads: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=07826 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))
+2025-04-21 13:55:23,047 - dispatching_api - INFO - Generated 0 three-car routes that meet criteria
+2025-04-21 13:56:09,420 - dispatching_api - INFO - Error generating routes: HTTPSConnectionPool(host='c07d-176-221-230-243.ngrok-free.app', port=443): Max retries exceeded with url: /v1/search?text=32304 (Caused by SSLError(SSLError(1, '[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)')))

@@ -21,21 +21,25 @@ class APIClient:
         #     'sec-fetch-site': 'same-site',
         #     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
         # }
+        self.base_headers = {}
 
 
     def get(self, url, token=None, params=None):
-        if self.url != "":
-            url = self.url + url
+        
+        url = self.url + url
+        print(url)
         response = requests.get(url, params=params, headers=self.base_headers)
         return response
 
     def post(self, url, token=None, payload=None, params=None):
         # Use full URL if provided, otherwise append to base URL
-        full_url = url if url.startswith('http') else f"{self.url}{url}"
         
+        url = self.url + url
+        print(url)
         try:
+            print(self.base_headers)
             response = requests.post(
-                full_url,
+                url,
                 headers=self.base_headers,
                 json=payload,
                 params=params

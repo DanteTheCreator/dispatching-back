@@ -1,10 +1,15 @@
+import binascii
 from resources.models import DriverModel, RouteModel, get_db, LoadModel
 from sqlalchemy.orm import Session
 from typing import List
 import logging
+from shapely import wkb
 from sqlalchemy.dialects.postgresql import JSONB
-from sqlalchemy import cast
+from sqlalchemy import cast, text
+from geoalchemy2.functions import ST_SetSRID, ST_MakePoint, ST_DWithin
 from selenium_agency.handlers import PeliasHandler, GraphhopperHandler
+from sqlalchemy import func
+
 # Set up logging
 logger = logging.getLogger('dispatching_api')
 logger.setLevel(logging.INFO)
@@ -20,6 +25,16 @@ logger.addHandler(file_handler)
 gh_handler = GraphhopperHandler()
 pl_handler = PeliasHandler()
 
+
+# def convert_postgis_to_coords(geom_string):
+#     # Convert hex string to binary
+#     binary = binascii.unhexlify(geom_string[2:])  # Skip the '0x' prefix
+
+#     # Parse the binary WKB to a shapely geometry
+#     point = wkb.loads(binary)
+
+#     # Return as [longitude, latitude]
+#     return [point.x, point.y]
 
 class Driver:
     def __init__(self, driver_id):
@@ -78,21 +93,36 @@ class RouteBuilder:
     def get_top_loads(self, origin) -> List[LoadModel]:
         origin = pl_handler.get(origin).json()[
             'features'][0]['geometry']['coordinates']
+        print(f"Origin coordinates: {origin}")
         try:
-            loads = (
-                self.db.query(LoadModel)
-                .filter(
-                    # Use PostGIS ST_DWithin to find loads within 50 miles (80467.2 meters)
-                    LoadModel.pickup_point.ST_DWithin(
-                        cast(origin, JSONB),
-                        80467.2
-                    )
+            # Assuming you have GeoAlchemy2 properly imported and set up
+            sql = text("""
+                SELECT 
+                *,           
+                ST_AsGeoJSON(pickup_points) as pickup_point_json
+                FROM loads
+                WHERE ST_DWithin(
+                    pickup_points,
+                    ST_SetSRID(ST_MakePoint(:lon, :lat), 4326),
+                    :distance
                 )
-                .order_by(LoadModel.price.desc())
-                .all()
+                ORDER BY price DESC
+                """)
+
+            # Execute the query with parameters
+            result = self.db.execute(
+                sql,
+                {
+                    'lon': origin[0],
+                    'lat': origin[1],
+                    'distance': 80467.2
+                }
             )
 
-            return loads
+            # Fetch all results as dictionaries
+            loads = result.fetchall()
+
+            return loads  # type: ignore
         except Exception as e:
             logger.info(f"Error fetching loads from database: {e}")
             return []
@@ -103,8 +133,9 @@ class RouteBuilder:
         points = [[driver_points[1], driver_points[0]]]
 
         for load in route.loads:
-            points.append([load.pickup_location, load.delivery_location])
-
+            coords = load.pickup_points_json['coordinates']
+            points.append(coords)
+        print(points)
         return gh_handler.post(url='route', payload={'profile': 'car', 'points': points}).json()['paths'][0]['distance']
 
     def generate_one_car_trailer_routes(self, limit: int = 10):
@@ -196,10 +227,10 @@ class RouteBuilder:
             return []
 
     def generate_three_car_trailer_routes(self, limit: int = 10):
-        logger.info('Three')
+        print('Three')
         try:
             top_loads = self.get_top_loads(self.driver.location)
-            logger.info(f"Top loads found: {len(top_loads)}")
+            print(f"Top loads found: {len(top_loads)}")
 
             routes = []
             for top_load in top_loads[:5]:
@@ -221,7 +252,7 @@ class RouteBuilder:
                                 route.add_load(top_load)
                                 route.add_load(secondary_load)
                                 route.add_load(tertiary_load)
-
+                                print(route.total_price)
                                 # Avoid duplicate loads
                                 if top_load == secondary_load or secondary_load == tertiary_load or top_load == tertiary_load:
                                     continue
@@ -256,7 +287,7 @@ class RouteBuilder:
                 f"Generated {len(routes)} three-car routes that meet criteria")
             return routes[:limit]
         except Exception as e:
-            logger.info(f"Error generating routes: {e}")
+            print(f"Error generating routes: {e}")
             return []
 
     def save_route_to_db(self, route: Route):
