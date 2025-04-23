@@ -4,7 +4,7 @@ from typing import List
 import logging
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import cast, text
-from selenium_agency.handlers import PeliasHandler, GraphhopperHandler
+from dispatching_api.selenium_agency.api.handlers import PeliasHandler, GraphhopperHandler
 from sqlalchemy import func
 
 # Set up logging
@@ -107,8 +107,8 @@ class RouteBuilder:
                 ST_AsGeoJSON(pickup_points) as pickup_point_json
                 FROM loads
                 WHERE ST_DWithin(
-                    pickup_points,
-                    ST_SetSRID(ST_MakePoint(:lon, :lat), 4326),
+                    pickup_points::geography,
+                    ST_SetSRID(ST_MakePoint(:lon, :lat), 4326)::geography,
                     :distance
                 )
                 ORDER BY price DESC

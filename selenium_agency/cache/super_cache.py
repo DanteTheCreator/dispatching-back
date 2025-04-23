@@ -1,4 +1,4 @@
-from cache_service import CacheService
+from dispatching_api.selenium_agency.cache.cache_service import CacheService
 from datetime import datetime, timedelta
 
 class SuperCacheService(CacheService):
