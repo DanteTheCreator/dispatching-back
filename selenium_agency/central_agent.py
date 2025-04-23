@@ -2,7 +2,6 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from geoalchemy2.elements import WKTElement
-from dispatching_api.selenium_agency.api.handlers import PeliasHandler
 import logging
 from resources.models import LoadModel, get_db
 from selenium.webdriver.common.by import By
@@ -11,10 +10,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
-from dispatching_api.selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_central
-from dispatching_api.selenium_agency.api.api_client import APIClient
-from dispatching_api.selenium_agency.api.central_api_client import CentralAPIClient
-from dispatching_api.selenium_agency.cache.central_cache import CentralCacheService
+from selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_central
+from selenium_agency.api.central_api_client import CentralAPIClient
+from selenium_agency.cache.central_cache import CentralCacheService
 import json
 
 load_dotenv()
@@ -22,7 +20,7 @@ load_dotenv()
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Create the full path to the log file
-log_file_path = os.path.join(script_dir, 'logs', 'super_agent.log')
+log_file_path = os.path.join(script_dir, 'logs', 'central_agent.log')
 
 # Configure logging
 logging.basicConfig(
@@ -88,26 +86,10 @@ class CentralAgent:
             loadboard_source="central_dispatch",
             created_at=load.get('createdDate', '')
         )
-
-        print(f"""
-            Load Details:
-            ------------
-            External ID: {load_model_instance.external_load_id}
-            Brokerage: {load_model_instance.brokerage}
-            Pickup: {load_model_instance.pickup_location}
-            Delivery: {load_model_instance.delivery_location}
-            Pickup Coordinates: {load_model_instance.pickup_points}
-            Delivery Coordinates: {load_model_instance.delivery_points}
-            Price: ${load_model_instance.price}
-            Milage: {round(load_model_instance.milage, 2)} miles
-            Operational: {load_model_instance.is_operational}
-            Contact: {load_model_instance.contact_phone}
-            Created: {load_model_instance.created_at}
-            """)
+        
         return load_model_instance
 
     def __set_token(self):
-        print('getting token')
         if not self.__driver:
             return None
         # Execute JavaScript to get token from localStorage
@@ -120,7 +102,6 @@ class CentralAgent:
             user_token = None
 
         if user_token is not None:
-            print('setting token')
             self.__cache_service.set_token(user_token)
             return user_token
         else:
@@ -170,7 +151,6 @@ class CentralAgent:
 
 
     def __start_filling_db_cycle(self, in_between_delay=1):
-        print('here')
         token = self.__cache_service.get_token()
         self.__api_client.set_authorization_header(token)
         loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",
@@ -210,8 +190,7 @@ class CentralAgent:
                                                     'requestType': 'Open',
                                                     'locations': [],
                                                 })
-        #loads_response = make_request(token)
-        print(loads_response)
+
         if loads_response.status_code == 401 or loads_response.status_code == 403:
             self.__cache_service.clear_all()
             return
@@ -219,7 +198,6 @@ class CentralAgent:
         loads = loads_response.json()['items']
         existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(
             LoadModel.external_load_id).all()}
-        # print(existing_load_ids)
 
         # First filter out loads already in the database
         loads = [load for load in loads if str(load.get('id')) not in existing_load_ids]
@@ -241,8 +219,6 @@ class CentralAgent:
 
         # Convert back to a list
         loads = list(unique_loads.values())
-        logger.info(f"New loads to process: {len(loads)}")
-        print(loads)
         if len(loads) > 0:
             load_model_instances = [
                 self.__format_and_get_load_model(load) for load in loads
