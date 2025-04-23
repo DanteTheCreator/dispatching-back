@@ -2,7 +2,7 @@ from api_client import APIClient
 
 class CentralAPIClient(APIClient):
     def __init__(self):
-        super().__init__(url="https://api.loadboard.superdispatch.com",)
+        super().__init__(url="",)
         origin = "https://app.centraldispatch.com"
         self.base_headers = {
             'accept': 'application/json',
