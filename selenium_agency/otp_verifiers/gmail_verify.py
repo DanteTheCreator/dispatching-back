@@ -9,15 +9,16 @@ load_dotenv()
 
 # Your Gmail credentials
 EMAIL = os.getenv("EMAIL")
-SUPEREMAIL = os.getenv("SUPEREMAIL")
-PASSWORD = os.getenv("GMAILAPPPASSWORD")
+SUPEREMAIL = os.getenv("EMAIL_SUPER")
+DANELAPASSWORD = os.getenv("DANELAGMAILPASSWORD")
+CHYONOPASSWORD = os.getenv("CHYONOGMAILPASSWORD")
 
 def get_otp_from_gmail_central(subject):
     try:
         # Connect to Gmail's IMAP server
         mail = imaplib.IMAP4_SSL("imap.gmail.com")
-        if EMAIL is not None and PASSWORD is not None:
-            mail.login(EMAIL, PASSWORD)
+        if EMAIL is not None and DANELAPASSWORD is not None:
+            mail.login(EMAIL, DANELAPASSWORD)
         
         # Select the mailbox to search in
         mail.select("inbox")
@@ -88,8 +89,8 @@ def get_otp_from_gmail_super(subject):
     try:
         # Connect to Gmail's IMAP server
         mail = imaplib.IMAP4_SSL("imap.gmail.com")
-        if EMAIL is not None and PASSWORD is not None:
-            mail.login(EMAIL, PASSWORD)
+        if SUPEREMAIL is not None and CHYONOPASSWORD is not None:
+            mail.login(SUPEREMAIL, CHYONOPASSWORD)
         
         # Select the mailbox to search in
         mail.select("inbox")
@@ -161,3 +162,5 @@ def get_otp_from_gmail_super(subject):
 
 
 #get_otp_from_gmail("Super Dispatch Verification Code")
+otp = get_otp_from_gmail_super('Super Dispatch Verification Code')
+print(otp)

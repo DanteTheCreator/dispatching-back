@@ -2,3 +2,82 @@
 2025-04-23 10:54:23,971 - INFO - Get LATEST chromedriver version for google-chrome
 2025-04-23 10:54:23,984 - INFO - Get LATEST chromedriver version for google-chrome
 2025-04-23 10:54:23,998 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.97/chromedriver-linux64/chromedriver] found in cache
+2025-04-23 18:58:08,679 - INFO - ====== WebDriver manager ======
+2025-04-23 18:58:09,481 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 18:58:09,710 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 18:58:09,892 - INFO - There is no [win64] chromedriver "135.0.7049.97" for browser google-chrome "135.0.7049" in cache
+2025-04-23 18:58:09,892 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 18:58:10,348 - INFO - WebDriver version 135.0.7049.97 selected
+2025-04-23 18:58:10,350 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.97/win32/chromedriver-win32.zip
+2025-04-23 18:58:10,350 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.97/win32/chromedriver-win32.zip
+2025-04-23 18:58:10,526 - INFO - Driver downloading response is 200
+2025-04-23 18:58:11,798 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 18:58:13,796 - INFO - Driver has been saved in cache [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97]
+2025-04-23 18:59:25,854 - INFO - ====== WebDriver manager ======
+2025-04-23 18:59:26,579 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 18:59:26,804 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 18:59:26,990 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 19:03:49,478 - INFO - ====== WebDriver manager ======
+2025-04-23 19:03:50,213 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:03:50,408 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:03:50,584 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 19:06:00,768 - INFO - ====== WebDriver manager ======
+2025-04-23 19:06:01,502 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:06:01,681 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:06:01,857 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 19:10:38,065 - INFO - ====== WebDriver manager ======
+2025-04-23 19:10:38,803 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:10:39,012 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:10:39,200 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 19:14:35,970 - INFO - ====== WebDriver manager ======
+2025-04-23 19:14:36,727 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:14:36,929 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:14:37,118 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 19:15:38,029 - INFO - ====== WebDriver manager ======
+2025-04-23 19:15:38,756 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:15:38,958 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:15:39,140 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 19:16:19,358 - INFO - ====== WebDriver manager ======
+2025-04-23 19:16:20,089 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:16:20,274 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:16:20,471 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 19:16:49,104 - INFO - ====== WebDriver manager ======
+2025-04-23 19:16:49,876 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:16:50,074 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:16:50,250 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 19:18:29,657 - INFO - ====== WebDriver manager ======
+2025-04-23 19:18:30,383 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:18:30,595 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:18:30,804 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 19:58:24,987 - INFO - ====== WebDriver manager ======
+2025-04-23 19:58:25,751 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:58:25,939 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 19:58:26,127 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 20:03:59,686 - INFO - ====== WebDriver manager ======
+2025-04-23 20:04:00,450 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:04:00,642 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:04:00,830 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 20:04:47,274 - INFO - User token found: 7a0932166c2b4851914ebb76d9263cbb
+2025-04-23 20:04:47,787 - INFO - Loads count: 100
+2025-04-23 20:04:50,394 - INFO - New loads to process after deduplication: 100
+2025-04-23 20:11:41,399 - INFO - ====== WebDriver manager ======
+2025-04-23 20:11:42,127 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:11:42,319 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:11:42,518 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 20:11:44,141 - INFO - Loads count: 100
+2025-04-23 20:11:46,610 - INFO - New loads to process after deduplication: 97
+2025-04-23 20:13:40,061 - INFO - ====== WebDriver manager ======
+2025-04-23 20:13:40,800 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:13:40,994 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:13:41,189 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 20:13:42,765 - INFO - Loads count: 100
+2025-04-23 20:13:45,203 - INFO - New loads to process after deduplication: 97
+2025-04-23 20:14:10,062 - INFO - Loads inserted into DB
+2025-04-23 20:14:11,121 - INFO - Loads count: 100
+2025-04-23 20:14:11,429 - INFO - New loads to process after deduplication: 10
+2025-04-23 20:14:15,177 - INFO - Loads inserted into DB
+2025-04-23 20:14:15,633 - INFO - Loads count: 100
+2025-04-23 20:14:15,938 - INFO - New loads to process after deduplication: 91
+2025-04-23 20:14:44,470 - INFO - Loads inserted into DB
+2025-04-23 20:14:44,931 - INFO - Loads count: 100
+2025-04-23 20:14:45,234 - INFO - New loads to process after deduplication: 83
