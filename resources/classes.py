@@ -23,15 +23,6 @@ gh_handler = GraphhopperHandler()
 pl_handler = PeliasHandler()
 
 
-# def convert_postgis_to_coords(geom_string):
-#     # Convert hex string to binary
-#     binary = binascii.unhexlify(geom_string[2:])  # Skip the '0x' prefix
-
-#     # Parse the binary WKB to a shapely geometry
-#     point = wkb.loads(binary)
-
-#     # Return as [longitude, latitude]
-#     return [point.x, point.y]
 
 class Driver:
     def __init__(self, driver_id):

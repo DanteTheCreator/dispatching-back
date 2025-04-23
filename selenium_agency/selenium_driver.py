@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
+from webdriver_manager.chrome import ChromeDriverManager
 import os
 
 load_dotenv()
@@ -16,22 +17,14 @@ class SeleniumDriver:
         self.driver = None
 
     def initialize_driver(self):
-        options = Options()
-
-
-        # Set ChromeDriver path
-        service = Service(CHROMEDRIVER)
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        # options.add_argument("--user-data-dir=/tmp/chrome-data-dir")  # Use a unique directory
-
-        # Enable performance logging
-        options.set_capability('goog:loggingPrefs', {
-            'browser': 'ALL',
-            'performance': 'ALL'
-        })
-        # options.add_argument("--headless")
-        self.driver = webdriver.Chrome(service=service, options=options)
+        chrome_options = Options()
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        
+        service = Service(ChromeDriverManager().install())
+        self.driver = webdriver.Chrome(service=service, options=chrome_options)
+        return self.driver
 
     def get_driver(self):
         if self.driver is None:

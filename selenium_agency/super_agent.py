@@ -1,22 +1,20 @@
 from selenium.webdriver.common.by import By
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
-import os
-from dispatching_api.selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_super
-from dispatching_api.selenium_agency.api.api_client import APIClient
-from dispatching_api.selenium_agency.api.super_api_client import SuperAPIClient
-from dispatching_api.selenium_agency.cache.super_cache import SuperCacheService
-import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_super
+from selenium_agency.api.api_client import APIClient
+from selenium_agency.api.super_api_client import SuperAPIClient
+from selenium_agency.cache.super_cache import SuperCacheService
 from resources.models import LoadModel, get_db
 import logging
-import os
-from dispatching_api.selenium_agency.api.handlers import PeliasHandler
 from geoalchemy2.elements import WKTElement
-from dispatching_api.selenium_agency.api.handlers import GraphhopperHandler, BulkRequestHandler
+from selenium_agency.api.handlers import GraphhopperHandler, BulkRequestHandler
 
 load_dotenv()
 
@@ -42,7 +40,7 @@ class SuperAgent:
         self.__selenium_driver.initialize_driver()
         self.__driver = self.__selenium_driver.get_driver()
         # Your Gmail credentials
-        self._email = os.getenv("EMAIL")
+        self._email = os.getenv("EMAIL_SUPER")
         self._password = os.getenv("PASSWORD_SUPER")
         self.__api_client = SuperAPIClient()
         self.__cache_service = SuperCacheService()

@@ -1,4 +1,4 @@
-from dispatching_api.selenium_agency.api.api_client import APIClient
+from selenium_agency.api.api_client import APIClient
 
 class SuperAPIClient(APIClient):
     def __init__(self):
