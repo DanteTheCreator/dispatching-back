@@ -153,50 +153,57 @@ class CentralAgent:
     def __start_filling_db_cycle(self, in_between_delay=1):
         token = self.__cache_service.get_token()
         self.__api_client.set_authorization_header(token)
-        loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",
-                                                payload={
-                                                    'vehicleCount': {
-                                                        'min': 1,
-                                                        'max': None,
-                                                    },
-                                                    'postedWithinHours': None,
-                                                    'tagListingsPostedWithin': 2,
-                                                    'trailerTypes': [],
-                                                    'paymentTypes': [],
-                                                    'vehicleTypes': [],
-                                                    'operability': 'All',
-                                                    'minimumPaymentTotal': None,
-                                                    'readyToShipWithinDays': None,
-                                                    'minimumPricePerMile': None,
-                                                    'offset': 0,
-                                                    'limit': 10000,
-                                                    'sortFields': [
-                                                        {
-                                                            'name': 'PICKUP',
-                                                            'direction': 'ASC',
+        try:
+            loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",
+                                                    payload={
+                                                        'vehicleCount': {
+                                                            'min': 1,
+                                                            'max': None,
                                                         },
-                                                        {
-                                                            'name': 'DELIVERYMETROAREA',
-                                                            'direction': 'ASC',
-                                                        },
-                                                    ],
-                                                    'shipperIds': [],
-                                                    'desiredDeliveryDate': None,
-                                                    'displayBlockedShippers': False,
-                                                    'showPreferredShippersOnly': False,
-                                                    'showTaggedOnTop': False,
-                                                    'marketplaceIds': [],
-                                                    'averageRating': 'All',
-                                                    'requestType': 'Open',
-                                                    'locations': [],
-                                                })
-
-        if loads_response.status_code == 401 or loads_response.status_code == 403:
-            self.__cache_service.clear_all()
-            time.sleep(in_between_delay)
-            logger.info("Authentication failed, will re-login")
-            print("Authentication failed, will re-login")
-            return False  # Return False to indicate failure, which will trigger re-login
+                                                        'postedWithinHours': None,
+                                                        'tagListingsPostedWithin': 2,
+                                                        'trailerTypes': [],
+                                                        'paymentTypes': [],
+                                                        'vehicleTypes': [],
+                                                        'operability': 'All',
+                                                        'minimumPaymentTotal': None,
+                                                        'readyToShipWithinDays': None,
+                                                        'minimumPricePerMile': None,
+                                                        'offset': 0,
+                                                        'limit': 10000,
+                                                        'sortFields': [
+                                                            {
+                                                                'name': 'PICKUP',
+                                                                'direction': 'ASC',
+                                                            },
+                                                            {
+                                                                'name': 'DELIVERYMETROAREA',
+                                                                'direction': 'ASC',
+                                                            },
+                                                        ],
+                                                        'shipperIds': [],
+                                                        'desiredDeliveryDate': None,
+                                                        'displayBlockedShippers': False,
+                                                        'showPreferredShippersOnly': False,
+                                                        'showTaggedOnTop': False,
+                                                        'marketplaceIds': [],
+                                                        'averageRating': 'All',
+                                                        'requestType': 'Open',
+                                                        'locations': [],
+                                                    })
+        except Exception as e:
+            logger.error(f"Error fetching loads: {e}")
+            print(f"Error fetching loads: {e}")
+            # Check if the exception contains status code information
+            if hasattr(e, 'response') and hasattr(e.response, 'status_code'):
+                status_code = e.response.status_code
+                if status_code == 401 or status_code == 403:
+                    print(f"Authentication error: status code {status_code}")
+                    self.__cache_service.clear_all()
+                    time.sleep(in_between_delay)
+                    logger.info("Authentication failed, will re-login")
+                    print("Authentication failed, will re-login")
+            return False
 
         loads = loads_response.json()['items']
         existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(
@@ -245,6 +252,7 @@ class CentralAgent:
             else:
                 result = self.__start_filling_db_cycle(in_between_delay=2)
                 if result is False:  # If authentication failed
+                    print("Authentication failed, will re-login")
                     continue  # Skip to next iteration, which will trigger re-login
 
 

@@ -162,5 +162,5 @@ def get_otp_from_gmail_super(subject):
 
 
 #get_otp_from_gmail("Super Dispatch Verification Code")
-otp = get_otp_from_gmail_super('Super Dispatch Verification Code')
-print(otp)
+# otp = get_otp_from_gmail_super('Super Dispatch Verification Code')
+# print(otp)
