@@ -2,3 +2,33 @@
 2025-04-23 10:51:34,327 - INFO - Get LATEST chromedriver version for google-chrome
 2025-04-23 10:51:34,344 - INFO - Get LATEST chromedriver version for google-chrome
 2025-04-23 10:51:34,355 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.97/chromedriver-linux64/chromedriver] found in cache
+2025-04-23 20:27:12,446 - INFO - ====== WebDriver manager ======
+2025-04-23 20:27:13,191 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:27:13,369 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:27:13,563 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 20:29:03,906 - INFO - ====== WebDriver manager ======
+2025-04-23 20:29:04,648 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:29:04,840 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:29:05,032 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 20:30:13,575 - INFO - Loads inserted into DB
+2025-04-23 20:30:46,412 - INFO - Loads inserted into DB
+2025-04-23 20:31:18,051 - INFO - Loads inserted into DB
+2025-04-23 20:31:49,712 - INFO - Loads inserted into DB
+2025-04-23 20:32:19,380 - INFO - Loads inserted into DB
+2025-04-23 20:32:50,389 - INFO - Loads inserted into DB
+2025-04-23 20:33:21,624 - INFO - Loads inserted into DB
+2025-04-23 20:33:51,983 - INFO - Loads inserted into DB
+2025-04-23 20:34:22,850 - INFO - Loads inserted into DB
+2025-04-23 20:34:52,286 - INFO - Loads inserted into DB
+2025-04-23 20:35:22,853 - INFO - Loads inserted into DB
+2025-04-23 20:55:54,147 - INFO - ====== WebDriver manager ======
+2025-04-23 20:55:54,890 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:55:55,085 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-23 20:55:55,284 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.97\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-23 20:56:19,551 - INFO - Loads inserted into DB
+2025-04-23 20:56:49,992 - INFO - Loads inserted into DB
+2025-04-23 20:57:20,669 - INFO - Loads inserted into DB
+2025-04-23 20:57:51,481 - INFO - Loads inserted into DB
+2025-04-23 20:58:22,237 - INFO - Loads inserted into DB
+2025-04-23 20:58:53,087 - INFO - Loads inserted into DB
+2025-04-23 20:59:23,621 - INFO - Loads inserted into DB

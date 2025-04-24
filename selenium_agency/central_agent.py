@@ -193,7 +193,10 @@ class CentralAgent:
 
         if loads_response.status_code == 401 or loads_response.status_code == 403:
             self.__cache_service.clear_all()
-            return
+            time.sleep(in_between_delay)
+            logger.info("Authentication failed, will re-login")
+            print("Authentication failed, will re-login")
+            return False  # Return False to indicate failure, which will trigger re-login
 
         loads = loads_response.json()['items']
         existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(
@@ -205,6 +208,10 @@ class CentralAgent:
         # Then filter out duplicates based on price, milage, pickup and delivery locations
         unique_loads = {}
         for load in loads:
+
+            if load['distance'] <= 0 or load['price']['total'] >= 4000:
+                continue
+
             # Create a key from the attributes we want to check for duplicates
             key = (
                 load['price']['total'],
@@ -233,10 +240,12 @@ class CentralAgent:
 
     def run(self):
         while True:
-            if self.__cache_service.token_exists() == False:
+            if not self.__cache_service.token_exists():
                 self.__start_login_cycle(in_between_delay=1)
             else:
-                self.__start_filling_db_cycle(in_between_delay=2)
+                result = self.__start_filling_db_cycle(in_between_delay=2)
+                if result is False:  # If authentication failed
+                    continue  # Skip to next iteration, which will trigger re-login
 
 
 agent = CentralAgent()

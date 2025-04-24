@@ -4,3 +4,4 @@ __pycache__/
 route_builder.log
 .env
 *.exe
+selenium_agency/cache/tmp/

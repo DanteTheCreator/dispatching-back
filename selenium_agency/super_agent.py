@@ -216,6 +216,10 @@ class SuperAgent:
         # Then filter out duplicates based on price, mileage, pickup and delivery locations
         unique_loads = {}
         for load in loads:
+
+            if load.get('load').get('distance_meters') <= 0 or load.get('load', {}).get('price', 0) >= 4000:
+                continue
+
             # Create a key from the attributes we want to check for duplicates
             pickup_venue = load.get('load', {}).get('pickup', {}).get('venue', {})
             delivery_venue = load.get('load', {}).get('delivery', {}).get('venue', {})
