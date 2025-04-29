@@ -4,7 +4,7 @@ from selenium_agency.api.api_client import APIClient
 class PeliasHandler(APIClient):
 
     def __init__(self):
-        super().__init__(url = "http://176.221.230.243/api?text=")
+        super().__init__(url = "https://silhouette.ge/api?text=")
         self.base_headers = {
             "x-api-key": "dispatchingisprofitableapikey",
         }
@@ -14,7 +14,7 @@ class PeliasHandler(APIClient):
 class GraphhopperHandler(APIClient):
 
     def __init__(self):
-        super().__init__(url = "http://176.221.230.243/api/")
+        super().__init__(url = "https://silhouette.ge/api/")
         self.base_headers = {
             "x-api-key": "dispatchingisprofitableapikey",
         }
@@ -23,7 +23,7 @@ class GraphhopperHandler(APIClient):
 class BulkRequestHandler(APIClient):
 
     def __init__(self):
-        super().__init__(url="http://176.221.230.243/api")
+        super().__init__(url="https://silhouette.ge/api")
         self.base_headers = {
             "x-api-key": "dispatchingisprofitableapikey",
         }
