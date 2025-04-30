@@ -53,13 +53,18 @@ class CentralAgent:
         if not load:
             return None
 
-        pickup_location = f"{load['origin']['city']}, {load['origin']['state']} {load['origin']['zip']}"
-        delivery_location = f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
+        try:
+            pickup_location = f"{load['origin']['city']}, {load['origin']['state']} {load['origin']['zip']}"
+            delivery_location = f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
 
-        pickup_coordinates = [load['origin']['geoCode']
-                              ['longitude'], load['origin']['geoCode']['latitude']]
-        delivery_coordinates = [load['destination']['geoCode']
-                                ['longitude'], load['destination']['geoCode']['latitude']]
+            pickup_coordinates = [load['origin']['geoCode']
+                                ['longitude'], load['origin']['geoCode']['latitude']]
+            delivery_coordinates = [load['destination']['geoCode']
+                                    ['longitude'], load['destination']['geoCode']['latitude']]
+        except KeyError as e:
+            logger.error(f"KeyError: {e} in load data: {load}")
+            print(f"KeyError: {e} in load data: {load}")
+            return None  # This will cause the load to be skipped when filtered in __start_filling_db_cycle
 
         # Convert coordinates to WKT format
         pickup_points = WKTElement(
@@ -235,13 +240,18 @@ class CentralAgent:
         loads = list(unique_loads.values())
         if len(loads) > 0:
             load_model_instances = [
-                self.__format_and_get_load_model(load) for load in loads
+                model for model in (self.__format_and_get_load_model(load) for load in loads)
+                if model is not None  # Filter out None values that result from KeyError
             ]
-        # Bulk insert
-            self.__db_Session.bulk_save_objects(load_model_instances)
-            self.__db_Session.commit()
-            time.sleep(in_between_delay)
-            logger.info("Loads inserted into DB")
+            
+            if load_model_instances:  # Only proceed if there are valid models to save
+                # Bulk insert
+                self.__db_Session.bulk_save_objects(load_model_instances)
+                self.__db_Session.commit()
+                time.sleep(in_between_delay)
+                logger.info(f"Inserted {len(load_model_instances)} loads into DB")
+            else:
+                logger.info("No valid loads to insert into DB")
         self.__page += 1
         time.sleep(10)
 
