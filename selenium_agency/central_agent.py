@@ -221,6 +221,9 @@ class CentralAgent:
         unique_loads = {}
         for load in loads:
 
+            if load['distance'] is None:
+                continue
+
             if load['distance'] <= 0 or load['distance'] >= 2000 or load['price']['total'] >= 3000:
                 continue
 

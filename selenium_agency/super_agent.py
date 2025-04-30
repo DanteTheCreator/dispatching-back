@@ -218,6 +218,8 @@ class SuperAgent:
         for load in loads:
 
             distance_meters = load.get('load').get('distance_meters', 0)
+            if distance_meters is None:
+                continue
 
             if distance_meters <= 0 or distance_meters >= 2000 or load.get('load', {}).get('price', 0) >= 3000:
                 continue
