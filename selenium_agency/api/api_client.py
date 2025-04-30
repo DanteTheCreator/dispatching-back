@@ -27,7 +27,6 @@ class APIClient:
     def get(self, url, token=None, params=None):
         
         url = self.url + url
-        print(url)
         response = requests.get(url, params=params, headers=self.base_headers)
         return response
 
@@ -35,9 +34,7 @@ class APIClient:
         # Use full URL if provided, otherwise append to base URL
         
         url = self.url + url
-        print(url)
         try:
-            print(self.base_headers)
             response = requests.post(
                 url,
                 headers=self.base_headers,

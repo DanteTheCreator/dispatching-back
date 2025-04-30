@@ -56,6 +56,17 @@ class SuperAgent:
 
         instructions = load_data.get('instructions', '')
             
+        # Calculate total weight and get vehicle count from the load
+        total_weight = 0
+        vehicles = load_data.get('vehicles', [])
+        for vehicle in vehicles:
+            # Super Dispatch might have weight in different formats based on vehicle type
+            weight = 0
+            if isinstance(vehicle, dict):
+                # Try to extract weight information if available
+                weight = float(vehicle.get('weight', 0))
+            total_weight += weight
+            
         load_model_instance = LoadModel(
             external_load_id=load_data.get('guid', ''),
             brokerage="Super Dispatch",
@@ -69,24 +80,12 @@ class SuperAgent:
             contact_phone=(load_data.get('shipper') or {}).get('contact_phone', ''),
             notes=instructions,
             loadboard_source="super_dispatch",
-            created_at=load_data.get('created_at', '')
+            created_at=load_data.get('created_at', ''),
+            date_ready=load_data.get('pickup', {}).get('scheduled_at', ''),
+            n_vehicles=len(vehicles),
+            weight=float(total_weight)
         )
 
-        print(f"""
-            Load Details:
-            ------------
-            External ID: {load_model_instance.external_load_id}
-            Brokerage: {load_model_instance.brokerage}
-            Pickup: {load_model_instance.pickup_location}
-            Delivery: {load_model_instance.delivery_location}
-            Pickup Coordinates: {load_model_instance.pickup_points}
-            Delivery Coordinates: {load_model_instance.delivery_points}
-            Price: ${load_model_instance.price}
-            Milage: {round(load_model_instance.milage, 2)} miles
-            Operational: {load_model_instance.is_operational}
-            Contact: {load_model_instance.contact_phone}
-            Created: {load_model_instance.created_at}
-            """)
         return load_model_instance
 
     def __format_pickup_location(self, pickup_data):
@@ -104,6 +103,7 @@ class SuperAgent:
         return f"{address_part}{venue.get('city', '')}, {venue.get('state', '')} {venue.get('zip', '')}"
 
     def __batch_save_loads(self, loads, in_between_delay=1):
+        print("saving batch loads to db...")
         if len(loads) > 0:
             bulk_locations = []
             for load in loads:
@@ -115,7 +115,7 @@ class SuperAgent:
 
             bulk_coordinates = self.__bulk_request_handler.post("/bulk_geocode", payload=bulk_locations).json()
 
-            print("received bulk coordinates: ", bulk_coordinates)
+            print("received bulk coordinates")
             for index, bulk_coordinate in enumerate(bulk_coordinates):
                 pickup_location_coordinate = bulk_coordinate.get('pickup_coordinates')
                 delivery_location_coordinate = bulk_coordinate.get('delivery_coordinates')
@@ -152,6 +152,7 @@ class SuperAgent:
             return None
             
     def __start_login_cycle(self, in_between_delay=1):
+        print("start login cycle")
         if self.__driver is not None:
             self.__driver.get("https://carrier.superdispatch.com/tms/login/")
              # Wait for page to load
@@ -209,45 +210,75 @@ class SuperAgent:
         loads = loads_response.json()['data']
         logger.info(f"Loads count: {len(loads)}")
         
-        # First filter out loads already in the database
+        # First filter out loads already in the database by ID
         existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(LoadModel.external_load_id).all()}
         loads = [load for load in loads if load.get('load').get('guid') not in existing_load_ids]
+        logger.info(f"Loads after filtering existing IDs: {len(loads)}")
+        print(f"Loads after filtering existing IDs: {len(loads)}")
         
-        # Then filter out duplicates based on price, mileage, pickup and delivery locations
-        unique_loads = {}
+        # Filter loads by distance and price criteria
+        filtered_loads = []
         for load in loads:
-
             distance_meters = load.get('load').get('distance_meters', 0)
             if distance_meters is None:
                 continue
 
-            if distance_meters <= 0 or distance_meters >= 2000 or load.get('load', {}).get('price', 0) >= 3000:
+            if distance_meters <= 0 or distance_meters >= 2000000 or load.get('load', {}).get('price', 0) >= 3000:
                 continue
-
-            # Create a key from the attributes we want to check for duplicates
+                
+            filtered_loads.append(load)
+            
+        logger.info(f"Filtered loads after basic criteria: {len(filtered_loads)}")
+        print(f"Filtered loads after basic criteria: {len(filtered_loads)}")
+        
+        # Fetch all existing loads once to use for duplicate detection
+        existing_loads = self.__db_Session.query(
+            LoadModel.price, 
+            LoadModel.milage, 
+            LoadModel.pickup_location, 
+            LoadModel.delivery_location
+        ).all()
+        
+        # Create a set of tuples for faster lookup
+        existing_loads_set = {
+            (load.price, load.milage, load.pickup_location, load.delivery_location)
+            for load in existing_loads
+        }
+        
+        # Check for duplicates in database based on price, distance, pickup and delivery locations
+        non_duplicate_loads = []
+        for load in filtered_loads:
             pickup_venue = load.get('load', {}).get('pickup', {}).get('venue', {})
             delivery_venue = load.get('load', {}).get('delivery', {}).get('venue', {})
             
             pickup_location = f"{pickup_venue.get('city', '')}, {pickup_venue.get('state', '')} {pickup_venue.get('zip', '')}"
             delivery_location = f"{delivery_venue.get('city', '')}, {delivery_venue.get('state', '')} {delivery_venue.get('zip', '')}"
             
-            key = (
-                load.get('load', {}).get('price', 0),
-                load.get('load', {}).get('distance_meters', 0),
-                pickup_location,
-                delivery_location
-            )
+            price = str(load.get('load', {}).get('price', 0))
+            distance = float(load.get('load', {}).get('distance_meters', 0)) / 1609.34  # Convert meters to miles
             
-            # Only add the load if we haven't seen this combination before
-            if key not in unique_loads:
-                unique_loads[key] = load
+            # Check against in-memory set of loads - more efficient than individual database queries
+            similar_load_exists = False
+            for existing_price, existing_milage, existing_pickup, existing_delivery in existing_loads_set:
+                if (existing_price == price and
+                    existing_pickup == pickup_location and
+                    existing_delivery == delivery_location and
+                    existing_milage * 0.98 <= distance <= existing_milage * 1.02):
+                    similar_load_exists = True
+                    break
+            
+            if not similar_load_exists:
+                load['pickup_location'] = pickup_location
+                load['delivery_location'] = delivery_location
+                non_duplicate_loads.append(load)
         
-        # Convert back to a list
-        loads = list(unique_loads.values())
+        logger.info(f"New loads to process after deduplication: {len(non_duplicate_loads)}")
+        print(f"New loads to process after deduplication: {len(non_duplicate_loads)}")
         
-        logger.info(f"New loads to process after deduplication: {len(loads)}")
-        
-        self.__batch_save_loads(loads, in_between_delay=in_between_delay)
+        if len(non_duplicate_loads) == 0:
+            print("no new loads to process, every load is already in the database")
+        else:
+            self.__batch_save_loads(non_duplicate_loads, in_between_delay=in_between_delay)
 
         self.__page += 1
 

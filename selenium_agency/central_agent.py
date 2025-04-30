@@ -75,6 +75,12 @@ class CentralAgent:
         coordinates_note = f"Pickup coordinates: {pickup_coordinates}, Delivery coordinates: {delivery_coordinates}"
         instructions = load.get('additionalInfo', '')
         combined_notes = f"{instructions}\n{coordinates_note}"
+        
+        # Calculate total weight from vehicles
+        total_weight = 0
+        for vehicle in load.get('vehicles', []):
+            if vehicle and vehicle.get('shippingSpecs') and vehicle.get('shippingSpecs').get('weight'):
+                total_weight += vehicle.get('shippingSpecs').get('weight', 0)
 
         load_model_instance = LoadModel(
             external_load_id=str(load.get('id', '')),
@@ -89,7 +95,10 @@ class CentralAgent:
             contact_phone=load['shipper'].get('phone', ''),
             notes=combined_notes,
             loadboard_source="central_dispatch",
-            created_at=load.get('createdDate', '')
+            created_at=load.get('createdDate', ''),
+            date_ready=load.get('availableDate', ''),
+            n_vehicles=len(load.get('vehicles', [])),
+            weight=float(total_weight)
         )
         
         return load_model_instance
@@ -174,8 +183,8 @@ class CentralAgent:
                                                         'minimumPaymentTotal': None,
                                                         'readyToShipWithinDays': None,
                                                         'minimumPricePerMile': None,
-                                                        'offset': 0,
-                                                        'limit': 10000,
+                                                        'offset': self.__page * 500,
+                                                        'limit': 500,
                                                         'sortFields': [
                                                             {
                                                                 'name': 'PICKUP',
@@ -211,39 +220,76 @@ class CentralAgent:
             return False
 
         loads = loads_response.json()['items']
-        existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(
-            LoadModel.external_load_id).all()}
-
-        # First filter out loads already in the database
+        logger.info(f"Loads count: {len(loads)}")
+        
+        # First filter out loads already in the database by ID
+        existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(LoadModel.external_load_id).all()}
         loads = [load for load in loads if str(load.get('id')) not in existing_load_ids]
-
-        # Then filter out duplicates based on price, milage, pickup and delivery locations
-        unique_loads = {}
+        logger.info(f"Loads after filtering existing IDs: {len(loads)}")
+        print(f"Loads after filtering existing IDs: {len(loads)}")
+        
+        # Filter loads by distance and price criteria
+        filtered_loads = []
         for load in loads:
-
-            if load['distance'] is None:
+            distance = load.get('distance')
+            if distance is None:
                 continue
 
-            if load['distance'] <= 0 or load['distance'] >= 2000 or load['price']['total'] >= 3000:
+            if distance <= 0 or distance >= 2000 or load.get('price', {}).get('total', 0) >= 3000:
                 continue
-
-            # Create a key from the attributes we want to check for duplicates
-            key = (
-                load['price']['total'],
-                load.get('distance', 0),
-                f"{load['origin']['city']}, {load['origin']['state']} {load['origin']['zip']}",
-                f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
-            )
+                
+            filtered_loads.append(load)
             
-            # Only add the load if we haven't seen this combination before
-            if key not in unique_loads:
-                unique_loads[key] = load
-
-        # Convert back to a list
-        loads = list(unique_loads.values())
-        if len(loads) > 0:
+        logger.info(f"Filtered loads after basic criteria: {len(filtered_loads)}")
+        print(f"Filtered loads after basic criteria: {len(filtered_loads)}")
+        
+        # Fetch all existing loads once to use for duplicate detection
+        existing_loads = self.__db_Session.query(
+            LoadModel.price, 
+            LoadModel.milage, 
+            LoadModel.pickup_location, 
+            LoadModel.delivery_location
+        ).all()
+        
+        # Create a set of tuples for faster lookup
+        existing_loads_set = {
+            (load.price, load.milage, load.pickup_location, load.delivery_location)
+            for load in existing_loads
+        }
+        
+        # Check for duplicates in database based on price, distance, pickup and delivery locations
+        non_duplicate_loads = []
+        for load in filtered_loads:
+            pickup_location = f"{load['origin']['city']}, {load['origin']['state']} {load['origin']['zip']}"
+            delivery_location = f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
+            
+            price = str(load['price']['total'])
+            distance = float(load.get('distance', 0))
+            
+            # Check against in-memory set of loads - more efficient than individual database queries
+            similar_load_exists = False
+            for existing_price, existing_milage, existing_pickup, existing_delivery in existing_loads_set:
+                if (existing_price == price and
+                    existing_pickup == pickup_location and
+                    existing_delivery == delivery_location and
+                    existing_milage * 0.98 <= distance <= existing_milage * 1.02):
+                    similar_load_exists = True
+                    break
+            
+            if not similar_load_exists:
+                non_duplicate_loads.append(load)
+        
+        logger.info(f"New loads to process after deduplication: {len(non_duplicate_loads)}")
+        print(f"New loads to process after deduplication: {len(non_duplicate_loads)}")
+        
+        if len(non_duplicate_loads) == 0:
+            logger.info("No new loads to process, every load is already in the database")
+            print("No new loads to process, every load is already in the database")
+            return True
+        
+        if len(non_duplicate_loads) > 0:
             load_model_instances = [
-                model for model in (self.__format_and_get_load_model(load) for load in loads)
+                model for model in (self.__format_and_get_load_model(load) for load in non_duplicate_loads)
                 if model is not None  # Filter out None values that result from KeyError
             ]
             
@@ -256,7 +302,9 @@ class CentralAgent:
             else:
                 logger.info("No valid loads to insert into DB")
         self.__page += 1
+        print(f"Page: {self.__page}")
         time.sleep(10)
+        return True
 
     def run(self):
         while True:

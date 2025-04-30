@@ -188,3 +188,186 @@
 2025-04-30 19:35:53,620 - INFO - New loads to process after deduplication: 0
 2025-04-30 19:35:54,604 - INFO - Loads count: 100
 2025-04-30 19:35:55,659 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:01,173 - INFO - ====== WebDriver manager ======
+2025-04-30 20:27:01,970 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-30 20:27:02,163 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-30 20:27:02,353 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-30 20:27:04,512 - INFO - Loads count: 100
+2025-04-30 20:27:07,801 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:08,787 - INFO - Loads count: 100
+2025-04-30 20:27:09,715 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:10,768 - INFO - Loads count: 100
+2025-04-30 20:27:11,663 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:12,637 - INFO - Loads count: 100
+2025-04-30 20:27:13,553 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:14,539 - INFO - Loads count: 100
+2025-04-30 20:27:15,872 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:16,876 - INFO - Loads count: 100
+2025-04-30 20:27:18,069 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:19,088 - INFO - Loads count: 100
+2025-04-30 20:27:20,280 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:20,946 - INFO - Loads count: 100
+2025-04-30 20:27:22,139 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:23,166 - INFO - Loads count: 100
+2025-04-30 20:27:24,241 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:25,281 - INFO - Loads count: 100
+2025-04-30 20:27:26,338 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:27,327 - INFO - Loads count: 100
+2025-04-30 20:27:28,258 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:29,224 - INFO - Loads count: 100
+2025-04-30 20:27:30,141 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:31,182 - INFO - Loads count: 100
+2025-04-30 20:27:31,935 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:32,907 - INFO - Loads count: 100
+2025-04-30 20:27:33,657 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:34,647 - INFO - Loads count: 100
+2025-04-30 20:27:35,540 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:36,569 - INFO - Loads count: 100
+2025-04-30 20:27:37,477 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:38,524 - INFO - Loads count: 100
+2025-04-30 20:27:39,327 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:40,308 - INFO - Loads count: 100
+2025-04-30 20:27:41,058 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:42,052 - INFO - Loads count: 100
+2025-04-30 20:27:42,801 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:43,826 - INFO - Loads count: 100
+2025-04-30 20:27:44,724 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:45,703 - INFO - Loads count: 100
+2025-04-30 20:27:46,602 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:48,105 - INFO - Loads count: 100
+2025-04-30 20:27:49,019 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:50,023 - INFO - Loads count: 100
+2025-04-30 20:27:50,921 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:51,887 - INFO - Loads count: 100
+2025-04-30 20:27:52,782 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:53,659 - INFO - Loads count: 100
+2025-04-30 20:27:54,588 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:55,589 - INFO - Loads count: 100
+2025-04-30 20:27:56,521 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:57,523 - INFO - Loads count: 100
+2025-04-30 20:27:58,419 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:27:59,388 - INFO - Loads count: 100
+2025-04-30 20:28:00,297 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:01,301 - INFO - Loads count: 100
+2025-04-30 20:28:02,195 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:03,176 - INFO - Loads count: 100
+2025-04-30 20:28:04,073 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:05,072 - INFO - Loads count: 100
+2025-04-30 20:28:05,971 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:06,945 - INFO - Loads count: 100
+2025-04-30 20:28:07,873 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:08,907 - INFO - Loads count: 100
+2025-04-30 20:28:09,811 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:10,785 - INFO - Loads count: 100
+2025-04-30 20:28:11,697 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:12,704 - INFO - Loads count: 100
+2025-04-30 20:28:13,462 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:14,472 - INFO - Loads count: 100
+2025-04-30 20:28:15,402 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:16,389 - INFO - Loads count: 100
+2025-04-30 20:28:17,139 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:18,097 - INFO - Loads count: 100
+2025-04-30 20:28:18,881 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:19,878 - INFO - Loads count: 100
+2025-04-30 20:28:20,770 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:21,739 - INFO - Loads count: 100
+2025-04-30 20:28:22,651 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:23,646 - INFO - Loads count: 100
+2025-04-30 20:28:24,545 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:25,450 - INFO - Loads count: 100
+2025-04-30 20:28:26,342 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:27,312 - INFO - Loads count: 100
+2025-04-30 20:28:28,238 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:29,241 - INFO - Loads count: 100
+2025-04-30 20:28:30,147 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:31,154 - INFO - Loads count: 100
+2025-04-30 20:28:32,051 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:33,034 - INFO - Loads count: 100
+2025-04-30 20:28:33,974 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:34,951 - INFO - Loads count: 100
+2025-04-30 20:28:35,850 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:36,854 - INFO - Loads count: 100
+2025-04-30 20:28:37,748 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:28:38,593 - INFO - Loads count: 100
+2025-04-30 20:28:39,489 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:30:44,065 - INFO - ====== WebDriver manager ======
+2025-04-30 20:30:44,804 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-30 20:30:44,982 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-30 20:30:45,158 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-30 20:30:47,717 - INFO - Loads count: 100
+2025-04-30 20:30:50,956 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:30:51,945 - INFO - Loads count: 100
+2025-04-30 20:30:53,014 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:30:54,021 - INFO - Loads count: 100
+2025-04-30 20:30:54,945 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:30:56,150 - INFO - Loads count: 100
+2025-04-30 20:30:57,133 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:30:57,963 - INFO - Loads count: 100
+2025-04-30 20:30:58,883 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:30:59,885 - INFO - Loads count: 100
+2025-04-30 20:31:00,806 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:31:01,857 - INFO - Loads count: 100
+2025-04-30 20:31:02,779 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:31:56,197 - INFO - ====== WebDriver manager ======
+2025-04-30 20:31:56,951 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-30 20:31:57,148 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-30 20:31:57,339 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-30 20:31:59,371 - INFO - Loads count: 100
+2025-04-30 20:32:02,703 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:03,708 - INFO - Loads count: 100
+2025-04-30 20:32:04,798 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:05,833 - INFO - Loads count: 100
+2025-04-30 20:32:06,768 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:07,786 - INFO - Loads count: 100
+2025-04-30 20:32:08,734 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:09,747 - INFO - Loads count: 100
+2025-04-30 20:32:11,854 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:12,842 - INFO - Loads count: 100
+2025-04-30 20:32:14,412 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:15,567 - INFO - Loads count: 100
+2025-04-30 20:32:16,990 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:18,039 - INFO - Loads count: 100
+2025-04-30 20:32:19,283 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:20,385 - INFO - Loads count: 100
+2025-04-30 20:32:21,532 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:22,497 - INFO - Loads count: 100
+2025-04-30 20:32:23,451 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:24,471 - INFO - Loads count: 100
+2025-04-30 20:32:25,410 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:26,406 - INFO - Loads count: 100
+2025-04-30 20:32:27,360 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:28,329 - INFO - Loads count: 100
+2025-04-30 20:32:29,116 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:30,117 - INFO - Loads count: 100
+2025-04-30 20:32:31,066 - INFO - New loads to process after deduplication: 0
+2025-04-30 20:32:32,060 - INFO - Loads count: 100
+2025-04-30 20:32:32,997 - INFO - New loads to process after deduplication: 0
+2025-04-30 21:10:32,059 - INFO - ====== WebDriver manager ======
+2025-04-30 21:10:32,837 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-30 21:10:33,045 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-30 21:10:33,238 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-30 21:10:35,344 - INFO - Loads count: 100
+2025-04-30 21:10:38,679 - INFO - Filtered loads after basic criteria: 87
+2025-04-30 21:10:52,416 - INFO - New loads to process after deduplication: 87
+2025-04-30 21:11:19,481 - INFO - Loads inserted into DB
+2025-04-30 21:11:20,426 - INFO - Loads count: 100
+2025-04-30 21:11:21,502 - INFO - Filtered loads after basic criteria: 57
+2025-04-30 21:11:30,434 - INFO - New loads to process after deduplication: 57
+2025-04-30 22:26:18,813 - INFO - ====== WebDriver manager ======
+2025-04-30 22:26:19,556 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-30 22:26:19,752 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-30 22:26:19,928 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-30 22:26:22,037 - INFO - Loads count: 100
+2025-04-30 22:26:24,821 - INFO - Loads after filtering existing IDs: 100
+2025-04-30 22:26:24,822 - INFO - Filtered loads after basic criteria: 76
+2025-04-30 22:26:25,588 - INFO - New loads to process after deduplication: 76
+2025-04-30 22:26:45,487 - INFO - Loads inserted into DB
+2025-04-30 22:26:46,509 - INFO - Loads count: 100
+2025-04-30 22:26:47,122 - INFO - Loads after filtering existing IDs: 83
+2025-04-30 22:26:47,123 - INFO - Filtered loads after basic criteria: 50
+2025-04-30 22:26:47,671 - INFO - New loads to process after deduplication: 50
+2025-04-30 22:27:03,590 - INFO - Loads inserted into DB
+2025-04-30 22:27:04,450 - INFO - Loads count: 100
+2025-04-30 22:27:05,051 - INFO - Loads after filtering existing IDs: 87
+2025-04-30 22:27:05,051 - INFO - Filtered loads after basic criteria: 44
+2025-04-30 22:27:05,545 - INFO - New loads to process after deduplication: 44

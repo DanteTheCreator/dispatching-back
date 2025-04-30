@@ -40,6 +40,9 @@ class LoadModel(Base):
     notes = Column(String)
     loadboard_source = Column(String(50))
     created_at = Column(DateTime)
+    date_ready = Column(DateTime)
+    n_vehicles = Column(Integer)
+    weight = Column(Float)
 
 class Dispatcher(Base):
     __tablename__ = "dispatchers"
