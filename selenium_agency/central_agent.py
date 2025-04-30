@@ -221,7 +221,7 @@ class CentralAgent:
         unique_loads = {}
         for load in loads:
 
-            if load['distance'] <= 0 or load['price']['total'] >= 4000:
+            if load['distance'] <= 0 or load['distance'] >= 2000 or load['price']['total'] >= 3000:
                 continue
 
             # Create a key from the attributes we want to check for duplicates

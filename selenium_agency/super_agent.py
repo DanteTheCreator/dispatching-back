@@ -217,7 +217,9 @@ class SuperAgent:
         unique_loads = {}
         for load in loads:
 
-            if load.get('load').get('distance_meters') <= 0 or load.get('load', {}).get('price', 0) >= 4000:
+            distance_meters = load.get('load').get('distance_meters', 0)
+
+            if distance_meters <= 0 or distance_meters >= 2000 or load.get('load', {}).get('price', 0) >= 3000:
                 continue
 
             # Create a key from the attributes we want to check for duplicates
