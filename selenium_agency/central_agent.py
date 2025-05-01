@@ -36,6 +36,8 @@ class CentralAgent:
 
     __selenium_driver = SeleniumDriver()
     __origin = ""
+    __total_records = 0
+    __record_count_per_page = 0
 
     def __init__(self):
         self.__selenium_driver.initialize_driver()
@@ -219,8 +221,33 @@ class CentralAgent:
                     print("Authentication failed, will re-login")
             return False
 
-        loads = loads_response.json()['items']
-        logger.info(f"Loads count: {len(loads)}")
+        response_json = loads_response.json()
+        loads = response_json['items']
+
+        total_records = response_json['totalRecords']
+        count = response_json['count']
+
+        if self.__record_count_per_page == 0 and self.__total_records == 0:
+            self.__record_count_per_page = count
+            self.__total_records = total_records
+            logger.info(f"Total records: {self.__total_records}, Records per page: {self.__record_count_per_page}")
+            print(f"Total records: {self.__total_records}, Records per page: {self.__record_count_per_page}")
+
+        print("Page: ", self.__page, "Total records: ", self.__total_records, "Records per page: ", self.__record_count_per_page)
+        print(self.__page >= (self.__total_records / self.__record_count_per_page) + 1)
+        if (self.__page >= (self.__total_records / self.__record_count_per_page) + 1):
+            logger.info("No more pages to process")
+            print("No more pages to process")
+            self.__page = 0
+            self.__total_records = 0
+            self.__record_count_per_page = 0
+            time.sleep(200)
+        
+        # logger.info(f"Page: {self.__page}, Loads count: {len(loads)}")
+        # print(f"Page: {self.__page}, Loads count: {len(loads)}")
+
+        # Print response excluding the items array
+        #response_without_items = {k: v for k, v in response_json.items() if k != 'items'}
         
         # First filter out loads already in the database by ID
         existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(LoadModel.external_load_id).all()}
@@ -303,7 +330,7 @@ class CentralAgent:
                 logger.info("No valid loads to insert into DB")
         self.__page += 1
         print(f"Page: {self.__page}")
-        time.sleep(10)
+        time.sleep(5)
         return True
 
     def run(self):
