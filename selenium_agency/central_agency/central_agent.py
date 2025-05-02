@@ -1,0 +1,121 @@
+import sys
+import os
+# Append the project root directory to sys.path
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(project_root)
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from geoalchemy2.elements import WKTElement
+import logging
+from resources.models import LoadModel, get_db
+from selenium.webdriver.common.by import By
+import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium_driver import SeleniumDriver
+from dotenv import load_dotenv
+from selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_central
+from selenium_agency.api.central_api_client import CentralAPIClient
+from selenium_agency.cache.central_cache import CentralCacheService
+import json
+from central_interactor import CentralInteractor
+
+load_dotenv()
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Create the full path to the log file
+log_file_path = os.path.join(script_dir, 'logs', 'central_agent.log')
+
+# Configure logging
+logging.basicConfig(
+    filename=log_file_path,
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+logger = logging.getLogger(__name__)
+
+
+class CentralAgent:
+
+    __selenium_driver = SeleniumDriver()
+    __origin = ""
+    __in_between_delay = 1
+
+    def __init__(self):
+        self.__selenium_driver.initialize_driver()
+        self.__driver = self.__selenium_driver.get_driver()
+        # Your Gmail credentials
+        self._email = os.getenv("CENTRAL_USER")
+        self._password = os.getenv("CENTRAL_PASSWORD")
+        #self.__api_client = APIClient(url='', origin=self.__origin)
+        self.__api_client = CentralAPIClient()
+        self.__cache_service = CentralCacheService()
+        self.__db_Session = next(get_db())
+        self.__central_interactor = CentralInteractor(self.__selenium_driver, self.__api_client, self.__cache_service, self.__db_Session)
+        self.__page = 0
+
+    def __load_page(self):
+        self.__driver.get("https://id.centraldispatch.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcentraldispatch_authentication%26scope%3Dlisting_service%2520offline_access%2520openid%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fsite.centraldispatch.com%252Fprotected")
+        # Wait for page to load
+        self.__wait = WebDriverWait(self.__driver, 10)
+        time.sleep(self.__in_between_delay)
+
+    def __authorize(self):
+        # Use the correct ID selectors from the HTML
+        email_field = self.__wait.until(
+            EC.element_to_be_clickable((By.ID, "Username")))
+        password_field = self.__wait.until(
+            EC.element_to_be_clickable((By.ID, "password")))
+        login_button = self.__wait.until(
+            EC.element_to_be_clickable((By.ID, "loginButton")))
+
+        time.sleep(self.__in_between_delay)
+        email_field.send_keys(self._email or '')
+        time.sleep(self.__in_between_delay)
+        password_field.send_keys(self._password or '')
+        time.sleep(self.__in_between_delay)
+        login_button.click()
+
+        # Wait for login to complete
+        time.sleep(1)
+
+    def __verify(self):
+        send_code_button = self.__wait.until(
+        EC.element_to_be_clickable((By.ID, "sendCodeButton")))
+        send_code_button.click()
+        time.sleep(5)
+        otp = get_otp_from_gmail_central('Central Dispatch')
+        otp_field = self.__wait.until(
+        EC.element_to_be_clickable((By.ID, "VerificationCode")))
+        time.sleep(self.__in_between_delay)
+        otp_field.send_keys(otp or '')
+        time.sleep(self.__in_between_delay)
+        button = self.__wait.until(
+        EC.element_to_be_clickable((By.ID, "submitButton")))
+        button.click()
+        time.sleep(15)
+
+    def __start_login_cycle(self):
+        if self.__driver is not None:
+            self.__load_page()
+            self.__authorize()
+            self.__verify()
+            self.__central_interactor.set_token()
+
+    def __start_filling_db_cycle(self):
+        loads = self.__central_interactor.fetch_loads()
+        non_duplicate_loads = self.__central_interactor.deduplicate_loads(loads)
+        self.__central_interactor.save_loads_to_db(non_duplicate_loads)
+
+    def run(self):
+        while True:
+            if self.__cache_service.token_exists():
+                self.__start_filling_db_cycle()
+            else:
+                print("Token not found, re-login required")
+                self.__start_login_cycle()
+
+
+agent = CentralAgent()
+agent.run()

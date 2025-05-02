@@ -736,3 +736,62 @@
 2025-05-01 21:05:26,776 - INFO - Get LATEST chromedriver version for google-chrome
 2025-05-01 21:05:26,950 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
 2025-05-01 21:05:29,301 - INFO - Total records: 72575, Records per page: 499
+2025-05-02 18:58:37,285 - INFO - ====== WebDriver manager ======
+2025-05-02 18:58:38,234 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 18:58:38,438 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 18:58:38,620 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-02 18:58:40,062 - ERROR - Error fetching loads: 401 Client Error: Unauthorized for url: https://bff.centraldispatch.com/listing-search/api/open-search
+2025-05-02 19:02:33,490 - INFO - ====== WebDriver manager ======
+2025-05-02 19:02:34,252 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 19:02:34,434 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 19:02:34,587 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-02 19:03:16,147 - INFO - Total records: 73751, Records per page: 498
+2025-05-02 19:03:20,336 - INFO - Loads after filtering existing IDs: 332
+2025-05-02 19:03:20,337 - INFO - Filtered loads after basic criteria: 99
+2025-05-02 19:03:24,005 - INFO - New loads to process after deduplication: 99
+2025-05-02 19:03:25,669 - INFO - Inserted 99 loads into DB
+2025-05-02 19:03:59,089 - INFO - Loads after filtering existing IDs: 185
+2025-05-02 19:03:59,090 - INFO - Filtered loads after basic criteria: 146
+2025-05-02 19:04:03,310 - INFO - New loads to process after deduplication: 146
+2025-05-02 19:04:05,072 - INFO - Inserted 146 loads into DB
+2025-05-02 19:30:34,939 - INFO - ====== WebDriver manager ======
+2025-05-02 19:30:35,694 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 19:30:35,876 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 19:30:36,045 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-02 19:30:38,375 - INFO - Total records: 73498, Records per page: 500
+2025-05-02 19:45:24,943 - INFO - ====== WebDriver manager ======
+2025-05-02 19:45:25,741 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 19:45:25,919 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 19:45:26,089 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-02 19:45:27,421 - ERROR - Error fetching loads: 401 Client Error: Unauthorized for url: https://bff.centraldispatch.com/listing-search/api/open-search
+2025-05-02 19:46:24,699 - INFO - ====== WebDriver manager ======
+2025-05-02 19:46:25,482 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 19:46:25,655 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 19:46:25,825 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-02 19:47:03,824 - INFO - Total records: 73493, Records per page: 500
+2025-05-02 19:47:07,391 - INFO - Loads after filtering existing IDs: 247
+2025-05-02 19:47:07,392 - INFO - Filtered loads after basic criteria: 11
+2025-05-02 19:47:09,904 - INFO - New loads to process after deduplication: 11
+2025-05-02 19:47:11,221 - INFO - Inserted 11 loads into DB
+2025-05-02 19:47:14,361 - INFO - Loads after filtering existing IDs: 53
+2025-05-02 19:47:14,362 - INFO - Filtered loads after basic criteria: 16
+2025-05-02 19:47:18,253 - INFO - New loads to process after deduplication: 16
+2025-05-02 19:47:19,558 - INFO - Inserted 16 loads into DB
+2025-05-02 19:47:22,723 - INFO - Loads after filtering existing IDs: 209
+2025-05-02 19:47:22,724 - INFO - Filtered loads after basic criteria: 181
+2025-05-02 19:47:27,453 - INFO - New loads to process after deduplication: 181
+2025-05-02 19:47:29,365 - INFO - Inserted 181 loads into DB
+2025-05-02 19:47:32,416 - INFO - Loads after filtering existing IDs: 164
+2025-05-02 19:47:32,416 - INFO - Filtered loads after basic criteria: 143
+2025-05-02 19:47:36,812 - INFO - New loads to process after deduplication: 143
+2025-05-02 19:47:38,283 - INFO - Inserted 143 loads into DB
+2025-05-02 19:47:41,502 - INFO - Loads after filtering existing IDs: 240
+2025-05-02 19:47:41,503 - INFO - Filtered loads after basic criteria: 136
+2025-05-02 20:07:56,071 - INFO - ====== WebDriver manager ======
+2025-05-02 20:07:56,832 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 20:07:57,020 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 20:07:57,207 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-02 20:07:59,594 - INFO - Total records: 73488, Records per page: 500
+2025-05-02 20:08:03,483 - INFO - Loads after filtering existing IDs: 250
+2025-05-02 20:08:03,483 - INFO - Filtered loads after basic criteria: 13
+2025-05-02 20:08:06,177 - INFO - New loads to process after deduplication: 13

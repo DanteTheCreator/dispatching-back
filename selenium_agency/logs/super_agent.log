@@ -371,3 +371,30 @@
 2025-04-30 22:27:05,051 - INFO - Loads after filtering existing IDs: 87
 2025-04-30 22:27:05,051 - INFO - Filtered loads after basic criteria: 44
 2025-04-30 22:27:05,545 - INFO - New loads to process after deduplication: 44
+2025-05-02 18:34:49,857 - INFO - ====== WebDriver manager ======
+2025-05-02 18:34:50,656 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 18:34:50,862 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 18:34:51,049 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 18:34:51,508 - INFO - WebDriver version 135.0.7049.114 selected
+2025-05-02 18:34:51,510 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.114/win32/chromedriver-win32.zip
+2025-05-02 18:34:51,510 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.114/win32/chromedriver-win32.zip
+2025-05-02 18:34:51,698 - INFO - Driver downloading response is 200
+2025-05-02 18:34:52,907 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 18:34:53,530 - INFO - Driver has been saved in cache [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114]
+2025-05-02 18:35:40,057 - INFO - User token found: f6b5fb2bb33d4743925fc00ada7f29ac
+2025-05-02 18:35:41,002 - INFO - Loads count: 100
+2025-05-02 18:35:44,925 - INFO - Loads after filtering existing IDs: 76
+2025-05-02 18:35:44,926 - INFO - Filtered loads after basic criteria: 35
+2025-05-02 18:35:47,524 - INFO - New loads to process after deduplication: 35
+2025-05-02 18:36:03,673 - INFO - Loads inserted into DB
+2025-05-02 18:36:04,675 - INFO - Loads count: 100
+2025-05-02 18:36:06,244 - INFO - Loads after filtering existing IDs: 74
+2025-05-02 18:36:06,244 - INFO - Filtered loads after basic criteria: 25
+2025-05-02 18:36:10,154 - INFO - New loads to process after deduplication: 25
+2025-05-02 18:36:16,778 - INFO - Loads inserted into DB
+2025-05-02 18:36:17,748 - INFO - Loads count: 100
+2025-05-02 18:36:23,256 - INFO - Loads after filtering existing IDs: 74
+2025-05-02 18:36:23,256 - INFO - Filtered loads after basic criteria: 43
+2025-05-02 18:36:27,283 - INFO - New loads to process after deduplication: 43
+2025-05-02 18:36:37,113 - INFO - Loads inserted into DB
+2025-05-02 18:36:38,127 - INFO - Loads count: 100
