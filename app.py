@@ -1,9 +1,11 @@
+from sqlalchemy import Float, cast
 from sqlalchemy.orm import Session
 from fastapi import FastAPI, Query, Security, HTTPException, Depends
 from fastapi.security import APIKeyHeader
 from http import HTTPStatus
 import os
 from typing import List, Optional
+from datetime import datetime
 from resources.models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -298,44 +300,73 @@ def health(db: Session = Depends(get_db)):
 
 @app.get("/filter_loads", dependencies=[Depends(get_api_key)])
 def filter_loads(
-    min_price: Optional[float] = None,
-    max_price: Optional[float] = None,
-    min_milage: Optional[float] = None,
-    max_milage: Optional[float] = None,
-    broker: Optional[str] = None,
-    min_weight: Optional[float] = None,
-    max_weight: Optional[float] = None,
-    origin: Optional[str] = None,
-    destination: Optional[str] = None,
-    db: Session = Depends(get_db)
+   min_price: Optional[float] = None,
+   max_price: Optional[float] = None,
+   min_milage: Optional[float] = None,
+   max_milage: Optional[float] = None,
+   broker: Optional[str] = None,
+   min_weight: Optional[float] = None,
+   max_weight: Optional[float] = None,
+   origin: Optional[str] = None,
+   destination: Optional[str] = None,
+   db: Session = Depends(get_db)
 ):
-    query = db.query(LoadModel)
+   # Create a query that selects only specific columns, excluding geometry fields
+   query = db.query(
+       LoadModel.load_id,
+       LoadModel.external_load_id,
+       LoadModel.brokerage,
+       LoadModel.pickup_location,
+       LoadModel.delivery_location,
+       LoadModel.price,
+       LoadModel.milage,
+       LoadModel.is_operational,
+       LoadModel.contact_phone,
+       LoadModel.notes,
+       LoadModel.loadboard_source,
+       LoadModel.created_at,
+       LoadModel.date_ready,
+       LoadModel.n_vehicles,
+       LoadModel.weight
+   )
 
-    if min_price is not None:
-        query = query.filter(LoadModel.price >= min_price)
-    if max_price is not None:
-        query = query.filter(LoadModel.price <= max_price)
-    if min_milage is not None:
-        query = query.filter(LoadModel.milage >= min_milage)
-    if max_milage is not None:
-        query = query.filter(LoadModel.milage <= max_milage)
-    if broker:
-        query = query.filter(LoadModel.brokerage == broker)
-    if min_weight is not None:
-        query = query.filter(LoadModel.weight >= min_weight)
-    if max_weight is not None:
-        query = query.filter(LoadModel.weight <= max_weight)
-    if origin:
-        query = query.filter(LoadModel.pickup_location.ilike(f'%{origin}%'))
-    if destination:
-        query = query.filter(LoadModel.delivery_location.ilike(f'%{destination}%'))
+   # Apply filters to the query
+   if min_price is not None:
+       # Cast string price to float for comparison
+       query = query.filter(cast(LoadModel.price, Float) >= min_price)
+   if max_price is not None:
+       query = query.filter(cast(LoadModel.price, Float) <= max_price)
+   if min_milage is not None:
+       query = query.filter(LoadModel.milage >= min_milage)
+   if max_milage is not None:
+       query = query.filter(LoadModel.milage <= max_milage)
+   if broker:
+       query = query.filter(LoadModel.brokerage == broker)
+   if min_weight is not None:
+       query = query.filter(LoadModel.weight >= min_weight)
+   if max_weight is not None:
+       query = query.filter(LoadModel.weight <= max_weight)
+   if origin:
+       query = query.filter(LoadModel.pickup_location.ilike(f'%{origin}%'))
+   if destination:
+       query = query.filter(LoadModel.delivery_location.ilike(f'%{destination}%'))
 
-    loads = query.all()
-    if not loads:
-        raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND,
-            detail="No loads found matching the criteria"
-        )
-    return loads
-
-
+   # Execute the query
+   loads = query.all()
+   
+   if not loads:
+       raise HTTPException(
+           status_code=HTTPStatus.NOT_FOUND,
+           detail="No loads found matching the criteria"
+       )
+   
+   # Convert to dictionaries
+   result = [row._asdict() for row in loads]
+   
+   # Serialize datetime objects to ISO format
+   for load_dict in result:
+       for key, value in load_dict.items():
+           if isinstance(value, datetime):
+               load_dict[key] = value.isoformat()
+   
+   return result
