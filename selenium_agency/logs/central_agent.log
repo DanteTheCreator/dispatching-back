@@ -1751,3 +1751,242 @@
 2025-05-02 15:06:03,598 - INFO - Get LATEST chromedriver version for google-chrome
 2025-05-02 15:06:03,613 - INFO - Get LATEST chromedriver version for google-chrome
 2025-05-02 15:06:03,624 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-02 15:09:28,859 - INFO - Total records: 73332, Records per page: 500
+2025-05-02 15:09:28,971 - INFO - Loads after filtering existing IDs: 246
+2025-05-02 15:09:28,971 - INFO - Filtered loads after basic criteria: 7
+2025-05-02 15:09:29,259 - INFO - New loads to process after deduplication: 7
+2025-05-02 15:09:30,288 - INFO - Inserted 7 loads into DB
+2025-05-02 15:10:01,311 - INFO - Loads after filtering existing IDs: 45
+2025-05-02 15:10:01,311 - INFO - Filtered loads after basic criteria: 9
+2025-05-02 15:10:01,602 - INFO - New loads to process after deduplication: 9
+2025-05-02 15:10:02,618 - INFO - Inserted 9 loads into DB
+2025-05-02 15:10:33,707 - INFO - Loads after filtering existing IDs: 36
+2025-05-02 15:10:33,707 - INFO - Filtered loads after basic criteria: 6
+2025-05-02 15:10:33,968 - INFO - New loads to process after deduplication: 6
+2025-05-02 15:10:34,985 - INFO - Inserted 6 loads into DB
+2025-05-02 15:11:05,969 - INFO - Loads after filtering existing IDs: 27
+2025-05-02 15:11:05,970 - INFO - Filtered loads after basic criteria: 4
+2025-05-02 15:11:06,230 - INFO - New loads to process after deduplication: 4
+2025-05-02 15:11:07,244 - INFO - Inserted 4 loads into DB
+2025-05-02 15:11:38,277 - INFO - Loads after filtering existing IDs: 118
+2025-05-02 15:11:38,277 - INFO - Filtered loads after basic criteria: 11
+2025-05-02 15:11:38,605 - INFO - New loads to process after deduplication: 11
+2025-05-02 15:11:39,622 - INFO - Inserted 11 loads into DB
+2025-05-02 15:12:10,619 - INFO - Loads after filtering existing IDs: 124
+2025-05-02 15:12:10,619 - INFO - Filtered loads after basic criteria: 6
+2025-05-02 15:12:10,867 - INFO - New loads to process after deduplication: 6
+2025-05-02 15:12:11,882 - INFO - Inserted 6 loads into DB
+2025-05-02 15:12:42,999 - INFO - Loads after filtering existing IDs: 149
+2025-05-02 15:12:42,999 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:12:43,209 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:12:44,235 - INFO - Inserted 3 loads into DB
+2025-05-02 15:13:15,292 - INFO - Loads after filtering existing IDs: 129
+2025-05-02 15:13:15,292 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:13:15,518 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:13:16,531 - INFO - Inserted 3 loads into DB
+2025-05-02 15:13:47,673 - INFO - Loads after filtering existing IDs: 143
+2025-05-02 15:13:47,673 - INFO - Filtered loads after basic criteria: 4
+2025-05-02 15:13:47,925 - INFO - New loads to process after deduplication: 4
+2025-05-02 15:13:48,943 - INFO - Inserted 4 loads into DB
+2025-05-02 15:14:19,973 - INFO - Loads after filtering existing IDs: 135
+2025-05-02 15:14:19,974 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:14:20,191 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:14:21,204 - INFO - Inserted 3 loads into DB
+2025-05-02 15:14:52,281 - INFO - Loads after filtering existing IDs: 131
+2025-05-02 15:14:52,281 - INFO - Filtered loads after basic criteria: 0
+2025-05-02 15:14:52,463 - INFO - New loads to process after deduplication: 0
+2025-05-02 15:14:52,472 - INFO - No new loads to process, every load is already in the database
+2025-05-02 15:15:23,492 - INFO - Loads after filtering existing IDs: 197
+2025-05-02 15:15:23,492 - INFO - Filtered loads after basic criteria: 0
+2025-05-02 15:15:23,667 - INFO - New loads to process after deduplication: 0
+2025-05-02 15:15:23,678 - INFO - No new loads to process, every load is already in the database
+2025-05-02 15:15:54,742 - INFO - Loads after filtering existing IDs: 229
+2025-05-02 15:15:54,742 - INFO - Filtered loads after basic criteria: 2
+2025-05-02 15:15:54,955 - INFO - New loads to process after deduplication: 2
+2025-05-02 15:15:55,968 - INFO - Inserted 2 loads into DB
+2025-05-02 15:16:27,152 - INFO - Loads after filtering existing IDs: 251
+2025-05-02 15:16:27,153 - INFO - Filtered loads after basic criteria: 2
+2025-05-02 15:16:27,356 - INFO - New loads to process after deduplication: 2
+2025-05-02 15:16:28,369 - INFO - Inserted 2 loads into DB
+2025-05-02 15:16:59,453 - INFO - Loads after filtering existing IDs: 236
+2025-05-02 15:16:59,453 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:16:59,671 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:17:00,683 - INFO - Inserted 3 loads into DB
+2025-05-02 15:17:31,790 - INFO - Loads after filtering existing IDs: 244
+2025-05-02 15:17:31,790 - INFO - Filtered loads after basic criteria: 10
+2025-05-02 15:17:32,053 - INFO - New loads to process after deduplication: 10
+2025-05-02 15:17:33,066 - INFO - Inserted 10 loads into DB
+2025-05-02 15:18:04,351 - INFO - Loads after filtering existing IDs: 215
+2025-05-02 15:18:04,352 - INFO - Filtered loads after basic criteria: 2
+2025-05-02 15:18:04,578 - INFO - New loads to process after deduplication: 2
+2025-05-02 15:18:05,592 - INFO - Inserted 2 loads into DB
+2025-05-02 15:18:36,702 - INFO - Loads after filtering existing IDs: 271
+2025-05-02 15:18:36,702 - INFO - Filtered loads after basic criteria: 2
+2025-05-02 15:18:36,904 - INFO - New loads to process after deduplication: 2
+2025-05-02 15:18:37,917 - INFO - Inserted 2 loads into DB
+2025-05-02 15:19:08,966 - INFO - Loads after filtering existing IDs: 311
+2025-05-02 15:19:08,966 - INFO - Filtered loads after basic criteria: 4
+2025-05-02 15:19:09,231 - INFO - New loads to process after deduplication: 4
+2025-05-02 15:19:10,248 - INFO - Inserted 4 loads into DB
+2025-05-02 15:19:41,298 - INFO - Loads after filtering existing IDs: 252
+2025-05-02 15:19:41,298 - INFO - Filtered loads after basic criteria: 4
+2025-05-02 15:19:41,520 - INFO - New loads to process after deduplication: 4
+2025-05-02 15:19:42,533 - INFO - Inserted 4 loads into DB
+2025-05-02 15:20:12,605 - ERROR - Error fetching loads: 400 Client Error: Bad Request for url: https://bff.centraldispatch.com/listing-search/api/open-search
+2025-05-02 15:20:28,727 - INFO - ====== WebDriver manager ======
+2025-05-02 15:20:28,881 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 15:20:28,894 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 15:20:28,905 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-02 15:20:30,141 - INFO - Total records: 73290, Records per page: 500
+2025-05-02 15:20:30,264 - INFO - Loads after filtering existing IDs: 242
+2025-05-02 15:20:30,264 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:20:30,502 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:20:31,532 - INFO - Inserted 3 loads into DB
+2025-05-02 15:21:02,529 - INFO - Loads after filtering existing IDs: 39
+2025-05-02 15:21:02,529 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:21:02,755 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:21:03,768 - INFO - Inserted 3 loads into DB
+2025-05-02 15:21:34,894 - INFO - Loads after filtering existing IDs: 39
+2025-05-02 15:21:34,894 - INFO - Filtered loads after basic criteria: 9
+2025-05-02 15:21:35,173 - INFO - New loads to process after deduplication: 9
+2025-05-02 15:21:36,189 - INFO - Inserted 9 loads into DB
+2025-05-02 15:22:07,304 - INFO - Loads after filtering existing IDs: 21
+2025-05-02 15:22:07,305 - INFO - Filtered loads after basic criteria: 0
+2025-05-02 15:22:07,489 - INFO - New loads to process after deduplication: 0
+2025-05-02 15:22:07,498 - INFO - No new loads to process, every load is already in the database
+2025-05-02 15:22:38,484 - INFO - Loads after filtering existing IDs: 113
+2025-05-02 15:22:38,485 - INFO - Filtered loads after basic criteria: 5
+2025-05-02 15:22:38,763 - INFO - New loads to process after deduplication: 5
+2025-05-02 15:22:39,776 - INFO - Inserted 5 loads into DB
+2025-05-02 15:23:10,704 - INFO - Loads after filtering existing IDs: 120
+2025-05-02 15:23:10,705 - INFO - Filtered loads after basic criteria: 6
+2025-05-02 15:23:10,965 - INFO - New loads to process after deduplication: 6
+2025-05-02 15:23:11,979 - INFO - Inserted 6 loads into DB
+2025-05-02 15:23:43,071 - INFO - Loads after filtering existing IDs: 149
+2025-05-02 15:23:43,072 - INFO - Filtered loads after basic criteria: 2
+2025-05-02 15:23:43,299 - INFO - New loads to process after deduplication: 2
+2025-05-02 15:23:44,311 - INFO - Inserted 2 loads into DB
+2025-05-02 15:24:15,320 - INFO - Loads after filtering existing IDs: 130
+2025-05-02 15:24:15,320 - INFO - Filtered loads after basic criteria: 0
+2025-05-02 15:24:15,502 - INFO - New loads to process after deduplication: 0
+2025-05-02 15:24:15,511 - INFO - No new loads to process, every load is already in the database
+2025-05-02 15:24:46,648 - INFO - Loads after filtering existing IDs: 140
+2025-05-02 15:24:46,649 - INFO - Filtered loads after basic criteria: 1
+2025-05-02 15:24:46,843 - INFO - New loads to process after deduplication: 1
+2025-05-02 15:24:47,856 - INFO - Inserted 1 loads into DB
+2025-05-02 15:25:18,985 - INFO - Loads after filtering existing IDs: 134
+2025-05-02 15:25:18,986 - INFO - Filtered loads after basic criteria: 2
+2025-05-02 15:25:19,207 - INFO - New loads to process after deduplication: 2
+2025-05-02 15:25:20,219 - INFO - Inserted 2 loads into DB
+2025-05-02 15:25:51,358 - INFO - Loads after filtering existing IDs: 134
+2025-05-02 15:25:51,358 - INFO - Filtered loads after basic criteria: 6
+2025-05-02 15:25:51,596 - INFO - New loads to process after deduplication: 6
+2025-05-02 15:25:52,610 - INFO - Inserted 6 loads into DB
+2025-05-02 15:26:23,641 - INFO - Loads after filtering existing IDs: 197
+2025-05-02 15:26:23,642 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:26:23,864 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:26:24,880 - INFO - Inserted 3 loads into DB
+2025-05-02 15:26:56,022 - INFO - Loads after filtering existing IDs: 229
+2025-05-02 15:26:56,023 - INFO - Filtered loads after basic criteria: 0
+2025-05-02 15:26:56,208 - INFO - New loads to process after deduplication: 0
+2025-05-02 15:26:56,221 - INFO - No new loads to process, every load is already in the database
+2025-05-02 15:27:27,333 - INFO - Loads after filtering existing IDs: 252
+2025-05-02 15:27:27,334 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:27:27,541 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:27:28,578 - INFO - Inserted 3 loads into DB
+2025-05-02 15:27:59,615 - INFO - Loads after filtering existing IDs: 237
+2025-05-02 15:27:59,616 - INFO - Filtered loads after basic criteria: 2
+2025-05-02 15:27:59,830 - INFO - New loads to process after deduplication: 2
+2025-05-02 15:28:00,846 - INFO - Inserted 2 loads into DB
+2025-05-02 15:28:31,891 - INFO - Loads after filtering existing IDs: 240
+2025-05-02 15:28:31,891 - INFO - Filtered loads after basic criteria: 4
+2025-05-02 15:28:32,111 - INFO - New loads to process after deduplication: 4
+2025-05-02 15:28:33,124 - INFO - Inserted 4 loads into DB
+2025-05-02 15:29:04,166 - INFO - Loads after filtering existing IDs: 217
+2025-05-02 15:29:04,166 - INFO - Filtered loads after basic criteria: 2
+2025-05-02 15:29:04,359 - INFO - New loads to process after deduplication: 2
+2025-05-02 15:29:05,370 - INFO - Inserted 2 loads into DB
+2025-05-02 15:29:36,475 - INFO - Loads after filtering existing IDs: 268
+2025-05-02 15:29:36,475 - INFO - Filtered loads after basic criteria: 1
+2025-05-02 15:29:36,693 - INFO - New loads to process after deduplication: 1
+2025-05-02 15:29:37,706 - INFO - Inserted 1 loads into DB
+2025-05-02 15:30:08,749 - INFO - Loads after filtering existing IDs: 312
+2025-05-02 15:30:08,750 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:30:08,981 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:30:09,996 - INFO - Inserted 3 loads into DB
+2025-05-02 15:30:40,987 - INFO - Loads after filtering existing IDs: 258
+2025-05-02 15:30:40,987 - INFO - Filtered loads after basic criteria: 5
+2025-05-02 15:30:41,257 - INFO - New loads to process after deduplication: 5
+2025-05-02 15:30:42,272 - INFO - Inserted 5 loads into DB
+2025-05-02 15:31:12,346 - ERROR - Error fetching loads: 400 Client Error: Bad Request for url: https://bff.centraldispatch.com/listing-search/api/open-search
+2025-05-02 15:31:28,229 - INFO - ====== WebDriver manager ======
+2025-05-02 15:31:28,392 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 15:31:28,407 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 15:31:28,418 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-02 15:31:29,543 - INFO - Total records: 73383, Records per page: 499
+2025-05-02 15:31:29,665 - INFO - Loads after filtering existing IDs: 242
+2025-05-02 15:31:29,666 - INFO - Filtered loads after basic criteria: 5
+2025-05-02 15:31:29,919 - INFO - New loads to process after deduplication: 5
+2025-05-02 15:31:30,950 - INFO - Inserted 5 loads into DB
+2025-05-02 15:32:01,987 - INFO - Loads after filtering existing IDs: 37
+2025-05-02 15:32:01,987 - INFO - Filtered loads after basic criteria: 1
+2025-05-02 15:32:02,185 - INFO - New loads to process after deduplication: 1
+2025-05-02 15:32:03,200 - INFO - Inserted 1 loads into DB
+2025-05-02 15:32:34,139 - INFO - Loads after filtering existing IDs: 37
+2025-05-02 15:32:34,139 - INFO - Filtered loads after basic criteria: 7
+2025-05-02 15:32:34,407 - INFO - New loads to process after deduplication: 7
+2025-05-02 15:32:35,421 - INFO - Inserted 7 loads into DB
+2025-05-02 15:33:06,376 - INFO - Loads after filtering existing IDs: 24
+2025-05-02 15:33:06,376 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:33:06,596 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:33:07,612 - INFO - Inserted 3 loads into DB
+2025-05-02 15:33:38,551 - INFO - Loads after filtering existing IDs: 109
+2025-05-02 15:33:38,551 - INFO - Filtered loads after basic criteria: 2
+2025-05-02 15:33:38,817 - INFO - New loads to process after deduplication: 2
+2025-05-02 15:33:39,832 - INFO - Inserted 2 loads into DB
+2025-05-02 15:34:10,783 - INFO - Loads after filtering existing IDs: 116
+2025-05-02 15:34:10,783 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:34:10,990 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:34:12,003 - INFO - Inserted 3 loads into DB
+2025-05-02 15:34:43,033 - INFO - Loads after filtering existing IDs: 151
+2025-05-02 15:34:43,034 - INFO - Filtered loads after basic criteria: 4
+2025-05-02 15:34:43,253 - INFO - New loads to process after deduplication: 4
+2025-05-02 15:34:44,266 - INFO - Inserted 4 loads into DB
+2025-05-02 15:35:15,312 - INFO - Loads after filtering existing IDs: 133
+2025-05-02 15:35:15,312 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:35:15,540 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:35:16,562 - INFO - Inserted 3 loads into DB
+2025-05-02 15:35:47,666 - INFO - Loads after filtering existing IDs: 150
+2025-05-02 15:35:47,667 - INFO - Filtered loads after basic criteria: 10
+2025-05-02 15:35:47,996 - INFO - New loads to process after deduplication: 10
+2025-05-02 15:35:49,014 - INFO - Inserted 10 loads into DB
+2025-05-02 15:36:20,062 - INFO - Loads after filtering existing IDs: 133
+2025-05-02 15:36:20,062 - INFO - Filtered loads after basic criteria: 2
+2025-05-02 15:36:20,268 - INFO - New loads to process after deduplication: 2
+2025-05-02 15:36:21,282 - INFO - Inserted 2 loads into DB
+2025-05-02 15:36:52,312 - INFO - Loads after filtering existing IDs: 143
+2025-05-02 15:36:52,313 - INFO - Filtered loads after basic criteria: 8
+2025-05-02 15:36:52,577 - INFO - New loads to process after deduplication: 8
+2025-05-02 15:36:53,593 - INFO - Inserted 8 loads into DB
+2025-05-02 15:37:24,796 - INFO - Loads after filtering existing IDs: 193
+2025-05-02 15:37:24,797 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:37:25,028 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:37:26,043 - INFO - Inserted 3 loads into DB
+2025-05-02 15:37:57,135 - INFO - Loads after filtering existing IDs: 233
+2025-05-02 15:37:57,136 - INFO - Filtered loads after basic criteria: 4
+2025-05-02 15:37:57,367 - INFO - New loads to process after deduplication: 4
+2025-05-02 15:37:58,383 - INFO - Inserted 4 loads into DB
+2025-05-02 15:38:29,398 - INFO - Loads after filtering existing IDs: 249
+2025-05-02 15:38:29,398 - INFO - Filtered loads after basic criteria: 1
+2025-05-02 15:38:29,603 - INFO - New loads to process after deduplication: 1
+2025-05-02 15:38:30,618 - INFO - Inserted 1 loads into DB
+2025-05-02 15:39:01,733 - INFO - Loads after filtering existing IDs: 235
+2025-05-02 15:39:01,733 - INFO - Filtered loads after basic criteria: 3
+2025-05-02 15:39:01,955 - INFO - New loads to process after deduplication: 3
+2025-05-02 15:39:02,969 - INFO - Inserted 3 loads into DB
+2025-05-02 15:39:32,994 - ERROR - Error fetching loads: 401 Client Error: Unauthorized for url: https://bff.centraldispatch.com/listing-search/api/open-search
+2025-05-02 15:39:33,994 - INFO - Authentication failed, will re-login
+2025-05-02 15:39:49,946 - INFO - ====== WebDriver manager ======
+2025-05-02 15:39:50,102 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 15:39:50,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 15:39:50,127 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache

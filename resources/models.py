@@ -33,7 +33,7 @@ class LoadModel(Base):
     delivery_location = Column(String)
     pickup_points = Column(Geometry('POINT'))
     delivery_points = Column(Geometry('POINT'))
-    price = Column(String)
+    price = Column(Float)
     milage = Column(DOUBLE_PRECISION)
     is_operational = Column(Boolean)
     contact_phone = Column(String(25))

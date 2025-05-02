@@ -311,8 +311,8 @@ def filter_loads(
    destination: Optional[str] = None,
    db: Session = Depends(get_db)
 ):
-   # Create a query that selects only specific columns, excluding geometry fields
-   query = db.query(
+
+    query = db.query(
        LoadModel.load_id,
        LoadModel.external_load_id,
        LoadModel.brokerage,
@@ -331,42 +331,41 @@ def filter_loads(
    )
 
    # Apply filters to the query
-   if min_price is not None:
+    if min_price is not None:
        # Cast string price to float for comparison
        query = query.filter(cast(LoadModel.price, Float) >= min_price)
-   if max_price is not None:
+    if max_price is not None:
        query = query.filter(cast(LoadModel.price, Float) <= max_price)
-   if min_milage is not None:
+    if min_milage is not None:
        query = query.filter(LoadModel.milage >= min_milage)
-   if max_milage is not None:
+    if max_milage is not None:
        query = query.filter(LoadModel.milage <= max_milage)
-   if broker:
+    if broker:
        query = query.filter(LoadModel.brokerage == broker)
-   if min_weight is not None:
+    if min_weight is not None:
        query = query.filter(LoadModel.weight >= min_weight)
-   if max_weight is not None:
+    if max_weight is not None:
        query = query.filter(LoadModel.weight <= max_weight)
-   if origin:
+    if origin:
        query = query.filter(LoadModel.pickup_location.ilike(f'%{origin}%'))
-   if destination:
+    if destination:
        query = query.filter(LoadModel.delivery_location.ilike(f'%{destination}%'))
 
    # Execute the query
-   loads = query.all()
-   
-   if not loads:
-       raise HTTPException(
+    loads = query.order_by(LoadModel.created_at.desc()).all()
+    if not loads:
+        raise HTTPException(
            status_code=HTTPStatus.NOT_FOUND,
            detail="No loads found matching the criteria"
-       )
+        )
    
-   # Convert to dictionaries
-   result = [row._asdict() for row in loads]
+    # Convert to dictionaries
+    result = [row._asdict() for row in loads][0:25]
    
-   # Serialize datetime objects to ISO format
-   for load_dict in result:
-       for key, value in load_dict.items():
-           if isinstance(value, datetime):
-               load_dict[key] = value.isoformat()
-   
-   return result
+    # Serialize datetime objects to ISO format
+    for load_dict in result:
+        for key, value in load_dict.items():
+            if isinstance(value, datetime):
+                load_dict[key] = value.isoformat()
+    
+    return result
