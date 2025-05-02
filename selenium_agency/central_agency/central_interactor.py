@@ -76,7 +76,7 @@ class CentralInteractor:
             if distance is None:
                 continue
 
-            if distance <= 0 or distance >= 2000 or load.get('price', {}).get('total', 0) >= 3000:
+            if distance <= 0.0 or distance >= 2000.0 or load.get('price', {}).get('total', 0) >= 3000.0:
                 continue
                 
             filtered_loads.append(load)
