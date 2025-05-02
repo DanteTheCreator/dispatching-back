@@ -126,6 +126,7 @@ class SuperAgent:
                 self.__start_login_cycle(in_between_delay=1)
             else:
                 self.__start_filling_db_cycle(in_between_delay=2)
+                time.sleep(30)
 
 
 agent = SuperAgent()

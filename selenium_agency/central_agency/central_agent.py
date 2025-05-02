@@ -40,7 +40,7 @@ class CentralAgent:
 
     __selenium_driver = SeleniumDriver()
     __origin = ""
-    __in_between_delay = 1
+    __in_between_delay = 30
 
     def __init__(self):
         self.__selenium_driver.initialize_driver()
@@ -112,6 +112,7 @@ class CentralAgent:
         while True:
             if self.__cache_service.token_exists():
                 self.__start_filling_db_cycle()
+                time.sleep(30)
             else:
                 print("Token not found, re-login required")
                 self.__start_login_cycle()
