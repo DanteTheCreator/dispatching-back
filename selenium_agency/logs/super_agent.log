@@ -398,3 +398,36 @@
 2025-05-02 18:36:27,283 - INFO - New loads to process after deduplication: 43
 2025-05-02 18:36:37,113 - INFO - Loads inserted into DB
 2025-05-02 18:36:38,127 - INFO - Loads count: 100
+2025-05-02 20:26:02,053 - INFO - ====== WebDriver manager ======
+2025-05-02 20:26:02,886 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 20:26:03,061 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 20:26:03,235 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-02 20:26:08,952 - INFO - Loads after filtering existing IDs: 68
+2025-05-02 20:26:08,953 - INFO - Filtered loads after basic criteria: 43
+2025-05-02 20:26:11,718 - INFO - New loads to process after deduplication: 43
+2025-05-02 20:26:35,746 - INFO - Loads inserted into DB
+2025-05-02 20:26:38,278 - INFO - Loads after filtering existing IDs: 62
+2025-05-02 20:26:38,278 - INFO - Filtered loads after basic criteria: 34
+2025-05-02 20:26:42,341 - INFO - New loads to process after deduplication: 34
+2025-05-02 20:26:53,608 - INFO - Loads inserted into DB
+2025-05-02 20:26:56,241 - INFO - Loads after filtering existing IDs: 58
+2025-05-02 20:26:56,242 - INFO - Filtered loads after basic criteria: 37
+2025-05-02 20:27:00,157 - INFO - New loads to process after deduplication: 37
+2025-05-02 20:27:14,333 - INFO - Loads inserted into DB
+2025-05-02 20:27:16,952 - INFO - Loads after filtering existing IDs: 68
+2025-05-02 20:27:16,953 - INFO - Filtered loads after basic criteria: 21
+2025-05-02 20:27:20,922 - INFO - New loads to process after deduplication: 21
+2025-05-02 20:29:53,085 - INFO - ====== WebDriver manager ======
+2025-05-02 20:29:53,844 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 20:29:54,024 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-02 20:29:54,205 - INFO - Driver [C:\Users\tatog\.wdm\drivers\chromedriver\win64\135.0.7049.114\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-02 20:29:59,820 - INFO - Loads after filtering existing IDs: 77
+2025-05-02 20:29:59,821 - INFO - Filtered loads after basic criteria: 45
+2025-05-02 20:30:02,736 - INFO - New loads to process after deduplication: 45
+2025-05-02 20:30:16,136 - INFO - Loads inserted into DB
+2025-05-02 20:30:18,687 - INFO - Loads after filtering existing IDs: 29
+2025-05-02 20:30:18,688 - INFO - Filtered loads after basic criteria: 0
+2025-05-02 20:30:22,753 - INFO - New loads to process after deduplication: 0
+2025-05-02 20:30:25,249 - INFO - Loads after filtering existing IDs: 27
+2025-05-02 20:30:25,249 - INFO - Filtered loads after basic criteria: 0
+2025-05-02 20:30:29,158 - INFO - New loads to process after deduplication: 0
