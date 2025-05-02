@@ -3,7 +3,7 @@ from fastapi import FastAPI, Query, Security, HTTPException, Depends
 from fastapi.security import APIKeyHeader
 from http import HTTPStatus
 import os
-from typing import List
+from typing import List, Optional
 from resources.models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -294,3 +294,48 @@ def get_company_info(company_id: str, db: Session = Depends(get_db)):
 @app.get("/health")
 def health(db: Session = Depends(get_db)):
     return 'Hello World'
+
+
+@app.get("/filter_loads", dependencies=[Depends(get_api_key)])
+def filter_loads(
+    min_price: Optional[float] = None,
+    max_price: Optional[float] = None,
+    min_milage: Optional[float] = None,
+    max_milage: Optional[float] = None,
+    broker: Optional[str] = None,
+    min_weight: Optional[float] = None,
+    max_weight: Optional[float] = None,
+    origin: Optional[str] = None,
+    destination: Optional[str] = None,
+    db: Session = Depends(get_db)
+):
+    query = db.query(LoadModel)
+
+    if min_price is not None:
+        query = query.filter(LoadModel.price >= min_price)
+    if max_price is not None:
+        query = query.filter(LoadModel.price <= max_price)
+    if min_milage is not None:
+        query = query.filter(LoadModel.milage >= min_milage)
+    if max_milage is not None:
+        query = query.filter(LoadModel.milage <= max_milage)
+    if broker:
+        query = query.filter(LoadModel.brokerage == broker)
+    if min_weight is not None:
+        query = query.filter(LoadModel.weight >= min_weight)
+    if max_weight is not None:
+        query = query.filter(LoadModel.weight <= max_weight)
+    if origin:
+        query = query.filter(LoadModel.pickup_location.ilike(f'%{origin}%'))
+    if destination:
+        query = query.filter(LoadModel.delivery_location.ilike(f'%{destination}%'))
+
+    loads = query.all()
+    if not loads:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail="No loads found matching the criteria"
+        )
+    return loads
+
+
