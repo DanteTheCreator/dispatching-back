@@ -6,9 +6,10 @@ from http import HTTPStatus
 import os
 from typing import List, Optional
 from datetime import datetime
-from resources.models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
+from resources.models import RouteModel, LoadModel, SavedLoadModel,Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from sqlalchemy.exc import IntegrityError
 
 
 # FastAPI App
@@ -378,3 +379,75 @@ def filter_loads(
                 load_dict[key] = value.isoformat()
     
     return result[0:25] 
+
+
+
+
+@app.post("/save_load/{load_id}", dependencies=[Depends(get_api_key)])
+def save_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
+    # Check if load exists
+    load = db.query(LoadModel).filter(LoadModel.load_id == load_id).first()
+    if not load:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail="Load not found"
+        )
+    
+    # Check if dispatcher exists
+    dispatcher = db.query(Dispatcher).filter(Dispatcher.id == dispatcher_id).first()
+    if not dispatcher:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail="Dispatcher not found"
+        )
+
+    # Check if load is already saved
+    existing_saved_load = db.query(SavedLoadModel).filter(
+        SavedLoadModel.load_id == load_id,
+        SavedLoadModel.dispatcher_id == dispatcher_id
+    ).first()
+
+    if existing_saved_load:
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail="Load is already saved"
+        )
+
+    # Add to saved_loads table
+    saved_load = SavedLoadModel(load_id=load_id, dispatcher_id=dispatcher_id)
+    try:
+        db.add(saved_load)
+        db.commit()
+        return {"message": "Load saved successfully"}
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail="Failed to save load"
+        )
+
+@app.get("/get_saved_loads/{dispatcher_id}", dependencies=[Depends(get_api_key)])
+def get_saved_loads(dispatcher_id: str, db: Session = Depends(get_db)):
+    sql = """
+    SELECT l.*
+    FROM loads l
+    JOIN saved_loads sl ON l.load_id = sl.load_id
+    WHERE sl.dispatcher_id = :dispatcher_id
+    ORDER BY l.created_at DESC
+    """
+    result = db.execute(text(sql), {"dispatcher_id": dispatcher_id}).all()
+    
+    if not result:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail="No saved loads found"
+        )
+
+    # Convert rows to dictionaries and serialize datetime objects
+    loads = [dict(row._mapping) for row in result]
+    for load in loads:
+        for key, value in load.items():
+            if isinstance(value, datetime):
+                load[key] = value.isoformat()
+    
+    return loads

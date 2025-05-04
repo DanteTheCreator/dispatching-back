@@ -44,6 +44,10 @@ class LoadModel(Base):
     n_vehicles = Column(Integer)
     weight = Column(Float)
 
+class SavedLoadModel(LoadModel):
+    __tablename__ = "saved_loads"
+    dispatcher_id = Column(Integer, nullable=False)
+    
 class Dispatcher(Base):
     __tablename__ = "dispatchers"
     
