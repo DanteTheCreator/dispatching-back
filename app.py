@@ -306,7 +306,7 @@ def filter_loads(
    max_price: Optional[float] = None,
    min_milage: Optional[float] = None,
    max_milage: Optional[float] = None,
-   broker: Optional[str] = None,
+   brokerage: Optional[str] = None,
    min_weight: Optional[float] = None,
    max_weight: Optional[float] = None,
    origin: Optional[str] = None,
@@ -339,9 +339,9 @@ def filter_loads(
     if max_milage is not None:
         sql_query += " AND milage <= :max_milage"
         params['max_milage'] = max_milage
-    if broker:
+    if brokerage:
         sql_query += " AND brokerage = :broker"
-        params['broker'] = broker
+        params['broker'] = brokerage
     if min_weight is not None:
         sql_query += " AND weight >= :min_weight"
         params['min_weight'] = min_weight
@@ -355,8 +355,8 @@ def filter_loads(
         sql_query += " AND delivery_location ILIKE :destination"
         params['destination'] = f'%{destination}%'
     if n_vehicles is not None:
-        sql_query += " AND n_vehicles >= :n_vehicles"
-        params['n_vehicles'] = min_milage
+        sql_query += " AND n_vehicles = :n_vehicles"
+        params['n_vehicles'] = n_vehicles
     if date_ready is not None:
         sql_query += " AND date_ready <= :date_ready"
         params['date_ready'] = date_ready
