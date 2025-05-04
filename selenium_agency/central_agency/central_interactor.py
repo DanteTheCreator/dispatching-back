@@ -35,6 +35,8 @@ logger = logging.getLogger(__name__)
 class CentralInteractor:
     def __init__(self, selenium_driver=None, api_client=None, cache_service=None, db_session=None):
         self.__selenium_driver = selenium_driver
+        if self.__selenium_driver is None:
+            self.__selenium_driver = SeleniumDriver()
         self.__driver = self.__selenium_driver.get_driver()
         self.__api_client = api_client
         self.__cache_service = cache_service
@@ -56,7 +58,7 @@ class CentralInteractor:
         except json.JSONDecodeError:
             user_token = None
 
-        if user_token is not None:
+        if user_token is not None and self.__cache_service is not None:
             self.__cache_service.set_token(user_token)
             return user_token
         else:
@@ -64,7 +66,7 @@ class CentralInteractor:
             return None
         
     def deduplicate_loads(self, loadsParam):
-        existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(LoadModel.external_load_id).all()}
+        existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(LoadModel.external_load_id).all()} # type: ignore
         loads = [load for load in loadsParam if str(load.get('id')) not in existing_load_ids]
         logger.info(f"Loads after filtering existing IDs: {len(loads)}")
         print(f"Loads after filtering existing IDs: {len(loads)}")
@@ -85,6 +87,11 @@ class CentralInteractor:
         print(f"Filtered loads after basic criteria: {len(filtered_loads)}")
         
         # Fetch all existing loads once to use for duplicate detection
+        if self.__db_Session is None:
+            logger.error("Database session is not initialized.")
+            print("Database session is not initialized.")
+            return 
+        
         existing_loads = self.__db_Session.query(
             LoadModel.price, 
             LoadModel.milage, 
@@ -150,7 +157,8 @@ class CentralInteractor:
         coordinates_note = f"Pickup coordinates: {pickup_coordinates}, Delivery coordinates: {delivery_coordinates}"
         instructions = load.get('additionalInfo', '')
         combined_notes = f"{instructions}\n{coordinates_note}"
-        
+        # Extract broker name from shipper info if available
+        brokerage = load.get('shipper', {}).get('companyName', 'Central Dispatch')
         # Calculate total weight from vehicles
         total_weight = 0
         for vehicle in load.get('vehicles', []):
@@ -159,7 +167,7 @@ class CentralInteractor:
 
         load_model_instance = LoadModel(
             external_load_id=str(load.get('id', '')),
-            brokerage="Central Dispatch",
+            brokerage=brokerage,
             pickup_location=pickup_location,
             delivery_location=delivery_location,
             pickup_points=pickup_points,
@@ -190,8 +198,7 @@ class CentralInteractor:
                 if model is not None  # Filter out None values that result from KeyError
             ]
             
-            if load_model_instances:  # Only proceed if there are valid models to save
-                # Bulk insert
+            if load_model_instances and self.__db_Session is not None:  # Only proceed if there are valid models to save
                 self.__db_Session.bulk_save_objects(load_model_instances)
                 self.__db_Session.commit()
                 time.sleep(self.__in_between_delay)
@@ -200,10 +207,12 @@ class CentralInteractor:
                 logger.info("No valid loads to insert into DB")
         
     def fetch_loads(self):
-        token = self.__cache_service.get_token()
-        self.__api_client.set_authorization_header(token)
+        if self.__cache_service is not None and self.__api_client is not None:
+            token = self.__cache_service.get_token()
+            self.__api_client.set_authorization_header(token)
+        
         try:
-            loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",
+            loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search", # type: ignore
                                                     payload={
                                                         'vehicleCount': {
                                                             'min': 1,
@@ -264,19 +273,7 @@ class CentralInteractor:
                 self.__total_records = 0
                 self.__record_count_per_page = 0
                 time.sleep(200)
-
-
             return loads
         except Exception as e:
-            logger.error(f"Error fetching loads: {e}")
             print(f"Error fetching loads: {e}")
-            # Check if the exception contains status code information
-            if hasattr(e, 'response') and hasattr(e.response, 'status_code'):
-                status_code = e.response.status_code
-                if status_code == 401 or status_code == 403:
-                    print(f"Authentication error: status code {status_code}")
-                    self.__cache_service.clear_all()
-                    time.sleep(self.__in_between_delay)
-                    logger.info("Authentication failed, will re-login")
-                    print("Authentication failed, will re-login")
             return

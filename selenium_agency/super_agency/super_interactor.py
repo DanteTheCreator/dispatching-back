@@ -36,8 +36,12 @@ logger = logging.getLogger(__name__)
 class SuperInteractor:
     def __init__(self, selenium_driver=None, api_client=None, cache_service=None, db_session=None, bulk_request_handler=None):
         self.__selenium_driver = selenium_driver
-        self.__driver = self.__selenium_driver.get_driver() if selenium_driver else None
+        if self.__selenium_driver is None:
+            self.__selenium_driver = SeleniumDriver()
+        self.__driver = self.__selenium_driver.get_driver()
         self.__api_client = api_client
+        if self.__api_client is None:
+            self.__api_client = SuperAPIClient()
         self.__cache_service = cache_service
         self.current_page = 0
         self.__total_records = 0
@@ -57,7 +61,7 @@ class SuperInteractor:
                 break
         if user_token:
             logger.info(f"User token found: {user_token}")
-            self.__cache_service.set_token(user_token)
+            self.__cache_service.set_token(user_token) # type: ignore
             return user_token
         else:
             logger.info("User token not found in cookies")
@@ -84,7 +88,7 @@ class SuperInteractor:
             return None
 
         instructions = load_data.get('instructions', '')
-            
+        brokerage = load_data.get('shipper', '').get('name', '')
         # Calculate total weight and get vehicle count from the load
         total_weight = 0
         vehicles = load_data.get('vehicles', [])
@@ -118,7 +122,7 @@ class SuperInteractor:
         return load_model_instance
         
     def batch_save_loads(self, loads, in_between_delay=1):
-        print("saving batch loads to db...")
+        print("Initiating batch request")
         if len(loads) > 0:
             bulk_locations = []
             for load in loads:
@@ -128,7 +132,7 @@ class SuperInteractor:
                 load['delivery_location'] = delivery_location
                 bulk_locations.append({"pickup_location": pickup_location, "delivery_location": delivery_location})
 
-            bulk_coordinates = self.__bulk_request_handler.post("/bulk_geocode", payload=bulk_locations).json()
+            bulk_coordinates = self.__bulk_request_handler.post("/bulk_geocode", payload=bulk_locations).json() # type: ignore
 
             print("received bulk coordinates")
             for index, bulk_coordinate in enumerate(bulk_coordinates):
@@ -143,13 +147,19 @@ class SuperInteractor:
                 self.format_and_get_load_model(load) for load in loads
             ]
             # Bulk insert
+            if self.__db_Session is None:
+                raise ConnectionRefusedError("Database session is not initialized.")
             self.__db_Session.bulk_save_objects(load_model_instances)
             self.__db_Session.commit()
             time.sleep(in_between_delay)
             logger.info("Loads inserted into DB")
     
     def fetch_loads(self, page=0):
+        if self.__cache_service is None:
+            raise FileExistsError("Cache service is not initialized.")
         token = self.__cache_service.get_token()
+        if self.__api_client is None:
+            raise ConnectionError("API client is not initialized.")
         self.__api_client.set_authorization_header(token)
         loads_response = self.__api_client.post("/internal/v3/loads/search", 
                             token=token, 
@@ -167,7 +177,7 @@ class SuperInteractor:
             return []
             
         # First filter out loads already in the database by ID
-        existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(LoadModel.external_load_id).all()}
+        existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(LoadModel.external_load_id).all()} # type: ignore
         loads = [load for load in loads if load.get('load').get('guid') not in existing_load_ids]
         logger.info(f"Loads after filtering existing IDs: {len(loads)}")
         print(f"Loads after filtering existing IDs: {len(loads)}")
@@ -187,6 +197,8 @@ class SuperInteractor:
         logger.info(f"Filtered loads after basic criteria: {len(filtered_loads)}")
         print(f"Filtered loads after basic criteria: {len(filtered_loads)}")
         
+        if self.__db_Session is None:
+            raise ConnectionRefusedError("Database session is not initialized.")
         # Fetch all existing loads once to use for duplicate detection
         existing_loads = self.__db_Session.query(
             LoadModel.price, 

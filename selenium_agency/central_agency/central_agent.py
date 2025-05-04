@@ -56,9 +56,9 @@ class CentralAgent:
         self.__page = 0
 
     def __load_page(self):
-        self.__driver.get("https://id.centraldispatch.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcentraldispatch_authentication%26scope%3Dlisting_service%2520offline_access%2520openid%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fsite.centraldispatch.com%252Fprotected")
+        self.__driver.get("https://id.centraldispatch.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcentraldispatch_authentication%26scope%3Dlisting_service%2520offline_access%2520openid%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fsite.centraldispatch.com%252Fprotected") # type: ignore
         # Wait for page to load
-        self.__wait = WebDriverWait(self.__driver, 10)
+        self.__wait = WebDriverWait(self.__driver, 10) # type: ignore
         time.sleep(self.__in_between_delay)
 
     def __authorize(self):

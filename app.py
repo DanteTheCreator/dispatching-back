@@ -1,4 +1,4 @@
-from sqlalchemy import Float, cast
+from sqlalchemy import text
 from sqlalchemy.orm import Session
 from fastapi import FastAPI, Query, Security, HTTPException, Depends
 from fastapi.security import APIKeyHeader
@@ -300,7 +300,9 @@ def health(db: Session = Depends(get_db)):
 
 @app.get("/filter_loads", dependencies=[Depends(get_api_key)])
 def filter_loads(
+   n_vehicles: Optional[int] = None,
    min_price: Optional[float] = None,
+   date_ready: Optional[datetime] = None,
    max_price: Optional[float] = None,
    min_milage: Optional[float] = None,
    max_milage: Optional[float] = None,
@@ -312,60 +314,67 @@ def filter_loads(
    db: Session = Depends(get_db)
 ):
 
-    query = db.query(
-       LoadModel.load_id,
-       LoadModel.external_load_id,
-       LoadModel.brokerage,
-       LoadModel.pickup_location,
-       LoadModel.delivery_location,
-       LoadModel.price,
-       LoadModel.milage,
-       LoadModel.is_operational,
-       LoadModel.contact_phone,
-       LoadModel.notes,
-       LoadModel.loadboard_source,
-       LoadModel.created_at,
-       LoadModel.date_ready,
-       LoadModel.n_vehicles,
-       LoadModel.weight
-   )
+    # Build the SQL query dynamically
+    sql_query = """
+        SELECT 
+            load_id, external_load_id, brokerage, pickup_location, 
+            delivery_location, price::float, milage, is_operational,
+            contact_phone, notes, loadboard_source, created_at,
+            date_ready, n_vehicles, weight
+        FROM loads 
+        WHERE 1=1
+    """
+    params = {}
 
-   # Apply filters to the query
+    # Add filter conditions
     if min_price is not None:
-       # Cast string price to float for comparison
-       query = query.filter(cast(LoadModel.price, Float) >= min_price)
+        sql_query += " AND CAST(price AS FLOAT) >= :min_price"
+        params['min_price'] = min_price
     if max_price is not None:
-       query = query.filter(cast(LoadModel.price, Float) <= max_price)
+        sql_query += " AND CAST(price AS FLOAT) <= :max_price"
+        params['max_price'] = max_price
     if min_milage is not None:
-       query = query.filter(LoadModel.milage >= min_milage)
+        sql_query += " AND milage >= :min_milage"
+        params['min_milage'] = min_milage
     if max_milage is not None:
-       query = query.filter(LoadModel.milage <= max_milage)
+        sql_query += " AND milage <= :max_milage"
+        params['max_milage'] = max_milage
     if broker:
-       query = query.filter(LoadModel.brokerage == broker)
+        sql_query += " AND brokerage = :broker"
+        params['broker'] = broker
     if min_weight is not None:
-       query = query.filter(LoadModel.weight >= min_weight)
+        sql_query += " AND weight >= :min_weight"
+        params['min_weight'] = min_weight
     if max_weight is not None:
-       query = query.filter(LoadModel.weight <= max_weight)
+        sql_query += " AND weight <= :max_weight"
+        params['max_weight'] = max_weight
     if origin:
-       query = query.filter(LoadModel.pickup_location.ilike(f'%{origin}%'))
+        sql_query += " AND pickup_location ILIKE :origin"
+        params['origin'] = f'%{origin}%'
     if destination:
-       query = query.filter(LoadModel.delivery_location.ilike(f'%{destination}%'))
+        sql_query += " AND delivery_location ILIKE :destination"
+        params['destination'] = f'%{destination}%'
+    if n_vehicles is not None:
+        sql_query += " AND n_vehicles >= :n_vehicles"
+        params['n_vehicles'] = min_milage
+    if date_ready is not None:
+        sql_query += " AND date_ready <= :date_ready"
+        params['date_ready'] = date_ready
+    sql_query += " ORDER BY created_at DESC"
 
-   # Execute the query
-    loads = query.order_by(LoadModel.created_at.desc()).all()
-    if not loads:
+    # Execute the raw SQL query
+    result = db.execute(text(sql_query), params).all()
+    if not result:
         raise HTTPException(
-           status_code=HTTPStatus.NOT_FOUND,
-           detail="No loads found matching the criteria"
+            status_code=HTTPStatus.NOT_FOUND,
+            detail="No loads found matching the criteria"
         )
-   
-    # Convert to dictionaries
-    result = [row._asdict() for row in loads][0:25]
-   
-    # Serialize datetime objects to ISO format
+
+    # Convert rows to dictionaries and serialize datetime objects
+    result = [dict(row._mapping) for row in result]
     for load_dict in result:
         for key, value in load_dict.items():
             if isinstance(value, datetime):
                 load_dict[key] = value.isoformat()
     
-    return result
+    return result[0:25] 

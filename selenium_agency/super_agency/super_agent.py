@@ -70,8 +70,6 @@ class SuperAgent:
             time.sleep(in_between_delay)
             print("email value", self._email)
             email_field = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@class, 'MuiInputBase-input MuiOutlinedInput-input')]")))
-            print("email value", self._email)
-            print(email_field)
             email_field.send_keys(self._email or '')
             password_field = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@class, 'MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd')]")))
             login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'Button__ButtonRoot-SD__sc-1pwdpe3-0 bjrslb')]")))
@@ -97,9 +95,8 @@ class SuperAgent:
             button.click()
             time.sleep(5)
 
-            loadboard_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, '/loadboard')]")))
+            loadboard_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'MuiBottomNavigationAction-root')]//span[text()='Loads']/..")))
             time.sleep(in_between_delay)
-            time.sleep(10)
             loadboard_button.click()
             time.sleep(5)
 
