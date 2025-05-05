@@ -8319,3 +8319,739 @@
 2025-05-05 11:03:31,390 - INFO - Loads after filtering existing IDs: 78
 2025-05-05 11:03:31,391 - INFO - Filtered loads after basic criteria: 24
 2025-05-05 11:03:31,661 - INFO - New loads to process after deduplication: 24
+2025-05-05 11:04:44,955 - INFO - ====== WebDriver manager ======
+2025-05-05 11:04:45,124 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:04:45,138 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:04:45,149 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:04:46,017 - INFO - Loads after filtering existing IDs: 68
+2025-05-05 11:04:46,017 - INFO - Filtered loads after basic criteria: 40
+2025-05-05 11:04:46,346 - INFO - New loads to process after deduplication: 40
+2025-05-05 11:06:00,713 - INFO - ====== WebDriver manager ======
+2025-05-05 11:06:00,881 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:06:00,900 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:06:00,912 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:06:01,723 - INFO - Loads after filtering existing IDs: 68
+2025-05-05 11:06:01,724 - INFO - Filtered loads after basic criteria: 41
+2025-05-05 11:06:02,060 - INFO - New loads to process after deduplication: 41
+2025-05-05 11:07:15,431 - INFO - ====== WebDriver manager ======
+2025-05-05 11:07:15,593 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:07:15,612 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:07:15,627 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:07:16,418 - INFO - Loads after filtering existing IDs: 73
+2025-05-05 11:07:16,418 - INFO - Filtered loads after basic criteria: 47
+2025-05-05 11:07:16,924 - INFO - New loads to process after deduplication: 47
+2025-05-05 11:08:30,189 - INFO - ====== WebDriver manager ======
+2025-05-05 11:08:30,353 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:08:30,369 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:08:30,381 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:08:31,161 - INFO - Loads after filtering existing IDs: 74
+2025-05-05 11:08:31,161 - INFO - Filtered loads after basic criteria: 47
+2025-05-05 11:08:31,516 - INFO - New loads to process after deduplication: 47
+2025-05-05 11:09:44,724 - INFO - ====== WebDriver manager ======
+2025-05-05 11:09:44,891 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:09:44,906 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:09:44,919 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:09:45,730 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 11:09:45,730 - INFO - Filtered loads after basic criteria: 56
+2025-05-05 11:09:46,126 - INFO - New loads to process after deduplication: 56
+2025-05-05 11:10:59,441 - INFO - ====== WebDriver manager ======
+2025-05-05 11:10:59,606 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:10:59,622 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:10:59,634 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:11:00,371 - INFO - Loads after filtering existing IDs: 74
+2025-05-05 11:11:00,372 - INFO - Filtered loads after basic criteria: 50
+2025-05-05 11:11:00,740 - INFO - New loads to process after deduplication: 50
+2025-05-05 11:12:13,960 - INFO - ====== WebDriver manager ======
+2025-05-05 11:12:14,125 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:12:14,139 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:12:14,151 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:12:15,091 - INFO - Loads after filtering existing IDs: 71
+2025-05-05 11:12:15,092 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 11:12:15,424 - INFO - New loads to process after deduplication: 37
+2025-05-05 11:13:28,697 - INFO - ====== WebDriver manager ======
+2025-05-05 11:13:28,867 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:13:28,883 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:13:28,898 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:13:29,639 - INFO - Loads after filtering existing IDs: 73
+2025-05-05 11:13:29,639 - INFO - Filtered loads after basic criteria: 35
+2025-05-05 11:13:29,958 - INFO - New loads to process after deduplication: 35
+2025-05-05 11:14:43,221 - INFO - ====== WebDriver manager ======
+2025-05-05 11:14:43,385 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:14:43,400 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:14:43,413 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:14:44,157 - INFO - Loads after filtering existing IDs: 80
+2025-05-05 11:14:44,158 - INFO - Filtered loads after basic criteria: 44
+2025-05-05 11:14:44,592 - INFO - New loads to process after deduplication: 44
+2025-05-05 11:15:57,689 - INFO - ====== WebDriver manager ======
+2025-05-05 11:15:57,844 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:15:57,859 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:15:57,871 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:15:58,665 - INFO - Loads after filtering existing IDs: 76
+2025-05-05 11:15:58,665 - INFO - Filtered loads after basic criteria: 41
+2025-05-05 11:15:59,000 - INFO - New loads to process after deduplication: 41
+2025-05-05 11:17:12,230 - INFO - ====== WebDriver manager ======
+2025-05-05 11:17:12,393 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:17:12,408 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:17:12,420 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:17:13,136 - INFO - Loads after filtering existing IDs: 78
+2025-05-05 11:17:13,137 - INFO - Filtered loads after basic criteria: 31
+2025-05-05 11:17:13,447 - INFO - New loads to process after deduplication: 31
+2025-05-05 11:18:26,687 - INFO - ====== WebDriver manager ======
+2025-05-05 11:18:26,847 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:18:26,863 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:18:26,883 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:18:27,619 - INFO - Loads after filtering existing IDs: 79
+2025-05-05 11:18:27,619 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 11:18:27,943 - INFO - New loads to process after deduplication: 37
+2025-05-05 11:19:41,258 - INFO - ====== WebDriver manager ======
+2025-05-05 11:19:41,432 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:19:41,450 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:19:41,461 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:19:42,315 - INFO - Loads after filtering existing IDs: 78
+2025-05-05 11:19:42,316 - INFO - Filtered loads after basic criteria: 48
+2025-05-05 11:19:42,800 - INFO - New loads to process after deduplication: 48
+2025-05-05 11:20:56,002 - INFO - ====== WebDriver manager ======
+2025-05-05 11:20:56,162 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:20:56,178 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:20:56,189 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:20:57,101 - INFO - Loads after filtering existing IDs: 81
+2025-05-05 11:20:57,101 - INFO - Filtered loads after basic criteria: 54
+2025-05-05 11:20:57,463 - INFO - New loads to process after deduplication: 54
+2025-05-05 11:22:10,692 - INFO - ====== WebDriver manager ======
+2025-05-05 11:22:10,858 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:22:10,873 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:22:10,885 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:22:11,666 - INFO - Loads after filtering existing IDs: 84
+2025-05-05 11:22:11,667 - INFO - Filtered loads after basic criteria: 54
+2025-05-05 11:22:12,153 - INFO - New loads to process after deduplication: 54
+2025-05-05 11:23:25,439 - INFO - ====== WebDriver manager ======
+2025-05-05 11:23:25,598 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:23:25,615 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:23:25,628 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:23:26,352 - INFO - Loads after filtering existing IDs: 78
+2025-05-05 11:23:26,352 - INFO - Filtered loads after basic criteria: 51
+2025-05-05 11:23:26,769 - INFO - New loads to process after deduplication: 51
+2025-05-05 11:24:39,928 - INFO - ====== WebDriver manager ======
+2025-05-05 11:24:40,100 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:24:40,117 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:24:40,129 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:24:40,883 - INFO - Loads after filtering existing IDs: 78
+2025-05-05 11:24:40,883 - INFO - Filtered loads after basic criteria: 52
+2025-05-05 11:24:41,289 - INFO - New loads to process after deduplication: 52
+2025-05-05 11:25:54,508 - INFO - ====== WebDriver manager ======
+2025-05-05 11:25:54,674 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:25:54,693 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:25:54,705 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:25:55,589 - INFO - Loads after filtering existing IDs: 75
+2025-05-05 11:25:55,589 - INFO - Filtered loads after basic criteria: 47
+2025-05-05 11:25:55,965 - INFO - New loads to process after deduplication: 47
+2025-05-05 11:27:10,192 - INFO - ====== WebDriver manager ======
+2025-05-05 11:27:10,363 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:27:10,379 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:27:10,391 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:27:11,137 - INFO - Loads after filtering existing IDs: 75
+2025-05-05 11:27:11,138 - INFO - Filtered loads after basic criteria: 40
+2025-05-05 11:27:11,506 - INFO - New loads to process after deduplication: 40
+2025-05-05 11:28:24,709 - INFO - ====== WebDriver manager ======
+2025-05-05 11:28:24,867 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:28:24,883 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:28:24,896 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:28:25,692 - INFO - Loads after filtering existing IDs: 72
+2025-05-05 11:28:25,692 - INFO - Filtered loads after basic criteria: 40
+2025-05-05 11:28:26,021 - INFO - New loads to process after deduplication: 40
+2025-05-05 11:29:39,192 - INFO - ====== WebDriver manager ======
+2025-05-05 11:29:39,357 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:29:39,371 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:29:39,383 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:29:40,202 - INFO - Loads after filtering existing IDs: 75
+2025-05-05 11:29:40,203 - INFO - Filtered loads after basic criteria: 47
+2025-05-05 11:29:40,622 - INFO - New loads to process after deduplication: 47
+2025-05-05 11:30:53,967 - INFO - ====== WebDriver manager ======
+2025-05-05 11:30:54,128 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:30:54,144 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:30:54,158 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:30:55,004 - INFO - Loads after filtering existing IDs: 84
+2025-05-05 11:30:55,004 - INFO - Filtered loads after basic criteria: 49
+2025-05-05 11:30:55,424 - INFO - New loads to process after deduplication: 49
+2025-05-05 11:32:08,684 - INFO - ====== WebDriver manager ======
+2025-05-05 11:32:08,851 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:32:08,865 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:32:08,876 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:32:43,653 - INFO - User token found: 2b93dd64e84448dda198ccdfa4627057
+2025-05-05 11:32:44,175 - INFO - Loads after filtering existing IDs: 84
+2025-05-05 11:32:44,175 - INFO - Filtered loads after basic criteria: 33
+2025-05-05 11:32:44,479 - INFO - New loads to process after deduplication: 33
+2025-05-05 11:33:57,737 - INFO - ====== WebDriver manager ======
+2025-05-05 11:33:57,904 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:33:57,921 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:33:57,935 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:33:58,769 - INFO - Loads after filtering existing IDs: 82
+2025-05-05 11:33:58,770 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 11:33:59,166 - INFO - New loads to process after deduplication: 37
+2025-05-05 11:35:12,716 - INFO - ====== WebDriver manager ======
+2025-05-05 11:35:12,879 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:35:12,896 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:35:12,907 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:35:13,722 - INFO - Loads after filtering existing IDs: 95
+2025-05-05 11:35:13,722 - INFO - Filtered loads after basic criteria: 77
+2025-05-05 11:35:14,447 - INFO - New loads to process after deduplication: 77
+2025-05-05 11:36:27,681 - INFO - ====== WebDriver manager ======
+2025-05-05 11:36:27,835 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:36:27,849 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:36:27,860 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:36:28,633 - INFO - Loads after filtering existing IDs: 80
+2025-05-05 11:36:28,633 - INFO - Filtered loads after basic criteria: 51
+2025-05-05 11:36:29,054 - INFO - New loads to process after deduplication: 51
+2025-05-05 11:37:42,196 - INFO - ====== WebDriver manager ======
+2025-05-05 11:37:42,355 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:37:42,371 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:37:42,383 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:37:43,159 - INFO - Loads after filtering existing IDs: 65
+2025-05-05 11:37:43,159 - INFO - Filtered loads after basic criteria: 43
+2025-05-05 11:37:43,457 - INFO - New loads to process after deduplication: 43
+2025-05-05 11:38:56,723 - INFO - ====== WebDriver manager ======
+2025-05-05 11:38:56,887 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:38:56,902 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:38:56,915 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:38:57,830 - INFO - Loads after filtering existing IDs: 67
+2025-05-05 11:38:57,830 - INFO - Filtered loads after basic criteria: 39
+2025-05-05 11:38:58,196 - INFO - New loads to process after deduplication: 39
+2025-05-05 11:40:11,356 - INFO - ====== WebDriver manager ======
+2025-05-05 11:40:11,516 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:40:11,531 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:40:11,542 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:40:12,298 - INFO - Loads after filtering existing IDs: 54
+2025-05-05 11:40:12,299 - INFO - Filtered loads after basic criteria: 18
+2025-05-05 11:40:12,608 - INFO - New loads to process after deduplication: 18
+2025-05-05 11:41:25,696 - INFO - ====== WebDriver manager ======
+2025-05-05 11:41:25,852 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:41:25,866 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:41:25,876 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:41:26,710 - INFO - Loads after filtering existing IDs: 66
+2025-05-05 11:41:26,710 - INFO - Filtered loads after basic criteria: 25
+2025-05-05 11:41:27,001 - INFO - New loads to process after deduplication: 25
+2025-05-05 11:42:40,139 - INFO - ====== WebDriver manager ======
+2025-05-05 11:42:40,301 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:42:40,315 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:42:40,326 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:42:41,113 - INFO - Loads after filtering existing IDs: 74
+2025-05-05 11:42:41,114 - INFO - Filtered loads after basic criteria: 28
+2025-05-05 11:42:41,446 - INFO - New loads to process after deduplication: 28
+2025-05-05 11:43:54,681 - INFO - ====== WebDriver manager ======
+2025-05-05 11:43:54,838 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:43:54,854 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:43:54,866 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:43:55,605 - INFO - Loads after filtering existing IDs: 76
+2025-05-05 11:43:55,605 - INFO - Filtered loads after basic criteria: 32
+2025-05-05 11:43:55,903 - INFO - New loads to process after deduplication: 32
+2025-05-05 11:45:09,244 - INFO - ====== WebDriver manager ======
+2025-05-05 11:45:09,436 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:45:09,450 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:45:09,465 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:45:10,307 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 11:45:10,308 - INFO - Filtered loads after basic criteria: 40
+2025-05-05 11:45:10,743 - INFO - New loads to process after deduplication: 40
+2025-05-05 11:46:23,963 - INFO - ====== WebDriver manager ======
+2025-05-05 11:46:24,120 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:46:24,135 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:46:24,146 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:46:24,862 - INFO - Loads after filtering existing IDs: 76
+2025-05-05 11:46:24,862 - INFO - Filtered loads after basic criteria: 39
+2025-05-05 11:46:25,142 - INFO - New loads to process after deduplication: 39
+2025-05-05 11:47:38,453 - INFO - ====== WebDriver manager ======
+2025-05-05 11:47:38,615 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:47:38,630 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:47:38,642 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:47:39,429 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 11:47:39,429 - INFO - Filtered loads after basic criteria: 51
+2025-05-05 11:47:39,766 - INFO - New loads to process after deduplication: 51
+2025-05-05 11:48:52,980 - INFO - ====== WebDriver manager ======
+2025-05-05 11:48:53,143 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:48:53,157 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:48:53,168 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:48:53,941 - INFO - Loads after filtering existing IDs: 80
+2025-05-05 11:48:53,941 - INFO - Filtered loads after basic criteria: 52
+2025-05-05 11:48:54,446 - INFO - New loads to process after deduplication: 52
+2025-05-05 11:50:07,688 - INFO - ====== WebDriver manager ======
+2025-05-05 11:50:07,854 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:50:07,868 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:50:07,879 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:50:08,645 - INFO - Loads after filtering existing IDs: 73
+2025-05-05 11:50:08,645 - INFO - Filtered loads after basic criteria: 44
+2025-05-05 11:50:09,064 - INFO - New loads to process after deduplication: 44
+2025-05-05 11:51:23,471 - INFO - ====== WebDriver manager ======
+2025-05-05 11:51:23,631 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:51:23,646 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:51:23,657 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:51:24,408 - INFO - Loads after filtering existing IDs: 69
+2025-05-05 11:51:24,408 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 11:51:24,795 - INFO - New loads to process after deduplication: 37
+2025-05-05 11:52:37,958 - INFO - ====== WebDriver manager ======
+2025-05-05 11:52:38,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:52:38,131 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:52:38,143 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:52:38,891 - INFO - Loads after filtering existing IDs: 74
+2025-05-05 11:52:38,891 - INFO - Filtered loads after basic criteria: 39
+2025-05-05 11:52:39,267 - INFO - New loads to process after deduplication: 39
+2025-05-05 11:53:52,435 - INFO - ====== WebDriver manager ======
+2025-05-05 11:53:52,594 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:53:52,610 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:53:52,622 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:53:53,378 - INFO - Loads after filtering existing IDs: 76
+2025-05-05 11:53:53,378 - INFO - Filtered loads after basic criteria: 46
+2025-05-05 11:53:53,695 - INFO - New loads to process after deduplication: 46
+2025-05-05 11:55:06,939 - INFO - ====== WebDriver manager ======
+2025-05-05 11:55:07,100 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:55:07,115 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:55:07,129 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:55:07,889 - INFO - Loads after filtering existing IDs: 78
+2025-05-05 11:55:07,890 - INFO - Filtered loads after basic criteria: 43
+2025-05-05 11:55:08,318 - INFO - New loads to process after deduplication: 43
+2025-05-05 11:56:22,459 - INFO - ====== WebDriver manager ======
+2025-05-05 11:56:22,625 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:56:22,640 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:56:22,651 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:56:23,437 - INFO - Loads after filtering existing IDs: 79
+2025-05-05 11:56:23,437 - INFO - Filtered loads after basic criteria: 35
+2025-05-05 11:56:23,747 - INFO - New loads to process after deduplication: 35
+2025-05-05 11:57:36,934 - INFO - ====== WebDriver manager ======
+2025-05-05 11:57:37,097 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:57:37,115 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:57:37,128 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:57:38,020 - INFO - Loads after filtering existing IDs: 76
+2025-05-05 11:57:38,021 - INFO - Filtered loads after basic criteria: 41
+2025-05-05 11:57:38,494 - INFO - New loads to process after deduplication: 41
+2025-05-05 11:58:51,683 - INFO - ====== WebDriver manager ======
+2025-05-05 11:58:51,843 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:58:51,859 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 11:58:51,871 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 11:58:52,643 - INFO - Loads after filtering existing IDs: 72
+2025-05-05 11:58:52,643 - INFO - Filtered loads after basic criteria: 43
+2025-05-05 11:58:52,996 - INFO - New loads to process after deduplication: 43
+2025-05-05 12:00:06,301 - INFO - ====== WebDriver manager ======
+2025-05-05 12:00:06,466 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:00:06,481 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:00:06,493 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:00:07,399 - INFO - Loads after filtering existing IDs: 69
+2025-05-05 12:00:07,399 - INFO - Filtered loads after basic criteria: 45
+2025-05-05 12:00:07,750 - INFO - New loads to process after deduplication: 45
+2025-05-05 12:01:20,942 - INFO - ====== WebDriver manager ======
+2025-05-05 12:01:21,099 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:01:21,113 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:01:21,124 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:01:21,882 - INFO - Loads after filtering existing IDs: 72
+2025-05-05 12:01:21,882 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 12:01:22,308 - INFO - New loads to process after deduplication: 37
+2025-05-05 12:02:35,442 - INFO - ====== WebDriver manager ======
+2025-05-05 12:02:35,607 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:02:35,622 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:02:35,634 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:02:36,514 - INFO - Loads after filtering existing IDs: 67
+2025-05-05 12:02:36,514 - INFO - Filtered loads after basic criteria: 7
+2025-05-05 12:02:36,739 - INFO - New loads to process after deduplication: 7
+2025-05-05 12:03:49,993 - INFO - ====== WebDriver manager ======
+2025-05-05 12:03:50,165 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:03:50,181 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:03:50,193 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:03:51,019 - INFO - Loads after filtering existing IDs: 78
+2025-05-05 12:03:51,019 - INFO - Filtered loads after basic criteria: 29
+2025-05-05 12:03:51,366 - INFO - New loads to process after deduplication: 29
+2025-05-05 12:05:05,434 - INFO - ====== WebDriver manager ======
+2025-05-05 12:05:05,592 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:05:05,606 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:05:05,618 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:05:06,348 - INFO - Loads after filtering existing IDs: 75
+2025-05-05 12:05:06,349 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 12:05:06,650 - INFO - New loads to process after deduplication: 37
+2025-05-05 12:06:19,709 - INFO - ====== WebDriver manager ======
+2025-05-05 12:06:19,873 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:06:19,889 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:06:19,899 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:06:20,659 - INFO - Loads after filtering existing IDs: 75
+2025-05-05 12:06:20,659 - INFO - Filtered loads after basic criteria: 46
+2025-05-05 12:06:20,987 - INFO - New loads to process after deduplication: 46
+2025-05-05 12:07:33,960 - INFO - ====== WebDriver manager ======
+2025-05-05 12:07:34,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:07:34,131 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:07:34,142 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:07:34,873 - INFO - Loads after filtering existing IDs: 71
+2025-05-05 12:07:34,873 - INFO - Filtered loads after basic criteria: 39
+2025-05-05 12:07:35,180 - INFO - New loads to process after deduplication: 39
+2025-05-05 12:08:48,197 - INFO - ====== WebDriver manager ======
+2025-05-05 12:08:48,356 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:08:48,370 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:08:48,382 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:08:49,158 - INFO - Loads after filtering existing IDs: 72
+2025-05-05 12:08:49,158 - INFO - Filtered loads after basic criteria: 32
+2025-05-05 12:08:49,562 - INFO - New loads to process after deduplication: 32
+2025-05-05 12:10:02,703 - INFO - ====== WebDriver manager ======
+2025-05-05 12:10:02,864 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:10:02,877 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:10:02,890 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:10:03,728 - INFO - Loads after filtering existing IDs: 74
+2025-05-05 12:10:03,728 - INFO - Filtered loads after basic criteria: 32
+2025-05-05 12:10:04,026 - INFO - New loads to process after deduplication: 32
+2025-05-05 12:11:18,192 - INFO - ====== WebDriver manager ======
+2025-05-05 12:11:18,349 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:11:18,362 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:11:18,373 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:11:19,148 - INFO - Loads after filtering existing IDs: 71
+2025-05-05 12:11:19,148 - INFO - Filtered loads after basic criteria: 41
+2025-05-05 12:11:19,515 - INFO - New loads to process after deduplication: 41
+2025-05-05 12:12:32,587 - INFO - ====== WebDriver manager ======
+2025-05-05 12:12:32,747 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:12:32,762 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:12:32,777 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:12:33,546 - INFO - Loads after filtering existing IDs: 66
+2025-05-05 12:12:33,546 - INFO - Filtered loads after basic criteria: 43
+2025-05-05 12:12:33,863 - INFO - New loads to process after deduplication: 43
+2025-05-05 12:13:46,959 - INFO - ====== WebDriver manager ======
+2025-05-05 12:13:47,125 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:13:47,140 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:13:47,153 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:13:47,942 - INFO - Loads after filtering existing IDs: 60
+2025-05-05 12:13:47,942 - INFO - Filtered loads after basic criteria: 27
+2025-05-05 12:13:48,239 - INFO - New loads to process after deduplication: 27
+2025-05-05 12:15:01,514 - INFO - ====== WebDriver manager ======
+2025-05-05 12:15:01,683 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:15:01,699 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:15:01,713 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:15:02,463 - INFO - Loads after filtering existing IDs: 59
+2025-05-05 12:15:02,463 - INFO - Filtered loads after basic criteria: 27
+2025-05-05 12:15:02,845 - INFO - New loads to process after deduplication: 27
+2025-05-05 12:16:16,931 - INFO - ====== WebDriver manager ======
+2025-05-05 12:16:17,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:16:17,134 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:16:17,151 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:16:17,906 - INFO - Loads after filtering existing IDs: 76
+2025-05-05 12:16:17,906 - INFO - Filtered loads after basic criteria: 42
+2025-05-05 12:16:18,219 - INFO - New loads to process after deduplication: 42
+2025-05-05 12:17:31,448 - INFO - ====== WebDriver manager ======
+2025-05-05 12:17:31,608 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:17:31,624 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:17:31,636 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:17:32,390 - INFO - Loads after filtering existing IDs: 75
+2025-05-05 12:17:32,391 - INFO - Filtered loads after basic criteria: 34
+2025-05-05 12:17:32,675 - INFO - New loads to process after deduplication: 34
+2025-05-05 12:18:45,940 - INFO - ====== WebDriver manager ======
+2025-05-05 12:18:46,107 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:18:46,121 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:18:46,134 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:18:46,931 - INFO - Loads after filtering existing IDs: 69
+2025-05-05 12:18:46,931 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 12:18:47,234 - INFO - New loads to process after deduplication: 37
+2025-05-05 12:20:00,475 - INFO - ====== WebDriver manager ======
+2025-05-05 12:20:00,639 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:20:00,655 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:20:00,667 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:20:01,406 - INFO - Loads after filtering existing IDs: 76
+2025-05-05 12:20:01,406 - INFO - Filtered loads after basic criteria: 49
+2025-05-05 12:20:01,837 - INFO - New loads to process after deduplication: 49
+2025-05-05 12:21:14,934 - INFO - ====== WebDriver manager ======
+2025-05-05 12:21:15,102 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:21:15,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:21:15,128 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:21:15,916 - INFO - Loads after filtering existing IDs: 83
+2025-05-05 12:21:15,916 - INFO - Filtered loads after basic criteria: 55
+2025-05-05 12:21:16,376 - INFO - New loads to process after deduplication: 55
+2025-05-05 12:22:29,430 - INFO - ====== WebDriver manager ======
+2025-05-05 12:22:29,591 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:22:29,604 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:22:29,616 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:22:30,380 - INFO - Loads after filtering existing IDs: 85
+2025-05-05 12:22:30,380 - INFO - Filtered loads after basic criteria: 48
+2025-05-05 12:22:30,751 - INFO - New loads to process after deduplication: 48
+2025-05-05 12:23:43,967 - INFO - ====== WebDriver manager ======
+2025-05-05 12:23:44,133 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:23:44,151 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:23:44,162 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:23:44,935 - INFO - Loads after filtering existing IDs: 85
+2025-05-05 12:23:44,935 - INFO - Filtered loads after basic criteria: 41
+2025-05-05 12:23:45,292 - INFO - New loads to process after deduplication: 41
+2025-05-05 12:24:58,438 - INFO - ====== WebDriver manager ======
+2025-05-05 12:24:58,602 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:24:58,618 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:24:58,630 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:24:59,383 - INFO - Loads after filtering existing IDs: 80
+2025-05-05 12:24:59,384 - INFO - Filtered loads after basic criteria: 38
+2025-05-05 12:24:59,830 - INFO - New loads to process after deduplication: 38
+2025-05-05 12:26:12,934 - INFO - ====== WebDriver manager ======
+2025-05-05 12:26:13,099 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:26:13,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:26:13,128 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:26:13,887 - INFO - Loads after filtering existing IDs: 71
+2025-05-05 12:26:13,888 - INFO - Filtered loads after basic criteria: 39
+2025-05-05 12:26:14,253 - INFO - New loads to process after deduplication: 39
+2025-05-05 12:27:27,444 - INFO - ====== WebDriver manager ======
+2025-05-05 12:27:27,599 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:27:27,613 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:27:27,624 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:27:28,430 - INFO - Loads after filtering existing IDs: 76
+2025-05-05 12:27:28,430 - INFO - Filtered loads after basic criteria: 47
+2025-05-05 12:27:28,847 - INFO - New loads to process after deduplication: 47
+2025-05-05 12:28:41,915 - INFO - ====== WebDriver manager ======
+2025-05-05 12:28:42,067 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:28:42,080 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:28:42,092 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:28:42,822 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 12:28:42,822 - INFO - Filtered loads after basic criteria: 46
+2025-05-05 12:28:43,142 - INFO - New loads to process after deduplication: 46
+2025-05-05 12:29:56,182 - INFO - ====== WebDriver manager ======
+2025-05-05 12:29:56,344 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:29:56,359 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:29:56,370 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:29:57,153 - INFO - Loads after filtering existing IDs: 75
+2025-05-05 12:29:57,154 - INFO - Filtered loads after basic criteria: 41
+2025-05-05 12:29:57,470 - INFO - New loads to process after deduplication: 41
+2025-05-05 12:31:10,471 - INFO - ====== WebDriver manager ======
+2025-05-05 12:31:10,637 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:31:10,651 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:31:10,663 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:31:11,390 - INFO - Loads after filtering existing IDs: 80
+2025-05-05 12:31:11,390 - INFO - Filtered loads after basic criteria: 31
+2025-05-05 12:31:11,727 - INFO - New loads to process after deduplication: 31
+2025-05-05 12:32:24,928 - INFO - ====== WebDriver manager ======
+2025-05-05 12:32:25,086 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:32:25,102 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:32:25,114 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:32:25,880 - INFO - Loads after filtering existing IDs: 78
+2025-05-05 12:32:25,881 - INFO - Filtered loads after basic criteria: 25
+2025-05-05 12:32:26,217 - INFO - New loads to process after deduplication: 25
+2025-05-05 12:33:39,256 - INFO - ====== WebDriver manager ======
+2025-05-05 12:33:39,420 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:33:39,436 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:33:39,449 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:33:40,227 - INFO - Loads after filtering existing IDs: 70
+2025-05-05 12:33:40,227 - INFO - Filtered loads after basic criteria: 31
+2025-05-05 12:33:40,591 - INFO - New loads to process after deduplication: 31
+2025-05-05 12:34:53,689 - INFO - ====== WebDriver manager ======
+2025-05-05 12:34:53,850 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:34:53,867 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:34:53,880 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:34:54,673 - INFO - Loads after filtering existing IDs: 69
+2025-05-05 12:34:54,673 - INFO - Filtered loads after basic criteria: 34
+2025-05-05 12:34:54,994 - INFO - New loads to process after deduplication: 34
+2025-05-05 12:36:07,939 - INFO - ====== WebDriver manager ======
+2025-05-05 12:36:08,101 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:36:08,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:36:08,127 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:36:09,005 - INFO - Loads after filtering existing IDs: 74
+2025-05-05 12:36:09,006 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 12:36:09,362 - INFO - New loads to process after deduplication: 37
+2025-05-05 12:37:22,475 - INFO - ====== WebDriver manager ======
+2025-05-05 12:37:22,642 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:37:22,685 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:37:22,698 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:37:23,453 - INFO - Loads after filtering existing IDs: 72
+2025-05-05 12:37:23,453 - INFO - Filtered loads after basic criteria: 44
+2025-05-05 12:37:23,783 - INFO - New loads to process after deduplication: 44
+2025-05-05 12:38:36,751 - INFO - ====== WebDriver manager ======
+2025-05-05 12:38:36,910 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:38:36,925 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:38:36,936 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:38:37,714 - INFO - Loads after filtering existing IDs: 65
+2025-05-05 12:38:37,714 - INFO - Filtered loads after basic criteria: 41
+2025-05-05 12:38:38,048 - INFO - New loads to process after deduplication: 41
+2025-05-05 12:39:51,185 - INFO - ====== WebDriver manager ======
+2025-05-05 12:39:51,353 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:39:51,368 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:39:51,381 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:39:52,132 - INFO - Loads after filtering existing IDs: 65
+2025-05-05 12:39:52,133 - INFO - Filtered loads after basic criteria: 36
+2025-05-05 12:39:52,415 - INFO - New loads to process after deduplication: 36
+2025-05-05 12:41:05,714 - INFO - ====== WebDriver manager ======
+2025-05-05 12:41:05,879 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:41:05,895 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:41:05,908 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:41:06,684 - INFO - Loads after filtering existing IDs: 66
+2025-05-05 12:41:06,684 - INFO - Filtered loads after basic criteria: 32
+2025-05-05 12:41:07,116 - INFO - New loads to process after deduplication: 32
+2025-05-05 12:42:21,189 - INFO - ====== WebDriver manager ======
+2025-05-05 12:42:21,353 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:42:21,368 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:42:21,383 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:42:22,139 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 12:42:22,139 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 12:42:22,495 - INFO - New loads to process after deduplication: 37
+2025-05-05 12:43:35,442 - INFO - ====== WebDriver manager ======
+2025-05-05 12:43:35,602 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:43:35,617 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:43:35,631 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:43:36,377 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 12:43:36,377 - INFO - Filtered loads after basic criteria: 36
+2025-05-05 12:43:36,669 - INFO - New loads to process after deduplication: 36
+2025-05-05 12:44:49,680 - INFO - ====== WebDriver manager ======
+2025-05-05 12:44:49,838 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:44:49,851 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:44:49,863 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:44:50,992 - INFO - Loads after filtering existing IDs: 43
+2025-05-05 12:44:50,993 - INFO - Filtered loads after basic criteria: 22
+2025-05-05 12:44:51,252 - INFO - New loads to process after deduplication: 22
+2025-05-05 12:46:04,449 - INFO - ====== WebDriver manager ======
+2025-05-05 12:46:04,602 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:46:04,618 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:46:04,630 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:46:05,398 - INFO - Loads after filtering existing IDs: 68
+2025-05-05 12:46:05,399 - INFO - Filtered loads after basic criteria: 41
+2025-05-05 12:46:05,786 - INFO - New loads to process after deduplication: 41
+2025-05-05 12:47:18,932 - INFO - ====== WebDriver manager ======
+2025-05-05 12:47:19,101 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:47:19,118 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:47:19,131 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:47:19,866 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 12:47:19,866 - INFO - Filtered loads after basic criteria: 35
+2025-05-05 12:47:20,188 - INFO - New loads to process after deduplication: 35
+2025-05-05 12:48:34,183 - INFO - ====== WebDriver manager ======
+2025-05-05 12:48:34,351 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:48:34,367 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:48:34,378 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:48:35,205 - INFO - Loads after filtering existing IDs: 75
+2025-05-05 12:48:35,205 - INFO - Filtered loads after basic criteria: 40
+2025-05-05 12:48:35,658 - INFO - New loads to process after deduplication: 40
+2025-05-05 12:49:48,679 - INFO - ====== WebDriver manager ======
+2025-05-05 12:49:48,834 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:49:48,849 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:49:48,863 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:49:49,666 - INFO - Loads after filtering existing IDs: 62
+2025-05-05 12:49:49,666 - INFO - Filtered loads after basic criteria: 26
+2025-05-05 12:49:49,936 - INFO - New loads to process after deduplication: 26
+2025-05-05 12:51:04,043 - INFO - ====== WebDriver manager ======
+2025-05-05 12:51:04,201 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:51:04,215 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:51:04,229 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:51:04,970 - INFO - Loads after filtering existing IDs: 80
+2025-05-05 12:51:04,971 - INFO - Filtered loads after basic criteria: 26
+2025-05-05 12:51:05,249 - INFO - New loads to process after deduplication: 26
+2025-05-05 12:52:18,461 - INFO - ====== WebDriver manager ======
+2025-05-05 12:52:18,628 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:52:18,644 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:52:18,656 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:52:19,445 - INFO - Loads after filtering existing IDs: 82
+2025-05-05 12:52:19,445 - INFO - Filtered loads after basic criteria: 28
+2025-05-05 12:52:19,749 - INFO - New loads to process after deduplication: 28
+2025-05-05 12:53:34,074 - INFO - ====== WebDriver manager ======
+2025-05-05 12:53:34,237 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:53:34,251 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:53:34,263 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:53:34,996 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 12:53:34,996 - INFO - Filtered loads after basic criteria: 36
+2025-05-05 12:53:35,326 - INFO - New loads to process after deduplication: 36
+2025-05-05 12:54:48,444 - INFO - ====== WebDriver manager ======
+2025-05-05 12:54:48,605 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:54:48,620 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:54:48,631 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:54:49,370 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 12:54:49,371 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 12:54:49,651 - INFO - New loads to process after deduplication: 37
+2025-05-05 12:56:03,770 - INFO - ====== WebDriver manager ======
+2025-05-05 12:56:03,930 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:56:03,946 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:56:03,960 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:56:04,692 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 12:56:04,692 - INFO - Filtered loads after basic criteria: 42
+2025-05-05 12:56:05,023 - INFO - New loads to process after deduplication: 42
+2025-05-05 12:57:17,962 - INFO - ====== WebDriver manager ======
+2025-05-05 12:57:18,135 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:57:18,150 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:57:18,163 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:57:18,968 - INFO - Loads after filtering existing IDs: 72
+2025-05-05 12:57:18,968 - INFO - Filtered loads after basic criteria: 45
+2025-05-05 12:57:19,366 - INFO - New loads to process after deduplication: 45
+2025-05-05 12:58:32,463 - INFO - ====== WebDriver manager ======
+2025-05-05 12:58:32,628 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:58:32,642 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:58:32,654 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:58:33,433 - INFO - Loads after filtering existing IDs: 79
+2025-05-05 12:58:33,434 - INFO - Filtered loads after basic criteria: 45
+2025-05-05 12:58:33,917 - INFO - New loads to process after deduplication: 45
+2025-05-05 12:59:46,960 - INFO - ====== WebDriver manager ======
+2025-05-05 12:59:47,119 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:59:47,133 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 12:59:47,146 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 12:59:47,903 - INFO - Loads after filtering existing IDs: 79
+2025-05-05 12:59:47,904 - INFO - Filtered loads after basic criteria: 43
+2025-05-05 12:59:48,258 - INFO - New loads to process after deduplication: 43
+2025-05-05 13:01:01,434 - INFO - ====== WebDriver manager ======
+2025-05-05 13:01:01,588 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:01:01,603 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:01:01,614 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:01:02,457 - INFO - Loads after filtering existing IDs: 66
+2025-05-05 13:01:02,457 - INFO - Filtered loads after basic criteria: 32
+2025-05-05 13:01:02,766 - INFO - New loads to process after deduplication: 32
+2025-05-05 13:02:16,709 - INFO - ====== WebDriver manager ======
+2025-05-05 13:02:16,868 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:02:16,884 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:02:16,895 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:02:17,622 - INFO - Loads after filtering existing IDs: 56
+2025-05-05 13:02:17,622 - INFO - Filtered loads after basic criteria: 5
+2025-05-05 13:02:17,835 - INFO - New loads to process after deduplication: 5
+2025-05-05 13:03:30,944 - INFO - ====== WebDriver manager ======
+2025-05-05 13:03:31,106 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:03:31,120 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:03:31,135 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:03:31,906 - INFO - Loads after filtering existing IDs: 79
+2025-05-05 13:03:31,906 - INFO - Filtered loads after basic criteria: 24
+2025-05-05 13:03:32,156 - INFO - New loads to process after deduplication: 24
+2025-05-05 13:04:45,194 - INFO - ====== WebDriver manager ======
+2025-05-05 13:04:45,359 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:04:45,375 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:04:45,387 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:04:46,186 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 13:04:46,186 - INFO - Filtered loads after basic criteria: 33
+2025-05-05 13:04:46,485 - INFO - New loads to process after deduplication: 33
+2025-05-05 13:05:59,718 - INFO - ====== WebDriver manager ======
+2025-05-05 13:05:59,882 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:05:59,897 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:05:59,911 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:06:00,685 - INFO - Loads after filtering existing IDs: 73
+2025-05-05 13:06:00,685 - INFO - Filtered loads after basic criteria: 40
+2025-05-05 13:06:01,056 - INFO - New loads to process after deduplication: 40
+2025-05-05 13:07:14,946 - INFO - ====== WebDriver manager ======
+2025-05-05 13:07:15,099 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:07:15,113 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:07:15,124 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:07:15,823 - INFO - Loads after filtering existing IDs: 73
+2025-05-05 13:07:15,823 - INFO - Filtered loads after basic criteria: 46
+2025-05-05 13:07:16,161 - INFO - New loads to process after deduplication: 46
+2025-05-05 13:08:29,192 - INFO - ====== WebDriver manager ======
+2025-05-05 13:08:29,361 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:08:29,377 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:08:29,390 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:08:30,183 - INFO - Loads after filtering existing IDs: 71
+2025-05-05 13:08:30,183 - INFO - Filtered loads after basic criteria: 37
+2025-05-05 13:08:30,531 - INFO - New loads to process after deduplication: 37
+2025-05-05 13:09:43,423 - INFO - ====== WebDriver manager ======
+2025-05-05 13:09:43,592 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:09:43,606 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:09:43,618 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:09:44,365 - INFO - Loads after filtering existing IDs: 71
+2025-05-05 13:09:44,366 - INFO - Filtered loads after basic criteria: 43
+2025-05-05 13:09:44,772 - INFO - New loads to process after deduplication: 43
+2025-05-05 13:10:57,701 - INFO - ====== WebDriver manager ======
+2025-05-05 13:10:57,859 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:10:57,874 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:10:57,886 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:10:59,017 - INFO - Loads after filtering existing IDs: 69
+2025-05-05 13:10:59,017 - INFO - Filtered loads after basic criteria: 41
+2025-05-05 13:10:59,334 - INFO - New loads to process after deduplication: 41
+2025-05-05 13:12:12,450 - INFO - ====== WebDriver manager ======
+2025-05-05 13:12:12,614 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:12:12,628 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:12:12,640 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:12:13,520 - INFO - Loads after filtering existing IDs: 68
+2025-05-05 13:12:13,520 - INFO - Filtered loads after basic criteria: 41
+2025-05-05 13:12:13,917 - INFO - New loads to process after deduplication: 41
+2025-05-05 13:13:26,948 - INFO - ====== WebDriver manager ======
+2025-05-05 13:13:27,110 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:13:27,126 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:13:27,138 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:13:28,029 - INFO - Loads after filtering existing IDs: 71
+2025-05-05 13:13:28,029 - INFO - Filtered loads after basic criteria: 45
+2025-05-05 13:13:28,410 - INFO - New loads to process after deduplication: 45
+2025-05-05 13:14:41,420 - INFO - ====== WebDriver manager ======
+2025-05-05 13:14:41,591 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:14:41,605 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-05 13:14:41,617 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-05 13:14:42,376 - INFO - Loads after filtering existing IDs: 77
+2025-05-05 13:14:42,376 - INFO - Filtered loads after basic criteria: 48
+2025-05-05 13:14:42,699 - INFO - New loads to process after deduplication: 48

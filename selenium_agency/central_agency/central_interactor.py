@@ -1,27 +1,24 @@
+import json
+from selenium_driver import SeleniumDriver
+from selenium.webdriver.support import expected_conditions as EC
+import time
+import logging
+from geoalchemy2.elements import WKTElement
 import sys
 import os
+
+from resources.models import LoadModel
 # Add the project root directory to sys.path
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+project_root = os.path.abspath(os.path.join(
+    os.path.dirname(__file__), '..', '..'))
 sys.path.append(project_root)
 # Keep the original append for backward compatibility
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from geoalchemy2.elements import WKTElement
-import logging
-from resources.models import LoadModel, get_db
-from selenium.webdriver.common.by import By
-import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium_driver import SeleniumDriver
-from dotenv import load_dotenv
-from selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_central
-from selenium_agency.api.central_api_client import CentralAPIClient
-from selenium_agency.cache.central_cache import CentralCacheService
-import json
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-log_file_path = os.path.join(os.path.dirname(script_dir), 'logs', 'central_agent.log')
+log_file_path = os.path.join(os.path.dirname(
+    script_dir), 'logs', 'central_agent.log')
 
 # Configure logging
 logging.basicConfig(
@@ -31,6 +28,7 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger(__name__)
+
 
 class CentralInteractor:
     def __init__(self, selenium_driver=None, api_client=None, cache_service=None, db_session=None):
@@ -45,16 +43,24 @@ class CentralInteractor:
         self.__record_count_per_page = 0
         self.__db_Session = db_session
         self.__in_between_delay = 1  # Adding the missing attribute with a default value
+        self.states = [
+            'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',
+            'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',
+            'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
+            'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
+            'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI',
+            'WY']
 
     def set_token(self):
         if not self.__driver:
             return None
         # Execute JavaScript to get token from localStorage
         user_token = self.__driver.execute_script(
-                "return window.localStorage.getItem('oidc.user:https://id.centraldispatch.com:single_spa_prod_client');"
-            )
+            "return window.localStorage.getItem('oidc.user:https://id.centraldispatch.com:single_spa_prod_client');"
+        )
         try:
-            user_token = json.loads(user_token)['access_token'] if user_token else None
+            user_token = json.loads(user_token)[
+                'access_token'] if user_token else None
         except json.JSONDecodeError:
             user_token = None
 
@@ -64,13 +70,15 @@ class CentralInteractor:
         else:
             logger.info("User token not found in localStorage")
             return None
-        
+
     def deduplicate_loads(self, loadsParam):
-        existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(LoadModel.external_load_id).all()} # type: ignore
-        loads = [load for load in loadsParam if str(load.get('id')) not in existing_load_ids]
+        existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(           # type: ignore
+            LoadModel.external_load_id).all()}
+        loads = [load for load in loadsParam if str(
+            load.get('id')) not in existing_load_ids]
         logger.info(f"Loads after filtering existing IDs: {len(loads)}")
         print(f"Loads after filtering existing IDs: {len(loads)}")
-        
+
         # Filter loads by distance and price criteria
         filtered_loads = []
         for load in loads:
@@ -80,57 +88,60 @@ class CentralInteractor:
 
             if distance <= 0.0 or distance >= 2000.0 or load.get('price', {}).get('total', 0) >= 3000.0:
                 continue
-                
+
             filtered_loads.append(load)
-            
-        logger.info(f"Filtered loads after basic criteria: {len(filtered_loads)}")
+
+        logger.info(
+            f"Filtered loads after basic criteria: {len(filtered_loads)}")
         print(f"Filtered loads after basic criteria: {len(filtered_loads)}")
-        
+
         # Fetch all existing loads once to use for duplicate detection
         if self.__db_Session is None:
             logger.error("Database session is not initialized.")
             print("Database session is not initialized.")
-            return 
-        
+            return
+
         existing_loads = self.__db_Session.query(
-            LoadModel.price, 
-            LoadModel.milage, 
-            LoadModel.pickup_location, 
+            LoadModel.price,
+            LoadModel.milage,
+            LoadModel.pickup_location,
             LoadModel.delivery_location
         ).all()
-        
+
         # Create a set of tuples for faster lookup
         existing_loads_set = {
             (load.price, load.milage, load.pickup_location, load.delivery_location)
             for load in existing_loads
         }
-        
+
         # Check for duplicates in database based on price, distance, pickup and delivery locations
         non_duplicate_loads = []
         for load in filtered_loads:
             pickup_location = f"{load['origin']['city']}, {load['origin']['state']} {load['origin']['zip']}"
             delivery_location = f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
-            
+
             price = str(load['price']['total'])
             distance = float(load.get('distance', 0))
-            
+
             # Check against in-memory set of loads - more efficient than individual database queries
             similar_load_exists = False
             for existing_price, existing_milage, existing_pickup, existing_delivery in existing_loads_set:
                 if (existing_price == price and
                     existing_pickup == pickup_location and
                     existing_delivery == delivery_location and
-                    existing_milage * 0.98 <= distance <= existing_milage * 1.02):
+                        existing_milage * 0.98 <= distance <= existing_milage * 1.02):
                     similar_load_exists = True
                     break
-            
+
             if not similar_load_exists:
                 non_duplicate_loads.append(load)
-        
-        logger.info(f"New loads to process after deduplication: {len(non_duplicate_loads)}")
-        print(f"New loads to process after deduplication: {len(non_duplicate_loads)}")
+
+        logger.info(
+            f"New loads to process after deduplication: {len(non_duplicate_loads)}")
+        print(
+            f"New loads to process after deduplication: {len(non_duplicate_loads)}")
         return non_duplicate_loads
-    
+
     def __format_and_get_load_model(self, load):
         if not load:
             return None
@@ -140,7 +151,7 @@ class CentralInteractor:
             delivery_location = f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
 
             pickup_coordinates = [load['origin']['geoCode']
-                                ['longitude'], load['origin']['geoCode']['latitude']]
+                                  ['longitude'], load['origin']['geoCode']['latitude']]
             delivery_coordinates = [load['destination']['geoCode']
                                     ['longitude'], load['destination']['geoCode']['latitude']]
         except KeyError as e:
@@ -158,7 +169,8 @@ class CentralInteractor:
         instructions = load.get('additionalInfo', '')
         combined_notes = f"{instructions}\n{coordinates_note}"
         # Extract broker name from shipper info if available
-        brokerage = load.get('shipper', {}).get('companyName', 'Central Dispatch')
+        brokerage = load.get('shipper', {}).get(
+            'companyName', 'Central Dispatch')
         # Calculate total weight from vehicles
         total_weight = 0
         for vehicle in load.get('vehicles', []):
@@ -183,97 +195,107 @@ class CentralInteractor:
             n_vehicles=len(load.get('vehicles', [])),
             weight=float(total_weight)
         )
-        
+
         return load_model_instance
-    
+
     def save_loads_to_db(self, non_duplicate_loads):
         if len(non_duplicate_loads) == 0:
-            logger.info("No new loads to process, every load is already in the database")
+            logger.info(
+                "No new loads to process, every load is already in the database")
             print("No new loads to process, every load is already in the database")
             return
-        
+
         if len(non_duplicate_loads) > 0:
             load_model_instances = [
                 model for model in (self.__format_and_get_load_model(load) for load in non_duplicate_loads)
                 if model is not None  # Filter out None values that result from KeyError
             ]
-            
-            if load_model_instances and self.__db_Session is not None:  # Only proceed if there are valid models to save
+
+            # Only proceed if there are valid models to save
+            if load_model_instances and self.__db_Session is not None:
                 self.__db_Session.bulk_save_objects(load_model_instances)
                 self.__db_Session.commit()
                 time.sleep(self.__in_between_delay)
-                logger.info(f"Inserted {len(load_model_instances)} loads into DB")
+                logger.info(
+                    f"Inserted {len(load_model_instances)} loads into DB")
             else:
                 logger.info("No valid loads to insert into DB")
-        
+
     def fetch_loads(self):
         if self.__cache_service is not None and self.__api_client is not None:
             token = self.__cache_service.get_token()
             self.__api_client.set_authorization_header(token)
-        
-        try:
-            loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search", # type: ignore
-                                                    payload={
-                                                        'vehicleCount': {
-                                                            'min': 1,
-                                                            'max': None,
-                                                        },
-                                                        'postedWithinHours': None,
-                                                        'tagListingsPostedWithin': 2,
-                                                        'trailerTypes': [],
-                                                        'paymentTypes': [],
-                                                        'vehicleTypes': [],
-                                                        'operability': 'All',
-                                                        'minimumPaymentTotal': None,
-                                                        'readyToShipWithinDays': None,
-                                                        'minimumPricePerMile': None,
-                                                        'offset': self.current_page * 500,
-                                                        'limit': 500,
-                                                        'sortFields': [
-                                                            {
-                                                                'name': 'PICKUP',
-                                                                'direction': 'ASC',
+        for state in self.states:
+            try:
+                loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",  # type: ignore
+                                                        payload={
+                                                            'vehicleCount': {
+                                                                'min': 1,
+                                                                'max': None,
                                                             },
-                                                            {
-                                                                'name': 'DELIVERYMETROAREA',
-                                                                'direction': 'ASC',
-                                                            },
-                                                        ],
-                                                        'shipperIds': [],
-                                                        'desiredDeliveryDate': None,
-                                                        'displayBlockedShippers': False,
-                                                        'showPreferredShippersOnly': False,
-                                                        'showTaggedOnTop': False,
-                                                        'marketplaceIds': [],
-                                                        'averageRating': 'All',
-                                                        'requestType': 'Open',
-                                                        'locations': [],
-                                                    })
-            self.current_page += 1
-            print(f"Page: {self.current_page}")
+                                                            'postedWithinHours': None,
+                                                            'tagListingsPostedWithin': 2,
+                                                            'trailerTypes': [],
+                                                            'paymentTypes': [],
+                                                            'vehicleTypes': [],
+                                                            'operability': 'All',
+                                                            'minimumPaymentTotal': None,
+                                                            'readyToShipWithinDays': None,
+                                                            'minimumPricePerMile': None,
+                                                            'offset': 0,
+                                                            'limit': 10000,
+                                                            'sortFields': [
+                                                                {
+                                                                    'name': 'PICKUP',
+                                                                    'direction': 'ASC',
+                                                                },
+                                                                {
+                                                                    'name': 'DELIVERYMETROAREA',
+                                                                    'direction': 'ASC',
+                                                                },
+                                                            ],
+                                                            'shipperIds': [],
+                                                            'desiredDeliveryDate': None,
+                                                            'displayBlockedShippers': False,
+                                                            'showPreferredShippersOnly': False,
+                                                            'showTaggedOnTop': False,
+                                                            'marketplaceIds': [],
+                                                            'averageRating': 'All',
+                                                            'requestType': 'Open',
+                                                            'locations': [{
+                                                                'state': state,
+                                                                'scope': 'Pickup',
+                                                            },],
+                                                        })
+                self.current_page += 1
+                print(f"Page: {self.current_page}")
 
-            response_json = loads_response.json()
-            loads = response_json['items']
-            total_records = response_json['totalRecords']
-            count = response_json['count']
+                response_json = loads_response.json()
+                loads = response_json['items']
+                total_records = response_json['totalRecords']
+                count = response_json['count']
 
-            if self.__record_count_per_page == 0 and self.__total_records == 0:
-                self.__record_count_per_page = count
-                self.__total_records = total_records
+                if self.__record_count_per_page == 0 and self.__total_records == 0:
+                    self.__record_count_per_page = count
+                    self.__total_records = total_records
 
-                logger.info(f"Total records: {self.__total_records}, Records per page: {self.__record_count_per_page}")
-                print(f"Total records: {self.__total_records}, Records per page: {self.__record_count_per_page}")
+                    logger.info(
+                        f"Total records: {self.__total_records}, Records per page: {self.__record_count_per_page}")
+                    print(
+                        f"Total records: {self.__total_records}, Records per page: {self.__record_count_per_page}")
 
-            print("Page: ", self.current_page, "Total records: ", self.__total_records, "Records per page: ", self.__record_count_per_page)
-            print(self.current_page >= (self.__total_records / self.__record_count_per_page) + 1)
-            if (self.current_page >= (self.__total_records / self.__record_count_per_page) + 1):
-                logger.info("No more pages to process")
-                print("No more pages to process")
-                self.current_page = 0
-                self.__total_records = 0
-                self.__record_count_per_page = 0
-                time.sleep(200)
-            return loads
-        except Exception as e:
-            print(f"Error fetching loads: {e}")
-            return
+                print("Page: ", self.current_page, "Total records: ",
+                      self.__total_records, "Records per page: ", self.__record_count_per_page)
+                print(self.current_page >= (
+                    self.__total_records / self.__record_count_per_page) + 1)
+                if (self.current_page >= (self.__total_records / self.__record_count_per_page) + 1):
+                    logger.info("No more pages to process")
+                    print("No more pages to process")
+                    self.current_page = 0
+                    self.__total_records = 0
+                    self.__record_count_per_page = 0
+                    time.sleep(200)
+                return loads
+            except Exception as e:
+                print(f"Error fetching loads: {e}")
+                return
