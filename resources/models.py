@@ -1,5 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, func
+from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, func, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID, DOUBLE_PRECISION, ARRAY
 import uuid
 from sqlalchemy.orm import sessionmaker, Session
@@ -44,14 +44,33 @@ class LoadModel(Base):
     n_vehicles = Column(Integer)
     weight = Column(Float)
 
-class SavedLoadModel(LoadModel):
+class SavedLoadModel(Base):
     __tablename__ = "saved_loads"
-    dispatcher_id = Column(Integer, nullable=False)
+    
+    load_id = Column(Integer, ForeignKey('loads.load_id'), primary_key=True)
+    dispatcher_id = Column(Integer, ForeignKey('dispatchers.id'), nullable=False)
+    external_load_id = Column(String(50))
+    brokerage = Column(String(100))
+    pickup_location = Column(String)
+    delivery_location = Column(String)
+    pickup_points = Column(Geometry('POINT'))
+    delivery_points = Column(Geometry('POINT'))
+    price = Column(Float)
+    milage = Column(DOUBLE_PRECISION)
+    is_operational = Column(Boolean)
+    contact_phone = Column(String(25))
+    notes = Column(String)
+    loadboard_source = Column(String(50))
+    created_at = Column(DateTime)
+    date_ready = Column(DateTime)
+    n_vehicles = Column(Integer)
+    weight = Column(Float)
+    
     
 class Dispatcher(Base):
     __tablename__ = "dispatchers"
     
-    id = Column(String(100), primary_key=True, server_default="nextval('dispatchers_id_seq'::regclass)")
+    id = Column(Integer, primary_key=True, server_default="nextval('dispatchers_id_seq'::regclass)")
     name = Column(String(100), nullable=False)
     email = Column(String(100), nullable=False)
     phone = Column(String(25), nullable=False)

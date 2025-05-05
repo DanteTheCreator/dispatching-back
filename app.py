@@ -383,16 +383,8 @@ def filter_loads(
 
 
 
-@app.post("/save_load/{load_id}", dependencies=[Depends(get_api_key)])
+@app.post("/save_load", dependencies=[Depends(get_api_key)])
 def save_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
-    # Check if load exists
-    load = db.query(LoadModel).filter(LoadModel.load_id == load_id).first()
-    if not load:
-        raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND,
-            detail="Load not found"
-        )
-    
     # Check if dispatcher exists
     dispatcher = db.query(Dispatcher).filter(Dispatcher.id == dispatcher_id).first()
     if not dispatcher:
@@ -413,20 +405,44 @@ def save_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
             detail="Load is already saved"
         )
 
-    # Add to saved_loads table
-    saved_load = SavedLoadModel(load_id=load_id, dispatcher_id=dispatcher_id)
+    # Get load data from loads table
+    load_data = db.query(LoadModel).filter(LoadModel.load_id == load_id).first()
+    if load_data is None:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail="Load not found"
+        )
+    
+    # Create SavedLoadModel with all load data
+    saved_load = SavedLoadModel(
+        load_id=load_id,
+        dispatcher_id=dispatcher_id,
+        external_load_id=load_data.external_load_id,
+        brokerage=load_data.brokerage,
+        pickup_location=load_data.pickup_location,
+        delivery_location=load_data.delivery_location,
+        price=load_data.price,
+        milage=load_data.milage,
+        is_operational=load_data.is_operational,
+        contact_phone=load_data.contact_phone,
+        notes=load_data.notes,
+        loadboard_source=load_data.loadboard_source,
+        date_ready=load_data.date_ready,
+        n_vehicles=load_data.n_vehicles,
+        weight=load_data.weight
+    )
     try:
         db.add(saved_load)
         db.commit()
         return {"message": "Load saved successfully"}
-    except IntegrityError:
+    except:
         db.rollback()
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST,
-            detail="Failed to save load"
+            detail=f"Failed to save load "
         )
 
-@app.get("/get_saved_loads/{dispatcher_id}", dependencies=[Depends(get_api_key)])
+@app.get("/get_saved_loads", dependencies=[Depends(get_api_key)])
 def get_saved_loads(dispatcher_id: str, db: Session = Depends(get_db)):
     sql = """
     SELECT l.*
@@ -451,3 +467,28 @@ def get_saved_loads(dispatcher_id: str, db: Session = Depends(get_db)):
                 load[key] = value.isoformat()
     
     return loads
+
+
+@app.delete("/delete_saved_load", dependencies=[Depends(get_api_key)])
+def delete_saved_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
+    saved_load = db.query(SavedLoadModel).filter(
+        SavedLoadModel.load_id == load_id,
+        SavedLoadModel.dispatcher_id == dispatcher_id
+    ).first()
+    
+    if not saved_load:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail="Saved load not found"
+        )
+
+    try:
+        db.delete(saved_load)
+        db.commit()
+        return {"message": "Load removed from saved loads"}
+    except:
+        db.rollback()
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail="Failed to delete saved load"
+        )
