@@ -100,10 +100,22 @@ class CentralInteractor:
             LoadModel.delivery_location
         ).all()
 
-        test_deduplicated_loads = self.__array_deduplicator.apply_deduplication(to=loadsParam, 
-                                                                                based_on=existing_loads, 
-                                                                                unique_id_keyword='external_load_id')
-        print(f"test deduplicated loads: {len(test_deduplicated_loads)}")
+        # def compare_callback(item, base_item):
+        #     pickup_location = f"{load['origin']['city']}, {load['origin']['state']} {load['origin']['zip']}"
+        #     delivery_location = f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
+
+        #     price = str(load['price']['total'])
+        #     distance = float(load.get('distance', 0))
+
+        #     return (base_item.price == item.price and
+        #             base_item.milage * 0.98 <= base_item.milage <= base_item.milage * 1.02 and
+        #             base_item.pickup_location == base_item.pickup_location and
+        #             base_item.delivery_location == base_item.delivery_location)
+
+        # test_deduplicated_loads = self.__array_deduplicator.apply_deduplication(to=loadsParam, 
+        #                                                                         based_on=existing_loads, 
+        #                                                                         is_in_base_array_callback=compare_callback)
+        # print(f"test deduplicated loads: {len(test_deduplicated_loads)}")
 
         # Create a set of tuples for faster lookup
         existing_loads_set = {
