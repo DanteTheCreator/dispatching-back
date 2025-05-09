@@ -9,7 +9,6 @@ from datetime import datetime
 from resources.models import RouteModel, LoadModel, SavedLoadModel,Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from sqlalchemy.exc import IntegrityError
 
 
 # FastAPI App
@@ -379,8 +378,6 @@ def filter_loads(
                 load_dict[key] = value.isoformat()
     
     return result[0:25] 
-
-
 
 
 @app.post("/save_load", dependencies=[Depends(get_api_key)])

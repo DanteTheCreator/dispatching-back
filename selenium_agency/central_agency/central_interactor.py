@@ -6,7 +6,6 @@ import logging
 from geoalchemy2.elements import WKTElement
 import sys
 import os
-
 from resources.models import LoadModel
 # Add the project root directory to sys.path
 project_root = os.path.abspath(os.path.join(
@@ -39,17 +38,9 @@ class CentralInteractor:
         self.__api_client = api_client
         self.__cache_service = cache_service
         self.current_page = 0
-        self.__total_records = 0
-        self.__record_count_per_page = 0
         self.__db_Session = db_session
         self.__in_between_delay = 1  # Adding the missing attribute with a default value
-        self.states = [
-            'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',
-            'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',
-            'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
-            'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
-            'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI',
-            'WY']
+        
 
     def set_token(self):
         if not self.__driver:
@@ -221,81 +212,57 @@ class CentralInteractor:
             else:
                 logger.info("No valid loads to insert into DB")
 
-    def fetch_loads(self):
+    def fetch_loads(self, state):
         if self.__cache_service is not None and self.__api_client is not None:
             token = self.__cache_service.get_token()
             self.__api_client.set_authorization_header(token)
-        for state in self.states:
-            try:
-                loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",  # type: ignore
-                                                        payload={
-                                                            'vehicleCount': {
-                                                                'min': 1,
-                                                                'max': None,
+        
+        try:
+            loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",  # type: ignore
+                                                    payload={
+                                                        'vehicleCount': {
+                                                            'min': 1,
+                                                            'max': None,
+                                                        },
+                                                        'postedWithinHours': None,
+                                                        'tagListingsPostedWithin': 2,
+                                                        'trailerTypes': [],
+                                                        'paymentTypes': [],
+                                                        'vehicleTypes': [],
+                                                        'operability': 'All',
+                                                        'minimumPaymentTotal': None,
+                                                        'readyToShipWithinDays': None,
+                                                        'minimumPricePerMile': None,
+                                                        'offset': 0,
+                                                        'limit': 10000,
+                                                        'sortFields': [
+                                                            {
+                                                                'name': 'PICKUP',
+                                                                'direction': 'ASC',
                                                             },
-                                                            'postedWithinHours': None,
-                                                            'tagListingsPostedWithin': 2,
-                                                            'trailerTypes': [],
-                                                            'paymentTypes': [],
-                                                            'vehicleTypes': [],
-                                                            'operability': 'All',
-                                                            'minimumPaymentTotal': None,
-                                                            'readyToShipWithinDays': None,
-                                                            'minimumPricePerMile': None,
-                                                            'offset': 0,
-                                                            'limit': 10000,
-                                                            'sortFields': [
-                                                                {
-                                                                    'name': 'PICKUP',
-                                                                    'direction': 'ASC',
-                                                                },
-                                                                {
-                                                                    'name': 'DELIVERYMETROAREA',
-                                                                    'direction': 'ASC',
-                                                                },
-                                                            ],
-                                                            'shipperIds': [],
-                                                            'desiredDeliveryDate': None,
-                                                            'displayBlockedShippers': False,
-                                                            'showPreferredShippersOnly': False,
-                                                            'showTaggedOnTop': False,
-                                                            'marketplaceIds': [],
-                                                            'averageRating': 'All',
-                                                            'requestType': 'Open',
-                                                            'locations': [{
-                                                                'state': state,
-                                                                'scope': 'Pickup',
-                                                            },],
-                                                        })
-                self.current_page += 1
-                print(f"Page: {self.current_page}")
-
-                response_json = loads_response.json()
-                loads = response_json['items']
-                total_records = response_json['totalRecords']
-                count = response_json['count']
-
-                if self.__record_count_per_page == 0 and self.__total_records == 0:
-                    self.__record_count_per_page = count
-                    self.__total_records = total_records
-
-                    logger.info(
-                        f"Total records: {self.__total_records}, Records per page: {self.__record_count_per_page}")
-                    print(
-                        f"Total records: {self.__total_records}, Records per page: {self.__record_count_per_page}")
-
-                print("Page: ", self.current_page, "Total records: ",
-                      self.__total_records, "Records per page: ", self.__record_count_per_page)
-                print(self.current_page >= (
-                    self.__total_records / self.__record_count_per_page) + 1)
-                if (self.current_page >= (self.__total_records / self.__record_count_per_page) + 1):
-                    logger.info("No more pages to process")
-                    print("No more pages to process")
-                    self.current_page = 0
-                    self.__total_records = 0
-                    self.__record_count_per_page = 0
-                    time.sleep(200)
-                return loads
-            except Exception as e:
-                print(f"Error fetching loads: {e}")
-                return
+                                                            {
+                                                                'name': 'DELIVERYMETROAREA',
+                                                                'direction': 'ASC',
+                                                            },
+                                                        ],
+                                                        'shipperIds': [],
+                                                        'desiredDeliveryDate': None,
+                                                        'displayBlockedShippers': False,
+                                                        'showPreferredShippersOnly': False,
+                                                        'showTaggedOnTop': False,
+                                                        'marketplaceIds': [],
+                                                        'averageRating': 'All',
+                                                        'requestType': 'Open',
+                                                        'locations': [{
+                                                            'state': state,
+                                                            'scope': 'Pickup',
+                                                        },],
+                                                    })
+            response_json = loads_response.json()
+            loads = response_json['items']
+            time.sleep(30)
+            return loads
+        except Exception as e:
+            print(f"Error fetching loads: {e}")
+            self.__cache_service.clear_all()
+            

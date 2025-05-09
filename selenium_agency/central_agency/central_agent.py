@@ -16,7 +16,6 @@ from dotenv import load_dotenv
 from selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_central
 from selenium_agency.api.central_api_client import CentralAPIClient
 from selenium_agency.cache.central_cache import CentralCacheService
-import json
 from central_interactor import CentralInteractor
 
 load_dotenv()
@@ -41,6 +40,7 @@ class CentralAgent:
     __selenium_driver = SeleniumDriver()
     __origin = ""
     __in_between_delay = 30
+    __state_index = 0
 
     def __init__(self):
         self.__selenium_driver.initialize_driver()
@@ -53,7 +53,13 @@ class CentralAgent:
         self.__cache_service = CentralCacheService()
         self.__db_Session = next(get_db())
         self.__central_interactor = CentralInteractor(self.__selenium_driver, self.__api_client, self.__cache_service, self.__db_Session)
-        self.__page = 0
+        self.states = [
+            'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',
+            'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',
+            'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
+            'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
+            'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI',
+            'WY']
 
     def __load_page(self):
         self.__driver.get("https://id.centraldispatch.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcentraldispatch_authentication%26scope%3Dlisting_service%2520offline_access%2520openid%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fsite.centraldispatch.com%252Fprotected") # type: ignore
@@ -103,15 +109,18 @@ class CentralAgent:
             self.__verify()
             self.__central_interactor.set_token()
 
-    def __start_filling_db_cycle(self):
-        loads = self.__central_interactor.fetch_loads()
+    def __start_filling_db_cycle(self, state):
+        loads = self.__central_interactor.fetch_loads(state)
         non_duplicate_loads = self.__central_interactor.deduplicate_loads(loads)
         self.__central_interactor.save_loads_to_db(non_duplicate_loads)
 
     def run(self):
         while True:
             if self.__cache_service.token_exists():
-                self.__start_filling_db_cycle()
+                self.__start_filling_db_cycle(self.states[self.__state_index])
+                self.__state_index += 1
+                if self.__state_index >= len(self.states):
+                    self.__state_index = 0
                 time.sleep(30)
             else:
                 print("Token not found, re-login required")
