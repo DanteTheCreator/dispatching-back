@@ -7,6 +7,7 @@ from geoalchemy2.elements import WKTElement
 import sys
 import os
 from resources.models import LoadModel
+from selenium_agency.utils import ArrayDeduplicator
 # Add the project root directory to sys.path
 project_root = os.path.abspath(os.path.join(
     os.path.dirname(__file__), '..', '..'))
@@ -40,7 +41,14 @@ class CentralInteractor:
         self.current_page = 0
         self.__db_Session = db_session
         self.__in_between_delay = 1  # Adding the missing attribute with a default value
-        
+        self.states = [
+            'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',
+            'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',
+            'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
+            'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
+            'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI',
+            'WY']
+        self.__array_deduplicator = ArrayDeduplicator()
 
     def set_token(self):
         if not self.__driver:
@@ -99,6 +107,11 @@ class CentralInteractor:
             LoadModel.delivery_location
         ).all()
 
+        test_deduplicated_loads = self.__array_deduplicator.apply_deduplication(to=loadsParam, 
+                                                                                based_on=existing_loads, 
+                                                                                unique_id_keyword='external_load_id')
+        print(f"test deduplicated loads: {len(test_deduplicated_loads)}")
+
         # Create a set of tuples for faster lookup
         existing_loads_set = {
             (load.price, load.milage, load.pickup_location, load.delivery_location)
@@ -107,6 +120,7 @@ class CentralInteractor:
 
         # Check for duplicates in database based on price, distance, pickup and delivery locations
         non_duplicate_loads = []
+
         for load in filtered_loads:
             pickup_location = f"{load['origin']['city']}, {load['origin']['state']} {load['origin']['zip']}"
             delivery_location = f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
