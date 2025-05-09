@@ -278,5 +278,6 @@ class CentralInteractor:
             return loads
         except Exception as e:
             print(f"Error fetching loads: {e}")
-            self.__cache_service.clear_all()
+            if self.__cache_service:
+                self.__cache_service.clear_all()
             
