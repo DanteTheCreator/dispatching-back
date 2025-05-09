@@ -26591,3 +26591,18 @@
 2025-05-05 13:15:25,836 - INFO - Get LATEST chromedriver version for google-chrome
 2025-05-05 13:15:25,850 - INFO - Get LATEST chromedriver version for google-chrome
 2025-05-05 13:15:25,863 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-09 17:55:15,863 - INFO - ====== WebDriver manager ======
+2025-05-09 17:55:16,861 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-09 17:55:17,399 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-09 17:55:17,858 - INFO - There is no [win64] chromedriver "136.0.7103.92" for browser google-chrome "136.0.7103" in cache
+2025-05-09 17:55:17,858 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-09 17:55:18,873 - INFO - WebDriver version 136.0.7103.92 selected
+2025-05-09 17:55:18,876 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.92/win32/chromedriver-win32.zip
+2025-05-09 17:55:18,877 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.92/win32/chromedriver-win32.zip
+2025-05-09 17:55:19,300 - INFO - Driver downloading response is 200
+2025-05-09 17:55:20,923 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-09 17:55:21,467 - INFO - Driver has been saved in cache [C:\Users\USER\.wdm\drivers\chromedriver\win64\136.0.7103.92]
+2025-05-09 17:55:44,255 - INFO - ====== WebDriver manager ======
+2025-05-09 17:55:45,193 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-09 17:55:45,631 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-09 17:55:46,079 - INFO - Driver [C:\Users\USER\.wdm\drivers\chromedriver\win64\136.0.7103.92\chromedriver-win32/chromedriver.exe] found in cache
