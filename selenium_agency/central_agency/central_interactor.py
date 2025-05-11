@@ -7,7 +7,7 @@ from geoalchemy2.elements import WKTElement
 import sys
 import os
 from resources.models import LoadModel
-from selenium_agency.utils import ArrayDeduplicator
+from selenium_agency.utils.array_deduplicator import ArrayDeduplicator
 # Add the project root directory to sys.path
 project_root = os.path.abspath(os.path.join(
     os.path.dirname(__file__), '..', '..'))
@@ -94,21 +94,73 @@ class CentralInteractor:
             return
 
         existing_loads = self.__db_Session.query(
+            LoadModel.external_load_id,
             LoadModel.price,
             LoadModel.milage,
             LoadModel.pickup_location,
             LoadModel.delivery_location
         ).all()
+        
+        # Convert query results to dictionaries with proper keys
+        existing_loads_dicts = [
+            {
+                'external_load_id': row[0],
+                'price': row[1],
+                'milage': row[2],
+                'pickup_location': row[3],
+                'delivery_location': row[4]
+            }
+            for row in existing_loads
+        ]
+
+        print(existing_loads_dicts[0])
+        print(loadsParam[0])
+
+        def attributes_compare_callback(target, base, get_recursive):
+            # Compare the target and base objects based on the specified criteria
+            target_price = get_recursive(target, 'price')
+            base_price = get_recursive(base, 'price')
+
+            target_origin = get_recursive(target, 'origin')
+            target_destination = get_recursive(target, 'destination')
+
+            target_zip = get_recursive(target_origin, 'zip')
+            target_city = get_recursive(target_origin, 'city')
+            target_state = get_recursive(target_origin, 'state')
+
+            target_pickup_location = f"{target_city}, {target_state} {target_zip}"
+
+            target_zip_dest = get_recursive(target_destination, 'zip')
+            target_city_dest = get_recursive(target_destination, 'city')
+            target_state_dest = get_recursive(target_destination, 'state')
+
+            target_delivery_location = f"{target_city_dest}, {target_state_dest} {target_zip_dest}"
+
+
+
+            target_milage = get_recursive(target, 'milage')
+            base_milage = get_recursive(base, 'milage')
+
+
+            base_pickup_location = get_recursive(base, 'pickup_location')
+            base_delivery_location = get_recursive(base, 'delivery_location')
+
+
+            return (target_price == base_price and
+                    target_pickup_location == base_pickup_location and
+                    target_delivery_location == base_delivery_location and
+                    target_milage == base_milage)
 
         test_deduplicated_loads = self.__array_deduplicator.apply_deduplication(target=loadsParam, 
-                                                                                based_on=existing_loads, 
+                                                                                based_on=existing_loads_dicts, 
                                                                                 target_id_keyword='id', 
-                                                                                base_id_keyword='external_load_id')
+                                                                                base_id_keyword='external_load_id', 
+                                                                                attributes_compare_callback=attributes_compare_callback)
         print(f"test deduplicated loads: {len(test_deduplicated_loads)}")
 
         # Create a set of tuples for faster lookup
         existing_loads_set = {
-            (load.price, load.milage, load.pickup_location, load.delivery_location)
+            (load[1], load[2], load[3], load[4])
             for load in existing_loads
         }
 
@@ -274,4 +326,4 @@ class CentralInteractor:
             print(f"Error fetching loads: {e}")
             if self.__cache_service:
                 self.__cache_service.clear_all()
-            
+
