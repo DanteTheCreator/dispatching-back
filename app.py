@@ -489,3 +489,12 @@ def delete_saved_load(load_id: str, dispatcher_id: str, db: Session = Depends(ge
             status_code=HTTPStatus.BAD_REQUEST,
             detail="Failed to delete saved load"
         )
+        
+@app.get("/is_saved", dependencies=[Depends(get_api_key)])
+def is_saved(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
+    saved_load = db.query(SavedLoadModel).filter(
+        SavedLoadModel.load_id == load_id,
+        SavedLoadModel.dispatcher_id == dispatcher_id
+    ).first()
+    
+    return {"is_saved": saved_load is not None}
