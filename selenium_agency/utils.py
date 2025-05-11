@@ -3,53 +3,40 @@ class ArrayDeduplicator:
   def __init__(self):
       pass
 
-  def _get_value(self, obj, key):
-      """Helper method to get a value from an object or dictionary."""
-      if isinstance(obj, dict):
-          return obj.get(key)
-      else:
-          return getattr(obj, key) if hasattr(obj, key) else None
+  def _objects_equal(self, target_object, base_object, target_id_keyword, base_id_keyword):
 
-  def _objects_equal(self, obj1, obj2, unique_id_keywords=None):
-
-    if unique_id_keywords is None:
+    if target_id_keyword is None or base_id_keyword is None:
         #compare all attributes
-        if isinstance(obj1, dict) and isinstance(obj2, dict):
-            return obj1 == obj2
-        
-        item1_attrs = {attr_name: attr_value for attr_name, attr_value in vars(obj1).items() if not attr_name.startswith('_')}
-        item2_attrs = {attr_name: attr_value for attr_name, attr_value in vars(obj2).items() if not attr_name.startswith('_')}
+        item1_attrs = {attr_name: attr_value for attr_name, attr_value in vars(target_object).items() if not attr_name.startswith('_')}
+        item2_attrs = {attr_name: attr_value for attr_name, attr_value in vars(base_object).items() if not attr_name.startswith('_')}
         return item1_attrs == item2_attrs
-
     
-    if (self._get_value(obj1, unique_id_keywords[0]) == self._get_value(obj2, unique_id_keywords[1])) or (self._get_value(obj1, unique_id_keywords[1]) == self._get_value(obj2, unique_id_keywords[0])):
-        #print("success")
-        return True
-    else:
-        #print("compare rest of the attributes")
-        # compare rest of the attributes except the unique_id_keywords
-        if isinstance(obj1, dict) and isinstance(obj2, dict):
-            item1_attrs = {k: v for k, v in obj1.items() if k not in unique_id_keywords}
-            item2_attrs = {k: v for k, v in obj2.items() if k not in unique_id_keywords}
+    
+
+    if (hasattr(target_object, target_id_keyword) and hasattr(base_object, base_id_keyword)):
+        if (getattr(target_object, target_id_keyword) == getattr(base_object, base_id_keyword)):
+            return True
         else:
-            item1_attrs = {attr_name: attr_value for attr_name, attr_value in vars(obj1).items() 
-                          if not attr_name.startswith('_') and attr_name not in unique_id_keywords}
-            item2_attrs = {attr_name: attr_value for attr_name, attr_value in vars(obj2).items() 
-                          if not attr_name.startswith('_') and attr_name not in unique_id_keywords}
+            # compare rest of the attributes except the unique_id_keyword
+            item1_attrs = {attr_name: attr_value for attr_name, attr_value in vars(target_object).items() if not attr_name.startswith('_') and attr_name != unique_id_keyword}
+            item2_attrs = {attr_name: attr_value for attr_name, attr_value in vars(target_object).items() if not attr_name.startswith('_') and attr_name != unique_id_keyword}
 
-        # Making union of both dictionaries
-        all_keys = set(item1_attrs.keys()).intersection(set(item2_attrs.keys()))
+            # Making union of both dictionaries
+            all_keys = set(item1_attrs.keys()).intersection(set(item2_attrs.keys()))
 
-        attrs_match = True
+            attrs_match = True
 
-        # if values of union keys are same in both dictionaries then return True
-        for key in all_keys:
-            if key in item1_attrs and key in item2_attrs:
-                if item1_attrs[key] != item2_attrs[key]:
-                    attrs_match = False
-                    break
+            # if values of union keys are same in both dictionaries then return True
+            for key in all_keys:
+                if key in item1_attrs and key in item2_attrs:
+                    if item1_attrs[key] != item2_attrs[key]:
+                        attrs_match = False
+                        break
 
-        return attrs_match
+            return attrs_match
+    else:
+        print(f"Warning: {target_id_keyword} or {base_id_keyword} not found in one of the objects.")
+        return False
 
   def deduplicate(self, array):
       
@@ -73,32 +60,32 @@ class ArrayDeduplicator:
       return result
 
     
-  def _filter_items(self, to_items, based_on_items, is_in_base_array_callback):
-    
-    result = []
-    for item in to_items:
-        exists_in_based_on = False
-        for base_item in based_on_items:
-            if is_in_base_array_callback(item, base_item):
-                exists_in_based_on = True
-                break
-            # if self._objects_equal(item, base_item, unique_id_keywords):
-            #     exists_in_based_on = True
-            #     break
-        
-        if not exists_in_based_on:
-            result.append(item)
+  def _filter_items(self, target, based_on_items, target_id_keyword, base_id_keyword):
+    if target_id_keyword and base_id_keyword:
+        result = []
+        for item in target:
+            exists_in_based_on = False
+            for base_item in based_on_items:
+                if self._objects_equal(item, base_item, target_id_keyword, base_id_keyword):
+                    exists_in_based_on = True
+                    break
+            
+            if not exists_in_based_on:
+                result.append(item)
 
+    else:
+        result = [item for item in based_on_items if not any(self._compare_items(item, base_item) for base_item in based_on_items)]
+            
     return result
 
-  def apply_deduplication(self, to, based_on, is_in_base_array_callback):
-      if not to:
+  def apply_deduplication(self, target, based_on, target_id_keyword, base_id_keyword):
+      if not target:
           print("Warning: 'to' array is empty. Returning an empty array.")
           return []
 
       if not based_on:
           print("Warning: 'based_on' array is empty. Returning a copy of 'to' array.")
-          return to.copy()
+          return target.copy()
       
       # Use comparison-based filtering which works with any input types
-      return self._filter_items(to, based_on, is_in_base_array_callback)
+      return self._filter_items(target, based_on, target_id_keyword, base_id_keyword)
