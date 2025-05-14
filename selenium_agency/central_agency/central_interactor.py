@@ -43,31 +43,11 @@ class CentralInteractor:
         self.__in_between_delay = 1  # Adding the missing attribute with a default value
         self.__array_deduplicator = ArrayDeduplicator()
 
-    def set_token(self):
-        if not self.__driver:
-            return None
-        # Execute JavaScript to get token from localStorage
-        user_token = self.__driver.execute_script(
-            "return window.localStorage.getItem('oidc.user:https://id.centraldispatch.com:single_spa_prod_client');"
-        )
-        try:
-            user_token = json.loads(user_token)[
-                'access_token'] if user_token else None
-        except json.JSONDecodeError:
-            user_token = None
-
-        if user_token is not None and self.__cache_service is not None:
-            self.__cache_service.set_token(user_token)
-            return user_token
-        else:
-            logger.info("User token not found in localStorage")
-            return None
-
-    def deduplicate_loads(self, loadsParam):
+    def __fetch_db_loads(self):
         if self.__db_Session is None:
             logger.error("Database session is not initialized.")
             print("Database session is not initialized.")
-            return
+            return []
 
         existing_loads = self.__db_Session.query(
             LoadModel.external_load_id,
@@ -76,7 +56,7 @@ class CentralInteractor:
             LoadModel.pickup_location,
             LoadModel.delivery_location
         ).all()
-        
+
         # Convert query results to dictionaries with proper keys
         existing_loads_dicts = [
             {
@@ -89,15 +69,9 @@ class CentralInteractor:
             for row in existing_loads
         ]
 
-        # Check if there are existing loads before trying to print the first one
-        if existing_loads_dicts:
-            print(existing_loads_dicts[0])
-        else:
-            print("No existing loads in database")
-            
-        print(loadsParam[0])
-
-        def attributes_compare_callback(target, base, get_recursive):
+        return existing_loads_dicts
+    
+    def __attributes_compare_callback(target, base, get_recursive):
             # Compare the target and base objects based on the specified criteria
             target_price = get_recursive(target, 'price')
             base_price = get_recursive(base, 'price')
@@ -117,47 +91,72 @@ class CentralInteractor:
 
             target_delivery_location = f"{target_city_dest}, {target_state_dest} {target_zip_dest}"
 
-
-
             target_milage = get_recursive(target, 'milage')
             base_milage = get_recursive(base, 'milage')
 
-
             base_pickup_location = get_recursive(base, 'pickup_location')
             base_delivery_location = get_recursive(base, 'delivery_location')
-
 
             return (target_price == base_price and
                     target_pickup_location == base_pickup_location and
                     target_delivery_location == base_delivery_location and
                     target_milage == base_milage)
 
-        test_deduplicated_loads = self.__array_deduplicator.apply_deduplication(target=loadsParam, 
-                                                                                based_on=existing_loads_dicts, 
-                                                                                target_id_keyword='id', 
-                                                                                base_id_keyword='external_load_id', 
-                                                                                attributes_compare_callback=attributes_compare_callback)
-        print(f"test deduplicated loads: {len(test_deduplicated_loads)}")
+    def set_token(self):
+        if not self.__driver:
+            return None
+        # Execute JavaScript to get token from localStorage
+        user_token = self.__driver.execute_script(
+            "return window.localStorage.getItem('oidc.user:https://id.centraldispatch.com:single_spa_prod_client');"
+        )
+        try:
+            user_token = json.loads(user_token)[
+                'access_token'] if user_token else None
+        except json.JSONDecodeError:
+            user_token = None
 
-        # Create a set of tuples for faster lookup
-        existing_loads_set = {
-            (load[1], load[2], load[3], load[4])
-            for load in existing_loads
-        }
+        if user_token is not None and self.__cache_service is not None:
+            self.__cache_service.set_token(user_token)
+            return user_token
+        else:
+            logger.info("User token not found in localStorage")
+            return None
+        
+    def remove_token(self):
+        if self.__cache_service is not None:
+            self.__cache_service.remove_token()
+            logger.info("Token removed from cache service.")
+        else:
+            logger.error("Cache service is not initialized.")
+            print("Cache service is not initialized.")
 
-        # == INSERTED CODE BLOCK FOR INITIAL FILTERING ==
-        # 1. Filter by existing IDs from the database
+    def deduplicate_loads(self, loadsParam):
+        db_loads = self.__fetch_db_loads()
+        if db_loads is None or len(db_loads) == 0:
+            logger.error("Failed to fetch existing loads from the database.")
+            print("Failed to fetch existing loads from the database or it is empty.")
+            return []
+
+        deduplicated_loads = self.__array_deduplicator.apply_deduplication(target=loadsParam, 
+                                                                           based_on=db_loads, 
+                                                                           target_id_keyword='id', 
+                                                                           base_id_keyword='external_load_id', 
+                                                                           attributes_compare_callback=self.__attributes_compare_callback)
+        print(f"deduplicated loads count: {len(deduplicated_loads)}")
+        return deduplicated_loads
+    
+    def filter_loads(self, loads):
+          # 1. Filter by existing IDs from the database
         # Ensure loadsParam is iterable, default to empty list if None
         if loadsParam is None:
             loadsParam = []
 
         # 2. Filter by distance and price criteria
-        loads_to_deduplicate_loop_input = []
-        for load_item in test_deduplicated_loads:
+        filtered_loads = []
+        for load_item in loads:
             distance = load_item.get('distance')
             price_data = load_item.get('price', {})
             price_total = price_data.get('total', 0) if isinstance(price_data, dict) else 0
-
 
             if distance is None:
                 logger.warning(f"Skipping load {load_item.get('id')} due to missing distance.")
@@ -172,57 +171,18 @@ class CentralInteractor:
 
             if distance <= 0.0 or distance >= 2000.0 or price_total >= 3000.0:
                 continue
-            loads_to_deduplicate_loop_input.append(load_item)
-        
-        logger.info(f"Loads after basic criteria (ready for deduplication loop): {len(loads_to_deduplicate_loop_input)}")
-        print(f"Loads after basic criteria (ready for deduplication loop): {len(loads_to_deduplicate_loop_input)}")
-        # == END OF INSERTED CODE BLOCK ==
+            filtered_loads.append(load_item)
 
-        # Check for duplicates in database based on price, distance, pickup and delivery locations
-        non_duplicate_loads = []
-
-        for load in loads_to_deduplicate_loop_input:
-            pickup_location = f"{load['origin']['city']}, {load['origin']['state']} {load['origin']['zip']}"
-            delivery_location = f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
-
-            price = str(load['price']['total'])
-            distance = float(load.get('distance', 0))
-
-            # Check against in-memory set of loads - more efficient than individual database queries
-            similar_load_exists = False
-            for existing_price, existing_milage, existing_pickup, existing_delivery in existing_loads_set:
-                if (existing_price == price and
-                    existing_pickup == pickup_location and
-                    existing_delivery == delivery_location and
-                        existing_milage * 0.98 <= distance <= existing_milage * 1.02):
-                    similar_load_exists = True
-                    break
-
-            if not similar_load_exists:
-                non_duplicate_loads.append(load)
-
-        logger.info(
-            f"New loads to process after deduplication: {len(non_duplicate_loads)}")
-        print(
-            f"New loads to process after deduplication: {len(non_duplicate_loads)}")
-
-        # Filter loads by distance and price criteria
-        filtered_loads = []
-        for load in non_duplicate_loads:
-            distance = load.get('distance')
-            if distance is None:
-                continue
-
-            if distance <= 0.0 or distance >= 2000.0 or load.get('price', {}).get('total', 0) >= 3000.0:
-                continue
-
-            filtered_loads.append(load)
-
-        logger.info(
-            f"Filtered loads after basic criteria: {len(filtered_loads)}")
-        print(f"Filtered loads after basic criteria: {len(filtered_loads)}")
-
-        return non_duplicate_loads
+        print(f"Filtered loads count: {len(filtered_loads)}")
+        return filtered_loads
+    
+    def clear_cache(self):
+        if self.__cache_service is not None:
+            self.__cache_service.clear_all()
+            logger.info("Cache cleared successfully.")
+        else:
+            logger.error("Cache service is not initialized.")
+            print("Cache service is not initialized.")
 
     def __format_and_get_load_model(self, load):
         if not load:
@@ -359,6 +319,6 @@ class CentralInteractor:
             return loads
         except Exception as e:
             print(f"Error fetching loads: {e}")
-            if self.__cache_service:
-                self.__cache_service.clear_all()
+            self.remove_token()
+            
 

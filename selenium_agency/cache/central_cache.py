@@ -42,6 +42,11 @@ class CentralCacheService(CacheService):
         except Exception as e:
             print(f"Error parsing token expiry: {e}")
             return None
+        
+    def remove_token(self):
+        """Remove token and its expiry from cache"""
+        self.remove(self.TOKEN_KEY)
+        self.remove(self.TOKEN_EXPIRY_KEY)
 
     def cache_loads(self, loads):
         """Store loads data with timestamp"""

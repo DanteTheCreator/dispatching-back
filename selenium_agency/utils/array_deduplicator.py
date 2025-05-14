@@ -5,6 +5,7 @@ class ArrayDeduplicator:
 
   def __init__(self):
       pass
+  
   def _objects_equal(self, target_object, 
                            base_object, 
                            attributes_compare_callback,
@@ -19,12 +20,11 @@ class ArrayDeduplicator:
         target_id = target_dict.get(target_id_keyword)
         base_id = base_dict.get(base_id_keyword)
         if target_id is not None and base_id is not None:
-            return str(target_id) == str(base_id)
-        return False
-    
-    # Otherwise, compare the entire dictionaries
+            if str(target_id) == str(base_id):
+                return True
     attributes_compare_callback_result = attributes_compare_callback(target_object, base_object, get_recursive)
-    return target_dict == base_dict
+    return attributes_compare_callback_result
+  
   def deduplicate(self, array, attributes_compare_callback=None):
 
       if not array:
@@ -52,18 +52,6 @@ class ArrayDeduplicator:
 
 
   def _filter_items(self, target, based_on_items, target_id_keyword, base_id_keyword, attributes_compare_callback):
-    """
-    Filter items from target that don't exist in based_on_items.
-
-    Args:
-        target: List of target items to filter
-        based_on_items: List of base items to compare against
-        target_id_keyword: ID attribute/key name in target items
-        base_id_keyword: ID attribute/key name in base items
-
-    Returns:
-        List of items from target that don't exist in based_on_items
-    """
     result = []
     for item in target:
         exists_in_based_on = False

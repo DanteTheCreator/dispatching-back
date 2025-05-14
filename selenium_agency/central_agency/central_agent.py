@@ -120,7 +120,8 @@ class CentralAgent:
         if loads is None:
             return None  # Propagate None if fetching failed
         non_duplicate_loads = self.__central_interactor.deduplicate_loads(loads)
-        self.__central_interactor.save_loads_to_db(non_duplicate_loads)
+        filtered_loads = self.__central_interactor.filter_loads(non_duplicate_loads)
+        self.__central_interactor.save_loads_to_db(filtered_loads)
         return loads # Return loads so run method can check status
 
     def run(self):
@@ -129,7 +130,7 @@ class CentralAgent:
                 loads = self.__start_filling_db_cycle(self.states[self.__state_index])
                 if loads is None: # If fetching loads failed (e.g. token expired)
                     print("Failed to fetch loads, attempting to re-login.")
-                    self.__cache_service.clear_all() # Clear potentially invalid token
+                    self.__central_interactor.remove_token() # Clear potentially invalid token
                     # No need to call __start_login_cycle() here, it will be handled by the else block
                 else:
                     self.__state_index += 1
