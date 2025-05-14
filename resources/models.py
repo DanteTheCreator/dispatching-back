@@ -46,29 +46,7 @@ class LoadModel(Base):
     is_saved = Column(Boolean, default=False)
     saved_by = Column(ARRAY(Integer))
 
-class SavedLoadModel(Base):
-    __tablename__ = "saved_loads"
-    
-    load_id = Column(Integer, ForeignKey('loads.load_id'), primary_key=True)
-    dispatcher_id = Column(Integer, ForeignKey('dispatchers.id'), nullable=False)
-    external_load_id = Column(String(50))
-    brokerage = Column(String(100))
-    pickup_location = Column(String)
-    delivery_location = Column(String)
-    pickup_points = Column(Geometry('POINT'))
-    delivery_points = Column(Geometry('POINT'))
-    price = Column(Float)
-    milage = Column(DOUBLE_PRECISION)
-    is_operational = Column(Boolean)
-    contact_phone = Column(String(25))
-    notes = Column(String)
-    loadboard_source = Column(String(50))
-    created_at = Column(DateTime)
-    date_ready = Column(DateTime)
-    n_vehicles = Column(Integer)
-    weight = Column(Float)
-    
-    
+   
 class Dispatcher(Base):
     __tablename__ = "dispatchers"
     
