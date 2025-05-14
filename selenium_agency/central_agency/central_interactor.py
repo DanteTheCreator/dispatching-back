@@ -64,30 +64,6 @@ class CentralInteractor:
             return None
 
     def deduplicate_loads(self, loadsParam):
-        existing_load_ids = {id_tuple[0] for id_tuple in self.__db_Session.query(           # type: ignore
-            LoadModel.external_load_id).all()}
-        loads = [load for load in loadsParam if str(
-            load.get('id')) not in existing_load_ids]
-        logger.info(f"Loads after filtering existing IDs: {len(loads)}")
-        print(f"Loads after filtering existing IDs: {len(loads)}")
-
-        # Filter loads by distance and price criteria
-        filtered_loads = []
-        for load in loads:
-            distance = load.get('distance')
-            if distance is None:
-                continue
-
-            if distance <= 0.0 or distance >= 2000.0 or load.get('price', {}).get('total', 0) >= 3000.0:
-                continue
-
-            filtered_loads.append(load)
-
-        logger.info(
-            f"Filtered loads after basic criteria: {len(filtered_loads)}")
-        print(f"Filtered loads after basic criteria: {len(filtered_loads)}")
-
-        # Fetch all existing loads once to use for duplicate detection
         if self.__db_Session is None:
             logger.error("Database session is not initialized.")
             print("Database session is not initialized.")
@@ -113,7 +89,12 @@ class CentralInteractor:
             for row in existing_loads
         ]
 
-        print(existing_loads_dicts[0])
+        # Check if there are existing loads before trying to print the first one
+        if existing_loads_dicts:
+            print(existing_loads_dicts[0])
+        else:
+            print("No existing loads in database")
+            
         print(loadsParam[0])
 
         def attributes_compare_callback(target, base, get_recursive):
@@ -164,10 +145,43 @@ class CentralInteractor:
             for load in existing_loads
         }
 
+        # == INSERTED CODE BLOCK FOR INITIAL FILTERING ==
+        # 1. Filter by existing IDs from the database
+        # Ensure loadsParam is iterable, default to empty list if None
+        if loadsParam is None:
+            loadsParam = []
+
+        # 2. Filter by distance and price criteria
+        loads_to_deduplicate_loop_input = []
+        for load_item in test_deduplicated_loads:
+            distance = load_item.get('distance')
+            price_data = load_item.get('price', {})
+            price_total = price_data.get('total', 0) if isinstance(price_data, dict) else 0
+
+
+            if distance is None:
+                logger.warning(f"Skipping load {load_item.get('id')} due to missing distance.")
+                continue
+            
+            if not isinstance(distance, (int, float)):
+                logger.warning(f"Skipping load {load_item.get('id')} due to non-numeric distance: {distance}")
+                continue
+            if not isinstance(price_total, (int, float)):
+                logger.warning(f"Skipping load {load_item.get('id')} due to non-numeric price_total: {price_total}")
+                continue
+
+            if distance <= 0.0 or distance >= 2000.0 or price_total >= 3000.0:
+                continue
+            loads_to_deduplicate_loop_input.append(load_item)
+        
+        logger.info(f"Loads after basic criteria (ready for deduplication loop): {len(loads_to_deduplicate_loop_input)}")
+        print(f"Loads after basic criteria (ready for deduplication loop): {len(loads_to_deduplicate_loop_input)}")
+        # == END OF INSERTED CODE BLOCK ==
+
         # Check for duplicates in database based on price, distance, pickup and delivery locations
         non_duplicate_loads = []
 
-        for load in filtered_loads:
+        for load in loads_to_deduplicate_loop_input:
             pickup_location = f"{load['origin']['city']}, {load['origin']['state']} {load['origin']['zip']}"
             delivery_location = f"{load['destination']['city']}, {load['destination']['state']} {load['destination']['zip']}"
 
@@ -191,6 +205,23 @@ class CentralInteractor:
             f"New loads to process after deduplication: {len(non_duplicate_loads)}")
         print(
             f"New loads to process after deduplication: {len(non_duplicate_loads)}")
+
+        # Filter loads by distance and price criteria
+        filtered_loads = []
+        for load in non_duplicate_loads:
+            distance = load.get('distance')
+            if distance is None:
+                continue
+
+            if distance <= 0.0 or distance >= 2000.0 or load.get('price', {}).get('total', 0) >= 3000.0:
+                continue
+
+            filtered_loads.append(load)
+
+        logger.info(
+            f"Filtered loads after basic criteria: {len(filtered_loads)}")
+        print(f"Filtered loads after basic criteria: {len(filtered_loads)}")
+
         return non_duplicate_loads
 
     def __format_and_get_load_model(self, load):
