@@ -40,7 +40,7 @@ class CentralAgent:
 
     __selenium_driver = SeleniumDriver()
     __origin = ""
-    __in_between_delay = 30
+    __in_between_delay = 15
 
     def __init__(self):
         self.__selenium_driver.initialize_driver()
@@ -67,6 +67,7 @@ class CentralAgent:
         # Wait for page to load
         self.__wait = WebDriverWait(self.__driver, 10) # type: ignore
         time.sleep(self.__in_between_delay)
+        time.sleep(5)
 
     def __authorize(self):
         # Use the correct ID selectors from the HTML
@@ -97,7 +98,7 @@ class CentralAgent:
         EC.element_to_be_clickable((By.ID, "VerificationCode")))
         time.sleep(self.__in_between_delay)
         otp_field.send_keys(otp or '')
-        time.sleep(self.__in_between_delay)
+        time.sleep(self.__in_between_delay-10)
         button = self.__wait.until(
         EC.element_to_be_clickable((By.ID, "submitButton")))
         button.click()
@@ -105,9 +106,13 @@ class CentralAgent:
 
     def __start_login_cycle(self):
         if self.__driver is not None:
+            print("loading page...")
             self.__load_page()
+            print("authorizing...")
             self.__authorize()
+            print("verifying...")
             self.__verify()
+            print("setting token...")
             self.__central_interactor.set_token()
 
     def __start_filling_db_cycle(self, state):
@@ -124,8 +129,13 @@ class CentralAgent:
                     self.__state_index = 0
                 time.sleep(30)
             else:
-                print("Token not found, re-login required")
-                self.__start_login_cycle()
+                try:
+                    print("starting login cycle...")
+                    self.__start_login_cycle()
+                except Exception as e:
+                    print("Error during login cycle:", e)
+                    time.sleep(120)
+                    continue
 
 
 agent = CentralAgent()
