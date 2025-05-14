@@ -4,8 +4,7 @@ from typing import List
 import logging
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import cast, text
-from dispatching_api.selenium_agency.api.handlers import PeliasHandler, GraphhopperHandler
-from sqlalchemy import func
+from selenium_agency.api.handlers import PeliasHandler, GraphhopperHandler
 
 # Set up logging
 logger = logging.getLogger('dispatching_api')
@@ -125,13 +124,16 @@ class RouteBuilder:
 
     def calculate_full_route_length(self, route: Route) -> float:
         try:
-            driver_points = pl_handler.get(self.driver.location).json()[
-                'features'][0]['geometry']['coordinates']
-            # GraphHopper expects coordinates as [longitude, latitude]
+            # Start with driver's location
+            driver_points = pl_handler.get(self.driver.location).json()['features'][0]['geometry']['coordinates']
             points = [driver_points]
 
+            # First collect all loads' pickup and delivery points
+            pickups = []
+            deliveries = []
+            
             for load in route.loads:
-                # Access the correct column name and handle both dictionary and attribute access
+                # Get pickup point
                 pickup_json = None
                 if hasattr(load, 'pickup_point_json'):
                     pickup_json = load.pickup_point_json
@@ -140,24 +142,50 @@ class RouteBuilder:
                 elif isinstance(load, dict) or hasattr(load, '__getitem__'):
                     pickup_json = load['pickup_point_json']
                 
-                if pickup_json:
-                    # Parse the JSON string if it's not already a dict
-                    if isinstance(pickup_json, str):
-                        import json
-                        coords = json.loads(pickup_json)['coordinates']
-                    else:
-                        coords = pickup_json['coordinates']
-                    points.append(coords)
-                else:
+                if not pickup_json:
                     logger.info(f"Missing pickup coordinates for load {getattr(load, 'load_id', 'unknown')}")
                     continue
+
+                # Parse pickup coordinates
+                if isinstance(pickup_json, str):
+                    import json
+                    pickup_coords = json.loads(pickup_json)['coordinates']
+                else:
+                    pickup_coords = pickup_json['coordinates']
+                pickups.append(pickup_coords)
+
+                # Get delivery point with proper dictionary handling
+                try:
+                    delivery_location = None
+                    if isinstance(load, dict):
+                        delivery_location = load.get('delivery_location')
+                    elif hasattr(load, '_asdict'):
+                        delivery_location = load._asdict().get('delivery_location')
+                    elif hasattr(load, 'delivery_location'):
+                        delivery_location = load.delivery_location
                     
-            print(f"Route points: {points}")
+                    if delivery_location:
+                        delivery_points = pl_handler.get(delivery_location.split()[-1]).json()['features'][0]['geometry']['coordinates']
+                        deliveries.append(delivery_points)
+                    else:
+                        logger.error(f"No delivery location found for load")
+                        continue
+                except Exception as e:
+                    logger.error(f"Error getting delivery coordinates: {str(e)}")
+                    continue
+
+            # Add all points in correct order:
+            # First all pickups
+            points.extend(pickups)
+            # Then all deliveries
+            points.extend(deliveries)
+                    
+            print(f"Full route points: {points}")
+            logger.info(f"Route sequence: Driver location -> {len(pickups)} pickups -> {len(deliveries)} deliveries")
             
             # Need at least 2 points for a valid route
             if len(points) < 2:
                 logger.error("Not enough valid points to calculate a route")
-                print("Not enough valid points to calculate a route")
                 return 0
                 
             # Make the API call with proper error handling
@@ -279,7 +307,8 @@ class RouteBuilder:
                         try:
                             accurate_milage = self.calculate_full_route_length(
                                 route)
-                            route.milage = accurate_milage / 1000  # Convert meters to kilometers
+                            print('GH Responded with: ', accurate_milage)
+                            route.milage = accurate_milage / 1609.34  # Convert meters to miles
                             try:
                                 if route.milage > 0:
                                     route.total_rpm = route.total_price / route.milage

@@ -43,6 +43,8 @@ class LoadModel(Base):
     date_ready = Column(DateTime)
     n_vehicles = Column(Integer)
     weight = Column(Float)
+    is_saved = Column(Boolean, default=False)
+    saved_by = Column(ARRAY(Integer))
 
 class SavedLoadModel(Base):
     __tablename__ = "saved_loads"

@@ -100,10 +100,6 @@ class CentralInteractor:
             LoadModel.delivery_location
         ).all()
 
-        test_deduplicated_loads = self.__array_deduplicator.apply_deduplication(to=loadsParam, 
-                                                                                based_on=existing_loads, 
-                                                                                unique_id_keyword='external_load_id')
-        print(f"test deduplicated loads: {len(test_deduplicated_loads)}")
 
         # Create a set of tuples for faster lookup
         existing_loads_set = {
