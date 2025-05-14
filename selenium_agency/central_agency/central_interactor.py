@@ -263,6 +263,10 @@ class CentralInteractor:
                                                     })
             response_json = loads_response.json()
             loads = response_json['items']
+            if loads is None:
+                logger.info("No loads found")
+                print("Loads is None")
+                raise ValueError("Loads is None")
             time.sleep(30)
             return loads
         except Exception as e:
