@@ -6,7 +6,7 @@ from http import HTTPStatus
 import os
 from typing import List, Optional
 from datetime import datetime
-from resources.models import RouteModel, LoadModel, SavedLoadModel,Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
+from resources.models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -390,63 +390,46 @@ def save_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
             detail="Dispatcher not found"
         )
 
-    # Check if load is already saved
-    existing_saved_load = db.query(SavedLoadModel).filter(
-        SavedLoadModel.load_id == load_id,
-        SavedLoadModel.dispatcher_id == dispatcher_id
-    ).first()
+    # Get load data
+    load = db.query(LoadModel).filter(LoadModel.load_id == load_id).first()
+    if load is None:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail="Load not found"
+        )
 
-    if existing_saved_load:
+    # Check if already saved by this dispatcher
+    saved_by_list = load.saved_by if load.saved_by is not None else []
+    if dispatcher_id in saved_by_list:
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST,
             detail="Load is already saved"
         )
 
-    # Get load data from loads table
-    load_data = db.query(LoadModel).filter(LoadModel.load_id == load_id).first()
-    if load_data is None:
-        raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND,
-            detail="Load not found"
-        )
-    
-    # Create SavedLoadModel with all load data
-    saved_load = SavedLoadModel(
-        load_id=load_id,
-        dispatcher_id=dispatcher_id,
-        external_load_id=load_data.external_load_id,
-        brokerage=load_data.brokerage,
-        pickup_location=load_data.pickup_location,
-        delivery_location=load_data.delivery_location,
-        price=load_data.price,
-        milage=load_data.milage,
-        is_operational=load_data.is_operational,
-        contact_phone=load_data.contact_phone,
-        notes=load_data.notes,
-        loadboard_source=load_data.loadboard_source,
-        date_ready=load_data.date_ready,
-        n_vehicles=load_data.n_vehicles,
-        weight=load_data.weight
-    )
     try:
-        db.add(saved_load)
+        # Update saved_by list and is_saved flag
+        saved_by = load.saved_by or []
+        saved_by.append(dispatcher_id)
+        db.query(LoadModel).filter(LoadModel.load_id == load_id).update({
+            "is_saved": True,
+            "saved_by": saved_by
+        })
         db.commit()
         return {"message": "Load saved successfully"}
     except:
         db.rollback()
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST,
-            detail=f"Failed to save load "
+            detail="Failed to save load"
         )
 
 @app.get("/get_saved_loads", dependencies=[Depends(get_api_key)])
 def get_saved_loads(dispatcher_id: str, db: Session = Depends(get_db)):
     sql = """
-    SELECT l.*
-    FROM loads l
-    JOIN saved_loads sl ON l.load_id = sl.load_id
-    WHERE sl.dispatcher_id = :dispatcher_id
-    ORDER BY l.created_at DESC
+    SELECT *
+    FROM loads 
+    WHERE saved_by @> ARRAY[:dispatcher_id]::varchar[]
+    ORDER BY created_at DESC
     """
     result = db.execute(text(sql), {"dispatcher_id": dispatcher_id}).all()
     
@@ -465,22 +448,23 @@ def get_saved_loads(dispatcher_id: str, db: Session = Depends(get_db)):
     
     return loads
 
-
 @app.delete("/delete_saved_load", dependencies=[Depends(get_api_key)])
 def delete_saved_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
-    saved_load = db.query(SavedLoadModel).filter(
-        SavedLoadModel.load_id == load_id,
-        SavedLoadModel.dispatcher_id == dispatcher_id
-    ).first()
+    load = db.query(LoadModel).filter(LoadModel.load_id == load_id).first()
     
-    if not saved_load:
+    if load is None or load.saved_by is None or dispatcher_id not in load.saved_by:
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND,
             detail="Saved load not found"
         )
 
     try:
-        db.delete(saved_load)
+        saved_by = load.saved_by.copy()
+        saved_by.remove(dispatcher_id)
+        db.query(LoadModel).filter(LoadModel.load_id == load_id).update({
+            "is_saved": bool(saved_by),  # Set to False if no more savers
+            "saved_by": saved_by
+        })
         db.commit()
         return {"message": "Load removed from saved loads"}
     except:
@@ -489,12 +473,9 @@ def delete_saved_load(load_id: str, dispatcher_id: str, db: Session = Depends(ge
             status_code=HTTPStatus.BAD_REQUEST,
             detail="Failed to delete saved load"
         )
-        
+
 @app.get("/is_saved", dependencies=[Depends(get_api_key)])
 def is_saved(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
-    saved_load = db.query(SavedLoadModel).filter(
-        SavedLoadModel.load_id == load_id,
-        SavedLoadModel.dispatcher_id == dispatcher_id
-    ).first()
-    
-    return {"is_saved": saved_load is not None}
+    load = db.query(LoadModel).filter(LoadModel.load_id == load_id).first()
+    is_saved = load and load.saved_by and dispatcher_id in load.saved_by
+    return {"is_saved": is_saved}
