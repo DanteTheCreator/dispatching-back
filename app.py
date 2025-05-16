@@ -217,7 +217,7 @@ def get_loads_and_glink_for_route(loads: List[str] = Query(None), db: Session = 
             "brokerage": load.brokerage,
             "loadboard_source": load.loadboard_source,
             "is_operational": load.is_operational,
-            "trailer_type": load.trailer_type,
+            "enclosed_trailer": load.enclosed_trailer
         }
         loads_data.append(load_dict)
 
@@ -321,7 +321,7 @@ def filter_loads(
             load_id, external_load_id, brokerage, pickup_location, 
             delivery_location, price::float, milage, is_operational,
             contact_phone, notes, loadboard_source, created_at,
-            date_ready, n_vehicles, weight
+            date_ready, n_vehicles, weight, enclosed_trailer
         FROM loads 
         WHERE 1=1
     """
@@ -454,7 +454,7 @@ def get_saved_loads(dispatcher_id: int, db: Session = Depends(get_db)):
             "brokerage": load.brokerage,
             "loadboard_source": load.loadboard_source,
             "is_operational": load.is_operational,
-            "trailer_type": load.trailer_type,
+            "enclosed_trailer": load.enclosed_trailer,
         }
         loads_data.append(load_dict)
 

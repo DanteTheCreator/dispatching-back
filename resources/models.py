@@ -44,6 +44,7 @@ class LoadModel(Base):
     n_vehicles = Column(Integer)
     weight = Column(Float)
     saved_by = Column(ARRAY(Integer))
+    enclosed_trailer = Column(Boolean)
 
    
 class Dispatcher(Base):
