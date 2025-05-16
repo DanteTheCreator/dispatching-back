@@ -371,11 +371,16 @@ def filter_loads(
         )
 
     # Convert rows to dictionaries and serialize datetime objects
-    result = [dict(row._mapping) for row in result]
-    for load_dict in result:
-        for key, value in load_dict.items():
+    loads_list = []
+    for row in result:
+        load_dict = {}
+        for key, value in row._mapping.items():
             if isinstance(value, datetime):
                 load_dict[key] = value.isoformat()
+            else:
+                load_dict[key] = value
+        loads_list.append(load_dict)
+    result = loads_list
     
     return result[0:25] 
 
@@ -425,44 +430,54 @@ def save_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
 
 @app.get("/get_saved_loads", dependencies=[Depends(get_api_key)])
 def get_saved_loads(dispatcher_id: str, db: Session = Depends(get_db)):
-    sql = """
-    SELECT *
-    FROM loads 
-    WHERE saved_by @> ARRAY[:dispatcher_id]::varchar[]
-    ORDER BY created_at DESC
-    """
-    result = db.execute(text(sql), {"dispatcher_id": dispatcher_id}).all()
-    
-    if not result:
+    loads = db.query(LoadModel).filter(
+        LoadModel.saved_by.contains([dispatcher_id])
+    ).order_by(LoadModel.created_at.desc()).all()
+
+    if not loads:
         raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND,
+            status_code=HTTPStatus.NO_CONTENT,
             detail="No saved loads found"
         )
-
-    # Convert rows to dictionaries and serialize datetime objects
-    loads = [dict(row._mapping) for row in result]
-    for load in loads:
-        for key, value in load.items():
-            if isinstance(value, datetime):
-                load[key] = value.isoformat()
     
-    return loads
+    # Convert SQLAlchemy models to dictionaries
+    loads_data = []
+    for load in loads:
+        load_dict = {
+            "load_id": load.load_id,
+            "pickup_location": load.pickup_location,
+            "delivery_location": load.delivery_location,
+            "milage": load.milage,
+            "price": load.price,
+            "notes": load.notes,
+            "contact_phone": load.contact_phone,
+            "brokerage": load.brokerage,
+            "loadboard_source": load.loadboard_source,
+            "is_operational": load.is_operational
+        }
+        loads_data.append(load_dict)
+
+    return {"loads": loads_data}
 
 @app.delete("/delete_saved_load", dependencies=[Depends(get_api_key)])
-def delete_saved_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
+def delete_saved_load(load_id: int, dispatcher_id: int, db: Session = Depends(get_db)):
     load = db.query(LoadModel).filter(LoadModel.load_id == load_id).first()
-    
-    if load is None or load.saved_by is None or dispatcher_id not in load.saved_by:
+    if not load:
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND,
-            detail="Saved load not found"
+            detail="Load not found"
+        )
+
+    if load.saved_by is None or dispatcher_id not in load.saved_by:
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail="Load is not saved by this dispatcher"
         )
 
     try:
         saved_by = load.saved_by.copy()
         saved_by.remove(dispatcher_id)
         db.query(LoadModel).filter(LoadModel.load_id == load_id).update({
-            "is_saved": bool(saved_by),  # Set to False if no more savers
             "saved_by": saved_by
         })
         db.commit()
@@ -470,8 +485,8 @@ def delete_saved_load(load_id: str, dispatcher_id: str, db: Session = Depends(ge
     except:
         db.rollback()
         raise HTTPException(
-            status_code=HTTPStatus.BAD_REQUEST,
-            detail="Failed to delete saved load"
+            status_code=HTTPStatus.BAD_REQUEST, 
+            detail="Failed to remove load"
         )
 
 @app.get("/is_saved", dependencies=[Depends(get_api_key)])
