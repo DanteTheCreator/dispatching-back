@@ -38,9 +38,9 @@ class Driver:
         self.full_name = driver.full_name
         self.location = driver.location
         self.trailer_size = driver.trailer_size
-        self.max_milage = driver.max_milage
         try:
             self.desired_gross = float(getattr(driver, 'desired_gross', 0.0))
+            self.max_milage = float(getattr(driver, 'max_milage', 0.0))
             self.desired_rpm = float(getattr(driver, 'desired_rpm', 0.0))
             self.active = driver.active
             self.phone = driver.phone

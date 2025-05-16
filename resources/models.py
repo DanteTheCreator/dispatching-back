@@ -71,6 +71,7 @@ class DriverModel(Base):
    phone = Column(String(15))
    states = Column(ARRAY(String(2)))
    location = Column(String(100))
+   max_milage = Column(Float)
 
 class RouteModel(Base):
     __tablename__ = "routes"
