@@ -386,7 +386,7 @@ def filter_loads(
 
 
 @app.post("/save_load", dependencies=[Depends(get_api_key)])
-def save_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
+def save_load(load_id: int, dispatcher_id: int, db: Session = Depends(get_db)):
     # Check if dispatcher exists
     dispatcher = db.query(Dispatcher).filter(Dispatcher.id == dispatcher_id).first()
     if not dispatcher:
@@ -416,7 +416,6 @@ def save_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
         saved_by = load.saved_by or []
         saved_by.append(dispatcher_id)
         db.query(LoadModel).filter(LoadModel.load_id == load_id).update({
-            "is_saved": True,
             "saved_by": saved_by
         })
         db.commit()
@@ -429,7 +428,7 @@ def save_load(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
         )
 
 @app.get("/get_saved_loads", dependencies=[Depends(get_api_key)])
-def get_saved_loads(dispatcher_id: str, db: Session = Depends(get_db)):
+def get_saved_loads(dispatcher_id: int, db: Session = Depends(get_db)):
     loads = db.query(LoadModel).filter(
         LoadModel.saved_by.contains([dispatcher_id])
     ).order_by(LoadModel.created_at.desc()).all()
