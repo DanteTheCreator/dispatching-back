@@ -25,44 +25,44 @@ class CentralAPIClient(APIClient):
         self.base_headers['authorization'] = f"Bearer {token}"
 
     def fetch_loads(self, state):
-        loads_response = post("https://bff.centraldispatch.com/listing-search/api/open-search",  # type: ignore
-                                payload={
-                                    'vehicleCount': {
-                                        'min': 1,
-                                        'max': None,
-                                    },
-                                    'postedWithinHours': None,
-                                    'tagListingsPostedWithin': 2,
-                                    'trailerTypes': ['OPEN'],
-                                    'paymentTypes': [],
-                                    'vehicleTypes': [],
-                                    'operability': 'All',
-                                    'minimumPaymentTotal': None,
-                                    'readyToShipWithinDays': None,
-                                    'minimumPricePerMile': None,
-                                    'offset': 0,
-                                    'limit': 10000,
-                                    'sortFields': [
-                                        {
-                                            'name': 'PICKUP',
-                                            'direction': 'ASC',
+        loads_response = self.post("https://bff.centraldispatch.com/listing-search/api/open-search",  # type: ignore
+                                    payload={
+                                        'vehicleCount': {
+                                            'min': 1,
+                                            'max': None,
                                         },
-                                        {
-                                            'name': 'DELIVERYMETROAREA',
-                                            'direction': 'ASC',
-                                        },
-                                    ],
-                                    'shipperIds': [],
-                                    'desiredDeliveryDate': None,
-                                    'displayBlockedShippers': False,
-                                    'showPreferredShippersOnly': False,
-                                    'showTaggedOnTop': False,
-                                    'marketplaceIds': [],
-                                    'averageRating': 'All',
-                                    'requestType': 'Open',
-                                    'locations': [{
-                                        'state': state,
-                                        'scope': 'Pickup',
-                                    },],
-                                })
+                                        'postedWithinHours': None,
+                                        'tagListingsPostedWithin': 2,
+                                        'trailerTypes': ['OPEN'],
+                                        'paymentTypes': [],
+                                        'vehicleTypes': [],
+                                        'operability': 'All',
+                                        'minimumPaymentTotal': None,
+                                        'readyToShipWithinDays': None,
+                                        'minimumPricePerMile': None,
+                                        'offset': 0,
+                                        'limit': 10000,
+                                        'sortFields': [
+                                            {
+                                                'name': 'PICKUP',
+                                                'direction': 'ASC',
+                                            },
+                                            {
+                                                'name': 'DELIVERYMETROAREA',
+                                                'direction': 'ASC',
+                                            },
+                                        ],
+                                        'shipperIds': [],
+                                        'desiredDeliveryDate': None,
+                                        'displayBlockedShippers': False,
+                                        'showPreferredShippersOnly': False,
+                                        'showTaggedOnTop': False,
+                                        'marketplaceIds': [],
+                                        'averageRating': 'All',
+                                        'requestType': 'Open',
+                                        'locations': [{
+                                            'state': state,
+                                            'scope': 'Pickup',
+                                        },],
+                                    })
         return loads_response

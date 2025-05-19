@@ -21,9 +21,10 @@ class CentralConfigurator:
         self.__cache_service = CentralCacheService()
         self.__db_worker = CentralDbWorker()
         self.__deduplicator_worker = CentralDeduplicatorWorker()
+
+        self.initialize_driver()
         self.__central_token_worker = CentralTokenWorker(driver=self.__driver,
                                                          cache_service=self.__cache_service)
-        self.initialize_driver()
         
     def initialize_driver(self):
         self.__selenium_driver.initialize_driver()

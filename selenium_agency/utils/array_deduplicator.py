@@ -27,7 +27,10 @@ class ArrayDeduplicator:
 
   def _filter_items(self, target, based_on_items, target_id_keyword, base_id_keyword, attributes_compare_callback):
     result = []
+    counter = 1
     for item in target:
+        print(f"Deduplicating load: {counter} /  {len(target)}")
+        counter += 1
         exists_in_based_on = False
         for base_item in based_on_items:
             if self._objects_equal(item, base_item, attributes_compare_callback, target_id_keyword, base_id_keyword):

@@ -22,12 +22,7 @@ class CentralTokenWorker:
     def set_token(self):
         if not self.__driver:
             return None
-        # Check current URL before accessing localStorage
-        current_url = self.__driver.current_url
-        if not current_url.startswith("https://id.centraldispatch.com"):
-            print(f"Cannot access localStorage: current URL is {current_url}")
-            return None
-        # Execute JavaScript to get token from localStorage
+       
         try:
             user_token = self.__driver.execute_script(
                 "return window.localStorage.getItem('oidc.user:https://id.centraldispatch.com:single_spa_prod_client');"
@@ -35,7 +30,10 @@ class CentralTokenWorker:
             try:
                 user_token = json.loads(user_token)[
                     'access_token'] if user_token else None
+                print("User token retrieved from localStorage.")
+                print(f"User token: {user_token}")
             except json.JSONDecodeError:
+                print("Error decoding JSON from localStorage.")
                 user_token = None
         except Exception as e:
             print(f"Error accessing localStorage: {e}")

@@ -9,13 +9,8 @@ from selenium.webdriver.common.by import By
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
 from selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_central
-from selenium_agency.api.central_api_client import CentralAPIClient
-from selenium_agency.cache.central_cache import CentralCacheService
-import json
-from central_interactor import CentralInteractor
 from central_configurator import CentralConfigurator
 
 load_dotenv()
@@ -37,7 +32,7 @@ logger = logging.getLogger(__name__)
 
 class CentralAgent:
 
-    __in_between_delay = 15
+    __in_between_delay = 12
 
     def __init__(self, driver=None):
         # self.__selenium_driver.initialize_driver()
@@ -98,7 +93,7 @@ class CentralAgent:
         button = self.__wait.until(
         EC.element_to_be_clickable((By.ID, "submitButton")))
         button.click()
-        time.sleep(15)
+        time.sleep(5)
 
     def __start_login_cycle(self):
         if self.__driver is not None:

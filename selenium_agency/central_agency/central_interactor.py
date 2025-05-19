@@ -1,4 +1,3 @@
-import json
 import time
 import logging
 import sys
@@ -34,7 +33,7 @@ class CentralInteractor:
                  token_worker=None):
         self.__api_client = api_client
         self.__db_worker = db_worker
-        self.deduplicator = deduplicator
+        self.__deduplicator = deduplicator
         self.__token_worker = token_worker
     
     def token_exists(self):
@@ -43,6 +42,9 @@ class CentralInteractor:
     def set_token(self):
         self.__token_worker.set_token()
 
+    def remove_token(self):
+        self.__token_worker.remove_token()
+
     def deduplicate_loads(self, loadsParam):
         #db_loads = self.__fetch_db_loads()
         db_loads = self.__db_worker.fetch_db_loads()
@@ -50,18 +52,22 @@ class CentralInteractor:
             logger.error("Failed to fetch existing loads from the database.")
             print("Failed to fetch existing loads from the database or it is empty.")
             return []
+        
+        print(f"Fetched {len(db_loads)} existing loads from the database.")
 
-        deduplicated_loads = self.deduplicator.deduplicate_loads(target_loads=loadsParam,
+        deduplicated_loads = self.__deduplicator.deduplicate_loads(target_loads=loadsParam,
                                                                 db_loads=db_loads)
         
         print(f"deduplicated loads count: {len(deduplicated_loads)}")
         return deduplicated_loads
     
     def filter_loads(self, loads):
+        print(f"Filtering {len(loads)} loads.")
           # 1. Filter by existing IDs from the database
         # Ensure loadsParam is iterable, default to empty list if None
-        if loadsParam is None:
-            loadsParam = []
+        if loads is None:
+            print("No loads to filter.")
+            loads = []
 
         # 2. Filter by distance and price criteria
         filtered_loads = []
@@ -90,9 +96,10 @@ class CentralInteractor:
     
 
     def save_loads_to_db(self, non_duplicate_loads):
-        self.__db_worker.save_loads(non_duplicate_loads)
+        self.__db_worker.save_loads_to_db(non_duplicate_loads)
 
     def fetch_loads(self, state):
+        print(f"Fetching loads for state: {state}")
         token = self.__token_worker.get_token()
         self.__api_client.set_authorization_header(token)
         
@@ -103,10 +110,17 @@ class CentralInteractor:
             if loads is None:
                 print("Loads is None")
                 raise ValueError("Loads is None")
+            print(f"{len(loads)} loads fetched successfully")
             time.sleep(30)
             return loads
         except Exception as e:
+            # Check specifically for 401 Unauthorized error
+            if hasattr(e, 'response') and e.response.status_code == 401:
+                logger.error("Authentication failed (401 Unauthorized). Removing token.")
+                self.__token_worker.remove_token()
+                return None
+            # For other exceptions, token was already removed in the general exception handler
             print(f"Error fetching loads: {e}")
-            self.__token_worker.remove_token()
+            return None
 
 

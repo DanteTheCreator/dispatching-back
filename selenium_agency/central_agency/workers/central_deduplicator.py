@@ -40,6 +40,7 @@ class CentralDeduplicatorWorker:
                 self.__is_mileage_similar(base_mileage, target_mileage))
     
     def deduplicate_loads(self, target_loads, db_loads):
+        print(f"Deduplicating {len(target_loads)} target loads against {len(db_loads)} database loads.")
         deduplicated_loads = self.__array_deduplicator.apply_deduplication(target=target_loads, 
                                                                            based_on=db_loads, 
                                                                            target_id_keyword='id', 

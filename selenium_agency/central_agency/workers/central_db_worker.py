@@ -4,7 +4,7 @@ from resources.models import LoadModel, get_db
 
 class CentralDbWorker:
     def __init__(self):
-        self._db_session = next(get_db())
+        self.__db_Session = next(get_db())
 
     def __format_and_get_load_model(self, load):
         if not load:
@@ -62,6 +62,7 @@ class CentralDbWorker:
         return load_model_instance
 
     def fetch_db_loads(self):
+        print("Fetching existing loads from the database...")
         if self.__db_Session is None:
             print("Database session is not initialized.")
             return []
@@ -89,6 +90,7 @@ class CentralDbWorker:
         return existing_loads_dicts
 
     def save_loads_to_db(self, non_duplicate_loads):
+        print("Saving non-duplicate loads to the database...")
         if len(non_duplicate_loads) == 0:
             print("No new loads to process, every load is already in the database")
             return
