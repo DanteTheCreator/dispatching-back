@@ -4,9 +4,7 @@ import os
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(project_root)
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from geoalchemy2.elements import WKTElement
 import logging
-from resources.models import LoadModel, get_db
 from selenium.webdriver.common.by import By
 import time
 from selenium.webdriver.support.ui import WebDriverWait
@@ -18,6 +16,7 @@ from selenium_agency.api.central_api_client import CentralAPIClient
 from selenium_agency.cache.central_cache import CentralCacheService
 import json
 from central_interactor import CentralInteractor
+from central_configurator import CentralConfigurator
 
 load_dotenv()
 
@@ -38,24 +37,18 @@ logger = logging.getLogger(__name__)
 
 class CentralAgent:
 
-    __selenium_driver = SeleniumDriver()
-    __origin = ""
     __in_between_delay = 15
 
-    def __init__(self):
-        self.__selenium_driver.initialize_driver()
-        self.__driver = self.__selenium_driver.get_driver()
+    def __init__(self, driver=None):
+        # self.__selenium_driver.initialize_driver()
+        # self.__driver = self.__selenium_driver.get_driver()
         # Your Gmail credentials
         self._email = os.getenv("CENTRAL_USER")
         self._password = os.getenv("CENTRAL_PASSWORD")
-        #self.__api_client = APIClient(url='', origin=self.__origin)
-        self.__api_client = CentralAPIClient()
-        self.__cache_service = CentralCacheService()
-        self.__db_Session = next(get_db())
-        self.__central_interactor = CentralInteractor(self.__selenium_driver, 
-                                                      self.__api_client, 
-                                                      self.__cache_service, 
-                                                      self.__db_Session)
+        central_configurator = CentralConfigurator()
+        self.__central_interactor = central_configurator.configured_central_interactor()
+        self.__driver = central_configurator.get_driver()
+
         self.__state_index = 0
         self.states = [
             'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',
@@ -129,7 +122,7 @@ class CentralAgent:
 
     def run(self):
         while True:
-            if self.__cache_service.token_exists():
+            if self.__central_interactor.token_exists():
                 loads = self.__start_filling_db_cycle(self.states[self.__state_index])
                 if loads is None: # If fetching loads failed (e.g. token expired)
                     print("Failed to fetch loads, attempting to re-login.")
@@ -148,7 +141,6 @@ class CentralAgent:
                     print(f"Error during login cycle: {e}") # Use f-string for better formatting
                     time.sleep(120) # Increased sleep time after login failure
                     continue
-
 
 agent = CentralAgent()
 agent.run()
