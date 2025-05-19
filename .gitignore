@@ -5,3 +5,4 @@ route_builder.log
 .env
 *.exe
 selenium_agency/cache/tmp/
+selenium_agency/logs/

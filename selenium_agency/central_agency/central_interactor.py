@@ -277,7 +277,7 @@ class CentralInteractor:
                                                         },
                                                         'postedWithinHours': None,
                                                         'tagListingsPostedWithin': 2,
-                                                        'trailerTypes': [],
+                                                        'trailerTypes': ['OPEN'],
                                                         'paymentTypes': [],
                                                         'vehicleTypes': [],
                                                         'operability': 'All',
