@@ -9,7 +9,8 @@ class CentralDeduplicatorWorker:
         city = get_recursive(location_data, 'city')
         state = get_recursive(location_data, 'state')
         zip_code = get_recursive(location_data, 'zip')
-        return f"{city}, {state} {zip_code}"
+        result = f"{city}, {state} {zip_code}".lower()
+        return result
     
     def __is_mileage_similar(self, base_mileage, target_mileage, tolerance=0.02):
         """Check if target mileage is within tolerance range of base mileage"""
@@ -18,9 +19,9 @@ class CentralDeduplicatorWorker:
     def __attributes_compare_callback(self, target, base, get_recursive):
         """Compare load attributes to determine if they represent the same load"""
         # Extract price and mileage for comparison
-        target_price = get_recursive(target, 'price')
+        target_price = get_recursive(target, 'price')["total"]
         base_price = get_recursive(base, 'price')
-        target_mileage = get_recursive(target, 'milage')
+        target_mileage = get_recursive(target, 'distance')
         base_mileage = get_recursive(base, 'milage')
         
         # Format target pickup and delivery locations

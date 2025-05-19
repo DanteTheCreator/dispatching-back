@@ -15,28 +15,12 @@ from central_configurator import CentralConfigurator
 
 load_dotenv()
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Create the full path to the log file
-log_file_path = os.path.join(script_dir, 'logs', 'central_agent.log')
-
-# Configure logging
-logging.basicConfig(
-    filename=log_file_path,
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-
-logger = logging.getLogger(__name__)
-
 
 class CentralAgent:
 
     __in_between_delay = 12
 
     def __init__(self, driver=None):
-        # self.__selenium_driver.initialize_driver()
-        # self.__driver = self.__selenium_driver.get_driver()
         # Your Gmail credentials
         self._email = os.getenv("CENTRAL_USER")
         self._password = os.getenv("CENTRAL_PASSWORD")
@@ -54,6 +38,7 @@ class CentralAgent:
             'WY']
         
     def __load_page(self):
+        print("loading page...")
         self.__driver.get("https://id.centraldispatch.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcentraldispatch_authentication%26scope%3Dlisting_service%2520offline_access%2520openid%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fsite.centraldispatch.com%252Fprotected") # type: ignore
         # Wait for page to load
         self.__wait = WebDriverWait(self.__driver, 10) # type: ignore
@@ -61,6 +46,7 @@ class CentralAgent:
         time.sleep(5)
 
     def __authorize(self):
+        print("authorizing...")
         # Use the correct ID selectors from the HTML
         email_field = self.__wait.until(
             EC.element_to_be_clickable((By.ID, "Username")))
@@ -80,6 +66,7 @@ class CentralAgent:
         time.sleep(1)
 
     def __verify(self):
+        print("verifying...")
         send_code_button = self.__wait.until(
         EC.element_to_be_clickable((By.ID, "sendCodeButton")))
         send_code_button.click()
@@ -97,13 +84,9 @@ class CentralAgent:
 
     def __start_login_cycle(self):
         if self.__driver is not None:
-            print("loading page...")
             self.__load_page()
-            print("authorizing...")
             self.__authorize()
-            print("verifying...")
             self.__verify()
-            print("setting token...")
             self.__central_interactor.set_token()
 
     def __start_filling_db_cycle(self, state):

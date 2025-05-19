@@ -1,29 +1,4 @@
 import time
-import logging
-import sys
-import os
-
-# Add the project root directory to sys.path
-project_root = os.path.abspath(os.path.join(
-    os.path.dirname(__file__), '..', '..'))
-sys.path.append(project_root)
-# Keep the original append for backward compatibility
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-
-script_dir = os.path.dirname(os.path.abspath(__file__))
-log_file_path = os.path.join(os.path.dirname(
-    script_dir), 'logs', 'central_agent.log')
-
-# Configure logging
-logging.basicConfig(
-    filename=log_file_path,
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-
-logger = logging.getLogger(__name__)
-
 
 class CentralInteractor:
     def __init__(self,
@@ -40,16 +15,17 @@ class CentralInteractor:
         return self.__token_worker.token_exists()
 
     def set_token(self):
+        print("setting token...")
         self.__token_worker.set_token()
 
     def remove_token(self):
+        print("removing token...")
         self.__token_worker.remove_token()
 
     def deduplicate_loads(self, loadsParam):
         #db_loads = self.__fetch_db_loads()
         db_loads = self.__db_worker.fetch_db_loads()
         if db_loads is None or len(db_loads) == 0:
-            logger.error("Failed to fetch existing loads from the database.")
             print("Failed to fetch existing loads from the database or it is empty.")
             return []
         
@@ -77,14 +53,14 @@ class CentralInteractor:
             price_total = price_data.get('total', 0) if isinstance(price_data, dict) else 0
 
             if distance is None:
-                logger.warning(f"Skipping load {load_item.get('id')} due to missing distance.")
+                print(f"Skipping load {load_item.get('id')} due to missing distance.")
                 continue
             
             if not isinstance(distance, (int, float)):
-                logger.warning(f"Skipping load {load_item.get('id')} due to non-numeric distance: {distance}")
+                print(f"Skipping load {load_item.get('id')} due to non-numeric distance: {distance}")
                 continue
             if not isinstance(price_total, (int, float)):
-                logger.warning(f"Skipping load {load_item.get('id')} due to non-numeric price_total: {price_total}")
+                print(f"Skipping load {load_item.get('id')} due to non-numeric price_total: {price_total}")
                 continue
 
             if distance <= 0.0 or distance >= 2000.0 or price_total >= 3000.0:
@@ -116,7 +92,7 @@ class CentralInteractor:
         except Exception as e:
             # Check specifically for 401 Unauthorized error
             if hasattr(e, 'response') and e.response.status_code == 401:
-                logger.error("Authentication failed (401 Unauthorized). Removing token.")
+                print("Authentication failed (401 Unauthorized). Removing token.")
                 self.__token_worker.remove_token()
                 return None
             # For other exceptions, token was already removed in the general exception handler

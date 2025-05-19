@@ -29,7 +29,7 @@ class ArrayDeduplicator:
     result = []
     counter = 1
     for item in target:
-        print(f"Deduplicating load: {counter} /  {len(target)}")
+        print(f"Deduplicating load: {counter} / {len(target)}")
         counter += 1
         exists_in_based_on = False
         for base_item in based_on_items:
