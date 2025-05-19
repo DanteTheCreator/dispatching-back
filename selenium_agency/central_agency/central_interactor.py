@@ -7,7 +7,8 @@ from geoalchemy2.elements import WKTElement
 import sys
 import os
 from resources.models import LoadModel
-from selenium_agency.utils.array_deduplicator import ArrayDeduplicator
+from selenium_agency.central_agency.workers.central_deduplicator import CentralDeduplicatorWorker
+
 # Add the project root directory to sys.path
 project_root = os.path.abspath(os.path.join(
     os.path.dirname(__file__), '..', '..'))
@@ -41,7 +42,7 @@ class CentralInteractor:
         self.current_page = 0
         self.__db_Session = db_session
         self.__in_between_delay = 1  # Adding the missing attribute with a default value
-        self.__array_deduplicator = ArrayDeduplicator()
+        self.deduplicator = CentralDeduplicatorWorker()
 
     def __fetch_db_loads(self):
         if self.__db_Session is None:
@@ -70,37 +71,6 @@ class CentralInteractor:
         ]
 
         return existing_loads_dicts
-    
-    def __attributes_compare_callback(target, base, get_recursive):
-            # Compare the target and base objects based on the specified criteria
-            target_price = get_recursive(target, 'price')
-            base_price = get_recursive(base, 'price')
-
-            target_origin = get_recursive(target, 'origin')
-            target_destination = get_recursive(target, 'destination')
-
-            target_zip = get_recursive(target_origin, 'zip')
-            target_city = get_recursive(target_origin, 'city')
-            target_state = get_recursive(target_origin, 'state')
-
-            target_pickup_location = f"{target_city}, {target_state} {target_zip}"
-
-            target_zip_dest = get_recursive(target_destination, 'zip')
-            target_city_dest = get_recursive(target_destination, 'city')
-            target_state_dest = get_recursive(target_destination, 'state')
-
-            target_delivery_location = f"{target_city_dest}, {target_state_dest} {target_zip_dest}"
-
-            target_milage = get_recursive(target, 'milage')
-            base_milage = get_recursive(base, 'milage')
-
-            base_pickup_location = get_recursive(base, 'pickup_location')
-            base_delivery_location = get_recursive(base, 'delivery_location')
-
-            return (target_price == base_price and
-                    target_pickup_location == base_pickup_location and
-                    target_delivery_location == base_delivery_location and
-                    target_milage == base_milage)
 
     def set_token(self):
         if not self.__driver:
@@ -137,11 +107,9 @@ class CentralInteractor:
             print("Failed to fetch existing loads from the database or it is empty.")
             return []
 
-        deduplicated_loads = self.__array_deduplicator.apply_deduplication(target=loadsParam, 
-                                                                           based_on=db_loads, 
-                                                                           target_id_keyword='id', 
-                                                                           base_id_keyword='external_load_id', 
-                                                                           attributes_compare_callback=self.__attributes_compare_callback)
+        deduplicated_loads = self.deduplicator.deduplicate_loads(target_loads=loadsParam,
+                                                                db_loads=db_loads)
+        
         print(f"deduplicated loads count: {len(deduplicated_loads)}")
         return deduplicated_loads
     
@@ -269,46 +237,7 @@ class CentralInteractor:
             self.__api_client.set_authorization_header(token)
         
         try:
-            loads_response = self.__api_client.post("https://bff.centraldispatch.com/listing-search/api/open-search",  # type: ignore
-                                                    payload={
-                                                        'vehicleCount': {
-                                                            'min': 1,
-                                                            'max': None,
-                                                        },
-                                                        'postedWithinHours': None,
-                                                        'tagListingsPostedWithin': 2,
-                                                        'trailerTypes': ['OPEN'],
-                                                        'paymentTypes': [],
-                                                        'vehicleTypes': [],
-                                                        'operability': 'All',
-                                                        'minimumPaymentTotal': None,
-                                                        'readyToShipWithinDays': None,
-                                                        'minimumPricePerMile': None,
-                                                        'offset': 0,
-                                                        'limit': 10000,
-                                                        'sortFields': [
-                                                            {
-                                                                'name': 'PICKUP',
-                                                                'direction': 'ASC',
-                                                            },
-                                                            {
-                                                                'name': 'DELIVERYMETROAREA',
-                                                                'direction': 'ASC',
-                                                            },
-                                                        ],
-                                                        'shipperIds': [],
-                                                        'desiredDeliveryDate': None,
-                                                        'displayBlockedShippers': False,
-                                                        'showPreferredShippersOnly': False,
-                                                        'showTaggedOnTop': False,
-                                                        'marketplaceIds': [],
-                                                        'averageRating': 'All',
-                                                        'requestType': 'Open',
-                                                        'locations': [{
-                                                            'state': state,
-                                                            'scope': 'Pickup',
-                                                        },],
-                                                    })
+            loads_response = self.__api_client.fetch_loads(state)
             response_json = loads_response.json()
             loads = response_json['items']
             if loads is None:
@@ -320,5 +249,5 @@ class CentralInteractor:
         except Exception as e:
             print(f"Error fetching loads: {e}")
             self.remove_token()
-            
+
 

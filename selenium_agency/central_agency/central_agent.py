@@ -52,7 +52,10 @@ class CentralAgent:
         self.__api_client = CentralAPIClient()
         self.__cache_service = CentralCacheService()
         self.__db_Session = next(get_db())
-        self.__central_interactor = CentralInteractor(self.__selenium_driver, self.__api_client, self.__cache_service, self.__db_Session)
+        self.__central_interactor = CentralInteractor(self.__selenium_driver, 
+                                                      self.__api_client, 
+                                                      self.__cache_service, 
+                                                      self.__db_Session)
         self.__state_index = 0
         self.states = [
             'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',

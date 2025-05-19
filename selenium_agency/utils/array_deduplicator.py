@@ -24,32 +24,6 @@ class ArrayDeduplicator:
                 return True
     attributes_compare_callback_result = attributes_compare_callback(target_object, base_object, get_recursive)
     return attributes_compare_callback_result
-  
-  def deduplicate(self, array, attributes_compare_callback=None):
-
-      if not array:
-          return []
-
-      return self._deduplicate_unhashable(array, attributes_compare_callback)
-
-  def _deduplicate_unhashable(self, array, attributes_compare_callback=None):
-      result = []
-
-      # Define default comparison if none provided
-      if attributes_compare_callback is None:
-          attributes_compare_callback = lambda x, y, _: True
-
-      for item in array:
-          is_duplicate = False
-          for existing_item in result:
-              if self._objects_equal(item, existing_item, attributes_compare_callback):
-                  is_duplicate = True
-                  break
-          if not is_duplicate:
-              result.append(item)
-
-      return result
-
 
   def _filter_items(self, target, based_on_items, target_id_keyword, base_id_keyword, attributes_compare_callback):
     result = []
