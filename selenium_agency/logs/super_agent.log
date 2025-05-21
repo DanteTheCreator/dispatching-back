@@ -33262,3 +33262,11 @@
 2025-05-10 18:34:59,515 - INFO - Loads after filtering existing IDs: 88
 2025-05-10 18:34:59,515 - INFO - Filtered loads after basic criteria: 49
 2025-05-10 18:35:02,744 - INFO - New loads to process after deduplication: 49
+2025-05-21 05:47:24,354 - INFO - ====== WebDriver manager ======
+2025-05-21 05:47:24,531 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 05:47:24,545 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 05:47:24,558 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-21 05:47:53,459 - INFO - ====== WebDriver manager ======
+2025-05-21 05:47:53,619 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 05:47:53,632 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 05:47:53,645 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
