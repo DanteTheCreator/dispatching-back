@@ -1,5 +1,5 @@
 import json
-
+import time
 
 class CentralTokenWorker:
     def __init__(self, cache_service=None, driver=None):
@@ -11,14 +11,20 @@ class CentralTokenWorker:
         if self.__cache_service.token_exists():
             cache_token = self.__cache_service.get_token()
             remote_token = self.get_token_remotely()
-            if cache_token and remote_token:
-                if cache_token == remote_token:
-                    pass
-                else:
-                    print("Tokens do not match.")
-                    print("Updating token in cache...")
-                    self.__cache_service.remove_token()
-                    self.__cache_service.set_token(remote_token)
+
+            # try again one more time if remote token is None
+            if remote_token is None:
+                print("trying to fetch remote token one more time...")
+                time.sleep(5)
+                remote_token = self.get_token_remotely()
+
+            if cache_token == remote_token:
+                pass
+            else:
+                print("Tokens do not match.")
+                print("Updating token in cache...")
+                self.__cache_service.remove_token()
+                self.__cache_service.set_token(remote_token)
         else:
             print("Token does not exist in cache.")
             print("Fetching token remotely...")
