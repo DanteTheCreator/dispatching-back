@@ -90,7 +90,7 @@ class CentralDbWorker:
         return existing_loads_dicts
 
     def save_loads_to_db(self, non_duplicate_loads):
-        print("Saving non-duplicate loads to the database...")
+        print("Saving non-duplicate filtered loads to the database...")
         if len(non_duplicate_loads) == 0:
             print("No new loads to process, every load is already in the database")
             return
@@ -108,5 +108,7 @@ class CentralDbWorker:
                 time.sleep(15)
                 print(
                     f"Inserted {len(load_model_instances)} loads into DB")
+                print("--------------------------------------------------------------------")
+                print("\n")
             else:
                 print("No valid loads to insert into DB")

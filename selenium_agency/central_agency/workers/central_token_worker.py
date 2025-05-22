@@ -36,7 +36,7 @@ class CentralTokenWorker:
                 time.sleep(5)
                 remote_token = self.get_token_remotely()
 
-                
+
             if remote_token:
                 self.__cache_service.set_token(remote_token)
 
@@ -72,9 +72,9 @@ class CentralTokenWorker:
             try:
                 user_token = json.loads(user_token)[
                     'access_token'] if user_token else None
-                print("User token retrieved from localStorage.")
+                print("User token retrieved from remote localStorage.")
             except json.JSONDecodeError:
-                print("Error decoding JSON from localStorage.")
+                print("Error decoding JSON from remote localStorage.")
                 user_token = None
         except Exception as e:
             print(f"Error accessing localStorage: {e}")

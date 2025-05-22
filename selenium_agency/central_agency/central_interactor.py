@@ -23,6 +23,7 @@ class CentralInteractor:
         self.__token_worker.remove_token()
 
     def deduplicate_loads(self, loadsParam):
+        time.sleep(1)
         if loadsParam is None:
             print("No loads to deduplicate.")
             return []
@@ -40,6 +41,7 @@ class CentralInteractor:
         return deduplicated_loads
     
     def filter_loads(self, loads):
+        time.sleep(1)
         print(f"Filtering {len(loads)} loads.")
           # 1. Filter by existing IDs from the database
         # Ensure loadsParam is iterable, default to empty list if None
@@ -74,9 +76,11 @@ class CentralInteractor:
     
 
     def save_loads_to_db(self, non_duplicate_loads):
+        time.sleep(1)
         self.__db_worker.save_loads_to_db(non_duplicate_loads)
 
     def fetch_loads(self, state, recursion_count=0):
+        time.sleep(1)
         print(f"Fetching loads for state: {state}")
         recursion_count += 1
         self.__token_worker.match_tokens()
