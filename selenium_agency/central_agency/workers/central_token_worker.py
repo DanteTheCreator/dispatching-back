@@ -29,6 +29,14 @@ class CentralTokenWorker:
             print("Token does not exist in cache.")
             print("Fetching token remotely...")
             remote_token = self.get_token_remotely()
+
+             # try again one more time if remote token is None
+            if remote_token is None:
+                print("trying to fetch remote token one more time...")
+                time.sleep(5)
+                remote_token = self.get_token_remotely()
+
+                
             if remote_token:
                 self.__cache_service.set_token(remote_token)
 
