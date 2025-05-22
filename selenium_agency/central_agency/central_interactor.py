@@ -74,8 +74,10 @@ class CentralInteractor:
     def save_loads_to_db(self, non_duplicate_loads):
         self.__db_worker.save_loads_to_db(non_duplicate_loads)
 
-    def fetch_loads(self, state):
+    def fetch_loads(self, state, recursion_count=0):
+        print(f"Recursion count: {recursion_count}")
         print(f"Fetching loads for state: {state}")
+        recursion_count += 1
         token = self.__token_worker.get_token()
         self.__api_client.set_authorization_header(token)
         
@@ -83,9 +85,6 @@ class CentralInteractor:
             loads_response = self.__api_client.fetch_loads(state)
             response_json = loads_response.json()
             loads = response_json['items']
-            if loads is None:
-                print("Loads is None")
-                raise ValueError("Loads is None")
             print(f"{len(loads)} loads fetched successfully")
             time.sleep(30)
             return loads
@@ -94,11 +93,24 @@ class CentralInteractor:
             if hasattr(e, 'response') and e.response.status_code == 401:
                 print("Authentication failed (401 Unauthorized)")
                 print("Removing token and relogging in 10 minutes...")
-                self.__token_worker.remove_token()
-                time.sleep(600)
-                return None
-            # For other exceptions, token was already removed in the general exception handler
-            print(f"Error fetching loads: {e}")
-            return None
+                time.sleep(10)
+                self.__token_worker.match_tokens()
+                time.sleep(10)
+                if recursion_count < 3:
+                    return self.fetch_loads(state, recursion_count)
+                else:
+                    print("Max retries reached. Exiting.")
+                    self.remove_token()
+            else:
+                # Handle other exceptions
+                print(f"Error fetching loads: {e}")
+                print("Retrying in 10 seconds...")
+                time.sleep(10)
+                if recursion_count < 3:
+                    return self.fetch_loads(state, recursion_count)
+                else:
+                    print("Max retries reached. Exiting.")
+                    self.remove_token()
+
 
 
