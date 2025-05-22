@@ -40,7 +40,7 @@ class CentralTokenWorker:
     def get_token(self):
         if self.__cache_service is not None:
             token = self.__cache_service.get_token()
-            print(f"Token retrieved from cache: {token}")
+            print(f"Token retrieved from cache")
             return token
         else:
             print("Cache service is not initialized.")
@@ -59,7 +59,6 @@ class CentralTokenWorker:
                 user_token = json.loads(user_token)[
                     'access_token'] if user_token else None
                 print("User token retrieved from localStorage.")
-                print(f"User token: {user_token}")
             except json.JSONDecodeError:
                 print("Error decoding JSON from localStorage.")
                 user_token = None
