@@ -23,7 +23,9 @@ class CentralInteractor:
         self.__token_worker.remove_token()
 
     def deduplicate_loads(self, loadsParam):
-        #db_loads = self.__fetch_db_loads()
+        if loadsParam is None:
+            print("No loads to deduplicate.")
+            return []
         db_loads = self.__db_worker.fetch_db_loads()
         if db_loads is None or len(db_loads) == 0:
             print("Failed to fetch existing loads from the database or it is empty.")
@@ -92,15 +94,10 @@ class CentralInteractor:
             # Check specifically for 401 Unauthorized error
             if hasattr(e, 'response') and e.response.status_code == 401:
                 print("Authentication failed (401 Unauthorized)")
-                print("Removing token and relogging in 10 minutes...")
-                time.sleep(10)
-                self.__token_worker.match_tokens()
-                time.sleep(10)
-                if recursion_count < 3:
-                    return self.fetch_loads(state, recursion_count)
-                else:
-                    print("Max retries reached. Removing token. Relogging...")
-                    self.remove_token()
+                print("Removing token and relogging in 1 minute...")
+                time.sleep(60)
+                self.remove_token()
+                return None
             else:
                 # Handle other exceptions
                 print(f"Error fetching loads: {e}")
@@ -111,6 +108,7 @@ class CentralInteractor:
                 else:
                     print("Max retries reached. Removing token. Relogging...")
                     self.remove_token()
+                    return None
 
 
 

@@ -91,6 +91,9 @@ class CentralAgent:
 
     def __start_filling_db_cycle(self, state):
         loads = self.__central_interactor.fetch_loads(state)
+        needs_relogin = loads is None
+        if needs_relogin == True:
+            return needs_relogin
         non_duplicate_loads = self.__central_interactor.deduplicate_loads(loads)
         filtered_loads = self.__central_interactor.filter_loads(non_duplicate_loads)
         self.__central_interactor.save_loads_to_db(filtered_loads)
@@ -99,7 +102,10 @@ class CentralAgent:
     def run(self):
         while True:
             if self.__central_interactor.token_exists():
-                self.__start_filling_db_cycle(self.states[self.__state_index])
+                needs_relogin = self.__start_filling_db_cycle(self.states[self.__state_index])
+                if needs_relogin == True:
+                    print("Token expired, relogin will start soon...")
+                    continue
                 self.__state_index += 1
                 if self.__state_index >= len(self.states):
                     self.__state_index = 0
