@@ -77,10 +77,16 @@ class CentralInteractor:
         self.__db_worker.save_loads_to_db(non_duplicate_loads)
 
     def fetch_loads(self, state, recursion_count=0):
-        print(f"Recursion count: {recursion_count}")
         print(f"Fetching loads for state: {state}")
         recursion_count += 1
+        self.__token_worker.match_tokens()
         token = self.__token_worker.get_token()
+        if token is None:
+            print("Token not found. Relogging in 1 minute...")
+            time.sleep(60)
+            self.remove_token()
+            return None
+
         self.__api_client.set_authorization_header(token)
         
         try:
@@ -102,6 +108,7 @@ class CentralInteractor:
                 # Handle other exceptions
                 print(f"Error fetching loads: {e}")
                 print("Retrying in 10 seconds...")
+                print(f"Recursion count: {recursion_count}")
                 time.sleep(10)
                 if recursion_count < 3:
                     return self.fetch_loads(state, recursion_count)

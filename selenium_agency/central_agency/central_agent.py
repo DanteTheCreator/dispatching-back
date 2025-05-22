@@ -100,24 +100,30 @@ class CentralAgent:
         return loads 
 
     def run(self):
-        while True:
-            if self.__central_interactor.token_exists():
-                needs_relogin = self.__start_filling_db_cycle(self.states[self.__state_index])
-                if needs_relogin == True:
-                    print("Token expired, relogin will start soon...")
-                    continue
-                self.__state_index += 1
-                if self.__state_index >= len(self.states):
-                    self.__state_index = 0
-                time.sleep(30)
-            else:
-                try:
-                    print("starting login cycle...")
-                    self.__start_login_cycle()
-                except Exception as e:
-                    print(f"Error during login cycle: {e}") # Use f-string for better formatting
-                    time.sleep(120) # Increased sleep time after login failure
-                    continue
+        try:
+            while True:
+                if self.__central_interactor.token_exists():
+                    needs_relogin = self.__start_filling_db_cycle(self.states[self.__state_index])
+                    if needs_relogin == True:
+                        print("Token expired, relogin will start soon...")
+                        continue
+                    self.__state_index += 1
+                    if self.__state_index >= len(self.states):
+                        self.__state_index = 0
+                    time.sleep(30)
+                else:
+                    try:
+                        print("starting login cycle...")
+                        self.__start_login_cycle()
+                    except Exception as e:
+                        print(f"Error during login cycle: {e}") # Use f-string for better formatting
+                        time.sleep(120) # Increased sleep time after login failure
+                        continue
+        except KeyboardInterrupt:
+            print("Removing token...")
+            print("keybord interrupt exiting...")
+            self.__central_interactor.remove_token()
+            quit()
 
 agent = CentralAgent()
 agent.run()

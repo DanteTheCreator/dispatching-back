@@ -29,21 +29,22 @@ class CentralTokenWorker:
     def token_exists(self):
         return self.__cache_service.token_exists()
     
-    def get_token(self):
-        if not self.__cache_service:
-            return None
-        token = self.__cache_service.get_token()
-        if token is None:
-            print("Token not found in cache service.")
-            print("Fetching token remotely...")
-            token = self.get_token_remotely()
+    def token_is_valid(self):
+        if self.__cache_service.token_exists():
+            token = self.__cache_service.get_token()
             if token:
-                self.__cache_service.set_token(token)
-                return token
-            else:
-                print("Failed to fetch token remotely.")
-                return None
-        return token
+                remote_token = self.get_token_remotely()
+                return token == remote_token
+        return False
+    
+    def get_token(self):
+        if self.__cache_service is not None:
+            token = self.__cache_service.get_token()
+            print(f"Token retrieved from cache: {token}")
+            return token
+        else:
+            print("Cache service is not initialized.")
+            return None
     
     def get_token_remotely(self):
         if not self.__driver:
