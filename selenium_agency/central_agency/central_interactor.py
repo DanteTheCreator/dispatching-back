@@ -99,7 +99,7 @@ class CentralInteractor:
                 if recursion_count < 3:
                     return self.fetch_loads(state, recursion_count)
                 else:
-                    print("Max retries reached. Exiting.")
+                    print("Max retries reached. Removing token. Relogging...")
                     self.remove_token()
             else:
                 # Handle other exceptions
@@ -109,7 +109,7 @@ class CentralInteractor:
                 if recursion_count < 3:
                     return self.fetch_loads(state, recursion_count)
                 else:
-                    print("Max retries reached. Exiting.")
+                    print("Max retries reached. Removing token. Relogging...")
                     self.remove_token()
 
 
