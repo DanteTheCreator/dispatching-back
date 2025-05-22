@@ -29,7 +29,7 @@ class ArrayDeduplicator:
     result = []
     counter = 1
     for item in target:
-        print(f"Deduplicating load: {counter} / {len(target)}")
+        print(f"\rDeduplicating load: {counter} / {len(target)}", end='', flush=True)
         counter += 1
         exists_in_based_on = False
         for base_item in based_on_items:
@@ -40,6 +40,8 @@ class ArrayDeduplicator:
         if not exists_in_based_on:
             result.append(item)
 
+    # Add a final newline after the loop is complete
+    print()
     return result
 
   def apply_deduplication(self, target, based_on, target_id_keyword, base_id_keyword, attributes_compare_callback=None):

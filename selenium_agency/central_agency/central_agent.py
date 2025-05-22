@@ -80,7 +80,7 @@ class CentralAgent:
         button = self.__wait.until(
         EC.element_to_be_clickable((By.ID, "submitButton")))
         button.click()
-        time.sleep(5)
+        time.sleep(15)
 
     def __start_login_cycle(self):
         if self.__driver is not None:

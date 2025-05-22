@@ -6,47 +6,27 @@ class CentralCacheService(CacheService):
         super().__init__("central_dispatch")
         self.TOKEN_KEY = "central_token"
         self.LOADS_KEY = "central_loads"
-        self.TOKEN_EXPIRY_KEY = "central_token_expiry"
-        self.TOKEN_EXPIRY_HOURS = 23  # Set token expiry slightly less than 24h
 
     def token_exists(self):
-        """Check if a valid token exists in cache
-        
-        Returns:
-            bool: True if valid token exists, False otherwise
-        """
-        return self.get_token() is not None
+        return self.get(self.TOKEN_KEY) is not None
 
     def set_token(self, token):
         """Store token with expiration time"""
-        expiry = datetime.now() + timedelta(hours=self.TOKEN_EXPIRY_HOURS)
         self.set(self.TOKEN_KEY, token)
-        self.set(self.TOKEN_EXPIRY_KEY, expiry.isoformat())
 
 
     def get_token(self):
         """Get token if it exists and is not expired"""
         token = self.get(self.TOKEN_KEY)
-        expiry_str = self.get(self.TOKEN_EXPIRY_KEY)
         
-        if not token or not expiry_str:
+        if not token:
             return None
-
-        try:
-            expiry = datetime.fromisoformat(expiry_str)
-            if datetime.now() > expiry:
-                self.remove(self.TOKEN_KEY)
-                self.remove(self.TOKEN_EXPIRY_KEY)
-                return None
-            return token
-        except Exception as e:
-            print(f"Error parsing token expiry: {e}")
-            return None
+        
+        return token
         
     def remove_token(self):
         """Remove token and its expiry from cache"""
         self.remove(self.TOKEN_KEY)
-        self.remove(self.TOKEN_EXPIRY_KEY)
 
     def cache_loads(self, loads):
         """Store loads data with timestamp"""

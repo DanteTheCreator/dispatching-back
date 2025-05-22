@@ -16,7 +16,7 @@ class CentralInteractor:
 
     def set_token(self):
         print("setting token...")
-        self.__token_worker.set_token()
+        self.__token_worker.match_tokens()
 
     def remove_token(self):
         print("removing token...")
@@ -27,7 +27,7 @@ class CentralInteractor:
         db_loads = self.__db_worker.fetch_db_loads()
         if db_loads is None or len(db_loads) == 0:
             print("Failed to fetch existing loads from the database or it is empty.")
-            return []
+            return loadsParam
         
         print(f"Fetched {len(db_loads)} existing loads from the database.")
 
@@ -92,8 +92,10 @@ class CentralInteractor:
         except Exception as e:
             # Check specifically for 401 Unauthorized error
             if hasattr(e, 'response') and e.response.status_code == 401:
-                print("Authentication failed (401 Unauthorized). Removing token.")
+                print("Authentication failed (401 Unauthorized)")
+                print("Removing token and relogging in 10 minutes...")
                 self.__token_worker.remove_token()
+                time.sleep(600)
                 return None
             # For other exceptions, token was already removed in the general exception handler
             print(f"Error fetching loads: {e}")

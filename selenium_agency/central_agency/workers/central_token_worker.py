@@ -7,6 +7,25 @@ class CentralTokenWorker:
         self.__cache_service = cache_service
         pass 
 
+    def match_tokens(self):
+        if self.__cache_service.token_exists():
+            cache_token = self.__cache_service.get_token()
+            remote_token = self.get_token_remotely()
+            if cache_token and remote_token:
+                if cache_token == remote_token:
+                    pass
+                else:
+                    print("Tokens do not match.")
+                    print("Updating token in cache...")
+                    self.__cache_service.remove_token()
+                    self.__cache_service.set_token(remote_token)
+        else:
+            print("Token does not exist in cache.")
+            print("Fetching token remotely...")
+            remote_token = self.get_token_remotely()
+            if remote_token:
+                self.__cache_service.set_token(remote_token)
+
     def token_exists(self):
         return self.__cache_service.token_exists()
     
@@ -16,13 +35,21 @@ class CentralTokenWorker:
         token = self.__cache_service.get_token()
         if token is None:
             print("Token not found in cache service.")
-            return None
+            print("Fetching token remotely...")
+            token = self.get_token_remotely()
+            if token:
+                self.__cache_service.set_token(token)
+                return token
+            else:
+                print("Failed to fetch token remotely.")
+                return None
         return token
-
-    def set_token(self):
+    
+    def get_token_remotely(self):
         if not self.__driver:
+            print("Driver is not initialized.")
             return None
-       
+
         try:
             user_token = self.__driver.execute_script(
                 "return window.localStorage.getItem('oidc.user:https://id.centraldispatch.com:single_spa_prod_client');"
@@ -39,12 +66,7 @@ class CentralTokenWorker:
             print(f"Error accessing localStorage: {e}")
             user_token = None
 
-        if user_token is not None and self.__cache_service is not None:
-            self.__cache_service.set_token(user_token)
-            return user_token
-        else:
-            print("User token not found in localStorage")
-            return None
+        return user_token
         
     def remove_token(self):
         if self.__cache_service is not None:
