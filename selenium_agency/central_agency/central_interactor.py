@@ -22,12 +22,12 @@ class CentralInteractor:
         print("removing token...")
         self.__token_worker.remove_token()
 
-    def deduplicate_loads(self, loadsParam):
+    def deduplicate_loads(self, loadsParam, state):
         time.sleep(1)
         if loadsParam is None:
             print("No loads to deduplicate.")
             return []
-        db_loads = self.__db_worker.fetch_db_loads()
+        db_loads = self.__db_worker.fetch_db_loads(state)
         if db_loads is None or len(db_loads) == 0:
             print("Failed to fetch existing loads from the database or it is empty.")
             return loadsParam

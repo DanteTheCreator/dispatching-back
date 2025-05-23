@@ -61,18 +61,22 @@ class CentralDbWorker:
 
         return load_model_instance
 
-    def fetch_db_loads(self):
-        print("Fetching existing loads from the database...")
+    def fetch_db_loads(self, state):
+        print(f"Fetching existing loads from the database for state: {state}...")
         if self.__db_Session is None:
             print("Database session is not initialized.")
             return []
 
+        # Filter loads where pickup_location contains the state code
+        # Example: "ABBEVILLE, AL 36310" for state="AL"
         existing_loads = self.__db_Session.query(
             LoadModel.external_load_id,
             LoadModel.price,
             LoadModel.milage,
             LoadModel.pickup_location,
             LoadModel.delivery_location
+        ).filter(
+            LoadModel.pickup_location.contains(f", {state} ")
         ).all()
 
         # Convert query results to dictionaries with proper keys

@@ -14,8 +14,8 @@ class CentralTokenWorker:
 
             # try again one more time if remote token is None
             if remote_token is None:
-                print("trying to fetch remote token one more time...")
-                time.sleep(5)
+                print("trying to fetch remote token one more time in 1 minute...")
+                time.sleep(60)
                 remote_token = self.get_token_remotely()
 
             if cache_token == remote_token:
@@ -32,8 +32,8 @@ class CentralTokenWorker:
 
              # try again one more time if remote token is None
             if remote_token is None:
-                print("trying to fetch remote token one more time...")
-                time.sleep(5)
+                print("trying to fetch remote token one more time in 1 minute...")
+                time.sleep(60)
                 remote_token = self.get_token_remotely()
 
 
@@ -60,7 +60,7 @@ class CentralTokenWorker:
             print("Cache service is not initialized.")
             return None
     
-    def get_token_remotely(self):
+    def get_token_remotely(self, recursion=0):
         if not self.__driver:
             print("Driver is not initialized.")
             return None
@@ -69,9 +69,11 @@ class CentralTokenWorker:
             user_token = self.__driver.execute_script(
                 "return window.localStorage.getItem('oidc.user:https://id.centraldispatch.com:single_spa_prod_client');"
             )
+            #print(f"User token: {user_token}")
             try:
                 user_token = json.loads(user_token)[
-                    'access_token'] if user_token else None
+                    'access_token'] 
+                #print(f"User token retrieved from remote localStorage: {user_token}")
                 print("User token retrieved from remote localStorage.")
             except json.JSONDecodeError:
                 print("Error decoding JSON from remote localStorage.")
