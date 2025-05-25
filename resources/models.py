@@ -1,7 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, func, ForeignKey
-from sqlalchemy.dialects.postgresql import UUID, DOUBLE_PRECISION, ARRAY
-import uuid
+from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, func, ForeignKey, UniqueConstraint
+from sqlalchemy.dialects.postgresql import DOUBLE_PRECISION, ARRAY
+from datetime import datetime
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, VARCHAR
 from geoalchemy2 import Geometry
@@ -107,3 +107,22 @@ class CompanyModel(Base):
     mc_number = Column(String(50), nullable=False)
     dot_number = Column(String(50), nullable=False)
     company_logo = Column(String, nullable=False)
+    
+# Add to your resources/models.py file
+
+class Region(Base):
+    __tablename__ = "regions"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(100), nullable=False)
+    description = Column(String)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class RegionZipCode(Base):
+    __tablename__ = "region_zip_codes"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    region_id = Column(Integer, ForeignKey("regions.id"), nullable=False)
+    zip_code = Column(String(5), nullable=False)
+    
+    __table_args__ = (UniqueConstraint('region_id', 'zip_code'),)

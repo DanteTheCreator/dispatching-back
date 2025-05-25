@@ -33270,3 +33270,1275 @@
 2025-05-21 05:47:53,619 - INFO - Get LATEST chromedriver version for google-chrome
 2025-05-21 05:47:53,632 - INFO - Get LATEST chromedriver version for google-chrome
 2025-05-21 05:47:53,645 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:07:11,003 - INFO - ====== WebDriver manager ======
+2025-05-25 06:07:11,172 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:07:11,188 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:07:11,206 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:07:40,193 - INFO - ====== WebDriver manager ======
+2025-05-25 06:07:40,384 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:07:40,398 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:07:40,414 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:08:09,473 - INFO - ====== WebDriver manager ======
+2025-05-25 06:08:09,635 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:08:09,648 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:08:09,661 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:08:38,464 - INFO - ====== WebDriver manager ======
+2025-05-25 06:08:38,618 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:08:38,630 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:08:38,643 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:09:07,258 - INFO - ====== WebDriver manager ======
+2025-05-25 06:09:07,424 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:09:07,437 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:09:07,451 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:09:36,492 - INFO - ====== WebDriver manager ======
+2025-05-25 06:09:36,652 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:09:36,665 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:09:36,679 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:10:05,453 - INFO - ====== WebDriver manager ======
+2025-05-25 06:10:05,609 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:10:05,623 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:10:05,635 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:10:34,463 - INFO - ====== WebDriver manager ======
+2025-05-25 06:10:34,631 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:10:34,645 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:10:34,658 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:11:03,465 - INFO - ====== WebDriver manager ======
+2025-05-25 06:11:03,619 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:11:03,632 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:11:03,644 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:11:32,190 - INFO - ====== WebDriver manager ======
+2025-05-25 06:11:32,351 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:11:32,365 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:11:32,379 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:12:01,199 - INFO - ====== WebDriver manager ======
+2025-05-25 06:12:01,352 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:12:01,365 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:12:01,379 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:12:30,193 - INFO - ====== WebDriver manager ======
+2025-05-25 06:12:30,361 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:12:30,375 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:12:30,389 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:12:59,184 - INFO - ====== WebDriver manager ======
+2025-05-25 06:12:59,344 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:12:59,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:12:59,378 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:13:28,236 - INFO - ====== WebDriver manager ======
+2025-05-25 06:13:28,388 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:13:28,401 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:13:28,413 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:13:57,228 - INFO - ====== WebDriver manager ======
+2025-05-25 06:13:57,382 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:13:57,396 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:13:57,408 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:14:26,145 - INFO - ====== WebDriver manager ======
+2025-05-25 06:14:26,303 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:14:26,316 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:14:26,330 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:14:55,217 - INFO - ====== WebDriver manager ======
+2025-05-25 06:14:55,375 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:14:55,388 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:14:55,403 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:15:24,249 - INFO - ====== WebDriver manager ======
+2025-05-25 06:15:24,412 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:15:24,426 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:15:24,440 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:16:10,197 - INFO - ====== WebDriver manager ======
+2025-05-25 06:16:10,369 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:16:10,384 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:16:10,397 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:16:40,473 - INFO - ====== WebDriver manager ======
+2025-05-25 06:16:40,627 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:16:40,641 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:16:40,651 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:17:09,465 - INFO - ====== WebDriver manager ======
+2025-05-25 06:17:09,621 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:17:09,635 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:17:09,648 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:17:38,707 - INFO - ====== WebDriver manager ======
+2025-05-25 06:17:38,876 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:17:38,892 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:17:38,903 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:18:07,953 - INFO - ====== WebDriver manager ======
+2025-05-25 06:18:08,111 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:18:08,126 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:18:08,138 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:18:36,710 - INFO - ====== WebDriver manager ======
+2025-05-25 06:18:36,867 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:18:36,884 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:18:36,897 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:19:05,684 - INFO - ====== WebDriver manager ======
+2025-05-25 06:19:05,841 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:19:05,854 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:19:05,867 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:19:34,200 - INFO - ====== WebDriver manager ======
+2025-05-25 06:19:34,349 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:19:34,363 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:19:34,375 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:20:03,203 - INFO - ====== WebDriver manager ======
+2025-05-25 06:20:03,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:20:03,379 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:20:03,390 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:20:32,199 - INFO - ====== WebDriver manager ======
+2025-05-25 06:20:32,361 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:20:32,376 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:20:32,389 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:21:01,550 - INFO - ====== WebDriver manager ======
+2025-05-25 06:21:01,713 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:21:01,729 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:21:01,741 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:21:30,497 - INFO - ====== WebDriver manager ======
+2025-05-25 06:21:30,651 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:21:30,668 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:21:30,680 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:21:59,706 - INFO - ====== WebDriver manager ======
+2025-05-25 06:21:59,863 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:21:59,877 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:21:59,888 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:22:28,680 - INFO - ====== WebDriver manager ======
+2025-05-25 06:22:28,840 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:22:28,854 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:22:28,867 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:22:57,205 - INFO - ====== WebDriver manager ======
+2025-05-25 06:22:57,360 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:22:57,374 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:22:57,386 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:23:26,208 - INFO - ====== WebDriver manager ======
+2025-05-25 06:23:26,371 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:23:26,387 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:23:26,399 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:23:55,213 - INFO - ====== WebDriver manager ======
+2025-05-25 06:23:55,372 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:23:55,388 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:23:55,399 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:24:24,196 - INFO - ====== WebDriver manager ======
+2025-05-25 06:24:24,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:24:24,382 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:24:24,392 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:24:53,338 - INFO - ====== WebDriver manager ======
+2025-05-25 06:24:53,649 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:24:53,673 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:24:53,694 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:25:23,208 - INFO - ====== WebDriver manager ======
+2025-05-25 06:25:23,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:25:23,382 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:25:23,395 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:25:52,188 - INFO - ====== WebDriver manager ======
+2025-05-25 06:25:52,341 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:25:52,356 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:25:52,368 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:26:21,233 - INFO - ====== WebDriver manager ======
+2025-05-25 06:26:21,388 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:26:21,402 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:26:21,414 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:26:50,188 - INFO - ====== WebDriver manager ======
+2025-05-25 06:26:50,354 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:26:50,369 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:26:50,382 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:27:19,201 - INFO - ====== WebDriver manager ======
+2025-05-25 06:27:19,354 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:27:19,370 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:27:19,382 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:27:48,190 - INFO - ====== WebDriver manager ======
+2025-05-25 06:27:48,344 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:27:48,359 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:27:48,370 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:28:17,183 - INFO - ====== WebDriver manager ======
+2025-05-25 06:28:17,341 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:28:17,357 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:28:17,371 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:28:47,220 - INFO - ====== WebDriver manager ======
+2025-05-25 06:28:47,375 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:28:47,391 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:28:47,402 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:29:16,186 - INFO - ====== WebDriver manager ======
+2025-05-25 06:29:16,349 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:29:16,363 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:29:16,374 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:29:44,677 - INFO - ====== WebDriver manager ======
+2025-05-25 06:29:44,835 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:29:44,850 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:29:44,861 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:30:13,464 - INFO - ====== WebDriver manager ======
+2025-05-25 06:30:13,623 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:30:13,637 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:30:13,648 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:30:42,304 - INFO - ====== WebDriver manager ======
+2025-05-25 06:30:42,461 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:30:42,477 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:30:42,487 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:31:11,198 - INFO - ====== WebDriver manager ======
+2025-05-25 06:31:11,350 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:31:11,364 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:31:11,374 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:31:40,218 - INFO - ====== WebDriver manager ======
+2025-05-25 06:31:40,382 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:31:40,397 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:31:40,410 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:32:09,952 - INFO - ====== WebDriver manager ======
+2025-05-25 06:32:10,103 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:32:10,118 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:32:10,129 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:32:38,929 - INFO - ====== WebDriver manager ======
+2025-05-25 06:32:39,087 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:32:39,101 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:32:39,113 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:33:07,930 - INFO - ====== WebDriver manager ======
+2025-05-25 06:33:08,081 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:33:08,095 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:33:08,106 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:33:37,925 - INFO - ====== WebDriver manager ======
+2025-05-25 06:33:38,081 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:33:38,095 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:33:38,108 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:34:06,955 - INFO - ====== WebDriver manager ======
+2025-05-25 06:34:07,114 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:34:07,128 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:34:07,140 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:34:36,201 - INFO - ====== WebDriver manager ======
+2025-05-25 06:34:36,357 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:34:36,371 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:34:36,382 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:35:05,196 - INFO - ====== WebDriver manager ======
+2025-05-25 06:35:05,351 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:35:05,367 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:35:05,378 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:35:34,191 - INFO - ====== WebDriver manager ======
+2025-05-25 06:35:34,352 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:35:34,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:35:34,377 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:36:03,202 - INFO - ====== WebDriver manager ======
+2025-05-25 06:36:03,372 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:36:03,386 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:36:03,398 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:36:31,948 - INFO - ====== WebDriver manager ======
+2025-05-25 06:36:32,102 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:36:32,119 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:36:32,131 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:37:01,200 - INFO - ====== WebDriver manager ======
+2025-05-25 06:37:01,362 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:37:01,378 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:37:01,391 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:37:30,466 - INFO - ====== WebDriver manager ======
+2025-05-25 06:37:30,637 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:37:30,652 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:37:30,664 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:37:59,675 - INFO - ====== WebDriver manager ======
+2025-05-25 06:37:59,839 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:37:59,854 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:37:59,866 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:38:28,930 - INFO - ====== WebDriver manager ======
+2025-05-25 06:38:29,085 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:38:29,101 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:38:29,112 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:38:58,204 - INFO - ====== WebDriver manager ======
+2025-05-25 06:38:58,364 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:38:58,380 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:38:58,393 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:39:27,457 - INFO - ====== WebDriver manager ======
+2025-05-25 06:39:27,630 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:39:27,646 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:39:27,658 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:39:56,692 - INFO - ====== WebDriver manager ======
+2025-05-25 06:39:56,852 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:39:56,868 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:39:56,880 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:40:25,698 - INFO - ====== WebDriver manager ======
+2025-05-25 06:40:25,858 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:40:25,874 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:40:25,886 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:40:54,698 - INFO - ====== WebDriver manager ======
+2025-05-25 06:40:54,868 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:40:54,885 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:40:54,899 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:41:23,693 - INFO - ====== WebDriver manager ======
+2025-05-25 06:41:23,844 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:41:23,859 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:41:23,872 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:41:52,780 - INFO - ====== WebDriver manager ======
+2025-05-25 06:41:52,937 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:41:52,954 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:41:52,967 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:42:21,959 - INFO - ====== WebDriver manager ======
+2025-05-25 06:42:22,120 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:42:22,135 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:42:22,148 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:42:51,193 - INFO - ====== WebDriver manager ======
+2025-05-25 06:42:51,350 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:42:51,364 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:42:51,375 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:43:20,187 - INFO - ====== WebDriver manager ======
+2025-05-25 06:43:20,356 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:43:20,372 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:43:20,385 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:43:49,185 - INFO - ====== WebDriver manager ======
+2025-05-25 06:43:49,343 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:43:49,360 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:43:49,372 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:44:18,169 - INFO - ====== WebDriver manager ======
+2025-05-25 06:44:18,326 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:44:18,339 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:44:18,350 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:44:47,450 - INFO - ====== WebDriver manager ======
+2025-05-25 06:44:47,612 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:44:47,628 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:44:47,640 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:45:15,952 - INFO - ====== WebDriver manager ======
+2025-05-25 06:45:16,114 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:45:16,128 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:45:16,140 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:45:45,211 - INFO - ====== WebDriver manager ======
+2025-05-25 06:45:45,376 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:45:45,392 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:45:45,403 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:46:14,434 - INFO - ====== WebDriver manager ======
+2025-05-25 06:46:14,594 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:46:14,608 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:46:14,621 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:46:43,725 - INFO - ====== WebDriver manager ======
+2025-05-25 06:46:43,885 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:46:43,899 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:46:43,910 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:47:12,705 - INFO - ====== WebDriver manager ======
+2025-05-25 06:47:12,867 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:47:12,881 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:47:12,893 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:47:41,702 - INFO - ====== WebDriver manager ======
+2025-05-25 06:47:41,863 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:47:41,877 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:47:41,888 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:48:10,921 - INFO - ====== WebDriver manager ======
+2025-05-25 06:48:11,078 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:48:11,091 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:48:11,101 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:48:40,205 - INFO - ====== WebDriver manager ======
+2025-05-25 06:48:40,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:48:40,383 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:48:40,396 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:49:09,219 - INFO - ====== WebDriver manager ======
+2025-05-25 06:49:09,386 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:49:09,402 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:49:09,413 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:49:38,456 - INFO - ====== WebDriver manager ======
+2025-05-25 06:49:38,621 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:49:38,634 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:49:38,646 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:50:08,036 - INFO - ====== WebDriver manager ======
+2025-05-25 06:50:08,245 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:50:08,261 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:50:08,273 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:50:37,231 - INFO - ====== WebDriver manager ======
+2025-05-25 06:50:37,388 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:50:37,403 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:50:37,415 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:51:06,838 - INFO - ====== WebDriver manager ======
+2025-05-25 06:51:07,029 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:51:07,043 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:51:07,055 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:51:35,924 - INFO - ====== WebDriver manager ======
+2025-05-25 06:51:36,078 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:51:36,094 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:51:36,105 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:52:04,942 - INFO - ====== WebDriver manager ======
+2025-05-25 06:52:05,105 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:52:05,118 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:52:05,128 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:52:33,932 - INFO - ====== WebDriver manager ======
+2025-05-25 06:52:34,099 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:52:34,113 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:52:34,124 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:53:03,026 - INFO - ====== WebDriver manager ======
+2025-05-25 06:53:03,192 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:53:03,208 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:53:03,220 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:53:32,732 - INFO - ====== WebDriver manager ======
+2025-05-25 06:53:32,885 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:53:32,900 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:53:32,911 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:54:01,970 - INFO - ====== WebDriver manager ======
+2025-05-25 06:54:02,126 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:54:02,140 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:54:02,151 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:54:30,926 - INFO - ====== WebDriver manager ======
+2025-05-25 06:54:31,085 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:54:31,099 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:54:31,111 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:54:59,961 - INFO - ====== WebDriver manager ======
+2025-05-25 06:55:00,126 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:55:00,140 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:55:00,153 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:55:28,963 - INFO - ====== WebDriver manager ======
+2025-05-25 06:55:29,127 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:55:29,142 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:55:29,157 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:55:58,209 - INFO - ====== WebDriver manager ======
+2025-05-25 06:55:58,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:55:58,383 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:55:58,399 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:56:27,195 - INFO - ====== WebDriver manager ======
+2025-05-25 06:56:27,357 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:56:27,375 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:56:27,387 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:56:56,181 - INFO - ====== WebDriver manager ======
+2025-05-25 06:56:56,342 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:56:56,356 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:56:56,366 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:57:25,191 - INFO - ====== WebDriver manager ======
+2025-05-25 06:57:25,348 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:57:25,363 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:57:25,374 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:57:54,268 - INFO - ====== WebDriver manager ======
+2025-05-25 06:57:54,434 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:57:54,450 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:57:54,464 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:58:23,693 - INFO - ====== WebDriver manager ======
+2025-05-25 06:58:23,848 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:58:23,863 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:58:23,874 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:58:52,687 - INFO - ====== WebDriver manager ======
+2025-05-25 06:58:52,842 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:58:52,855 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:58:52,867 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:59:21,702 - INFO - ====== WebDriver manager ======
+2025-05-25 06:59:21,857 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:59:21,871 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:59:21,882 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 06:59:50,711 - INFO - ====== WebDriver manager ======
+2025-05-25 06:59:50,871 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:59:50,886 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 06:59:50,898 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:00:20,752 - INFO - ====== WebDriver manager ======
+2025-05-25 07:00:20,908 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:00:20,923 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:00:20,938 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:00:49,433 - INFO - ====== WebDriver manager ======
+2025-05-25 07:00:49,593 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:00:49,609 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:00:49,620 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:01:18,451 - INFO - ====== WebDriver manager ======
+2025-05-25 07:01:18,613 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:01:18,632 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:01:18,645 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:01:47,945 - INFO - ====== WebDriver manager ======
+2025-05-25 07:01:48,108 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:01:48,122 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:01:48,133 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:02:16,941 - INFO - ====== WebDriver manager ======
+2025-05-25 07:02:17,113 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:02:17,129 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:02:17,140 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:02:46,178 - INFO - ====== WebDriver manager ======
+2025-05-25 07:02:46,331 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:02:46,344 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:02:46,356 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:03:15,728 - INFO - ====== WebDriver manager ======
+2025-05-25 07:03:15,880 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:03:15,895 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:03:15,908 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:03:44,679 - INFO - ====== WebDriver manager ======
+2025-05-25 07:03:44,831 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:03:44,845 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:03:44,859 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:04:13,674 - INFO - ====== WebDriver manager ======
+2025-05-25 07:04:13,834 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:04:13,850 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:04:13,865 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:04:41,937 - INFO - ====== WebDriver manager ======
+2025-05-25 07:04:42,094 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:04:42,110 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:04:42,123 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:05:10,471 - INFO - ====== WebDriver manager ======
+2025-05-25 07:05:10,637 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:05:10,653 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:05:10,664 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:05:40,464 - INFO - ====== WebDriver manager ======
+2025-05-25 07:05:40,619 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:05:40,634 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:05:40,648 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:06:09,681 - INFO - ====== WebDriver manager ======
+2025-05-25 07:06:09,837 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:06:09,852 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:06:09,863 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:06:38,696 - INFO - ====== WebDriver manager ======
+2025-05-25 07:06:38,855 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:06:38,869 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:06:38,880 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:07:07,927 - INFO - ====== WebDriver manager ======
+2025-05-25 07:07:08,082 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:07:08,095 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:07:08,107 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:07:38,003 - INFO - ====== WebDriver manager ======
+2025-05-25 07:07:38,167 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:07:38,181 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:07:38,195 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:08:07,269 - INFO - ====== WebDriver manager ======
+2025-05-25 07:08:07,450 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:08:07,465 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:08:07,477 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:08:36,482 - INFO - ====== WebDriver manager ======
+2025-05-25 07:08:36,642 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:08:36,657 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:08:36,669 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:09:05,722 - INFO - ====== WebDriver manager ======
+2025-05-25 07:09:05,957 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:09:05,976 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:09:05,993 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:09:35,173 - INFO - ====== WebDriver manager ======
+2025-05-25 07:09:35,329 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:09:35,345 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:09:35,358 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:10:03,705 - INFO - ====== WebDriver manager ======
+2025-05-25 07:10:03,870 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:10:03,884 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:10:03,897 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:10:33,471 - INFO - ====== WebDriver manager ======
+2025-05-25 07:10:33,627 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:10:33,642 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:10:33,654 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:11:02,840 - INFO - ====== WebDriver manager ======
+2025-05-25 07:11:03,122 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:11:03,143 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:11:03,160 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:11:32,436 - INFO - ====== WebDriver manager ======
+2025-05-25 07:11:32,598 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:11:32,612 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:11:32,626 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:12:01,714 - INFO - ====== WebDriver manager ======
+2025-05-25 07:12:01,885 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:12:01,904 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:12:01,919 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:12:31,184 - INFO - ====== WebDriver manager ======
+2025-05-25 07:12:31,354 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:12:31,387 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:12:31,402 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:13:00,508 - INFO - ====== WebDriver manager ======
+2025-05-25 07:13:00,663 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:13:00,680 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:13:00,693 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:13:30,713 - INFO - ====== WebDriver manager ======
+2025-05-25 07:13:30,880 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:13:30,938 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:13:30,954 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:13:59,951 - INFO - ====== WebDriver manager ======
+2025-05-25 07:14:00,109 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:14:00,126 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:14:00,138 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:14:28,749 - INFO - ====== WebDriver manager ======
+2025-05-25 07:14:29,037 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:14:29,061 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:14:29,078 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:14:57,928 - INFO - ====== WebDriver manager ======
+2025-05-25 07:14:58,087 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:14:58,101 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:14:58,111 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:15:27,984 - INFO - ====== WebDriver manager ======
+2025-05-25 07:15:28,141 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:15:28,155 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:15:28,165 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:15:57,217 - INFO - ====== WebDriver manager ======
+2025-05-25 07:15:57,376 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:15:57,391 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:15:57,403 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:16:26,217 - INFO - ====== WebDriver manager ======
+2025-05-25 07:16:26,388 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:16:26,406 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:16:26,420 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:16:55,498 - INFO - ====== WebDriver manager ======
+2025-05-25 07:16:55,662 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:16:55,678 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:16:55,691 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:17:24,704 - INFO - ====== WebDriver manager ======
+2025-05-25 07:17:24,861 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:17:24,874 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:17:24,885 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:17:53,681 - INFO - ====== WebDriver manager ======
+2025-05-25 07:17:53,840 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:17:53,856 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:17:53,867 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:18:22,693 - INFO - ====== WebDriver manager ======
+2025-05-25 07:18:22,855 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:18:22,868 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:18:22,879 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:18:51,220 - INFO - ====== WebDriver manager ======
+2025-05-25 07:18:51,381 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:18:51,398 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:18:51,410 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:19:20,475 - INFO - ====== WebDriver manager ======
+2025-05-25 07:19:20,645 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:19:20,659 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:19:20,671 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:19:50,182 - INFO - ====== WebDriver manager ======
+2025-05-25 07:19:50,338 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:19:50,352 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:19:50,363 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:20:19,219 - INFO - ====== WebDriver manager ======
+2025-05-25 07:20:19,382 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:20:19,396 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:20:19,409 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:20:48,186 - INFO - ====== WebDriver manager ======
+2025-05-25 07:20:48,347 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:20:48,362 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:20:48,373 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:21:17,195 - INFO - ====== WebDriver manager ======
+2025-05-25 07:21:17,362 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:21:17,375 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:21:17,388 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:21:46,443 - INFO - ====== WebDriver manager ======
+2025-05-25 07:21:46,593 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:21:46,607 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:21:46,618 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:22:15,456 - INFO - ====== WebDriver manager ======
+2025-05-25 07:22:15,615 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:22:15,629 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:22:15,641 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:22:44,424 - INFO - ====== WebDriver manager ======
+2025-05-25 07:22:44,578 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:22:44,592 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:22:44,605 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:23:13,180 - INFO - ====== WebDriver manager ======
+2025-05-25 07:23:13,336 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:23:13,351 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:23:13,363 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:23:42,449 - INFO - ====== WebDriver manager ======
+2025-05-25 07:23:42,611 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:23:42,628 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:23:42,640 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:24:11,426 - INFO - ====== WebDriver manager ======
+2025-05-25 07:24:11,590 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:24:11,605 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:24:11,619 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:24:40,445 - INFO - ====== WebDriver manager ======
+2025-05-25 07:24:40,607 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:24:40,622 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:24:40,636 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:25:09,467 - INFO - ====== WebDriver manager ======
+2025-05-25 07:25:09,636 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:25:09,651 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:25:09,663 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:25:38,474 - INFO - ====== WebDriver manager ======
+2025-05-25 07:25:38,633 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:25:38,650 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:25:38,661 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:26:07,704 - INFO - ====== WebDriver manager ======
+2025-05-25 07:26:07,859 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:26:07,873 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:26:07,886 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:26:36,694 - INFO - ====== WebDriver manager ======
+2025-05-25 07:26:36,848 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:26:36,863 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:26:36,876 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:27:05,698 - INFO - ====== WebDriver manager ======
+2025-05-25 07:27:05,854 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:27:05,870 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:27:05,881 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:27:34,942 - INFO - ====== WebDriver manager ======
+2025-05-25 07:27:35,102 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:27:35,117 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:27:35,130 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:28:03,959 - INFO - ====== WebDriver manager ======
+2025-05-25 07:28:04,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:28:04,131 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:28:04,144 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:28:33,197 - INFO - ====== WebDriver manager ======
+2025-05-25 07:28:33,358 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:28:33,372 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:28:33,385 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:29:02,219 - INFO - ====== WebDriver manager ======
+2025-05-25 07:29:02,374 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:29:02,390 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:29:02,403 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:29:31,470 - INFO - ====== WebDriver manager ======
+2025-05-25 07:29:31,640 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:29:31,656 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:29:31,668 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:30:00,444 - INFO - ====== WebDriver manager ======
+2025-05-25 07:30:00,600 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:30:00,614 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:30:00,625 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:30:29,186 - INFO - ====== WebDriver manager ======
+2025-05-25 07:30:29,347 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:30:29,361 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:30:29,373 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:30:58,212 - INFO - ====== WebDriver manager ======
+2025-05-25 07:30:58,367 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:30:58,383 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:30:58,395 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:31:27,496 - INFO - ====== WebDriver manager ======
+2025-05-25 07:31:27,659 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:31:27,673 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:31:27,685 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:31:56,701 - INFO - ====== WebDriver manager ======
+2025-05-25 07:31:56,855 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:31:56,870 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:31:56,882 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:32:25,702 - INFO - ====== WebDriver manager ======
+2025-05-25 07:32:25,862 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:32:25,876 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:32:25,887 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:32:54,692 - INFO - ====== WebDriver manager ======
+2025-05-25 07:32:54,849 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:32:54,864 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:32:54,877 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:33:23,984 - INFO - ====== WebDriver manager ======
+2025-05-25 07:33:24,157 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:33:24,187 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:33:24,202 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:33:52,925 - INFO - ====== WebDriver manager ======
+2025-05-25 07:33:53,082 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:33:53,099 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:33:53,112 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:34:21,937 - INFO - ====== WebDriver manager ======
+2025-05-25 07:34:22,103 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:34:22,117 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:34:22,130 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:34:50,959 - INFO - ====== WebDriver manager ======
+2025-05-25 07:34:51,117 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:34:51,131 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:34:51,143 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:35:20,001 - INFO - ====== WebDriver manager ======
+2025-05-25 07:35:20,160 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:35:20,174 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:35:20,184 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:35:49,227 - INFO - ====== WebDriver manager ======
+2025-05-25 07:35:49,386 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:35:49,401 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:35:49,415 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:36:18,464 - INFO - ====== WebDriver manager ======
+2025-05-25 07:36:18,631 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:36:18,647 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:36:18,662 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:36:47,439 - INFO - ====== WebDriver manager ======
+2025-05-25 07:36:47,596 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:36:47,612 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:36:47,624 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:37:16,703 - INFO - ====== WebDriver manager ======
+2025-05-25 07:37:16,855 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:37:16,869 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:37:16,882 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:37:45,691 - INFO - ====== WebDriver manager ======
+2025-05-25 07:37:45,861 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:37:45,876 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:37:45,888 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:38:14,680 - INFO - ====== WebDriver manager ======
+2025-05-25 07:38:14,835 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:38:14,850 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:38:14,860 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:38:43,681 - INFO - ====== WebDriver manager ======
+2025-05-25 07:38:43,838 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:38:43,851 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:38:43,862 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:39:12,701 - INFO - ====== WebDriver manager ======
+2025-05-25 07:39:12,856 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:39:12,871 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:39:12,884 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:39:41,683 - INFO - ====== WebDriver manager ======
+2025-05-25 07:39:41,848 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:39:41,863 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:39:41,877 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:40:10,735 - INFO - ====== WebDriver manager ======
+2025-05-25 07:40:10,889 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:40:10,905 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:40:10,916 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:40:39,707 - INFO - ====== WebDriver manager ======
+2025-05-25 07:40:39,869 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:40:39,882 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:40:39,894 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:41:08,693 - INFO - ====== WebDriver manager ======
+2025-05-25 07:41:08,851 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:41:08,865 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:41:08,876 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:41:37,683 - INFO - ====== WebDriver manager ======
+2025-05-25 07:41:37,843 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:41:37,861 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:41:37,876 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:42:06,447 - INFO - ====== WebDriver manager ======
+2025-05-25 07:42:06,605 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:42:06,619 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:42:06,631 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:42:35,429 - INFO - ====== WebDriver manager ======
+2025-05-25 07:42:35,580 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:42:35,593 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:42:35,604 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:43:04,441 - INFO - ====== WebDriver manager ======
+2025-05-25 07:43:04,606 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:43:04,622 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:43:04,633 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:43:33,446 - INFO - ====== WebDriver manager ======
+2025-05-25 07:43:33,605 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:43:33,620 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:43:33,632 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:44:02,432 - INFO - ====== WebDriver manager ======
+2025-05-25 07:44:02,588 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:44:02,605 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:44:02,616 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:44:31,464 - INFO - ====== WebDriver manager ======
+2025-05-25 07:44:31,622 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:44:31,638 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:44:31,649 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:45:00,444 - INFO - ====== WebDriver manager ======
+2025-05-25 07:45:00,602 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:45:00,616 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:45:00,627 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:45:30,449 - INFO - ====== WebDriver manager ======
+2025-05-25 07:45:30,605 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:45:30,620 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:45:30,632 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:45:59,419 - INFO - ====== WebDriver manager ======
+2025-05-25 07:45:59,571 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:45:59,585 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:45:59,596 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:46:29,455 - INFO - ====== WebDriver manager ======
+2025-05-25 07:46:29,612 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:46:29,628 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:46:29,641 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:46:58,732 - INFO - ====== WebDriver manager ======
+2025-05-25 07:46:58,889 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:46:58,908 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:46:58,922 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:47:27,949 - INFO - ====== WebDriver manager ======
+2025-05-25 07:47:28,114 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:47:28,128 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:47:28,138 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:47:56,966 - INFO - ====== WebDriver manager ======
+2025-05-25 07:47:57,125 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:47:57,142 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:47:57,155 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:48:25,959 - INFO - ====== WebDriver manager ======
+2025-05-25 07:48:26,117 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:48:26,133 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:48:26,144 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:48:55,199 - INFO - ====== WebDriver manager ======
+2025-05-25 07:48:55,356 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:48:55,373 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:48:55,387 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:49:24,191 - INFO - ====== WebDriver manager ======
+2025-05-25 07:49:24,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:49:24,380 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:49:24,393 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:49:53,195 - INFO - ====== WebDriver manager ======
+2025-05-25 07:49:53,354 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:49:53,369 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:49:53,381 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:50:23,241 - INFO - ====== WebDriver manager ======
+2025-05-25 07:50:23,412 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:50:23,427 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:50:23,438 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:50:52,449 - INFO - ====== WebDriver manager ======
+2025-05-25 07:50:52,603 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:50:52,618 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:50:52,631 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:51:21,696 - INFO - ====== WebDriver manager ======
+2025-05-25 07:51:21,854 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:51:21,868 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:51:21,879 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:51:50,723 - INFO - ====== WebDriver manager ======
+2025-05-25 07:51:50,889 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:51:50,903 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:51:50,916 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:52:19,937 - INFO - ====== WebDriver manager ======
+2025-05-25 07:52:20,100 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:52:20,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:52:20,129 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:52:48,926 - INFO - ====== WebDriver manager ======
+2025-05-25 07:52:49,084 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:52:49,099 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:52:49,110 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:53:19,205 - INFO - ====== WebDriver manager ======
+2025-05-25 07:53:19,369 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:53:19,385 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:53:19,399 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:53:48,188 - INFO - ====== WebDriver manager ======
+2025-05-25 07:53:48,348 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:53:48,364 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:53:48,375 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:54:17,191 - INFO - ====== WebDriver manager ======
+2025-05-25 07:54:17,352 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:54:17,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:54:17,378 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:54:45,949 - INFO - ====== WebDriver manager ======
+2025-05-25 07:54:46,106 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:54:46,121 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:54:46,134 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:55:15,208 - INFO - ====== WebDriver manager ======
+2025-05-25 07:55:15,383 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:55:15,399 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:55:15,412 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:55:44,211 - INFO - ====== WebDriver manager ======
+2025-05-25 07:55:44,376 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:55:44,390 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:55:44,403 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:56:13,438 - INFO - ====== WebDriver manager ======
+2025-05-25 07:56:13,600 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:56:13,614 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:56:13,627 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:56:42,444 - INFO - ====== WebDriver manager ======
+2025-05-25 07:56:42,602 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:56:42,616 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:56:42,628 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:57:11,185 - INFO - ====== WebDriver manager ======
+2025-05-25 07:57:11,344 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:57:11,359 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:57:11,372 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:57:40,194 - INFO - ====== WebDriver manager ======
+2025-05-25 07:57:40,351 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:57:40,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:57:40,378 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:58:09,180 - INFO - ====== WebDriver manager ======
+2025-05-25 07:58:09,334 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:58:09,348 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:58:09,360 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:58:38,442 - INFO - ====== WebDriver manager ======
+2025-05-25 07:58:38,594 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:58:38,607 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:58:38,618 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:59:07,174 - INFO - ====== WebDriver manager ======
+2025-05-25 07:59:07,326 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:59:07,339 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:59:07,350 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 07:59:36,180 - INFO - ====== WebDriver manager ======
+2025-05-25 07:59:36,334 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:59:36,349 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 07:59:36,361 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:00:05,209 - INFO - ====== WebDriver manager ======
+2025-05-25 08:00:05,363 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:00:05,380 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:00:05,391 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:00:34,183 - INFO - ====== WebDriver manager ======
+2025-05-25 08:00:34,358 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:00:34,372 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:00:34,384 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:01:03,465 - INFO - ====== WebDriver manager ======
+2025-05-25 08:01:03,683 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:01:03,698 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:01:03,711 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:01:32,445 - INFO - ====== WebDriver manager ======
+2025-05-25 08:01:32,607 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:01:32,624 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:01:32,635 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:02:01,743 - INFO - ====== WebDriver manager ======
+2025-05-25 08:02:01,921 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:02:01,937 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:02:01,950 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:02:30,937 - INFO - ====== WebDriver manager ======
+2025-05-25 08:02:31,101 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:02:31,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:02:31,129 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:03:00,253 - INFO - ====== WebDriver manager ======
+2025-05-25 08:03:00,411 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:03:00,427 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:03:00,441 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:03:29,463 - INFO - ====== WebDriver manager ======
+2025-05-25 08:03:29,628 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:03:29,643 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:03:29,655 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:03:58,697 - INFO - ====== WebDriver manager ======
+2025-05-25 08:03:58,852 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:03:58,867 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:03:58,890 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:04:27,701 - INFO - ====== WebDriver manager ======
+2025-05-25 08:04:27,862 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:04:27,876 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:04:27,887 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:04:56,707 - INFO - ====== WebDriver manager ======
+2025-05-25 08:04:56,865 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:04:56,880 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:04:56,891 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:05:25,702 - INFO - ====== WebDriver manager ======
+2025-05-25 08:05:25,866 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:05:25,882 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:05:25,893 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:05:54,705 - INFO - ====== WebDriver manager ======
+2025-05-25 08:05:54,882 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:05:54,898 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:05:54,911 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:06:23,693 - INFO - ====== WebDriver manager ======
+2025-05-25 08:06:23,849 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:06:23,865 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:06:23,878 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:06:52,704 - INFO - ====== WebDriver manager ======
+2025-05-25 08:06:52,864 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:06:52,879 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:06:52,893 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:07:21,721 - INFO - ====== WebDriver manager ======
+2025-05-25 08:07:21,881 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:07:21,896 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:07:21,908 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:07:50,700 - INFO - ====== WebDriver manager ======
+2025-05-25 08:07:50,871 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:07:50,890 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:07:50,902 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:08:20,722 - INFO - ====== WebDriver manager ======
+2025-05-25 08:08:20,893 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:08:20,907 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:08:20,918 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:08:49,708 - INFO - ====== WebDriver manager ======
+2025-05-25 08:08:49,872 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:08:49,887 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:08:49,898 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:09:18,969 - INFO - ====== WebDriver manager ======
+2025-05-25 08:09:19,137 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:09:19,152 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:09:19,165 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:09:48,211 - INFO - ====== WebDriver manager ======
+2025-05-25 08:09:48,372 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:09:48,386 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:09:48,398 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:10:17,442 - INFO - ====== WebDriver manager ======
+2025-05-25 08:10:17,618 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:10:17,632 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:10:17,646 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:10:46,439 - INFO - ====== WebDriver manager ======
+2025-05-25 08:10:46,601 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:10:46,616 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:10:46,627 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:11:15,697 - INFO - ====== WebDriver manager ======
+2025-05-25 08:11:15,859 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:11:15,874 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:11:15,888 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:11:44,698 - INFO - ====== WebDriver manager ======
+2025-05-25 08:11:44,863 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:11:44,880 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:11:44,893 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:12:13,772 - INFO - ====== WebDriver manager ======
+2025-05-25 08:12:13,932 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:12:13,946 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:12:13,957 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:12:42,946 - INFO - ====== WebDriver manager ======
+2025-05-25 08:12:43,103 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:12:43,118 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:12:43,128 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:13:11,962 - INFO - ====== WebDriver manager ======
+2025-05-25 08:13:12,125 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:13:12,140 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:13:12,155 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:13:40,951 - INFO - ====== WebDriver manager ======
+2025-05-25 08:13:41,112 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:13:41,127 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:13:41,140 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:14:09,921 - INFO - ====== WebDriver manager ======
+2025-05-25 08:14:10,071 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:14:10,085 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:14:10,096 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:14:38,991 - INFO - ====== WebDriver manager ======
+2025-05-25 08:14:39,154 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:14:39,169 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:14:39,181 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:15:07,933 - INFO - ====== WebDriver manager ======
+2025-05-25 08:15:08,085 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:15:08,099 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:15:08,110 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:15:36,942 - INFO - ====== WebDriver manager ======
+2025-05-25 08:15:37,097 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:15:37,113 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:15:37,126 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:16:06,200 - INFO - ====== WebDriver manager ======
+2025-05-25 08:16:06,354 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:16:06,368 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:16:06,379 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:16:35,209 - INFO - ====== WebDriver manager ======
+2025-05-25 08:16:35,373 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:16:35,388 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:16:35,400 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:17:04,191 - INFO - ====== WebDriver manager ======
+2025-05-25 08:17:04,349 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:17:04,362 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:17:04,373 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:17:33,196 - INFO - ====== WebDriver manager ======
+2025-05-25 08:17:33,359 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:17:33,374 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:17:33,385 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:18:01,946 - INFO - ====== WebDriver manager ======
+2025-05-25 08:18:02,104 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:18:02,119 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:18:02,132 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:18:31,439 - INFO - ====== WebDriver manager ======
+2025-05-25 08:18:31,598 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:18:31,612 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:18:31,625 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:19:01,436 - INFO - ====== WebDriver manager ======
+2025-05-25 08:19:01,602 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:19:01,620 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:19:01,631 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:19:30,717 - INFO - ====== WebDriver manager ======
+2025-05-25 08:19:30,871 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:19:30,887 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:19:30,898 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:19:59,684 - INFO - ====== WebDriver manager ======
+2025-05-25 08:19:59,838 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:19:59,853 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:19:59,864 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:20:28,716 - INFO - ====== WebDriver manager ======
+2025-05-25 08:20:28,880 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:20:28,896 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:20:28,907 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:20:57,749 - INFO - ====== WebDriver manager ======
+2025-05-25 08:20:57,910 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:20:57,924 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:20:57,934 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:21:27,037 - INFO - ====== WebDriver manager ======
+2025-05-25 08:21:27,301 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:21:27,317 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:21:27,331 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:21:56,458 - INFO - ====== WebDriver manager ======
+2025-05-25 08:21:56,619 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:21:56,633 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:21:56,645 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:22:25,447 - INFO - ====== WebDriver manager ======
+2025-05-25 08:22:25,604 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:22:25,620 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:22:25,632 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:22:54,451 - INFO - ====== WebDriver manager ======
+2025-05-25 08:22:54,610 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:22:54,624 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:22:54,635 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:23:23,513 - INFO - ====== WebDriver manager ======
+2025-05-25 08:23:23,684 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:23:23,699 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:23:23,711 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:23:52,699 - INFO - ====== WebDriver manager ======
+2025-05-25 08:23:52,856 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:23:52,871 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:23:52,882 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:24:21,693 - INFO - ====== WebDriver manager ======
+2025-05-25 08:24:21,861 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:24:21,879 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:24:21,893 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:24:51,202 - INFO - ====== WebDriver manager ======
+2025-05-25 08:24:51,372 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:24:51,390 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:24:51,400 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:25:20,232 - INFO - ====== WebDriver manager ======
+2025-05-25 08:25:20,396 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:25:20,422 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:25:20,434 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:25:49,447 - INFO - ====== WebDriver manager ======
+2025-05-25 08:25:49,610 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:25:49,625 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:25:49,637 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:26:18,200 - INFO - ====== WebDriver manager ======
+2025-05-25 08:26:18,372 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:26:18,387 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:26:18,400 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:26:47,233 - INFO - ====== WebDriver manager ======
+2025-05-25 08:26:47,397 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:26:47,412 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:26:47,428 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:27:16,236 - INFO - ====== WebDriver manager ======
+2025-05-25 08:27:16,400 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:27:16,413 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:27:16,425 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:27:46,226 - INFO - ====== WebDriver manager ======
+2025-05-25 08:27:46,385 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:27:46,402 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:27:46,413 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:28:16,446 - INFO - ====== WebDriver manager ======
+2025-05-25 08:28:16,598 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:28:16,613 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:28:16,626 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:28:45,447 - INFO - ====== WebDriver manager ======
+2025-05-25 08:28:45,599 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:28:45,612 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:28:45,624 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:29:14,537 - INFO - ====== WebDriver manager ======
+2025-05-25 08:29:14,833 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:29:14,848 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:29:14,860 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:29:43,688 - INFO - ====== WebDriver manager ======
+2025-05-25 08:29:43,856 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:29:43,870 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:29:43,883 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:30:12,690 - INFO - ====== WebDriver manager ======
+2025-05-25 08:30:12,853 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:30:12,870 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:30:12,883 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:30:41,993 - INFO - ====== WebDriver manager ======
+2025-05-25 08:30:42,178 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:30:42,194 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:30:42,206 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:31:11,466 - INFO - ====== WebDriver manager ======
+2025-05-25 08:31:11,628 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:31:11,642 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:31:11,656 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:31:40,763 - INFO - ====== WebDriver manager ======
+2025-05-25 08:31:40,927 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:31:40,941 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:31:40,952 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:32:09,962 - INFO - ====== WebDriver manager ======
+2025-05-25 08:32:10,128 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:32:10,145 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:32:10,156 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:32:38,799 - INFO - ====== WebDriver manager ======
+2025-05-25 08:32:38,965 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:32:38,981 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:32:38,994 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:33:08,242 - INFO - ====== WebDriver manager ======
+2025-05-25 08:33:08,414 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:33:08,429 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:33:08,441 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:33:37,438 - INFO - ====== WebDriver manager ======
+2025-05-25 08:33:37,608 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:33:37,623 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:33:37,635 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:34:06,710 - INFO - ====== WebDriver manager ======
+2025-05-25 08:34:06,866 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:34:06,882 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:34:06,896 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:34:35,681 - INFO - ====== WebDriver manager ======
+2025-05-25 08:34:35,834 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:34:35,848 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:34:35,860 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:35:04,457 - INFO - ====== WebDriver manager ======
+2025-05-25 08:35:04,624 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:35:04,640 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:35:04,653 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:35:33,984 - INFO - ====== WebDriver manager ======
+2025-05-25 08:35:34,140 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:35:34,155 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:35:34,166 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:36:02,994 - INFO - ====== WebDriver manager ======
+2025-05-25 08:36:03,152 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:36:03,169 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:36:03,181 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:36:32,437 - INFO - ====== WebDriver manager ======
+2025-05-25 08:36:32,593 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:36:32,608 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:36:32,620 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:37:01,442 - INFO - ====== WebDriver manager ======
+2025-05-25 08:37:01,661 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:37:01,678 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:37:01,691 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:37:30,955 - INFO - ====== WebDriver manager ======
+2025-05-25 08:37:31,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:37:31,130 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:37:31,140 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:38:00,937 - INFO - ====== WebDriver manager ======
+2025-05-25 08:38:01,096 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:38:01,111 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:38:01,123 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:38:30,446 - INFO - ====== WebDriver manager ======
+2025-05-25 08:38:30,608 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:38:30,622 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:38:30,636 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:38:59,420 - INFO - ====== WebDriver manager ======
+2025-05-25 08:38:59,579 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:38:59,594 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:38:59,608 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:39:28,450 - INFO - ====== WebDriver manager ======
+2025-05-25 08:39:28,616 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:39:28,631 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:39:28,643 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:39:57,493 - INFO - ====== WebDriver manager ======
+2025-05-25 08:39:57,648 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:39:57,663 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:39:57,674 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:40:26,471 - INFO - ====== WebDriver manager ======
+2025-05-25 08:40:26,641 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:40:26,659 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:40:26,671 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:40:55,746 - INFO - ====== WebDriver manager ======
+2025-05-25 08:40:55,906 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:40:55,920 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:40:55,932 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache
+2025-05-25 08:41:24,959 - INFO - ====== WebDriver manager ======
+2025-05-25 08:41:25,122 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:41:25,137 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-25 08:41:25,148 - INFO - Driver [/root/.wdm/drivers/chromedriver/linux64/135.0.7049.114/chromedriver-linux64/chromedriver] found in cache

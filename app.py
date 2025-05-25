@@ -302,69 +302,113 @@ def health(db: Session = Depends(get_db)):
 
 @app.get("/filter_loads", dependencies=[Depends(get_api_key)])
 def filter_loads(
-   n_vehicles: Optional[int] = None,
-   min_price: Optional[float] = None,
-   date_ready: Optional[datetime] = None,
-   max_price: Optional[float] = None,
-   min_milage: Optional[float] = None,
-   max_milage: Optional[float] = None,
-   brokerage: Optional[str] = None,
-   min_weight: Optional[float] = None,
-   max_weight: Optional[float] = None,
-   origin: Optional[str] = None,
-   destination: Optional[str] = None,
-   db: Session = Depends(get_db)
+    n_vehicles: Optional[int] = None,
+    min_price: Optional[float] = None,
+    date_ready: Optional[datetime] = None,
+    max_price: Optional[float] = None,
+    min_milage: Optional[float] = None,
+    max_milage: Optional[float] = None,
+    brokerage: Optional[str] = None,
+    min_weight: Optional[float] = None,
+    max_weight: Optional[float] = None,
+    origin: Optional[str] = None,
+    destination: Optional[str] = None,
+    origin_region_id: Optional[int] = None,
+    destination_region_id: Optional[int] = None,
+    db: Session = Depends(get_db)
 ):
-
-    # Build the SQL query dynamically
-    sql_query = """
-        SELECT 
-            load_id, external_load_id, brokerage, pickup_location, 
-            delivery_location, price::float, milage, is_operational,
-            contact_phone, notes, loadboard_source, created_at,
-            date_ready, n_vehicles, weight, enclosed_trailer, saved_by
-        FROM loads 
-        WHERE 1=1
+    # Base query parts
+    select_clause = """
+        SELECT DISTINCT
+            l.load_id, l.external_load_id, l.brokerage, l.pickup_location, 
+            l.delivery_location, l.price::float, l.milage, l.is_operational,
+            l.contact_phone, l.notes, l.loadboard_source, l.created_at,
+            l.date_ready, l.n_vehicles, l.weight, l.enclosed_trailer, l.saved_by
     """
+    
+    from_clause = "FROM loads l"
+    joins = []
+    where_conditions = []
     params = {}
+    
+    # Handle origin region filtering
+    if origin_region_id is not None:
+        from resources.models import Region
+        origin_region = db.query(Region).filter(Region.id == origin_region_id).first()
+        if not origin_region:
+            raise HTTPException(
+                status_code=HTTPStatus.NOT_FOUND,
+                detail="Origin region not found"
+            )
+        joins.append("""
+            JOIN region_zip_codes rzc_origin ON 
+            SUBSTRING(l.pickup_location FROM '[0-9]{5}') = rzc_origin.zip_code
+        """)
+        where_conditions.append("rzc_origin.region_id = :origin_region_id")
+        params['origin_region_id'] = origin_region_id
 
-    # Add filter conditions
+    # Handle destination region filtering
+    if destination_region_id is not None:
+        from resources.models import Region
+        dest_region = db.query(Region).filter(Region.id == destination_region_id).first()
+        if not dest_region:
+            raise HTTPException(
+                status_code=HTTPStatus.NOT_FOUND,
+                detail="Destination region not found"
+            )
+        joins.append("""
+            JOIN region_zip_codes rzc_dest ON 
+            SUBSTRING(l.delivery_location FROM '[0-9]{5}') = rzc_dest.zip_code
+        """)
+        where_conditions.append("rzc_dest.region_id = :destination_region_id")
+        params['destination_region_id'] = destination_region_id
+
+    # Add all other filters
     if min_price is not None:
-        sql_query += " AND CAST(price AS FLOAT) >= :min_price"
+        where_conditions.append("CAST(l.price AS FLOAT) >= :min_price")
         params['min_price'] = min_price
     if max_price is not None:
-        sql_query += " AND CAST(price AS FLOAT) <= :max_price"
+        where_conditions.append("CAST(l.price AS FLOAT) <= :max_price")
         params['max_price'] = max_price
     if min_milage is not None:
-        sql_query += " AND milage >= :min_milage"
+        where_conditions.append("l.milage >= :min_milage")
         params['min_milage'] = min_milage
     if max_milage is not None:
-        sql_query += " AND milage <= :max_milage"
+        where_conditions.append("l.milage <= :max_milage")
         params['max_milage'] = max_milage
     if brokerage:
-        sql_query += " AND brokerage = :broker"
+        where_conditions.append("l.brokerage = :broker")
         params['broker'] = brokerage
     if min_weight is not None:
-        sql_query += " AND weight >= :min_weight"
+        where_conditions.append("l.weight >= :min_weight")
         params['min_weight'] = min_weight
     if max_weight is not None:
-        sql_query += " AND weight <= :max_weight"
+        where_conditions.append("l.weight <= :max_weight")
         params['max_weight'] = max_weight
     if origin:
-        sql_query += " AND pickup_location ILIKE :origin"
+        where_conditions.append("l.pickup_location ILIKE :origin")
         params['origin'] = f'%{origin}%'
     if destination:
-        sql_query += " AND delivery_location ILIKE :destination"
+        where_conditions.append("l.delivery_location ILIKE :destination")
         params['destination'] = f'%{destination}%'
     if n_vehicles is not None:
-        sql_query += " AND n_vehicles = :n_vehicles"
+        where_conditions.append("l.n_vehicles = :n_vehicles")
         params['n_vehicles'] = n_vehicles
     if date_ready is not None:
-        sql_query += " AND date_ready <= :date_ready"
+        where_conditions.append("l.date_ready <= :date_ready")
         params['date_ready'] = date_ready
-    sql_query += " ORDER BY created_at DESC"
 
-    # Execute the raw SQL query
+    # Build final query
+    sql_query = select_clause + " " + from_clause
+    if joins:
+        sql_query += " " + " ".join(joins)
+    
+    if where_conditions:
+        sql_query += " WHERE " + " AND ".join(where_conditions)
+    
+    sql_query += " ORDER BY l.created_at DESC"
+
+    # Execute query
     result = db.execute(text(sql_query), params).all()
     if not result:
         raise HTTPException(
@@ -372,7 +416,7 @@ def filter_loads(
             detail="No loads found matching the criteria"
         )
 
-    # Convert rows to dictionaries and serialize datetime objects
+    # Convert to response format
     loads_list = []
     for row in result:
         load_dict = {}
@@ -382,9 +426,8 @@ def filter_loads(
             else:
                 load_dict[key] = value
         loads_list.append(load_dict)
-    result = loads_list
     
-    return result[0:25] 
+    return loads_list[0:25]
 
 
 @app.post("/save_load", dependencies=[Depends(get_api_key)])
@@ -497,3 +540,66 @@ def is_saved(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
     load = db.query(LoadModel).filter(LoadModel.load_id == load_id).first()
     is_saved = load and load.saved_by and dispatcher_id in load.saved_by
     return {"is_saved": is_saved}
+
+
+# Add to your existing FastAPI app
+
+@app.get("/regions", dependencies=[Depends(get_api_key)])
+def get_regions(db: Session = Depends(get_db)):
+    """Get all regions for frontend dropdown"""
+    from resources.models import Region
+    
+    regions = db.query(Region).order_by(Region.name).all()
+    return [{"id": r.id, "name": r.name, "description": r.description} for r in regions]
+
+    """Get all loads from a specific region (e.g., Long Island)"""
+    from resources.models import Region, RegionZipCode
+    
+    # Verify region exists
+    region = db.query(Region).filter(Region.id == region_id).first()
+    if not region:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail="Region not found"
+        )
+    
+    # Build dynamic SQL query similar to your filter_loads endpoint
+    sql_query = """
+        SELECT DISTINCT
+            l.load_id, l.external_load_id, l.brokerage, l.pickup_location, 
+            l.delivery_location, l.price::float, l.milage, l.is_operational,
+            l.contact_phone, l.notes, l.loadboard_source, l.created_at,
+            l.date_ready, l.n_vehicles, l.weight, l.enclosed_trailer, l.saved_by
+        FROM loads l
+        JOIN region_zip_codes rzc ON (
+            SUBSTRING(l.pickup_location FROM '[0-9]{5}') = rzc.zip_code 
+            OR SUBSTRING(l.delivery_location FROM '[0-9]{5}') = rzc.zip_code
+        )
+        WHERE rzc.region_id = :region_id
+        ORDER BY l.created_at DESC
+    """
+    
+    result = db.execute(text(sql_query), {"region_id": region_id}).all()
+    
+    if not result:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail=f"No loads found for {region.name}"
+        )
+    
+    # Convert to list of dictionaries (same as your filter_loads logic)
+    loads_list = []
+    for row in result:
+        load_dict = {}
+        for key, value in row._mapping.items():
+            if isinstance(value, datetime):
+                load_dict[key] = value.isoformat()
+            else:
+                load_dict[key] = value
+        loads_list.append(load_dict)
+    
+    return {
+        "region": {"id": region.id, "name": region.name},
+        "loads": loads_list[:25],  # Limit like your other endpoint
+        "total_found": len(loads_list)
+    }
