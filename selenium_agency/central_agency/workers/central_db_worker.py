@@ -137,7 +137,7 @@ class CentralDbWorker(CentralDataWorker):
         loads_to_delete = []
         counter = 1
         for db_load in existing_db_loads:
-            print(f"\Sanitizing db load: {counter} / {len(existing_db_loads)}", end='', flush=True)
+            print(f"\rSanitizing db load: {counter} / {len(existing_db_loads)}", end='', flush=True)
             counter += 1
             found_match = False
             for remote_load in remote_loads:
@@ -156,7 +156,10 @@ class CentralDbWorker(CentralDataWorker):
 
         # Delete loads that weren't found in remote data
         if loads_to_delete:
+            counter = 1
             for load in loads_to_delete:
+                print(f"\rDeleting obsolete load: {counter} / {len(loads_to_delete)}", end='', flush=True)
+                counter += 1
                 self.__db_Session.delete(load)
             self.__db_Session.commit()
             print(f"Deleted {len(loads_to_delete)} obsolete loads from DB for state {state}")
