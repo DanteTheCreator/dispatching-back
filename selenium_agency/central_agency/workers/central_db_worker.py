@@ -1,8 +1,10 @@
 from geoalchemy2.elements import WKTElement
 import time
 from resources.models import LoadModel, get_db
+from .central_data_worker import CentralDataWorker
+from utils.utils import objects_equal
 
-class CentralDbWorker:
+class CentralDbWorker(CentralDataWorker):
     def __init__(self):
         self.__db_Session = next(get_db())
 
@@ -116,3 +118,48 @@ class CentralDbWorker:
                 print("\n")
             else:
                 print("No valid loads to insert into DB")
+
+    def sanitize_db(self, remote_loads, state):
+        print("Sanitizing database...")
+        if self.__db_Session is None:
+            print("Database session is not initialized.")
+            return
+
+        # Fetch all existing loads for the specified state
+        existing_db_loads = self.__db_Session.query(LoadModel).filter(
+            LoadModel.pickup_location.contains(f", {state} ")
+        ).all()
+
+        print(f"Found {len(existing_db_loads)} existing loads in DB for state {state}")
+        print(f"Comparing against {len(remote_loads)} remote loads")
+
+        # Find database loads that don't exist in remote data
+        loads_to_delete = []
+        counter = 1
+        for db_load in existing_db_loads:
+            print(f"\Sanitizing db load: {counter} / {len(existing_db_loads)}", end='', flush=True)
+            counter += 1
+            found_match = False
+            for remote_load in remote_loads:
+                if objects_equal(
+                    target_object=remote_load,
+                    base_object=db_load,
+                    attributes_compare_callback=self.attributes_compare_callback,
+                    target_id_keyword='id',
+                    base_id_keyword='external_load_id'
+                ):
+                    found_match = True
+                    break
+            
+            if not found_match:
+                loads_to_delete.append(db_load)
+
+        # Delete loads that weren't found in remote data
+        if loads_to_delete:
+            for load in loads_to_delete:
+                self.__db_Session.delete(load)
+            self.__db_Session.commit()
+            print(f"Deleted {len(loads_to_delete)} obsolete loads from DB for state {state}")
+        else:
+            print(f"No obsolete loads found for state {state}")
+

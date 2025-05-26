@@ -36,8 +36,9 @@ class CentralInteractor:
 
         deduplicated_loads = self.__deduplicator.deduplicate_loads(target_loads=loadsParam,
                                                                 db_loads=db_loads)
-        
         print(f"deduplicated loads count: {len(deduplicated_loads)}")
+        
+        self.__db_worker.sanitize_db(loadsParam, state)
         return deduplicated_loads
     
     def filter_loads(self, loads):
