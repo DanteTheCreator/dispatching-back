@@ -218,6 +218,7 @@ def get_loads_and_glink_for_route(loads: List[str] = Query(None), db: Session = 
             "loadboard_source": load.loadboard_source,
             "is_operational": load.is_operational,
             "enclosed_trailer": load.enclosed_trailer,
+            "created_at": load.created_at.isoformat(), 
             "saved_by": load.saved_by
         }
         loads_data.append(load_dict)
@@ -499,6 +500,7 @@ def get_saved_loads(dispatcher_id: int, db: Session = Depends(get_db)):
             "loadboard_source": load.loadboard_source,
             "is_operational": load.is_operational,
             "enclosed_trailer": load.enclosed_trailer,
+            "created_at": load.created_at.isoformat(),
             "saved_by": load.saved_by
         }
         loads_data.append(load_dict)
