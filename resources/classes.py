@@ -242,8 +242,6 @@ class RouteBuilder:
     def generate_one_car_trailer_routes(self, limit: int = 10):
         try:
             top_loads = self.get_top_loads(self.driver.location)
-            print(f"Top loads found: {len(top_loads)}")
-            print(f"Top loads found: {len(top_loads)}")
 
             routes = []
             for top_load in top_loads[:3]:
@@ -279,7 +277,6 @@ class RouteBuilder:
                                 route.total_rpm = 0
                         except Exception as e:
                             print(f"Error calculating route length: {e}")
-                            print(f"Error calculating route length: {e}")
                             continue
 
                         if (
@@ -289,25 +286,22 @@ class RouteBuilder:
                             routes.append(route)
                 except Exception as e:
                     print(f"Error processing secondary loads: {e}")
-                    print(f"Error processing secondary loads: {e}")
                     continue
             return routes
         except Exception as e:
-            print(f"Error generating routes: {e}")
             print(f"Error generating routes: {e}")
             return []
 
     def generate_two_car_trailer_routes(self, limit: int = 10):
         try:
             top_loads = self.get_top_loads(self.driver.location)
-            print(top_loads)
             routes = []
             for top_load in top_loads[:10]:
                 if len(routes) >= limit:
                     break
                 try:
                     # Use delivery_location or another field as appropriate
-                    next_location = top_load.delivery_location.split()[-1] if top_load.delivery_location is not None else None
+                    next_location = top_load.pickup_location.split()[-1] if top_load.pickup_location is not None else None
                     if not next_location:
                         continue
                     second_pickup_loads = self.get_top_loads(next_location)
@@ -325,6 +319,8 @@ class RouteBuilder:
                         try:
                             accurate_milage = self.calculate_full_route_length(
                                 route)
+                            if accurate_milage is None or accurate_milage == 0:
+                                raise ValueError("Accurate mileage is None or zero, cannot proceed")
                             print('GH Responded with: ', accurate_milage)
                             route.milage = accurate_milage / 1609.34  # Convert meters to miles
                             try:
@@ -364,7 +360,7 @@ class RouteBuilder:
                 if len(routes) >= limit:
                     break
                 try:
-                    next_location_2 = top_load.delivery_location.split()[-1] if getattr(top_load, 'delivery_location', None) is not None else None
+                    next_location_2 = top_load.pickup_location.split()[-1] if getattr(top_load, 'pickup_locatoin', None) is not None else None
                     if not next_location_2:
                         continue
                     second_pickup_loads = self.get_top_loads(next_location_2)
@@ -375,7 +371,7 @@ class RouteBuilder:
                         if getattr(top_load, 'load_id', None) == getattr(secondary_load, 'load_id', None):
                             continue
                         try:
-                            next_location_3 = secondary_load.delivery_location.split()[-1] if getattr(secondary_load, 'delivery_location', None) is not None else None
+                            next_location_3 = secondary_load.pickup_location.split()[-1] if getattr(secondary_load, 'pickup_location', None) is not None else None
                             if not next_location_3:
                                 continue
                             third_pickup_loads = self.get_top_loads(next_location_3)
