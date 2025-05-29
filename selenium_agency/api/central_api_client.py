@@ -35,7 +35,7 @@ class CentralAPIClient(APIClient):
                                         'tagListingsPostedWithin': 2,
                                         'trailerTypes': ['OPEN'],
                                         'paymentTypes': [],
-                                        'vehicleTypes': [],
+                                        'vehicleTypes': ['CAR', 'VAN', 'SUV', 'MOTORCYCLE', 'PICKUP'],
                                         'operability': 'All',
                                         'minimumPaymentTotal': None,
                                         'readyToShipWithinDays': None,

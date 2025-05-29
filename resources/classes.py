@@ -50,10 +50,6 @@ class Driver:
             self.desired_gross = 0.0
             self.desired_rpm = 0.0
 
-        # print(f"Driver attributes: driver_id={self.driver_id}, full_name={self.full_name}, location={self.location}, "
-        #       f"trailer_size={self.trailer_size}, desired_gross={self.desired_gross}, desired_rpm={self.desired_rpm}, "
-        #       f"active={self.active}, phone={self.phone}, states={self.states}")
-
 
 class Route:
     def __init__(self, driver):
@@ -87,9 +83,11 @@ class RouteBuilder:
         self.db = db
 
     def get_top_loads(self, origin) -> List[LoadModel]:
-        origin = pl_handler.get(origin).json()[
-            'features'][0]['geometry']['coordinates']
-        print(f"Origin coordinates: {origin}")
+        print(f"get_top_loads called with origin: {origin}")
+        pelias_response = pl_handler.get(origin)
+        coords = pelias_response.json().get('features', [])[0].get('geometry', {}).get('coordinates', [])
+
+
         try:
             # Assuming you have GeoAlchemy2 properly imported and set up
             sql = text("""
@@ -109,8 +107,8 @@ class RouteBuilder:
             result = self.db.execute(
                 sql,
                 {
-                    'lon': origin[0],
-                    'lat': origin[1],
+                    'lon': coords[0],
+                    'lat': coords[1],
                     'distance': 80467.2
                 }
             )
@@ -120,42 +118,56 @@ class RouteBuilder:
             return loads  # type: ignore
         except Exception as e:
             print(f"Error fetching loads from database: {e}")
-            print(f"Error fetching loads from database: {e}")
             return []
 
     def calculate_full_route_length(self, route: Route) -> float:
         try:
-            # Start with driver's location
-            driver_points = pl_handler.get(self.driver.location).json()['features'][0]['geometry']['coordinates']
+            # Get driver's coordinates
+            try:
+                driver_geo = pl_handler.get(self.driver.location)
+                driver_features = driver_geo.json().get('features', [])
+                if not driver_features:
+                    print(f"No features found for driver location: {self.driver.location}")
+                    return 0
+                driver_points = driver_features[0]['geometry']['coordinates']
+            except Exception as e:
+                print(f"Error getting driver coordinates: {e}")
+                return 0
             points = [driver_points]
 
-            # First collect all loads' pickup and delivery points
             pickups = []
             deliveries = []
-            
+
             for load in route.loads:
                 # Get pickup point
                 pickup_json = None
-                if hasattr(load, 'pickup_point_json'):
-                    pickup_json = load.pickup_point_json
-                elif hasattr(load, '_asdict') and 'pickup_point_json' in load._asdict():
-                    pickup_json = load._asdict()['pickup_point_json']
-                elif isinstance(load, dict) or hasattr(load, '__getitem__'):
-                    pickup_json = load['pickup_point_json']
-                
+                try:
+                    if hasattr(load, 'pickup_point_json'):
+                        pickup_json = load.pickup_point_json
+                    elif hasattr(load, '_asdict') and 'pickup_point_json' in load._asdict():
+                        pickup_json = load._asdict()['pickup_point_json']
+                    elif isinstance(load, dict) or hasattr(load, '__getitem__'):
+                        pickup_json = load['pickup_point_json']
+                except Exception as e:
+                    print(f"Error accessing pickup_point_json: {e}")
                 if not pickup_json:
                     print(f"Missing pickup coordinates for load {getattr(load, 'load_id', 'unknown')}")
                     continue
+                try:
+                    if isinstance(pickup_json, str):
+                        import json
+                        pickup_coords = json.loads(pickup_json).get('coordinates')
+                    else:
+                        pickup_coords = pickup_json.get('coordinates') if isinstance(pickup_json, dict) else None
+                    if not pickup_coords or not isinstance(pickup_coords, list) or len(pickup_coords) != 2:
+                        print(f"Invalid pickup coordinates for load {getattr(load, 'load_id', 'unknown')}: {pickup_coords}")
+                        continue
+                    pickups.append(pickup_coords)
+                except Exception as e:
+                    print(f"Error parsing pickup coordinates: {e}")
+                    continue
 
-                # Parse pickup coordinates
-                if isinstance(pickup_json, str):
-                    import json
-                    pickup_coords = json.loads(pickup_json)['coordinates']
-                else:
-                    pickup_coords = pickup_json['coordinates']
-                pickups.append(pickup_coords)
-
-                # Get delivery point with proper dictionary handling
+                # Get delivery point
                 try:
                     delivery_location = None
                     if isinstance(load, dict):
@@ -164,61 +176,64 @@ class RouteBuilder:
                         delivery_location = load._asdict().get('delivery_location')
                     elif hasattr(load, 'delivery_location'):
                         delivery_location = load.delivery_location
-                    
-                    if delivery_location:
-                        delivery_points = pl_handler.get(delivery_location.split()[-1]).json()['features'][0]['geometry']['coordinates']
-                        deliveries.append(delivery_points)
-                    else:
-                        logger.error(f"No delivery location found for load")
+                    if not delivery_location:
+                        print(f"No delivery location found for load {getattr(load, 'load_id', 'unknown')}")
                         continue
+                    delivery_geo = pl_handler.get(delivery_location.split()[-1])
+                    delivery_features = delivery_geo.json().get('features', [])
+                    if not delivery_features:
+                        print(f"No features found for delivery location: {delivery_location}")
+                        continue
+                    delivery_points = delivery_features[0]['geometry']['coordinates']
+                    if not delivery_points or not isinstance(delivery_points, list) or len(delivery_points) != 2:
+                        print(f"Invalid delivery coordinates for load {getattr(load, 'load_id', 'unknown')}: {delivery_points}")
+                        continue
+                    deliveries.append(delivery_points)
                 except Exception as e:
-                    logger.error(f"Error getting delivery coordinates: {str(e)}")
+                    print(f"Error getting delivery coordinates: {e}")
                     continue
 
-            # Add all points in correct order:
-            # First all pickups
             points.extend(pickups)
-            # Then all deliveries
             points.extend(deliveries)
-                    
-            print(f"Full route points: {points}")            
-            # Need at least 2 points for a valid route
+            print(f"Full route points: {points}")
             if len(points) < 2:
-                logger.error("Not enough valid points to calculate a route")
-                return 0
-                
-            # Make the API call with proper error handling
+                print("Not enough valid points to calculate a route")
+                return 1.0
+
             payload = {'profile': 'car', 'points': points}
-            response = gh_handler.post(url='route', payload=payload)
-            
-            # Debug logging
-            print(f"API response status: {getattr(response, 'status_code', 'unknown')}")
-            
-            # Check if response is valid
-            if not response or not hasattr(response, 'json'):
-                logger.error("Invalid response from GraphHopper API")
-                return 0
-                
-            # Parse JSON response
             try:
+                response = gh_handler.post(url='route', payload=payload)
+            except Exception as e:
+                print(f"Error making request to GraphHopper: {e}")
+                return 1.0
+            if not response or not hasattr(response, 'json'):
+                print("Invalid response from GraphHopper API")
+                return 1.0
+
+            try:
+                # Check if response has content
+                if hasattr(response, 'text'):
+                    if not response.text or not response.text.strip():
+                        print("Graphhopper response is empty!")
+                        return 0
                 response_json = response.json()
             except Exception as e:
-                logger.error(f"Failed to parse API response as JSON: {str(e)}")
-                return 0
-            
-            # Check for required structure in response
+                print(f"Failed to parse API response as JSON: {str(e)}")
+                if hasattr(response, 'text'):
+                    print("Graphhopper raw response:", response.text)
+                return 1.0
             if 'paths' not in response_json:
-                logger.error(f"Response missing 'paths' key: {response_json}")
-                return 0
-                
+                print(f"Response missing 'paths' key: {response_json}")
+                return 1.0
             if not response_json['paths']:
-                logger.error("Empty paths array in response")
-                return 0
-            
-            distance = response_json['paths'][0]['distance']
-            # Ensure we return at least a minimum distance to avoid division by zero
-            return max(distance, 1.0)  # Return at least 1 meter
-            
+                print("Empty paths array in response")
+                return 1.0
+            try:
+                distance = response_json['paths'][0]['distance']
+                return max(distance, 1.0)
+            except Exception as e:
+                print(f"Error extracting distance from response: {e}")
+                return 1.0
         except Exception as e:
             logger.error(f"Error calculating route length: {str(e)}")
             print(f"Error calculating route length: {str(e)}")
@@ -285,7 +300,7 @@ class RouteBuilder:
     def generate_two_car_trailer_routes(self, limit: int = 10):
         try:
             top_loads = self.get_top_loads(self.driver.location)
-            print("driver location", self.driver.location)
+            print(top_loads)
             routes = []
             for top_load in top_loads[:10]:
                 if len(routes) >= limit:
@@ -343,7 +358,6 @@ class RouteBuilder:
     def generate_three_car_trailer_routes(self, limit: int = 10):
         try:
             top_loads = self.get_top_loads(self.driver.location)
-            print(f"Top loads found: {len(top_loads)}")
 
             routes = []
             for top_load in top_loads[:5]:
@@ -376,7 +390,6 @@ class RouteBuilder:
                                 route.add_load(top_load)
                                 route.add_load(secondary_load)
                                 route.add_load(tertiary_load)
-                                print('Route Price: ' , route.total_price)
                                 # Calculate accurate route length
                                 try:
                                     accurate_milage = self.calculate_full_route_length(route)
@@ -406,7 +419,6 @@ class RouteBuilder:
                     print(f"Error processing secondary loads: {e}")
                     continue
 
-            print(f"Generated {len(routes)} three-car routes that meet criteria")
             return routes[:limit]
         except Exception as e:
             print(f"Error generating routes: {e}")
