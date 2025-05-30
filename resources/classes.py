@@ -319,12 +319,12 @@ class RouteBuilder:
                         try:
                             accurate_milage = self.calculate_full_route_length(
                                 route)
-                            if accurate_milage is None or accurate_milage == 0:
-                                raise ValueError("Accurate mileage is None or zero, cannot proceed")
+                            if accurate_milage is None or accurate_milage == 1.0:
+                                raise ValueError("Couldn't calculate accurate mileage, one of the loads is probably outside of US")
                             print('GH Responded with: ', accurate_milage)
                             route.milage = accurate_milage / 1609.34  # Convert meters to miles
                             try:
-                                if route.milage > 0:
+                                if route.milage > 1:
                                     route.total_rpm = route.total_price / route.milage
                                 else:
                                     route.total_rpm = 0

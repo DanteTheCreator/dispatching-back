@@ -1,5 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, func, ForeignKey, UniqueConstraint
+from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, func, ForeignKey, UniqueConstraint, Enum
 from sqlalchemy.dialects.postgresql import DOUBLE_PRECISION, ARRAY
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker, Session
@@ -83,7 +83,7 @@ class RouteModel(Base):
     total_rpm = Column(Float, nullable=False)
     total_price = Column(Float, nullable=False)
     created_at = Column(DateTime, server_default=func.now())
-    
+    status = Column(Enum('Pending', 'Approved', 'Rejected', name='status_type'), default='Pending')
 
 class ConfirmedRouteModel(Base):
    __tablename__ = "confirmed_routes"
