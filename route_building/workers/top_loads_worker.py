@@ -44,19 +44,18 @@ class TopLoadsWorker:
         try:
             # Convert miles to meters for PostGIS ST_DWithin function
             distance_meters = radius * 1609.34
-            
             sql = text("""
-                SELECT 
-                *,           
-                ST_AsGeoJSON(pickup_points) as pickup_point_json
-                FROM loads
-                WHERE ST_DWithin(
-                    pickup_points::geography,
-                    ST_SetSRID(ST_MakePoint(:lon, :lat), 4326)::geography,
-                    :distance
-                )
-                ORDER BY price DESC
-                """)
+            SELECT 
+            *,           
+            ST_AsGeoJSON(pickup_points) as pickup_point_json
+            FROM loads
+            WHERE ST_DWithin(
+                pickup_points::geography,
+                ST_SetSRID(ST_MakePoint(:lon, :lat), 4326)::geography,
+                :distance
+            )
+            ORDER BY created_at DESC, price DESC
+            """)
 
             result = self.db.execute(
                 sql,

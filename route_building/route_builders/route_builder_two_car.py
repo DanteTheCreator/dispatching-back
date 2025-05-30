@@ -13,6 +13,18 @@ class RouteBuilderTwoCar(RouteBuilder):
     def __init__(self, db: Session):
         super().__init__(db)  # Call parent constructor to initialize workers and API clients
 
+    def build_glink(self, loads):
+         # Construct the Google Maps route link
+        base_url = "https://www.google.com/maps/dir/"
+        locations = []
+        
+        for load in loads:
+            locations.append(load.pickup_location)
+            locations.append(load.delivery_location)
+
+        google_maps_link = base_url + "/".join(locations)
+        return google_maps_link
+
     def build_routes(self, driver, limit: int = 10):
         try:
             top_loads = self.find_top_loads_within_radius_miles(driver.location)
@@ -22,10 +34,10 @@ class RouteBuilderTwoCar(RouteBuilder):
                     break
                 try:
                     # Use delivery_location or another field as appropriate
-                    next_location = top_load.pickup_location.split()[-1] if top_load.pickup_location is not None else None
+                    next_location = top_load.delivery_location.split()[-1] if top_load.delivery_location is not None else None
                     if not next_location:
                         continue
-                    second_pickup_loads = self.get_top_loads(next_location)
+                    second_pickup_loads = self.find_top_loads_within_radius_miles(next_location)
                     for secondary_load in second_pickup_loads[:10]:
                         if len(routes) >= limit:
                             break
@@ -48,7 +60,7 @@ class RouteBuilderTwoCar(RouteBuilder):
                             if accurate_milage is None or accurate_milage == 1.0:
                                 raise ValueError("Couldn't calculate accurate mileage, one of the loads is probably outside of US")
                             print('GH Responded with: ', accurate_milage)
-                            route.milage = accurate_milage / 1609.34  # Convert meters to miles
+                            route.milage = accurate_milage
                             try:
                                 if route.milage > 0:
                                     route.total_rpm = route.total_price / route.milage

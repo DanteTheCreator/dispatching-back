@@ -23,12 +23,9 @@ class RouteBuilder:
         self.full_route_worker = FullRouteWorker(self.pl_client, self.gh_client)
         self.top_loads_worker = TopLoadsWorker(self.pl_client, db)
 
-    def find_top_loads_within_radius_miles(self, origin: str, radius: float = 50.0) -> List[LoadModel]:
-        return self.top_loads_worker.find_top_loads_within_radius_miles(origin, radius)
-    
-    def get_top_loads(self, origin: str) -> List[LoadModel]:
+    def find_top_loads_within_radius_miles(self, origin: str) -> List[LoadModel]:
         # Use the same method as find_top_loads_within_radius_miles for consistency
-        return self.find_top_loads_within_radius_miles(origin, 50.0)
+        return self.top_loads_worker.find_top_loads_within_radius_miles(origin, 50.0)
        
     def calculate_full_route_length(self, route: Route) -> float:
         return self.full_route_worker.calculate_full_route_length(route)
