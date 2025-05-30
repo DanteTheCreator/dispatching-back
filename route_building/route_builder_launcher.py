@@ -1,4 +1,9 @@
-from ..resources.models import DriverModel, get_db
+import sys
+import os
+# Add the parent directory to the Python path to find the resources module
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from resources.models import get_db
 from sqlalchemy.orm import Session
 from route_builder_manager import RouteBuilderManager
 

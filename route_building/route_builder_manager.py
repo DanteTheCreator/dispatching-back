@@ -1,16 +1,22 @@
-from .driver import Driver
+import sys
+import os
+# Add the parent directory to the Python path to find the resources module
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from driver import Driver
 from route_builders.route_builder_one_car import RouteBuilderOneCar
 from route_builders.route_builder_two_car import RouteBuilderTwoCar
 from route_builders.route_builder_three_car import RouteBuilderThreeCar
-from ..resources.models import DriverModel
+from resources.models import DriverModel
 from resources.models import RouteModel
-from .route import Route
+from route import Route
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import cast, text
 
 
 
 class RouteBuilderManager:
+
     def __init__(self, db):
         self.db = db
 
@@ -23,7 +29,7 @@ class RouteBuilderManager:
             # Check if the driver already has over 10 routes
             route_count = (
                 self.db.query(RouteModel)
-                .filter(RouteModel.driver_id == self.driver.driver_id)
+                .filter(RouteModel.driver_id == route.driver.driver_id)
                 .count()
             )
             if route_count >= 10:
@@ -34,7 +40,7 @@ class RouteBuilderManager:
             # Check if a similar route already exists
             existing_route = (
                 self.db.query(RouteModel)
-                .filter(RouteModel.driver_id == self.driver.driver_id)
+                .filter(RouteModel.driver_id == route.driver.driver_id)
                 .filter(RouteModel.loads == cast(route.load_ids, JSONB))
                 .first()
             )
@@ -44,7 +50,7 @@ class RouteBuilderManager:
 
             # Save the new route to the database
             new_route = RouteModel(
-                driver_id=self.driver.driver_id,
+                driver_id=route.driver.driver_id,
                 loads=route.load_ids,
                 milage=route.milage,
                 total_rpm=route.total_rpm,

@@ -1,10 +1,17 @@
-from ..route import Route
-from .route_builder import RouteBuilder
-from ..driver import Driver
+import sys
+import os
+# Add the parent directory to the Python path to find the resources module
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from route import Route
+from route_builders.route_builder import RouteBuilder
+from driver import Driver
 from sqlalchemy.orm import Session
 
 class RouteBuilderTwoCar(RouteBuilder):
-
+    def __init__(self, db: Session):
+        super().__init__(db)  # Call parent constructor to initialize workers and API clients
 
     def build_routes(self, driver, limit: int = 10):
         try:

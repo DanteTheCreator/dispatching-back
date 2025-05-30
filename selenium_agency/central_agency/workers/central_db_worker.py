@@ -165,4 +165,3 @@ class CentralDbWorker(CentralDataWorker):
             print(f"Deleted {len(loads_to_delete)} obsolete loads from DB for state {state}")
         else:
             print(f"No obsolete loads found for state {state}")
-

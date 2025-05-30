@@ -1,4 +1,10 @@
-from ..route import Route
+import sys
+import os
+# Add the parent directory to the Python path to find the resources module
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from route import Route
 import json
 
 class FullRouteWorker:
@@ -8,7 +14,6 @@ class FullRouteWorker:
         self.gh_client = gh_client
 
     def get_pickup_point(self, load):
-    
         pickup_json = None
         try:
             if hasattr(load, 'pickup_point_json'):
@@ -72,12 +77,12 @@ class FullRouteWorker:
             print(f"Error getting delivery coordinates: {e}")
             return None
 
-    def get_driver_coordinates(self):
+    def get_driver_coordinates(self, route):
         try:
-            driver_geo = self.pl_client.get(self.driver.location)
+            driver_geo = self.pl_client.get(route.driver.location)
             driver_features = driver_geo.json().get('features', [])
             if not driver_features:
-                print(f"No features found for driver location: {self.driver.location}")
+                print(f"No features found for driver location: {route.driver.location}")
                 return []
             driver_points = driver_features[0]['geometry']['coordinates']
             if not isinstance(driver_points, list) or len(driver_points) != 2:
@@ -89,7 +94,7 @@ class FullRouteWorker:
             return []
 
     def get_full_route_points(self, route):
-        points = self.get_driver_coordinates()
+        points = self.get_driver_coordinates(route)
 
         pickups = []
         deliveries = []
