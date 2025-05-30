@@ -13,13 +13,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium_driver import SeleniumDriver
 from dotenv import load_dotenv
 from selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_super
-from selenium_agency.api.api_client import APIClient
+from api_client import APIClient
 from selenium_agency.api.super_api_client import SuperAPIClient
 from selenium_agency.cache.super_cache import SuperCacheService
 from resources.models import LoadModel, get_db
 import logging
 from geoalchemy2.elements import WKTElement
-from selenium_agency.api.handlers import GraphhopperHandler, BulkRequestHandler
+from api.handlers import GraphhopperHandler, BulkRequestHandler
 from super_interactor import SuperInteractor
 
 load_dotenv()

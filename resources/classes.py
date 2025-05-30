@@ -4,7 +4,7 @@ from typing import List
 import logging
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy import cast, text
-from selenium_agency.api.handlers import PeliasHandler, GraphhopperHandler
+from api.handlers import PeliasHandler, GraphhopperHandler
 
 # Set up logging
 logger = logging.getLogger('dispatching_api')

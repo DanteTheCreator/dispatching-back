@@ -19,7 +19,7 @@ from selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_super
 from selenium_agency.api.super_api_client import SuperAPIClient
 from selenium_agency.cache.super_cache import SuperCacheService
 import json
-from selenium_agency.api.handlers import GraphhopperHandler, BulkRequestHandler
+from api.handlers import GraphhopperHandler, BulkRequestHandler
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 log_file_path = os.path.join(os.path.dirname(script_dir), 'logs', 'super_agent.log')

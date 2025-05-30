@@ -1,4 +1,4 @@
-from selenium_agency.api.api_client import APIClient
+from api_client import APIClient
 
 class CentralAPIClient(APIClient):
     def __init__(self):
