@@ -309,7 +309,12 @@ class RouteBuilder:
                         if len(routes) >= limit:
                             break
                         # Prevent duplicate loads
-                        if getattr(top_load, 'load_id', None) == getattr(secondary_load, 'load_id', None):
+                        if (
+                            getattr(top_load, 'price', 0) == getattr(secondary_load, 'price', 0) and
+                            getattr(top_load, 'milage', 0) == getattr(secondary_load, 'milage', 0) and
+                            getattr(top_load, 'pickup_location', '') == getattr(secondary_load, 'pickup_location', '') and
+                            getattr(top_load, 'delivery_location', '') == getattr(secondary_load, 'delivery_location', '')
+                        ):
                             print('Same')
                             continue
                         route = Route(self.driver)

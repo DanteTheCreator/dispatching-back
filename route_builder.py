@@ -1,5 +1,5 @@
 
-from resources.models import DriverModel, get_db
+from resources.models import DriverModel, get_db, RouteModel
 from sqlalchemy.orm import Session
 from resources.classes import RouteBuilder  # Assuming RouteBuilder is defined in another file
 
@@ -27,9 +27,11 @@ def build_routes_for_active_drivers():
                 print('generated')
 
             print(routes)
-                
+            db_routes = db.query(RouteModel).filter_by(driver_id=driver_id).all()
             for route in routes:
-                builder.save_route_to_db(route)
+                if route not in db_routes:
+                    print(f"Saving route for driver {driver_id}: {route}")
+                    builder.save_route_to_db(route)
 
     except Exception as e:
         print(f"Error building routes for active drivers: {e}")
