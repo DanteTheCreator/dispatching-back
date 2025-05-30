@@ -7,6 +7,7 @@ from ..driver import Driver
 from ..route import Route
 from typing import List
 from sqlalchemy import cast, text
+import json
 
 class RouteBuilder:
     def __init__(self, driver_id: int, db: Session):
@@ -15,8 +16,8 @@ class RouteBuilder:
         self.gh_client = GraphhopperApiClient()
         self.pl_client = PeliasApiClient()
 
-    def __find_loads_within_radius(self, origin: str, radius: float = 80467.2) -> List[LoadModel]:
-        print(f"Finding loads within {radius} meters of origin: {origin}")
+    def find_top_loads_within_radius_miles(self, origin: str, radius: float = 50.0) -> List[LoadModel]:
+        print(f"Finding loads within {radius} miles of origin: {origin}")
         pelias_response = self.pl_client.get(origin)
         coords = pelias_response.json().get('features', [])[0].get('geometry', {}).get('coordinates', [])
 
@@ -25,6 +26,9 @@ class RouteBuilder:
             return []
 
         try:
+            # Convert miles to meters for PostGIS ST_DWithin function
+            distance_meters = radius * 1609.34
+            
             sql = text("""
                 SELECT 
                 *,           
@@ -43,51 +47,10 @@ class RouteBuilder:
                 {
                     'lon': coords[0],
                     'lat': coords[1],
-                    'distance': radius
+                    'distance': distance_meters
                 }
             )
 
-            loads = result.fetchall()
-            return loads  # type: ignore
-        except Exception as e:
-            print(f"Error fetching loads from database: {e}")
-            return []
-        
-
-
-
-    def get_top_loads(self, origin) -> List[LoadModel]:
-        print(f"get_top_loads called with origin: {origin}")
-        pelias_response = self.pl_client.get(origin)
-        coords = pelias_response.json().get('features', [])[0].get('geometry', {}).get('coordinates', [])
-
-
-        try:
-            # Assuming you have GeoAlchemy2 properly imported and set up
-            sql = text("""
-                SELECT 
-                *,           
-                ST_AsGeoJSON(pickup_points) as pickup_point_json
-                FROM loads
-                WHERE ST_DWithin(
-                    pickup_points::geography,
-                    ST_SetSRID(ST_MakePoint(:lon, :lat), 4326)::geography,
-                    :distance
-                )
-                ORDER BY price DESC
-                """)
-
-            # Execute the query with parameters
-            result = self.db.execute(
-                sql,
-                {
-                    'lon': coords[0],
-                    'lat': coords[1],
-                    'distance': 80467.2
-                }
-            )
-
-            # Fetch all results as dictionaries
             loads = result.fetchall()
             return loads  # type: ignore
         except Exception as e:
@@ -129,7 +92,6 @@ class RouteBuilder:
             
         try:
             if isinstance(pickup_json, str):
-                import json
                 pickup_coords = json.loads(pickup_json).get('coordinates')
             else:
                 pickup_coords = pickup_json.get('coordinates') if isinstance(pickup_json, dict) else None
@@ -212,79 +174,39 @@ class RouteBuilder:
         except Exception as e:
             print(f"Error extracting distance from response: {e}")
             return 1.0
+        
+    def get_full_route_points(self, route):
+        points = self.get_driver_coordinates()
+
+        pickups = []
+        deliveries = []
+
+        for load in route.loads:
+            # Get pickup point
+            pickup_coords = self.get_pickup_point(load)
+            if pickup_coords:
+                pickups.append(pickup_coords)
+
+            # Get delivery point
+            delivery_coords = self.get_delivery_point(load)
+            if delivery_coords:
+                deliveries.append(delivery_coords)
+
+        points.extend(pickups)
+        points.extend(deliveries)
+
+        return points
 
     def calculate_full_route_length(self, route: Route) -> float:
         try:
-            points = self.get_driver_coordinates()
-
-            pickups = []
-            deliveries = []
-
-            for load in route.loads:
-                # Get pickup point
-                pickup_coords = self.get_pickup_point(load)
-                if pickup_coords:
-                    pickups.append(pickup_coords)
-
-                # Get delivery point
-                delivery_coords = self.get_delivery_point(load)
-                if delivery_coords:
-                    deliveries.append(delivery_coords)
-
-            points.extend(pickups)
-            points.extend(deliveries)
-            print(f"Full route points: {points}")
-            if len(points) < 2:
+            full_route_points = self.get_full_route_points(route)
+            print(f"Full route points: {full_route_points}")
+            if len(full_route_points) < 2:
                 print("Not enough valid points to calculate a route")
                 return 1.0
             
-            graphhopper_distance = self.get_graphhopper_distance_miles(points)
+            graphhopper_distance = self.get_graphhopper_distance_miles(full_route_points)
             return graphhopper_distance
         except Exception as e:
             print(f"Error calculating route length: {str(e)}")
             return 1.0  # Return a minimal non-zero value on error
-
-
-
-
-
-
-
-def build_routes_for_active_drivers():
-    db: Session = next(get_db())
-
-    try:
-        # Fetch active drivers from the database
-        active_driver_ids = db.query(DriverModel.driver_id).filter(DriverModel.active.is_(True)).all()
-
-        for driver_id, in active_driver_ids:  # Note the comma to unpack the tuple
-
-            routes = []
-            
-            # Create a RouteBuilder instance for the driver
-            builder = RouteBuilder(driver_id, db)
-            trailer_size = int(getattr(builder.driver, 'trailer_size', 0))
-
-            if trailer_size == 1:  
-                routes = builder.generate_one_car_trailer_routes()
-            if trailer_size == 2: 
-                routes = builder.generate_two_car_trailer_routes()
-            if trailer_size == 3:
-                routes = builder.generate_three_car_trailer_routes()
-                print('generated')
-
-            print(routes)
-                
-            for route in routes:
-                builder.save_route_to_db(route)
-
-    except Exception as e:
-        print(f"Error building routes for active drivers: {e}")
-
-    finally:
-        db.close()
-
-
-if __name__ == "__main__":
-    build_routes_for_active_drivers()
-

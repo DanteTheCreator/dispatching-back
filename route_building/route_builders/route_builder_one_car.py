@@ -1,16 +1,15 @@
-from .route import Route
+from ..route import Route
 from .route_builder import RouteBuilder
-from .driver import Driver
+from ..driver import Driver
 from sqlalchemy.orm import Session
 
 class RouteBuilderOneCar(RouteBuilder):
-    def __init__(self, driver_id: int, db: Session):
-        self.driver = Driver(driver_id)
+    def __init__(self, db: Session):
         self.db = db
 
-    def build_routes(self, limit: int = 10):
+    def build_routes(self, driver, limit: int = 10):
         try:
-            top_loads = self.get_top_loads(self.driver.location)
+            top_loads = self.find_top_loads_within_radius_miles(driver.location)
 
             routes = []
             for top_load in top_loads[:3]:
@@ -28,7 +27,7 @@ class RouteBuilderOneCar(RouteBuilder):
                         if getattr(top_load, 'load_id', None) == getattr(secondary_load, 'load_id', None):
                             print('Same')
                             continue
-                        route = Route(self.driver)
+                        route = Route(driver)
                         route.add_load(top_load)
                         route.add_load(secondary_load)
                         # Calculate accurate route length
@@ -49,8 +48,8 @@ class RouteBuilderOneCar(RouteBuilder):
                             continue
 
                         if (
-                            route.total_price > float(self.driver.desired_gross)
-                            and route.total_rpm > float(self.driver.desired_rpm)
+                            route.total_price > float(driver.desired_gross)
+                            and route.total_rpm > float(driver.desired_rpm)
                         ):
                             routes.append(route)
                 except Exception as e:

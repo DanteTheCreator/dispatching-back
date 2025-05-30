@@ -1,12 +1,14 @@
+from ..route import Route
 from .route_builder import RouteBuilder
-from .route import Route
+from ..driver import Driver
+from sqlalchemy.orm import Session
 
 class RouteBuilderTwoCar(RouteBuilder):
 
 
-    def build_routes(self, limit: int = 10):
+    def build_routes(self, driver, limit: int = 10):
         try:
-            top_loads = self.get_top_loads(self.driver.location)
+            top_loads = self.find_top_loads_within_radius_miles(driver.location)
             routes = []
             for top_load in top_loads[:10]:
                 if len(routes) >= limit:
@@ -21,18 +23,23 @@ class RouteBuilderTwoCar(RouteBuilder):
                         if len(routes) >= limit:
                             break
                         # Prevent duplicate loads
-                        if getattr(top_load, 'load_id', None) == getattr(secondary_load, 'load_id', None):
+                        if (
+                            getattr(top_load, 'price', 0) == getattr(secondary_load, 'price', 0) and
+                            getattr(top_load, 'milage', 0) == getattr(secondary_load, 'milage', 0) and
+                            getattr(top_load, 'pickup_location', '') == getattr(secondary_load, 'pickup_location', '') and
+                            getattr(top_load, 'delivery_location', '') == getattr(secondary_load, 'delivery_location', '')
+                        ):
                             print('Same')
                             continue
-                        route = Route(self.driver)
+                        route = Route(driver)
                         route.add_load(top_load)
                         route.add_load(secondary_load)
                         # Calculate accurate route length
                         try:
                             accurate_milage = self.calculate_full_route_length(
                                 route)
-                            if accurate_milage is None or accurate_milage == 0:
-                                raise ValueError("Accurate mileage is None or zero, cannot proceed")
+                            if accurate_milage is None or accurate_milage == 1.0:
+                                raise ValueError("Couldn't calculate accurate mileage, one of the loads is probably outside of US")
                             print('GH Responded with: ', accurate_milage)
                             route.milage = accurate_milage / 1609.34  # Convert meters to miles
                             try:
@@ -40,7 +47,8 @@ class RouteBuilderTwoCar(RouteBuilder):
                                     route.total_rpm = route.total_price / route.milage
                                 else:
                                     route.total_rpm = 0
-                                    logger.warning("Zero mileage detected, setting RPM to zero")
+                                    print("Zero mileage detected, setting RPM to zero")
+                                
                             except Exception as e:
                                 logger.error(f"Error calculating RPM: {str(e)}")
                                 route.total_rpm = 0
@@ -50,9 +58,9 @@ class RouteBuilderTwoCar(RouteBuilder):
 
                         if (
                             route.total_price > float(
-                                self.driver.desired_gross)
-                            and route.total_rpm > float(self.driver.desired_rpm)
-                            and route.milage < float(self.driver.max_milage)
+                                driver.desired_gross)
+                            and route.total_rpm > float(driver.desired_rpm)
+                            and route.milage < float(driver.max_milage)
                         ):
                             routes.append(route)
                 except Exception as e:
