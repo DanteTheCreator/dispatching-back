@@ -50,7 +50,7 @@ class RouteBuilderTwoCar(RouteBuilder):
                                     print("Zero mileage detected, setting RPM to zero")
                                 
                             except Exception as e:
-                                logger.error(f"Error calculating RPM: {str(e)}")
+                                print(f"Error calculating RPM: {str(e)}")
                                 route.total_rpm = 0
                         except Exception as e:
                             print(f"Error calculating route length: {e}")
