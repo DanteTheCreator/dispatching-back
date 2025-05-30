@@ -204,7 +204,7 @@ def get_loads_and_glink_for_route(loads: List[str] = Query(None), db: Session = 
     for load in db_loads:
         locations.append(load.pickup_location)
         locations.append(load.delivery_location)
-        
+
         # Convert SQLAlchemy model to dict with additional fields
         load_dict = {
             "load_id": load.load_id,
