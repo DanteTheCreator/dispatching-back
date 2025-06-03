@@ -188,14 +188,17 @@ def get_loads_and_glink_for_route(route_id: int = Query(None), loads: List[str] 
     # Query the database for loads using the load IDs
     db_loads = db.query(LoadModel).filter(LoadModel.load_id.in_(loads)).all()
     route = db.query(RouteModel).filter(RouteModel.id == route_id).first()
-
+    trailer_size = None
     # Sort db_loads to match the order in route.loads
     if route and hasattr(route, 'loads') and route.loads is not None:
         id_to_load = {str(load.load_id): load for load in db_loads}
         sorted_db_loads = [id_to_load[str(load_id)] for load_id in route.loads if str(load_id) in id_to_load]
+        driver = db.query(DriverModel).filter(DriverModel.driver_id == route.driver_id).first()
+        if driver:
+            trailer_size = driver.trailer_size
     else:
         sorted_db_loads = db_loads
-
+   
     if not db_loads:
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND,
@@ -220,7 +223,10 @@ def get_loads_and_glink_for_route(route_id: int = Query(None), loads: List[str] 
             "saved_by": load.saved_by
         }
         loads_data.append(load_dict)
-    if len(loads_data) <= 2:
+    print(f"Loads data: {loads_data}")
+    # Get the route to find the driver_id
+    
+    if trailer_size is not None and isinstance(trailer_size, (int, bool)) and int(trailer_size) < 2:
         glink = RouteBuilder.build_one_car_glink(loads_data)
     else:
         glink = RouteBuilder.build_multiple_car_glink(loads_data)

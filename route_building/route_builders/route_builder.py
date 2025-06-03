@@ -37,8 +37,8 @@ class RouteBuilder:
         locations = []
         
         for load in loads:
-            locations.append(load.pickup_location)
-            locations.append(load.delivery_location)
+            locations.append(load['pickup_location'])
+            locations.append(load['delivery_location'])
 
         google_maps_link = base_url + "/".join(locations)
         return google_maps_link
@@ -47,8 +47,8 @@ class RouteBuilder:
     def build_multiple_car_glink(loads):
         # For three-car: pickups first, then deliveries
         base_url = "https://www.google.com/maps/dir/"
-        pickup_locations = [load.pickup_location for load in loads]
-        delivery_locations = [load.delivery_location for load in loads]
+        pickup_locations = [load['pickup_location'] for load in loads]
+        delivery_locations = [load['delivery_location'] for load in loads]
         locations = pickup_locations + delivery_locations
         google_maps_link = base_url + "/".join(locations)
         return google_maps_link
