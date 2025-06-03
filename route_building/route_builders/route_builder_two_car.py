@@ -14,14 +14,11 @@ class RouteBuilderTwoCar(RouteBuilder):
         super().__init__(db)  # Call parent constructor to initialize workers and API clients
 
     def build_glink(self, loads):
-         # Construct the Google Maps route link
+        # For two-car: pickups first, then deliveries
         base_url = "https://www.google.com/maps/dir/"
-        locations = []
-        
-        for load in loads:
-            locations.append(load.pickup_location)
-            locations.append(load.delivery_location)
-
+        pickup_locations = [load.pickup_location for load in loads]
+        delivery_locations = [load.delivery_location for load in loads]
+        locations = pickup_locations + delivery_locations
         google_maps_link = base_url + "/".join(locations)
         return google_maps_link
 
@@ -29,6 +26,7 @@ class RouteBuilderTwoCar(RouteBuilder):
         try:
             top_loads = self.find_top_loads_within_radius_miles(driver.location)
             routes = []
+            print(f"Glink {self.build_glink(top_loads)}")
             for top_load in top_loads[:10]:
                 if len(routes) >= limit:
                     break
