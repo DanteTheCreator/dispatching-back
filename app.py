@@ -9,7 +9,7 @@ from datetime import datetime
 from resources.models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
+from route_building.route_builders import route_builder_one_car, route_builder_two_car, route_builder_three_car
 
 # FastAPI App
 app = FastAPI(title="Dispatching API",
@@ -178,7 +178,7 @@ def get_routes(driver_id: str, db: Session = Depends(get_db)):
 
 
 @app.get("/get_loads_and_glink_for_route", dependencies=[Depends(get_api_key)])
-def get_loads_and_glink_for_route(loads: List[str] = Query(None), db: Session = Depends(get_db)):
+def get_loads_and_glink_for_route(route_id: int = Query(None), loads: List[str] = Query(None), db: Session = Depends(get_db)):
     if not loads:
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST,
@@ -187,6 +187,14 @@ def get_loads_and_glink_for_route(loads: List[str] = Query(None), db: Session = 
 
     # Query the database for loads using the load IDs
     db_loads = db.query(LoadModel).filter(LoadModel.load_id.in_(loads)).all()
+    route = db.query(RouteModel).filter(RouteModel.id == route_id).first()
+
+    # Sort db_loads to match the order in route.loads
+    if route and hasattr(route, 'loads') and route.loads is not None:
+        id_to_load = {str(load.load_id): load for load in db_loads}
+        sorted_db_loads = [id_to_load[str(load_id)] for load_id in route.loads if str(load_id) in id_to_load]
+    else:
+        sorted_db_loads = db_loads
 
     if not db_loads:
         raise HTTPException(
@@ -194,18 +202,8 @@ def get_loads_and_glink_for_route(loads: List[str] = Query(None), db: Session = 
             detail="No loads found with the provided IDs"
         )
 
-    # Construct the Google Maps route link
-    base_url = "https://www.google.com/maps/dir/"
-    locations = []
-    
-    # Convert SQLAlchemy models to dictionaries
     loads_data = []
-    
-    for load in db_loads:
-        locations.append(load.pickup_location)
-        locations.append(load.delivery_location)
-
-        # Convert SQLAlchemy model to dict with additional fields
+    for load in sorted_db_loads:
         load_dict = {
             "load_id": load.load_id,
             "pickup_location": load.pickup_location,
@@ -222,10 +220,11 @@ def get_loads_and_glink_for_route(loads: List[str] = Query(None), db: Session = 
             "saved_by": load.saved_by
         }
         loads_data.append(load_dict)
-
-    google_maps_link = base_url + "/".join(locations)
-
-    return {"loads": loads_data, "google_maps_link": google_maps_link}
+    if len(loads_data) > 1:
+        glink = route_builder_one_car.build_glink(loads_data)
+    else:
+        glink = route_builder_two_car.build_glink(loads_data)
+    return {"loads": loads_data, "google_maps_link":  glink}
 
 
 @app.put("/update_driver", dependencies=[Depends(get_api_key)])

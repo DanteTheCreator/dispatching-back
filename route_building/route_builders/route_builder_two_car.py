@@ -54,7 +54,7 @@ class RouteBuilderTwoCar(RouteBuilder):
                         # Calculate accurate route length
                         try:
                             accurate_milage = self.calculate_full_route_length(
-                                route)
+                                route).__round__(2)
                             if accurate_milage is None or accurate_milage == 1.0:
                                 raise ValueError("Couldn't calculate accurate mileage, one of the loads is probably outside of US")
                             print('GH Responded with: ', accurate_milage)
