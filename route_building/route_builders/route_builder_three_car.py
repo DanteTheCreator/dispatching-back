@@ -22,7 +22,7 @@ class RouteBuilderThreeCar(RouteBuilder):
                 if len(routes) >= limit:
                     break
                 try:
-                    next_location_2 = top_load.delivery_location.split()[-1] if getattr(top_load, 'pickup_locatoin', None) is not None else None
+                    next_location_2 = top_load.pickup_location.split()[-1] if getattr(top_load, 'pickup_locatoin', None) is not None else None
                     if not next_location_2:
                         continue
                     second_pickup_loads = self.find_top_loads_within_radius_miles(next_location_2)
@@ -33,7 +33,7 @@ class RouteBuilderThreeCar(RouteBuilder):
                         if getattr(top_load, 'load_id', None) == getattr(secondary_load, 'load_id', None):
                             continue
                         try:
-                            next_location_3 = secondary_load.delivery_location.split()[-1] if getattr(secondary_load, 'pickup_location', None) is not None else None
+                            next_location_3 = secondary_load.pickup_location.split()[-1] if getattr(secondary_load, 'pickup_location', None) is not None else None
                             if not next_location_3:
                                 continue
                             third_pickup_loads = self.get_top_loads(next_location_3)

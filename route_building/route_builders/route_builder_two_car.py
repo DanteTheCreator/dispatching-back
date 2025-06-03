@@ -34,7 +34,7 @@ class RouteBuilderTwoCar(RouteBuilder):
                     break
                 try:
                     # Use delivery_location or another field as appropriate
-                    next_location = top_load.delivery_location.split()[-1] if top_load.delivery_location is not None else None
+                    next_location = top_load.pickup_location.split()[-1] if top_load.pickup_location is not None else None
                     if not next_location:
                         continue
                     second_pickup_loads = self.find_top_loads_within_radius_miles(next_location)
