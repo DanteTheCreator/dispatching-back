@@ -12,18 +12,6 @@ from sqlalchemy.orm import Session
 class RouteBuilderOneCar(RouteBuilder):
     def __init__(self, db: Session):
         super().__init__(db)  # Call parent constructor to initialize workers and API clients
-
-    def build_glink(self, loads):
-         # Construct the Google Maps route link
-        base_url = "https://www.google.com/maps/dir/"
-        locations = []
-        
-        for load in loads:
-            locations.append(load.pickup_location)
-            locations.append(load.delivery_location)
-
-        google_maps_link = base_url + "/".join(locations)
-        return google_maps_link
     
     def build_routes(self, driver, limit: int = 10):
         try:

@@ -9,7 +9,7 @@ from datetime import datetime
 from resources.models import RouteModel, LoadModel, Dispatcher, DriverModel, get_db, ConfirmedRouteModel, CompanyModel
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from route_building.route_builders import route_builder_one_car, route_builder_two_car, route_builder_three_car
+from route_building.route_builders.route_builder import RouteBuilder
 
 # FastAPI App
 app = FastAPI(title="Dispatching API",
@@ -221,9 +221,9 @@ def get_loads_and_glink_for_route(route_id: int = Query(None), loads: List[str] 
         }
         loads_data.append(load_dict)
     if len(loads_data) <= 2:
-        glink = route_builder_one_car.build_glink(loads_data)
+        glink = RouteBuilder.build_one_car_glink(loads_data)
     else:
-        glink = route_builder_two_car.build_glink(loads_data)
+        glink = RouteBuilder.build_multiple_car_glink(loads_data)
     return {"loads": loads_data, "google_maps_link":  glink}
 
 
