@@ -220,7 +220,8 @@ def get_loads_and_glink_for_route(route_id: int = Query(None), loads: List[str] 
             "saved_by": load.saved_by
         }
         loads_data.append(load_dict)
-    if len(loads_data) <= 2:
+
+    if len(loads_data) < 2:
         glink = RouteBuilder.build_one_car_glink(loads_data)
     else:
         glink = RouteBuilder.build_multiple_car_glink(loads_data)
