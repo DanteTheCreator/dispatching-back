@@ -72,6 +72,7 @@ class DriverModel(Base):
    states = Column(ARRAY(String(2)))
    location = Column(String(100))
    max_milage = Column(Float)
+   desired_destination = Column(VARCHAR(15))
 
 class RouteModel(Base):
     __tablename__ = "routes"
@@ -107,6 +108,8 @@ class CompanyModel(Base):
     mc_number = Column(String(50), nullable=False)
     dot_number = Column(String(50), nullable=False)
     company_logo = Column(String, nullable=False)
+    partner_brokers = Column(ARRAY(VARCHAR(100)), nullable=True)
+    blacklist_brokers = Column(ARRAY(VARCHAR(100)), nullable=True)
     
 # Add to your resources/models.py file
 

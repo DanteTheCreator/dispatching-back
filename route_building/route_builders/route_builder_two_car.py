@@ -26,7 +26,6 @@ class RouteBuilderTwoCar(RouteBuilder):
         try:
             top_loads = self.find_top_loads_within_radius_miles(driver.location)
             routes = []
-            print(f"Glink {self.build_glink(top_loads)}")
             for top_load in top_loads[:10]:
                 if len(routes) >= limit:
                     break

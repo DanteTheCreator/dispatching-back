@@ -25,7 +25,6 @@ class RouteBuilderThreeCar(RouteBuilder):
     def build_routes(self, driver, limit: int = 10):
         try:
             top_loads = self.find_top_loads_within_radius_miles(driver.location)
-            print(f"Glink {self.build_glink(top_loads)}")
             routes = []
             for top_load in top_loads[:5]:
                 if len(routes) >= limit:

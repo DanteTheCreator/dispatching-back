@@ -165,16 +165,27 @@ def get_routes(driver_id: str, db: Session = Depends(get_db)):
             detail="No routes found for this driver"
         )
 
+    valid_routes = []
     for route in routes:
-        loads = getattr(route, 'loads', [])
-        first_load = db.query(LoadModel).filter(
-            LoadModel.load_id == loads[0]).first()
-        last_load = db.query(LoadModel).filter(
-            LoadModel.load_id == loads[-1]).first()
-        if first_load and last_load:
-            route.pick = first_load.pickup_location.split(" ")[-2]
-            route.dest = last_load.delivery_location.split(" ")[-2]
-    return routes
+        for load in route.loads:
+            load_data = db.query(LoadModel).filter(
+                LoadModel.load_id == load).first()
+            if not load_data:
+                db.delete(route)
+                db.commit()
+                break
+        else:
+            loads = getattr(route, 'loads', [])
+            if loads:
+                first_load = db.query(LoadModel).filter(
+                    LoadModel.load_id == loads[0]).first()
+                last_load = db.query(LoadModel).filter(
+                    LoadModel.load_id == loads[-1]).first()
+                if first_load and last_load:
+                    route.pick = first_load.pickup_location.split(" ")[-2]
+                    route.dest = last_load.delivery_location.split(" ")[-2]
+            valid_routes.append(route)
+    return valid_routes
 
 
 @app.get("/get_loads_and_glink_for_route", dependencies=[Depends(get_api_key)])
@@ -548,65 +559,54 @@ def is_saved(load_id: str, dispatcher_id: str, db: Session = Depends(get_db)):
     is_saved = load and load.saved_by and dispatcher_id in load.saved_by
     return {"is_saved": is_saved}
 
+class UpdateBlacklistRequest(BaseModel):
+    company_id: int
+    blacklist: List[str]
 
-# Add to your existing FastAPI app
+@app.put("/update_company_blacklist", dependencies=[Depends(get_api_key)])
+def update_blacklist(request: UpdateBlacklistRequest, db: Session = Depends(get_db)):
+    company = db.query(CompanyModel).filter(CompanyModel.id == request.company_id).first()
+    if company is None:
+        raise HTTPException(status_code=HTTPStatus.NOT_FOUND,
+                        detail="Company not found")
 
-@app.get("/regions", dependencies=[Depends(get_api_key)])
-def get_regions(db: Session = Depends(get_db)):
-    """Get all regions for frontend dropdown"""
-    from resources.models import Region
-    
-    regions = db.query(Region).order_by(Region.name).all()
-    return [{"id": r.id, "name": r.name, "description": r.description} for r in regions]
+    db.query(CompanyModel).filter(CompanyModel.id == request.company_id).update(
+        {"blacklist_brokers": request.blacklist}
+    )
+    db.commit()
+    db.refresh(company)
+    return company
 
-    """Get all loads from a specific region (e.g., Long Island)"""
-    from resources.models import Region, RegionZipCode
-    
-    # Verify region exists
-    region = db.query(Region).filter(Region.id == region_id).first()
-    if not region:
-        raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND,
-            detail="Region not found"
+@app.get("/statistics", dependencies=[Depends(get_api_key)])
+def get_statistics(db: Session = Depends(get_db)):
+    # SQL query to get state statistics
+    query = text("""
+        WITH state_data AS (
+            SELECT 
+                SUBSTRING(pickup_location FROM '.*, ([A-Z]{2}) [0-9]{5}$') as state,
+                CAST(price AS FLOAT) as price
+            FROM loads
+            WHERE pickup_location ~ '.*, [A-Z]{2} [0-9]{5}$'
         )
+        SELECT 
+            state,
+            COUNT(*) as load_count,
+            ROUND(AVG(price)::numeric, 2) as avg_price
+        FROM state_data
+        GROUP BY state
+        ORDER BY state
+    """)
     
-    # Build dynamic SQL query similar to your filter_loads endpoint
-    sql_query = """
-        SELECT DISTINCT
-            l.load_id, l.external_load_id, l.brokerage, l.pickup_location, 
-            l.delivery_location, l.price::float, l.milage, l.is_operational,
-            l.contact_phone, l.notes, l.loadboard_source, l.created_at,
-            l.date_ready, l.n_vehicles, l.weight, l.enclosed_trailer, l.saved_by
-        FROM loads l
-        JOIN region_zip_codes rzc ON (
-            SUBSTRING(l.pickup_location FROM '[0-9]{5}') = rzc.zip_code 
-            OR SUBSTRING(l.delivery_location FROM '[0-9]{5}') = rzc.zip_code
-        )
-        WHERE rzc.region_id = :region_id
-        ORDER BY l.created_at DESC
-    """
+    result = db.execute(query).all()
     
-    result = db.execute(text(sql_query), {"region_id": region_id}).all()
+    # Convert to list of dictionaries
+    statistics = [
+        {
+            "state": row.state,
+            "load_count": row.load_count,
+            "avg_price": float(row.avg_price)
+        }
+        for row in result
+    ]
     
-    if not result:
-        raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND,
-            detail=f"No loads found for {region.name}"
-        )
-    
-    # Convert to list of dictionaries (same as your filter_loads logic)
-    loads_list = []
-    for row in result:
-        load_dict = {}
-        for key, value in row._mapping.items():
-            if isinstance(value, datetime):
-                load_dict[key] = value.isoformat()
-            else:
-                load_dict[key] = value
-        loads_list.append(load_dict)
-    
-    return {
-        "region": {"id": region.id, "name": region.name},
-        "loads": loads_list[:25],  # Limit like your other endpoint
-        "total_found": len(loads_list)
-    }
+    return statistics
