@@ -13,15 +13,6 @@ class RouteBuilderTwoCar(RouteBuilder):
     def __init__(self, db: Session):
         super().__init__(db)  # Call parent constructor to initialize workers and API clients
 
-    def build_glink(self, loads):
-        # For two-car: pickups first, then deliveries
-        base_url = "https://www.google.com/maps/dir/"
-        pickup_locations = [load.pickup_location for load in loads]
-        delivery_locations = [load.delivery_location for load in loads]
-        locations = pickup_locations + delivery_locations
-        google_maps_link = base_url + "/".join(locations)
-        return google_maps_link
-
     def build_routes(self, driver, limit: int = 10):
         try:
             top_loads = self.find_top_loads_within_radius_miles(driver.location)
