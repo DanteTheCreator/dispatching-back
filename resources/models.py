@@ -3,13 +3,26 @@ from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, 
 from sqlalchemy.dialects.postgresql import DOUBLE_PRECISION, ARRAY
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker, Session
-from sqlalchemy import create_engine, Column, Integer, String, DateTime, VARCHAR
+from sqlalchemy import create_engine, Column, Integer, String, DateTime, VARCHAR, Numeric
 from geoalchemy2 import Geometry
 
 # # SQLAlchemy Setup
 #DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@/dispatcher-bot-db?host=/var/run/postgresql"
-DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@rothschildrentals.pro:5432/dispatcher-bot-db"
-engine = create_engine(DATABASE_URL)
+DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@localhost:5432/dispatcher-bot-db"
+
+# Create engine with connection pooling and timeout settings
+engine = create_engine(
+    DATABASE_URL,
+    pool_size=10,
+    max_overflow=20,
+    pool_timeout=30,
+    pool_recycle=3600,  # Recycle connections every hour
+    pool_pre_ping=True,  # Test connections before use
+    connect_args={
+        "connect_timeout": 10,
+        "options": "-c statement_timeout=30000"  # 30 second statement timeout
+    }
+)
 
 Base = declarative_base()
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -110,22 +123,20 @@ class CompanyModel(Base):
     company_logo = Column(String, nullable=False)
     partner_brokers = Column(ARRAY(VARCHAR(100)), nullable=True)
     blacklist_brokers = Column(ARRAY(VARCHAR(100)), nullable=True)
+     
+class ZipCodeDatabase(Base):
+    __tablename__ = "zip_code_database"
     
-# Add to your resources/models.py file
-
-class Region(Base):
-    __tablename__ = "regions"
+    zip = Column(String(5), primary_key=True, nullable=False)
+    type = Column(String(20), nullable=True)
+    primary_city = Column(String(100), nullable=True)
+    state = Column(String(2), nullable=True)
+    county = Column(String(50), nullable=True)
+    timezone = Column(String(50), nullable=True)
+    area_codes = Column(String(200), nullable=True)
+    latitude = Column(Numeric(8, 2), nullable=True)
+    longitude = Column(Numeric(8, 2), nullable=True)
+    irs_estimated_population = Column(Integer, nullable=True)
     
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(100), nullable=False)
-    description = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class RegionZipCode(Base):
-    __tablename__ = "region_zip_codes"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    region_id = Column(Integer, ForeignKey("regions.id"), nullable=False)
-    zip_code = Column(String(5), nullable=False)
-    
-    __table_args__ = (UniqueConstraint('region_id', 'zip_code'),)
+    def __repr__(self):
+        return f"<ZipCode(zip='{self.zip}', city='{self.primary_city}', state='{self.state}')>"

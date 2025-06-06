@@ -2,11 +2,44 @@ from geoalchemy2.elements import WKTElement
 import time
 from resources.models import LoadModel, get_db
 from .central_data_worker import CentralDataWorker
-from utils.utils import objects_equal
+from selenium_agency.utils.utils import objects_equal
+from sqlalchemy.exc import OperationalError, DisconnectionError
+import logging
 
 class CentralDbWorker(CentralDataWorker):
     def __init__(self):
-        self.__db_Session = next(get_db())
+        self.__db_Session = None
+        self._init_db_session()
+    
+    def _init_db_session(self):
+        """Initialize or reinitialize the database session"""
+        try:
+            if self.__db_Session:
+                self.__db_Session.close()
+            self.__db_Session = next(get_db())
+        except Exception as e:
+            logging.error(f"Failed to initialize database session: {e}")
+            self.__db_Session = None
+    
+    def _execute_with_retry(self, operation, max_retries=3, retry_delay=5):
+        """Execute a database operation with retry logic for connection issues"""
+        for attempt in range(max_retries):
+            try:
+                return operation()
+            except (OperationalError, DisconnectionError) as e:
+                logging.warning(f"Database connection error on attempt {attempt + 1}: {e}")
+                if attempt < max_retries - 1:
+                    print(f"Database connection lost. Retrying in {retry_delay} seconds... (attempt {attempt + 1}/{max_retries})")
+                    time.sleep(retry_delay)
+                    self._init_db_session()  # Reinitialize the session
+                    if self.__db_Session is None:
+                        continue
+                else:
+                    print(f"Database connection failed after {max_retries} attempts")
+                    raise
+            except Exception as e:
+                logging.error(f"Unexpected database error: {e}")
+                raise
 
     def __format_and_get_load_model(self, load):
         if not load:
@@ -58,8 +91,7 @@ class CentralDbWorker(CentralDataWorker):
             created_at=load.get('createdDate', ''),
             date_ready=load.get('availableDate', ''),
             n_vehicles=len(load.get('vehicles', [])),
-            weight=float(total_weight)
-        )
+            weight=float(total_weight)        )
 
         return load_model_instance
 
@@ -67,19 +99,30 @@ class CentralDbWorker(CentralDataWorker):
         print(f"Fetching existing loads from the database for state: {state}...")
         if self.__db_Session is None:
             print("Database session is not initialized.")
-            return []
+            self._init_db_session()
+            if self.__db_Session is None:
+                print("Failed to initialize database session.")
+                return []
 
-        # Filter loads where pickup_location contains the state code
-        # Example: "ABBEVILLE, AL 36310" for state="AL"
-        existing_loads = self.__db_Session.query(
-            LoadModel.external_load_id,
-            LoadModel.price,
-            LoadModel.milage,
-            LoadModel.pickup_location,
-            LoadModel.delivery_location
-        ).filter(
-            LoadModel.pickup_location.contains(f", {state} ")
-        ).all()
+        def fetch_loads():
+            # Filter loads where pickup_location contains the state code
+            # Example: "ABBEVILLE, AL 36310" for state="AL"
+            existing_loads = self.__db_Session.query(
+                LoadModel.external_load_id,
+                LoadModel.price,
+                LoadModel.milage,
+                LoadModel.pickup_location,
+                LoadModel.delivery_location
+            ).filter(
+                LoadModel.pickup_location.contains(f", {state} ")
+            ).all()
+            return existing_loads
+
+        try:
+            existing_loads = self._execute_with_retry(fetch_loads)
+        except Exception as e:
+            print(f"Failed to fetch loads after retries: {e}")
+            return []
 
         # Convert query results to dictionaries with proper keys
         existing_loads_dicts = [
@@ -90,8 +133,7 @@ class CentralDbWorker(CentralDataWorker):
                 'pickup_location': row[3],
                 'delivery_location': row[4]
             }
-            for row in existing_loads
-        ]
+            for row in existing_loads        ]
 
         return existing_loads_dicts
 
@@ -106,16 +148,27 @@ class CentralDbWorker(CentralDataWorker):
                 model for model in (self.__format_and_get_load_model(load) for load in non_duplicate_loads)
                 if model is not None  # Filter out None values that result from KeyError
             ]
-
+            
             # Only proceed if there are valid models to save
             if load_model_instances and self.__db_Session is not None:
-                self.__db_Session.bulk_save_objects(load_model_instances)
-                self.__db_Session.commit()
-                time.sleep(15)
-                print(
-                    f"Inserted {len(load_model_instances)} loads into DB")
-                print("--------------------------------------------------------------------")
-                print("\n")
+                def save_loads():
+                    self.__db_Session.bulk_save_objects(load_model_instances)
+                    self.__db_Session.commit()
+                    return len(load_model_instances)
+
+                try:
+                    saved_count = self._execute_with_retry(save_loads)
+                    time.sleep(15)
+                    print(f"Inserted {saved_count} loads into DB")
+                    print("--------------------------------------------------------------------")
+                    print("\n")
+                except Exception as e:
+                    print(f"Failed to save loads to database: {e}")
+                    # Try to rollback the transaction
+                    try:
+                        self.__db_Session.rollback()
+                    except:
+                        pass
             else:
                 print("No valid loads to insert into DB")
 
@@ -123,12 +176,22 @@ class CentralDbWorker(CentralDataWorker):
         print("Sanitizing database...")
         if self.__db_Session is None:
             print("Database session is not initialized.")
-            return
+            self._init_db_session()
+            if self.__db_Session is None:
+                print("Failed to initialize database session. Skipping sanitization.")
+                return
 
-        # Fetch all existing loads for the specified state
-        existing_db_loads = self.__db_Session.query(LoadModel).filter(
-            LoadModel.pickup_location.contains(f", {state} ")
-        ).all()
+        def fetch_existing_loads():
+            return self.__db_Session.query(LoadModel).filter(
+                LoadModel.pickup_location.contains(f", {state} ")
+            ).all()
+
+        # Fetch all existing loads for the specified state with retry logic
+        try:
+            existing_db_loads = self._execute_with_retry(fetch_existing_loads)
+        except Exception as e:
+            print(f"Failed to fetch existing loads after retries: {e}")
+            return
 
         print(f"Found {len(existing_db_loads)} existing loads in DB for state {state}")
         print(f"Comparing against {len(remote_loads)} remote loads")
@@ -156,12 +219,40 @@ class CentralDbWorker(CentralDataWorker):
 
         # Delete loads that weren't found in remote data
         if loads_to_delete:
-            counter = 1
-            for load in loads_to_delete:
-                print(f"\rDeleting obsolete load: {counter} / {len(loads_to_delete)}", end='', flush=True)
-                counter += 1
-                self.__db_Session.delete(load)
-            self.__db_Session.commit()
-            print(f"Deleted {len(loads_to_delete)} obsolete loads from DB for state {state}")
+            def delete_loads():
+                counter = 1
+                for load in loads_to_delete:
+                    print(f"\rDeleting obsolete load: {counter} / {len(loads_to_delete)}", end='', flush=True)
+                    counter += 1
+                    self.__db_Session.delete(load)
+                self.__db_Session.commit()
+                return len(loads_to_delete)
+
+            try:
+                deleted_count = self._execute_with_retry(delete_loads)
+                print(f"Deleted {deleted_count} obsolete loads from DB for state {state}")
+            except Exception as e:
+                print(f"Failed to delete obsolete loads: {e}")
+                # Try to rollback the transaction
+                try:
+                    self.__db_Session.rollback()
+                except:
+                    pass
         else:
             print(f"No obsolete loads found for state {state}")
+
+    def __enter__(self):
+        """Context manager entry"""
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Context manager exit - ensure database session is properly closed"""
+        if self.__db_Session:
+            try:
+                if exc_type:
+                    self.__db_Session.rollback()
+                self.__db_Session.close()
+            except Exception as e:
+                logging.error(f"Error closing database session: {e}")
+            finally:
+                self.__db_Session = None

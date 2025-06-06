@@ -92,8 +92,7 @@ class CentralAgent:
     def __start_filling_db_cycle(self, state):
         loads = self.__central_interactor.fetch_loads(state)
         needs_relogin = loads is None
-        if needs_relogin == True:
-            return needs_relogin
+        if needs_relogin == True:        return needs_relogin
         non_duplicate_loads = self.__central_interactor.deduplicate_loads(loads, state)
         filtered_loads = self.__central_interactor.filter_loads(non_duplicate_loads)
         self.__central_interactor.save_loads_to_db(filtered_loads)
@@ -103,14 +102,23 @@ class CentralAgent:
         try:
             while True:
                 if self.__central_interactor.token_exists():
-                    needs_relogin = self.__start_filling_db_cycle(self.states[self.__state_index])
-                    if needs_relogin == True:
-                        print("Token expired, relogin will start soon...")
+                    try:
+                        needs_relogin = self.__start_filling_db_cycle(self.states[self.__state_index])
+                        if needs_relogin == True:
+                            print("Token expired, relogin will start soon...")
+                            continue
+                        self.__state_index += 1
+                        if self.__state_index >= len(self.states):
+                            self.__state_index = 0
+                        time.sleep(30)
+                    except Exception as e:
+                        print(f"Error during data processing cycle: {e}")
+                        print("Continuing to next state after a short delay...")
+                        self.__state_index += 1
+                        if self.__state_index >= len(self.states):
+                            self.__state_index = 0
+                        time.sleep(60)  # Wait longer before retrying
                         continue
-                    self.__state_index += 1
-                    if self.__state_index >= len(self.states):
-                        self.__state_index = 0
-                    time.sleep(30)
                 else:
                     try:
                         print("starting login cycle...")
@@ -121,7 +129,7 @@ class CentralAgent:
                         continue
         except KeyboardInterrupt:
             print("Removing token...")
-            print("keybord interrupt exiting...")
+            print("keyboard interrupt exiting...")
             self.__central_interactor.remove_token()
             quit()
 

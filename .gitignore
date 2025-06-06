@@ -6,3 +6,4 @@ route_builder.log
 *.exe
 selenium_agency/cache/tmp/
 selenium_agency/logs/
+selenium_agency/chromedriver-win64.zip

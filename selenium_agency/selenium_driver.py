@@ -1,8 +1,7 @@
-from selenium import webdriver
+﻿from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
-from webdriver_manager.chrome import ChromeDriverManager
 import os
 
 load_dotenv()
@@ -18,17 +17,24 @@ class SeleniumDriver:
         
     def initialize_driver(self):
         chrome_options = Options()
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--disable-dev-shm-usage')
-        # Set window size to ensure desktop view
-        chrome_options.add_argument('--window-size=1920,1080')
-        # Use a desktop user agent to ensure consistent desktop version
-        chrome_options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36')
-        # Disable mobile emulation
-        chrome_options.add_argument('--disable-blink-features=AutomationControlled')
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--window-size=1920,1080")
+        chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
+        chrome_options.add_argument("--disable-blink-features=AutomationControlled")
         
-        service = Service(ChromeDriverManager().install())
+        # Use local chromedriver
+        if self.driver_path and os.path.exists(self.driver_path):
+            service = Service(self.driver_path)
+        else:
+            # Try to find chromedriver.exe in central_agency folder
+            central_driver = os.path.join(os.path.dirname(__file__), "central_agency", "chromedriver.exe")
+            if os.path.exists(central_driver):
+                service = Service(central_driver)
+            else:
+                raise FileNotFoundError("chromedriver.exe not found")
+        
         self.driver = webdriver.Chrome(service=service, options=chrome_options)
         return self.driver
 

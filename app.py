@@ -610,3 +610,46 @@ def get_statistics(db: Session = Depends(get_db)):
     ]
     
     return statistics
+
+from sqlalchemy import or_
+
+@app.get("/api/locations/search")
+async def search_locations(
+    q: str = Query(..., min_length=2, max_length=50),
+    limit: int = Query(10, le=20),
+    db: Session = Depends(get_db)
+):
+    # Search across zip, primary_city, state, and county
+    from resources.models import ZipCodeDatabase  # Import the proper model
+    
+    query = db.query(ZipCode).filter(
+        or_(
+            ZipCodeDatabase.zip.ilike(f"{q}%"),
+            ZipCodeDatabase.primary_city.ilike(f"{q}%"),
+            ZipCodeDatabase.state.ilike(f"{q}%"),
+            ZipCodeDatabase.county.ilike(f"{q}%"),
+            # For partial city matches within the string
+            ZipCode.primary_city.ilike(f"%{q}%")
+        )
+    ).order_by(
+        # Prioritize exact zip matches, then city matches
+        ZipCodeDatabase.zip.ilike(f"{q}%").desc(),
+        ZipCodeDatabase.primary_city.ilike(f"{q}%").desc(),
+        ZipCodeDatabase.primary_city
+    ).limit(limit)
+    
+    results = query.all()
+    return [
+        {
+            "zip": row.zip,
+            "display": f"{row.primary_city}, {row.state} {row.zip}",
+            "primary_city": row.primary_city,
+            "state": row.state,
+            "county": row.county,
+            "latitude": float(row.latitude) if row.latitude else None,
+            "longitude": float(row.longitude) if row.longitude else None,
+            "timezone": row.timezone,
+            "type": row.type
+        }
+        for row in results
+    ]
