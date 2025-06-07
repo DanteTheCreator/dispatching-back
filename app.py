@@ -613,7 +613,7 @@ def get_statistics(db: Session = Depends(get_db)):
 
 from sqlalchemy import or_
 
-@app.get("/api/locations/search")
+@app.get("/locations/search")
 async def search_locations(
     q: str = Query(..., min_length=2, max_length=50),
     limit: int = Query(10, le=20),
@@ -622,14 +622,14 @@ async def search_locations(
     # Search across zip, primary_city, state, and county
     from resources.models import ZipCodeDatabase  # Import the proper model
     
-    query = db.query(ZipCode).filter(
+    query = db.query(ZipCodeDatabase).filter(
         or_(
             ZipCodeDatabase.zip.ilike(f"{q}%"),
             ZipCodeDatabase.primary_city.ilike(f"{q}%"),
             ZipCodeDatabase.state.ilike(f"{q}%"),
             ZipCodeDatabase.county.ilike(f"{q}%"),
             # For partial city matches within the string
-            ZipCode.primary_city.ilike(f"%{q}%")
+            ZipCodeDatabase.primary_city.ilike(f"%{q}%")
         )
     ).order_by(
         # Prioritize exact zip matches, then city matches

@@ -85,7 +85,7 @@ class DriverModel(Base):
    states = Column(ARRAY(String(2)))
    location = Column(String(100))
    max_milage = Column(Float)
-   desired_destination = Column(VARCHAR(15))
+   desired_destination = Column(VARCHAR(100))
 
 class RouteModel(Base):
     __tablename__ = "routes"
