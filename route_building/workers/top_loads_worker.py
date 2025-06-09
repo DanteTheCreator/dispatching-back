@@ -41,13 +41,13 @@ class TopLoadsWorker:
             print(f"Invalid coordinates for origin {origin}: {coords}")
             return []
 
-        try:
-            # Convert miles to meters for PostGIS ST_DWithin function
+        try:            # Convert miles to meters for PostGIS ST_DWithin function
             distance_meters = radius * 1609.34
             sql = text("""
             SELECT 
             *,           
-            ST_AsGeoJSON(pickup_points) as pickup_point_json
+            ST_AsGeoJSON(pickup_points) as pickup_point_json,
+            ST_AsGeoJSON(delivery_points) as delivery_point_json
             FROM loads
             WHERE ST_DWithin(
                 pickup_points::geography,

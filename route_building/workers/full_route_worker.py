@@ -46,6 +46,33 @@ class FullRouteWorker:
 
     def get_delivery_point(self, load):
         """Extract delivery coordinates from a load object."""
+        # First try to get delivery coordinates from stored delivery_points (similar to pickup_points)
+        delivery_json = None
+        try:
+            # Check if delivery_point_json exists (if load has it)
+            if hasattr(load, 'delivery_point_json'):
+                delivery_json = load.delivery_point_json
+            elif hasattr(load, '_asdict') and 'delivery_point_json' in load._asdict():
+                delivery_json = load._asdict()['delivery_point_json']
+            elif isinstance(load, dict) and 'delivery_point_json' in load:
+                delivery_json = load['delivery_point_json']
+        except Exception as e:
+            print(f"Error accessing delivery_point_json: {e}")
+            
+        # If we have stored delivery coordinates, use them
+        if delivery_json:
+            try:
+                if isinstance(delivery_json, str):
+                    delivery_coords = json.loads(delivery_json).get('coordinates')
+                else:
+                    delivery_coords = delivery_json.get('coordinates') if isinstance(delivery_json, dict) else None
+                    
+                if delivery_coords and isinstance(delivery_coords, list) and len(delivery_coords) == 2:
+                    return delivery_coords
+            except Exception as e:
+                print(f"Error parsing stored delivery coordinates: {e}")
+        
+        # Fallback to Pelias API call
         try:
             delivery_location = None
             if isinstance(load, dict):
@@ -94,25 +121,52 @@ class FullRouteWorker:
             return []
 
     def get_full_route_points(self, route):
+        """
+        Get route points for single car routes (sequential pickup/delivery).
+        Pattern: [driver, pickup1, delivery1, pickup2, delivery2, ...]
+        """
         points = self.get_driver_coordinates(route)
-
-        pickups = []
-        deliveries = []
 
         for load in route.loads:
             # Get pickup point
             pickup_coords = self.get_pickup_point(load)
             if pickup_coords:
-                pickups.append(pickup_coords)
+                points.append(pickup_coords)
 
             # Get delivery point
             delivery_coords = self.get_delivery_point(load)
             if delivery_coords:
-                deliveries.append(delivery_coords)
+                points.append(delivery_coords)
 
-        points.extend(pickups)
-        points.extend(deliveries)
+        return points
 
+    def get_full_route_points_multiple_car(self, route):
+        """
+        Get route points optimized for multiple car routes.
+        This matches the pattern used by build_multiple_car_glink:
+        [driver, pickup1, pickup2, pickup3, delivery1, delivery2, delivery3]
+        """
+        points = self.get_driver_coordinates(route)
+        
+        # Collect all pickup points first
+        pickup_points = []
+        delivery_points = []
+        
+        for load in route.loads:
+            # Get pickup point
+            pickup_coords = self.get_pickup_point(load)
+            if pickup_coords:
+                pickup_points.append(pickup_coords)
+            
+            # Get delivery point
+            delivery_coords = self.get_delivery_point(load)
+            if delivery_coords:
+                delivery_points.append(delivery_coords)
+        
+        # Add pickups first, then deliveries
+        points.extend(pickup_points)
+        points.extend(delivery_points)
+        
         return points
     
     def get_graphhopper_distance_miles(self, points):
@@ -153,9 +207,21 @@ class FullRouteWorker:
             return 1.0
 
     def calculate_full_route_length(self, route: Route) -> float:
+        """
+        Calculate route length using the appropriate method based on number of loads.
+        For multiple loads (2+), use multiple car logic to match build_multiple_car_glink.
+        """
         try:
-            full_route_points = self.get_full_route_points(route)
-            print(f"Full route points: {full_route_points}")
+            # Determine which route logic to use based on number of loads
+            if len(route.loads) >= 2:
+                # Use multiple car logic for routes with 2+ loads
+                full_route_points = self.get_full_route_points_multiple_car(route)
+                print(f"Multiple car route points: {full_route_points}")
+            else:
+                # Use single car logic for single load routes
+                full_route_points = self.get_full_route_points(route)
+                print(f"Single car route points: {full_route_points}")
+                
             if len(full_route_points) < 2:
                 print("Not enough valid points to calculate a route")
                 return 1.0
