@@ -15,6 +15,11 @@ CHYONOPASSWORD = os.getenv("CHYONOGMAILPASSWORD")
 
 def get_otp_from_gmail_central(subject):
     try:
+
+        print("Logging in to Gmail with the following credentials:")
+        print(EMAIL, DANELAPASSWORD)
+
+
         # Connect to Gmail's IMAP server
         mail = imaplib.IMAP4_SSL("imap.gmail.com")
         if EMAIL is not None and DANELAPASSWORD is not None:
@@ -22,7 +27,6 @@ def get_otp_from_gmail_central(subject):
         
         # Select the mailbox to search in
         mail.select("inbox")
-
         # Search for emails with specific subject
         _, messages = mail.search(None, f'(SUBJECT "{subject}")')
 

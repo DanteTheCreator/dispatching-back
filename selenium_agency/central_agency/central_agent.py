@@ -80,6 +80,15 @@ class CentralAgent:
         button = self.__wait.until(
         EC.element_to_be_clickable((By.ID, "submitButton")))
         button.click()
+        time.sleep(5)
+        continue_button = self.__wait.until(
+        EC.element_to_be_clickable((By.ID, "submitButton")))
+        continue_button.click()
+        time.sleep(5)
+        skip_button = self.__wait.until(
+        EC.element_to_be_clickable((By.ID, "skip")))
+        skip_button.click()
+
         time.sleep(15)
 
     def __start_login_cycle(self):

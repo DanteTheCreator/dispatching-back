@@ -28,12 +28,13 @@ class SeleniumDriver:
         if self.driver_path and os.path.exists(self.driver_path):
             service = Service(self.driver_path)
         else:
-            # Try to find chromedriver.exe in central_agency folder
-            central_driver = os.path.join(os.path.dirname(__file__), "central_agency", "chromedriver.exe")
-            if os.path.exists(central_driver):
-                service = Service(central_driver)
+            # Get chromedriver path from environment variable or use default system path
+            chromedriver_path = os.getenv('CHROMEDRIVER', '/usr/local/bin/chromedriver')
+            
+            if os.path.exists(chromedriver_path):
+                service = Service(chromedriver_path)
             else:
-                raise FileNotFoundError("chromedriver.exe not found")
+                raise FileNotFoundError(f"chromedriver not found at {chromedriver_path}")
         
         self.driver = webdriver.Chrome(service=service, options=chrome_options)
         return self.driver
