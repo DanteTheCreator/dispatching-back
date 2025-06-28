@@ -129,7 +129,8 @@ class CentralAgent:
     def __start_filling_db_cycle(self, state):
         loads = self.__central_interactor.fetch_loads(state)
         needs_relogin = loads is None
-        if needs_relogin == True:        return needs_relogin
+        if needs_relogin == True:        
+            return needs_relogin
         non_duplicate_loads = self.__central_interactor.deduplicate_loads(loads, state)
         filtered_loads = self.__central_interactor.filter_loads(non_duplicate_loads)
         self.__central_interactor.save_loads_to_db(filtered_loads)
