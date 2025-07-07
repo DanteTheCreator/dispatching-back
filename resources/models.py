@@ -8,7 +8,7 @@ from geoalchemy2 import Geometry
 
 # # SQLAlchemy Setup
 #DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@/dispatcher-bot-db?host=/var/run/postgresql"
-DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@192.168.100.9:5432/dispatcher-bot-db"
+DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@192.168.100.9:5432/postgres"
 
 # Create engine with connection pooling and timeout settings
 engine = create_engine(
