@@ -17,6 +17,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from dotenv import load_dotenv
 from selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_central
+from selenium_agency.otp_verifiers.ringcentral_sms_extract import get_recent_central_dispatch_code
 from central_configurator import CentralConfigurator
 
 # Load .env file from the selenium_agency directory
@@ -84,29 +85,26 @@ class CentralAgent:
 
     def __verify(self):
         print("verifying...")
-        send_code_button = self.__wait.until(
-        EC.element_to_be_clickable((By.ID, "sendCodeButton")))
-        send_code_button.click()
-        time.sleep(5)
-        otp = get_otp_from_gmail_central('Central Dispatch')
-        otp_field = self.__wait.until(
-        EC.element_to_be_clickable((By.ID, "VerificationCode")))
-        time.sleep(self.__in_between_delay)
-        otp_field.send_keys(otp or '')
-        time.sleep(self.__in_between_delay-10)
-        button = self.__wait.until(
-        EC.element_to_be_clickable((By.ID, "submitButton")))
-        button.click()
-        time.sleep(5)
-        continue_button = self.__wait.until(
-        EC.element_to_be_clickable((By.ID, "submitButton")))
-        continue_button.click()
-        time.sleep(5)
-        skip_button = self.__wait.until(
-        EC.element_to_be_clickable((By.ID, "skip")))
-        skip_button.click()
+        # Check if verification code field exists
+        try:
+            otp_field = self.__wait.until(
+            EC.element_to_be_clickable((By.ID, "VerificationCode")))
+            print("Verification field found, proceeding with OTP...")
+            time.sleep(10)
+            otp = get_recent_central_dispatch_code(1)
+            print(f"OTP received: {otp}")
+            time.sleep(self.__in_between_delay)
+            otp_field.send_keys(otp or '')
+            time.sleep(self.__in_between_delay-10)
+            button = self.__wait.until(
+            EC.element_to_be_clickable((By.ID, "submitButton")))
+            button.click()
+            time.sleep(5)
+        except Exception as e:
+            print(f"Verification field not found or error occurred: {e}")
+            print("Skipping OTP verification step...")
 
-        time.sleep(15)
+        time.sleep(5)
 
     def __start_login_cycle(self):
         if self.__driver is not None:
