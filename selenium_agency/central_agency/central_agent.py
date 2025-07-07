@@ -4,6 +4,12 @@ import os
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(project_root)
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+print("=== Central Agent Starting ===")
+print(f"Python version: {sys.version}")
+print(f"Current working directory: {os.getcwd()}")
+print(f"Python path: {sys.path}")
+
 import logging
 from selenium.webdriver.common.by import By
 import time
@@ -13,7 +19,8 @@ from dotenv import load_dotenv
 from selenium_agency.otp_verifiers.gmail_verify import get_otp_from_gmail_central
 from central_configurator import CentralConfigurator
 
-load_dotenv()
+# Load .env file from the selenium_agency directory
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
 
 
 class CentralAgent:
@@ -24,6 +31,16 @@ class CentralAgent:
         # Your Gmail credentials
         self._email = os.getenv("CENTRAL_USER")
         self._password = os.getenv("CENTRAL_PASSWORD")
+        
+        # Debug: Print environment status
+        print(f"Environment variables loaded:")
+        print(f"  CENTRAL_USER: {'✅ Set' if self._email else '❌ Not set'}")
+        print(f"  CENTRAL_PASSWORD: {'✅ Set' if self._password else '❌ Not set'}")
+        
+        if not self._email or not self._password:
+            print("❌ Missing required environment variables! Please check your .env file.")
+            return
+            
         central_configurator = CentralConfigurator()
         self.__central_interactor = central_configurator.configured_central_interactor()
         self.__driver = central_configurator.get_driver()
@@ -80,12 +97,10 @@ class CentralAgent:
         button = self.__wait.until(
         EC.element_to_be_clickable((By.ID, "submitButton")))
         button.click()
-        
         time.sleep(5)
         continue_button = self.__wait.until(
         EC.element_to_be_clickable((By.ID, "submitButton")))
         continue_button.click()
-
         time.sleep(5)
         skip_button = self.__wait.until(
         EC.element_to_be_clickable((By.ID, "skip")))
@@ -95,21 +110,52 @@ class CentralAgent:
 
     def __start_login_cycle(self):
         if self.__driver is not None:
-            self.__load_page()
-            self.__authorize()
-            self.__verify()
-            self.__central_interactor.set_token()
+            try:
+                self.__load_page()
+                self.__authorize()
+                self.__verify()
+                self.__central_interactor.set_token()
+                print("✅ Login cycle completed successfully!")
+            except Exception as e:
+                print(f"❌ Error in login cycle step: {e}")
+                # Take a screenshot for debugging if possible
+                try:
+                    self.__driver.save_screenshot("/tmp/error_screenshot.png")
+                    print("🖼️ Screenshot saved to /tmp/error_screenshot.png")
+                except:
+                    print("❌ Could not save screenshot")
+                raise e
 
     def __start_filling_db_cycle(self, state):
         loads = self.__central_interactor.fetch_loads(state)
         needs_relogin = loads is None
-        if needs_relogin == True:        return needs_relogin
+        if needs_relogin == True:        
+            return needs_relogin
         non_duplicate_loads = self.__central_interactor.deduplicate_loads(loads, state)
         filtered_loads = self.__central_interactor.filter_loads(non_duplicate_loads)
         self.__central_interactor.save_loads_to_db(filtered_loads)
         return loads 
 
+    def cleanup(self):
+        """Clean up resources"""
+        try:
+            if hasattr(self, '_CentralAgent__driver') and self.__driver:
+                print("🧹 Cleaning up WebDriver...")
+                self.__driver.quit()
+                self.__driver = None
+        except Exception as e:
+            print(f"⚠️ Error during cleanup: {e}")
+
     def run(self):
+        # Check if credentials are available
+        if not self._email or not self._password:
+            print("❌ Cannot start agent without proper credentials!")
+            print("Please ensure CENTRAL_USER and CENTRAL_PASSWORD are set in your .env file.")
+            return
+            
+        print("🚀 Starting Central Agent...")
+        print(f"📧 Using email: {self._email}")
+        
         try:
             while True:
                 if self.__central_interactor.token_exists():
@@ -136,13 +182,28 @@ class CentralAgent:
                         self.__start_login_cycle()
                     except Exception as e:
                         print(f"Error during login cycle: {e}") # Use f-string for better formatting
+                        print("🔄 Cleaning up and retrying...")
+                        self.cleanup()
+                        # Reinitialize the driver for next attempt
+                        try:
+                            central_configurator = CentralConfigurator()
+                            self.__central_interactor = central_configurator.configured_central_interactor()
+                            self.__driver = central_configurator.get_driver()
+                            print("🔄 Driver reinitialized successfully")
+                        except Exception as reinit_error:
+                            print(f"❌ Failed to reinitialize driver: {reinit_error}")
                         time.sleep(120) # Increased sleep time after login failure
                         continue
         except KeyboardInterrupt:
             print("Removing token...")
             print("keyboard interrupt exiting...")
             self.__central_interactor.remove_token()
+            self.cleanup()
             quit()
+        except Exception as e:
+            print(f"❌ Unexpected error in main loop: {e}")
+            self.cleanup()
+            raise
 
 agent = CentralAgent()
 agent.run()
