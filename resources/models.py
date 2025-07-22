@@ -1,5 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, func, ForeignKey, UniqueConstraint, Enum
+from sqlalchemy import Column, Float, Integer, String, DateTime, Boolean, JSON, func, ForeignKey, UniqueConstraint, Enum, text
 from sqlalchemy.dialects.postgresql import DOUBLE_PRECISION, ARRAY
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker, Session
@@ -8,19 +8,21 @@ from geoalchemy2 import Geometry
 
 # # SQLAlchemy Setup
 #DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@/dispatcher-bot-db?host=/var/run/postgresql"
-DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@192.168.100.9:5432/postgres"
+DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@localhost:5432/postgres"
 
-# Create engine with connection pooling and timeout settings
+# Create engine with improved connection pooling and timeout settings
 engine = create_engine(
     DATABASE_URL,
-    pool_size=10,
-    max_overflow=20,
-    pool_timeout=30,
-    pool_recycle=3600,  # Recycle connections every hour
+    pool_size=5,  # Reduced pool size to prevent connection exhaustion
+    max_overflow=10,  # Reduced overflow to prevent too many connections
+    pool_timeout=20,  # Reduced timeout to fail faster
+    pool_recycle=1800,  # Recycle connections every 30 minutes (reduced from 1 hour)
     pool_pre_ping=True,  # Test connections before use
+    echo=False,  # Disable SQL logging to reduce overhead
     connect_args={
-        "connect_timeout": 10,
-        "options": "-c statement_timeout=30000"  # 30 second statement timeout
+        "connect_timeout": 15,  # Increased connection timeout
+        "options": "-c statement_timeout=30000",  # 30 second statement timeout
+        "application_name": "dispatching_api"  # Add application name for monitoring
     }
 )
 
@@ -30,9 +32,18 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 def get_db():
     db = SessionLocal()
     try:
+        # Test the connection with a simple query
+        db.execute(text("SELECT 1"))
         yield db
+    except Exception as e:
+        db.rollback()
+        print(f"Database connection error: {e}")
+        raise
     finally:
-        db.close()
+        try:
+            db.close()
+        except Exception as e:
+            print(f"Error closing database connection: {e}")
 
 
 # # Define your model (adjust fields as needed)

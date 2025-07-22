@@ -19,8 +19,7 @@ app = FastAPI(title="Dispatching API",
 
 # Define allowed origins
 origins = [
-    "http://localhost:5173",  # Frontend development server
-    "https://rothschildrentals.pro",  # Backend production domain
+    '*'  # Backend production domain
 ]
 
 # Add CORS middleware
