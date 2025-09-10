@@ -22,7 +22,8 @@ class ZipCodeDatabase(Base):
     longitude = Column(Float)
     irs_estimated_population = Column(Integer)
 
-db_Session = next(get_db())
+# Remove the global session creation
+# db_Session = next(get_db())
 
 def safe_truncate(value: str, max_length: int) -> str:
     """Safely truncate string to maximum length."""
@@ -171,6 +172,7 @@ def fill_zip_code_database():
     """
     csv_file_path = 'zip_code_database.csv'
     
+    db_session = next(get_db())
     try:
         # Read ZIP codes from CSV
         print("Reading ZIP code data from CSV...")
@@ -179,13 +181,13 @@ def fill_zip_code_database():
         
         # Insert into database
         print("Inserting ZIP codes into database...")
-        processed_count = insert_zip_codes_to_db(db_Session, zip_codes)
+        processed_count = insert_zip_codes_to_db(db_session, zip_codes)
         print(f"Successfully processed {processed_count} ZIP codes in database")
         
     except Exception as e:
         print(f"Error: {e}")
     finally:
-        db_Session.close()
+        db_session.close()
 
 # Example usage:
 if __name__ == "__main__":

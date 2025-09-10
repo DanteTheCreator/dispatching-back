@@ -50,7 +50,8 @@ class SuperAgent:
         self._password = os.getenv("PASSWORD_SUPER")
         self.__api_client = SuperAPIClient()
         self.__cache_service = SuperCacheService()
-        self.__db_Session = next(get_db())
+        # Don't create session here, create when needed
+        self.__db_Session = None
         self.__bulk_request_handler = BulkRequestHandler()
         self.__super_interactor = SuperInteractor(
             self.__selenium_driver, 
@@ -60,6 +61,18 @@ class SuperAgent:
             self.__bulk_request_handler
         )
         self.__page = 0
+
+    def _get_db_session(self):
+        """Get a database session, creating one if needed"""
+        if self.__db_Session is None:
+            self.__db_Session = next(get_db())
+        return self.__db_Session
+    
+    def _close_db_session(self):
+        """Close the database session if it exists"""
+        if self.__db_Session is not None:
+            self.__db_Session.close()
+            self.__db_Session = None
 
     def __start_login_cycle(self, in_between_delay=1):
         print("start login cycle")

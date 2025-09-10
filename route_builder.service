@@ -1,0 +1,22 @@
+[Unit]
+Description=Route Builder Service
+After=postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=nextep
+Group=nextep
+WorkingDirectory=/home/nextep/dispatching-back
+Environment=PATH=/home/nextep/dispatching-back/dispatching-back/bin
+ExecStart=/home/nextep/dispatching-back/dispatching-back/bin/python3 /home/nextep/dispatching-back/route_building/route_builder_launcher.py
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/home/nextep/route_builder.log
+StandardError=append:/home/nextep/route_builder.log
+
+# Ensure only one instance runs
+PIDFile=/var/run/route_builder.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -9,10 +9,13 @@ from sqlalchemy.orm import Session
 from route_builder_manager import RouteBuilderManager
 
 def build_routes_for_active_drivers():
-    db: Session = next(get_db())
-    route_builder_manager = RouteBuilderManager(db)
     while True:
-        route_builder_manager.build_routes_for_active_drivers()
+        db: Session = next(get_db())
+        try:
+            route_builder_manager = RouteBuilderManager(db)
+            route_builder_manager.build_routes_for_active_drivers()
+        finally:
+            db.close()
         time.sleep(300)
 
 if __name__ == "__main__":

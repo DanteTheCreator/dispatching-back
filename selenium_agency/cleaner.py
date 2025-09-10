@@ -6,25 +6,26 @@ import time
 
 class Cleaner:
     def __init__(self):
-        self.__db_Session = next(get_db())
+        pass
 
     def __start_cleaning_cycle(self, in_between_delay=1):
-        # Get yesterday's date
-        yesterday = datetime.now().date() - timedelta(days=1)
-        
-        # Create delete statement for loads from yesterday
-        delete_stmt = delete(LoadModel).where(LoadModel.created_at < yesterday)
-        
+        db_session = next(get_db())
         try:
+            # Get yesterday's date
+            yesterday = datetime.now().date() - timedelta(days=1)
+            
+            # Create delete statement for loads from yesterday
+            delete_stmt = delete(LoadModel).where(LoadModel.created_at < yesterday)
+            
             # Execute the delete statement
-            self.__db_Session.execute(delete_stmt)
-            self.__db_Session.commit()
+            db_session.execute(delete_stmt)
+            db_session.commit()
             print(f"Successfully deleted loads from {yesterday}")
         except Exception as e:
-            self.__db_Session.rollback()
+            db_session.rollback()
             print(f"Error deleting loads: {str(e)}")
         finally:
-            self.__db_Session.close()
+            db_session.close()
 
     def run(self):
         while True:

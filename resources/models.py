@@ -16,15 +16,15 @@ DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@localhost:5432/pos
 # Create engine with improved connection pooling and timeout settings
 engine = create_engine(
     DATABASE_URL,
-    pool_size=5,  # Reduced pool size to prevent connection exhaustion
-    max_overflow=10,  # Reduced overflow to prevent too many connections
-    pool_timeout=20,  # Reduced timeout to fail faster
-    pool_recycle=1800,  # Recycle connections every 30 minutes (reduced from 1 hour)
+    pool_size=3,  # Reduced pool size to prevent connection exhaustion
+    max_overflow=5,  # Reduced overflow to prevent too many connections
+    pool_timeout=10,  # Reduced timeout to fail faster
+    pool_recycle=900,  # Recycle connections every 15 minutes (reduced)
     pool_pre_ping=True,  # Test connections before use
     echo=False,  # Disable SQL logging to reduce overhead
     connect_args={
-        "connect_timeout": 15,  # Increased connection timeout
-        "options": "-c statement_timeout=30000",  # 30 second statement timeout
+        "connect_timeout": 10,  # Reduced connection timeout
+        "options": "-c statement_timeout=30000 -c idle_in_transaction_session_timeout=60000",  # Add idle transaction timeout
         "application_name": "dispatching_api"  # Add application name for monitoring
     }
 )
@@ -50,6 +50,9 @@ def get_db():
         )
     finally:
         try:
+            # Explicitly rollback any uncommitted transactions
+            if db.in_transaction():
+                db.rollback()
             db.close()
         except Exception as e:
             print(f"Error closing database connection: {e}")
