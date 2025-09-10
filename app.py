@@ -1,7 +1,9 @@
 from sqlalchemy import text
 from sqlalchemy.orm import Session
-from fastapi import FastAPI, Query, Security, HTTPException, Depends
+from sqlalchemy.exc import OperationalError, SQLAlchemyError
+from fastapi import FastAPI, Query, Security, HTTPException, Depends, Request
 from fastapi.security import APIKeyHeader
+from fastapi.responses import JSONResponse
 from http import HTTPStatus
 import os
 from typing import List, Optional
@@ -10,12 +12,35 @@ from resources.models import RouteModel, LoadModel, Dispatcher, DriverModel, get
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from route_building.route_builders.route_builder import RouteBuilder
+import psycopg2
 
 # FastAPI App
 app = FastAPI(title="Dispatching API",
               description="An API for interacting with Dispatching DBs",
               version="0.1.0",
               root_path="/api")
+
+# Exception handlers for database connection errors
+@app.exception_handler(OperationalError)
+async def operational_error_handler(request: Request, exc: OperationalError):
+    return JSONResponse(
+        status_code=500,
+        content={"detail": f"Database operational error: {str(exc)[:200]}"}
+    )
+
+@app.exception_handler(psycopg2.OperationalError)
+async def psycopg2_operational_error_handler(request: Request, exc: psycopg2.OperationalError):
+    return JSONResponse(
+        status_code=500,
+        content={"detail": f"Database connection error: {str(exc)[:200]}"}
+    )
+
+@app.exception_handler(SQLAlchemyError)
+async def sqlalchemy_error_handler(request: Request, exc: SQLAlchemyError):
+    return JSONResponse(
+        status_code=500,
+        content={"detail": f"Database error: {str(exc)[:200]}"}
+    )
 
 # Define allowed origins
 origins = [

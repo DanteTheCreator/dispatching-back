@@ -5,6 +5,9 @@ from datetime import datetime
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, VARCHAR, Numeric
 from geoalchemy2 import Geometry
+from fastapi import HTTPException
+from sqlalchemy.exc import SQLAlchemyError
+import psycopg2
 
 # # SQLAlchemy Setup
 #DATABASE_URL = "postgresql://postgres:dispatchingisprofitable@/dispatcher-bot-db?host=/var/run/postgresql"
@@ -35,10 +38,16 @@ def get_db():
         # Test the connection with a simple query
         db.execute(text("SELECT 1"))
         yield db
-    except Exception as e:
-        db.rollback()
+    except (SQLAlchemyError, psycopg2.Error) as e:
         print(f"Database connection error: {e}")
-        raise
+        try:
+            db.rollback()
+        except Exception as rollback_error:
+            print(f"Error during rollback: {rollback_error}")
+        raise HTTPException(
+            status_code=500,
+            detail="Database connection failed"
+        )
     finally:
         try:
             db.close()
